@@ -1,5 +1,5 @@
 import tasks = require('azure-pipelines-task-lib/task');
-import {ParentCommandHandler} from './parent-handler';
+import { ParentCommandHandler } from './parent-handler';
 import path = require('path');
 
 async function run() {

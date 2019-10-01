@@ -9,15 +9,15 @@ export class ParentCommandHandler implements IParentCommandHandler {
         // Create corresponding command handler according to provider name
         let provider: Providers.Provider;
 
-        switch(providerName) {
+        switch (providerName) {
             case "azurerm":
                 provider = new Providers.AzureRM();
                 break;
-            
+
             case "aws":
                 provider = new Providers.AWS();
                 break;
-            
+
             case "gcp":
                 provider = new Providers.Google();
                 break;

@@ -4,7 +4,7 @@ import * as ServiceConfig from "./service-connections"
 export abstract class TerraformBackend {
     config: Map<string, string>;
     protected abstract setupBackend();
-    
+
     constructor() {
         this.config = new Map<string, string>();
         this.setupBackend();
