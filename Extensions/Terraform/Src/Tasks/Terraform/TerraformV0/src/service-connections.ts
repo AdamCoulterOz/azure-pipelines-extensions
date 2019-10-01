@@ -13,8 +13,8 @@ export function AzureRM(serviceName : string) : Map<string,string> {
 
 export function AWS(serviceName : string) : Map<string,string> {
     let config = new Map<string,string>();
-    config.set['AWS_ACCESS_KEY_ID'] = tasks.getEndpointAuthorizationParameter(serviceName, "username", false);
-    config.set['AWS_SECRET_ACCESS_KEY'] = tasks.getEndpointAuthorizationParameter(serviceName, "password", false);
+    config['AWS_ACCESS_KEY_ID'] = tasks.getEndpointAuthorizationParameter(serviceName, "username", false);
+    config['AWS_SECRET_ACCESS_KEY'] = tasks.getEndpointAuthorizationParameter(serviceName, "password", false);
     return config;
 }
 
@@ -30,7 +30,7 @@ export function GCP(serviceName : string) : Map<string,string> {
     let jsonCredsString = `{"type": "service_account", "private_key": "${privateKey}", "client_email": "${clientEmail}", "token_uri": "${tokenUri}"}`
     tasks.writeFile(jsonKeyFilePath, jsonCredsString);
     
-    config.set['GOOGLE_CREDENTIALS'] = `${jsonKeyFilePath}`;
-    config.set['GOOGLE_PROJECT'] = tasks.getEndpointDataParameter(serviceName, "project", false);
+    config['GOOGLE_CREDENTIALS'] = `${jsonKeyFilePath}`;
+    config['GOOGLE_PROJECT'] = tasks.getEndpointDataParameter(serviceName, "project", false);
     return config;
 }
