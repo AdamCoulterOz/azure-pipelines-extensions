@@ -1,6 +1,6 @@
 {
   "name": "terraformtask",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,6 +12,7 @@
     "@types/mocha": "2.2.48",
     "@types/node": "6.0.68",
     "@types/q": "1.0.7",
+    "@types/uuid": "^3.4.5",
     "azure-pipelines-task-lib": "2.8.0"
   },
   "devDependencies": {}

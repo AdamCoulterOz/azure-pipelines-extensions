@@ -27,19 +27,19 @@
             "name": "backendAzureRm",
             "displayName": "AzureRM backend configuration",
             "isExpanded": true,
-            "visibleRule": "provider = azurerm && command = init"
+            "visibleRule": "backend = azurerm && command = init"
         },
         {
             "name": "backendAWS",
             "displayName": "Amazon Web Services(AWS) backend configuration",
             "isExpanded": true,
-            "visibleRule": "provider = aws && command = init"
+            "visibleRule": "backend = s3 && command = init"
         },
         {
             "name": "backendGCP",
             "displayName": "Google Cloud Platform(GCP) backend configuration",
             "isExpanded": true,
-            "visibleRule": "provider = gcp && command = init"
+            "visibleRule": "backend = gcp && command = init"
         }
     ],
     "inputs": [{
@@ -48,7 +48,7 @@
             "label": "Provider",
             "defaultValue": "azurerm",
             "required": true,
-            "helpMarkDown": "The name of the provider used in the terraform configuration files.<br>Only one provider must be specified in the terraform configuration files in the below specified configuration directory.",
+            "helpMarkDown": "The name of the provider used in the terraform configuration files.<br>Only one provider can be specified in the terraform configuration files in the below specified configuration directory.",
             "options": {
                 "azurerm": "azurerm",
                 "aws": "aws",
@@ -57,6 +57,25 @@
             "properties": {
                 "EditableOptions": "False"
             }
+        },
+        {
+            "name": "backend",
+            "type": "picklist",
+            "label": "Backend",
+            "defaultValue": "local",
+            "required": true,
+            "helpMarkDown": "The type of backend to use for state management [Terraform Backend Types](https://www.terraform.io/docs/backends/types/index.html).",
+            "options": {
+                "azurerm": "azurerm",
+                "gcs": "gcs",
+                "s3": "s3",
+                "local": "local",
+                "remote": "remote"
+            },
+            "properties": {
+                "EditableOptions": "False"
+            },
+            "visibleRule": "command = init"
         },
         {
             "name": "command",
