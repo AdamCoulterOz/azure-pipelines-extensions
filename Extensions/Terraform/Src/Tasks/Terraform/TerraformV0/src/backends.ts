@@ -17,10 +17,10 @@ export class BackendAzureRM extends TerraformBackend {
     protected setupBackend() {
         let serviceName = tasks.getInput("backendServiceArm", true);
         this.config = ServiceConfig.AzureRM(serviceName);
-        this.config.set('storage_account_name', tasks.getInput("backendAzureRmStorageAccountName", true));
-        this.config.set('container_name', tasks.getInput("backendAzureRmContainerName", true));
-        this.config.set('key', tasks.getInput("backendAzureRmKey", true));
-        this.config.set('resource_group_name', tasks.getInput("backendAzureRmResourceGroupName", true));
+        this.config['storage_account_name'] = tasks.getInput("backendAzureRmStorageAccountName", true);
+        this.config['container_name'] = tasks.getInput("backendAzureRmContainerName", true);
+        this.config['key'] = tasks.getInput("backendAzureRmKey", true);
+        this.config['resource_group_name'] = tasks.getInput("backendAzureRmResourceGroupName", true);
     }
 }
 
@@ -30,9 +30,9 @@ export class BackendS3 extends TerraformBackend {
     protected setupBackend() {
         let serviceName = tasks.getInput("backendServiceAWS", true);
         this.config = ServiceConfig.AWS(serviceName);
-        this.config.set('bucket', tasks.getInput("backendAWSBucketName", true));
-        this.config.set('key', tasks.getInput("backendAWSKey", true));
-        this.config.set('region', tasks.getEndpointAuthorizationParameter(serviceName, "region", true));
+        this.config['bucket'] = tasks.getInput("backendAWSBucketName", true);
+        this.config['key'] = tasks.getInput("backendAWSKey", true);
+        this.config['region'] = tasks.getEndpointAuthorizationParameter(serviceName, "region", true);
     }
 }
 
