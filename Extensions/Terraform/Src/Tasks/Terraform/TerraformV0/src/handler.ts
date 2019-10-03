@@ -1,10 +1,6 @@
 import * as Providers from "./providers";
 
-export interface IParentCommandHandler {
-    execute(providerName: string, command: string): Promise<number>;
-}
-
-export class ParentCommandHandler implements IParentCommandHandler {
+export class Handler {
     public async execute(providerName: string, command: string): Promise<number> {
         // Create corresponding command handler according to provider name
         let provider: Providers.Provider;
