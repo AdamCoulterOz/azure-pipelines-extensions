@@ -1,7 +1,7 @@
 import tasks = require('azure-pipelines-task-lib/task');
-import * as ServiceConfig from "./service-connections"
+import * as ServiceConfig from "./connections"
 
-export abstract class TerraformBackend {
+export abstract class Backend {
     config: Map<string, string>;
     protected abstract setupBackend();
 
@@ -11,7 +11,7 @@ export abstract class TerraformBackend {
     }
 }
 
-export class BackendAzureRM extends TerraformBackend {
+export class BackendAzureRM extends Backend {
     constructor() { super(); }
 
     protected setupBackend() {
@@ -24,7 +24,7 @@ export class BackendAzureRM extends TerraformBackend {
     }
 }
 
-export class BackendS3 extends TerraformBackend {
+export class BackendS3 extends Backend {
     constructor() { super(); }
 
     protected setupBackend() {
@@ -36,7 +36,7 @@ export class BackendS3 extends TerraformBackend {
     }
 }
 
-export class BackendGCS extends TerraformBackend {
+export class BackendGCS extends Backend {
     constructor() { super(); }
 
     protected setupBackend() {

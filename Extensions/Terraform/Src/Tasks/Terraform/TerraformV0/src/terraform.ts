@@ -1,47 +1,54 @@
 import { ToolRunner, IExecOptions, IExecSyncOptions, IExecSyncResult } from 'azure-pipelines-task-lib/toolrunner'
 import tasks = require('azure-pipelines-task-lib/task');
-import { TerraformBaseCommandInitializer, TerraformAuthorizationCommandInitializer } from './terraform-commands';
 import path = require('path');
 import * as uuidV4 from 'uuid/v4';
-import { TerraformBackend } from './backends';
+import { Backend } from './backends';
 import { Provider } from './providers';
 const fs = require('fs');
 
-export interface ITerraformToolHandler {
-    createToolRunner(command?: TerraformBaseCommandInitializer): ToolRunner;
+enum Command {
+    Init = "init",
+    Plan = "plan",
+    Apply = "apply",
+    Destroy = "destroy",
+    Validate = "validate"
 }
 
-export class Terraform implements ITerraformToolHandler {
-    private readonly tasks: any;
+export class Terraform {
+    private readonly providers: Array<Provider>; 
+    private readonly backend: Backend;
+    private readonly workingDirectory: string;
+    private readonly additionalArgs: string | undefined;
+    private readonly terraformPath: string;
 
-    constructor() {
-        this.tasks = tasks;
+
+    constructor(providers: Array<Provider>, backend: Backend) {
+        this.providers = providers;
+        this.backend = backend;
+        this.workingDirectory = tasks.getInput("workingDirectory");
+        this.additionalArgs = tasks.getInput("commandOptions")
+        try {
+            this.terraformPath = tasks.which("terraform", true);
+        } catch (err) {
+            throw new Error(tasks.loc("TerraformToolNotFound"));
+        }
     }
 
-    public setupProvider(provider: Provider) {
-
+    private setupProvider(provider: Provider) {
         for (let [key, value] of provider.config.entries()) {
             process.env[key] = value;
         }
     }
 
-    public createToolRunner(command?: TerraformBaseCommandInitializer): ToolRunner {
-        let terraformPath;
-        try {
-            terraformPath = this.tasks.which("terraform", true);
-        } catch (err) {
-            throw new Error(this.tasks.loc("TerraformToolNotFound"));
-        }
-
-        let terraformToolRunner: ToolRunner = this.tasks.tool(terraformPath);
+    public runner(command: Command): ToolRunner {
+        let runner: ToolRunner = tasks.tool(this.terraformPath);
         if (command) {
-            terraformToolRunner.arg(command.name);
-            if (command.additionalArgs) {
-                terraformToolRunner.line(command.additionalArgs);
+            runner.arg(command);
+            if (this.additionalArgs) {
+                runner.line(this.additionalArgs);
             }
         }
-
-        return terraformToolRunner;
+        return runner;
     }
 
     public compareVersions(version1: string, version2: string) {
@@ -63,71 +70,24 @@ export class Terraform implements ITerraformToolHandler {
         return versionNumbersInt1.length == versionNumbersInt2.length ? 0 : (versionNumbersInt1.length < versionNumbersInt2.length ? -1 : 1);
     }
 
-    public warnIfMultipleProviders(): void {
-        let terraformPath;
-        try {
-            terraformPath = tasks.which("terraform", true);
-        } catch (err) {
-            throw new Error(tasks.loc("TerraformToolNotFound"));
-        }
-
-        let terraformToolRunner: ToolRunner = tasks.tool(terraformPath);
-        terraformToolRunner.arg("providers");
-        let commandOutput = terraformToolRunner.execSync(<IExecSyncOptions>{
-            cwd: tasks.getInput("workingDirectory")
-        });
-
-        let countProviders = (commandOutput.stdout.match(/provider/g) || []).length;
-        tasks.debug(countProviders.toString());
-        if (countProviders > 1) {
-            tasks.warning("Multiple provider blocks specified in the .tf files in the current working directory.");
-        }
-    }
-
-    public getServiceProviderNameFromProviderInput(): string {
-        let provider: string = tasks.getInput("provider", true);
-
-        switch (provider) {
-            case "azurerm": return "AzureRM";
-            case "aws": return "AWS";
-            case "gcp": return "GCP";
-        }
-    }
-
     public async init(): Promise<number> {
-        let initCommand = new TerraformBaseCommandInitializer(
-            "init",
-            tasks.getInput("workingDirectory"),
-            tasks.getInput("commandOptions")
-        );
 
-        let terraformTool;
+        let tool = this.runner(Command.Init);
 
-        terraformTool = this.terraformToolHandler.createToolRunner(initCommand);
-        //TODO: reference backend here
-        let backend = new TerraformBackend();
-        for (let [key, value] of this.config.entries()) {
-            terraformTool.arg(`-backend-config=${key}=${value}`);
+        for (let [key, value] of this.backend.config.entries()) {
+            tool.arg(`-backend-config=${key}=${value}`);
         }
 
-        return terraformTool.exec(<IExecOptions>{
-            cwd: initCommand.workingDirectory
-        });
+        return tool.exec(<IExecOptions>{ cwd: this.workingDirectory });
     }
 
     protected checkIfShowCommandSupportsJsonOutput(): number {
-        let terraformPath;
-        try {
-            terraformPath = tasks.which("terraform", true);
-        } catch (err) {
-            throw new Error(tasks.loc("TerraformToolNotFound"));
-        }
+        
+        let tool: ToolRunner = tasks.tool(this.terraformPath);
+        tool.arg("version");
 
-        let terraformToolRunner: ToolRunner = tasks.tool(terraformPath);
-        terraformToolRunner.arg("version");
-
-        let outputContents = terraformToolRunner.execSync(<IExecSyncOptions>{
-            cwd: tasks.getInput("workingDirectory")
+        let outputContents = tool.execSync(<IExecSyncOptions>{
+            cwd: this.workingDirectory
         }).stdout;
 
         let outputLines: string[] = outputContents.split('\n');
@@ -140,21 +100,12 @@ export class Terraform implements ITerraformToolHandler {
     }
 
     public async onlyPlan(): Promise<number> {
-        this.warnIfMultipleProviders();
-        let serviceName = `environmentServiceName${this.getServiceProviderNameFromProviderInput()}`;
-        let planCommand = new TerraformAuthorizationCommandInitializer(
-            "plan",
-            tasks.getInput("workingDirectory"),
-            tasks.getInput(serviceName, true),
-            tasks.getInput("commandOptions")
-        );
 
-        let terraformTool;
-        terraformTool = this.terraformToolHandler.createToolRunner(planCommand);
-        this.setupProvider(planCommand);
+        let tool = this.runner(Command.Plan);
+        this.providers.forEach(p => {this.setupProvider(p);});
 
-        return terraformTool.exec(<IExecOptions>{
-            cwd: planCommand.workingDirectory
+        return tool.exec(<IExecOptions>{
+            cwd: this.workingDirectory
         });
     }
 
@@ -167,15 +118,13 @@ export class Terraform implements ITerraformToolHandler {
             // Do terraform plan with -out flag to output the binary plan file
             const binaryPlanFilePath = path.resolve(`plan-binary-${uuidV4()}.tfplan`);
             const tempFileForPlanOutput = path.resolve(`temp-plan-${uuidV4()}.txt`);
-
-            let serviceName = `environmentServiceName${this.getServiceProviderNameFromProviderInput()}`;
             let planCommand = new TerraformAuthorizationCommandInitializer(
                 "plan",
                 tasks.getInput("workingDirectory"),
                 tasks.getInput(serviceName, true),
                 `-out=${binaryPlanFilePath}`
             );
-            terraformTool = this.terraformToolHandler.createToolRunner(planCommand);
+            terraformTool = this.runner(planCommand);
             this.setupProvider(planCommand);
             fileStream = fs.createWriteStream(tempFileForPlanOutput);
             terraformTool.execSync(<IExecSyncOptions>{
@@ -192,7 +141,7 @@ export class Terraform implements ITerraformToolHandler {
                 tasks.getInput("workingDirectory"),
                 `-json ${binaryPlanFilePath}`
             );
-            terraformTool = this.terraformToolHandler.createToolRunner(showCommand);
+            terraformTool = this.runner(showCommand);
             fileStream = fs.createWriteStream(tempFileForJsonPlanOutput);
             commandOutput = terraformTool.execSync(<IExecSyncOptions>{
                 cwd: showCommand.workingDirectory,
@@ -231,14 +180,12 @@ export class Terraform implements ITerraformToolHandler {
 
     public async onlyApply(): Promise<number> {
         let terraformTool;
-        this.warnIfMultipleProviders();
         let validateCommand = new TerraformBaseCommandInitializer("validate", tasks.getInput("workingDirectory"), '');
-        terraformTool = this.terraformToolHandler.createToolRunner(validateCommand);
+        terraformTool = this.runner(validateCommand);
         await terraformTool.exec(<IExecOptions>{
             cwd: validateCommand.workingDirectory
         });
 
-        let serviceName = `environmentServiceName${this.getServiceProviderNameFromProviderInput()}`;
         let autoApprove: string = '-auto-approve';
         let additionalArgs: string = tasks.getInput("commandOptions") || autoApprove;
 
@@ -253,7 +200,7 @@ export class Terraform implements ITerraformToolHandler {
             additionalArgs
         );
 
-        terraformTool = this.terraformToolHandler.createToolRunner(applyCommand);
+        terraformTool = this.runner(applyCommand);
         this.setupProvider(applyCommand);
 
         return terraformTool.exec(<IExecOptions>{
@@ -270,7 +217,7 @@ export class Terraform implements ITerraformToolHandler {
         );
 
         let terraformTool;
-        terraformTool = this.terraformToolHandler.createToolRunner(outputCommand);
+        terraformTool = this.runner(outputCommand);
 
         const jsonOutputVariablesFilePath = path.resolve(`output-${uuidV4()}.json`);
         const tempFileForJsonOutputVariables = path.resolve(`temp-output-${uuidV4()}.json`);
@@ -297,43 +244,22 @@ export class Terraform implements ITerraformToolHandler {
     };
 
     public async destroy(): Promise<number> {
-        this.warnIfMultipleProviders();
-        let serviceName = `environmentServiceName${this.getServiceProviderNameFromProviderInput()}`;
         let autoApprove: string = '-auto-approve';
-        let additionalArgs: string = tasks.getInput("commandOptions") || autoApprove;
+        let args = this.additionalArgs || autoApprove;
 
-        if (additionalArgs.includes(autoApprove) === false) {
-            additionalArgs = `${autoApprove} ${additionalArgs}`;
+        if (args.includes(autoApprove) === false) {
+            args = `${autoApprove} ${args}`;
         }
 
-        let destroyCommand = new TerraformAuthorizationCommandInitializer(
-            "destroy",
-            tasks.getInput("workingDirectory"),
-            tasks.getInput(serviceName, true),
-            additionalArgs
-        );
-
-        let terraformTool;
-        terraformTool = this.terraformToolHandler.createToolRunner(destroyCommand);
-        this.setupProvider(destroyCommand);
-
-        return terraformTool.exec(<IExecOptions>{
-            cwd: destroyCommand.workingDirectory
-        });
+        let tool = this.runner(Command.Destroy);
+        tool.line(args);
+        this.providers.forEach(p => {this.setupProvider(p);});
+        return tool.exec(<IExecOptions>{ cwd: this.workingDirectory });
     };
 
     public async validate(): Promise<number> {
-        let validateCommand = new TerraformBaseCommandInitializer(
-            "validate",
-            tasks.getInput("workingDirectory"),
-            tasks.getInput("commandOptions")
-        );
 
-        let terraformTool;
-        terraformTool = this.terraformToolHandler.createToolRunner(validateCommand);
-
-        return terraformTool.exec(<IExecOptions>{
-            cwd: validateCommand.workingDirectory
-        });
+        let tool = this.runner(Command.Validate);
+        return tool.exec(<IExecOptions>{ cwd: this.workingDirectory });
     }
 }

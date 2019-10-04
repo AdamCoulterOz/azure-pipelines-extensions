@@ -1,8 +1,9 @@
 import * as Providers from "./providers";
+import {Terraform} from "./terraform";
 
 export class Handler {
     public async execute(providerName: string, command: string): Promise<number> {
-        // Create corresponding command handler according to provider name
+
         let provider: Providers.Provider;
 
         switch (providerName) {
@@ -19,7 +20,8 @@ export class Handler {
                 break;
         }
 
-        // Run the corresponding command according to command name
-        return await provider[command]();
+        let terraform: Terraform = new Terraform([provider],backend);
+
+        return await terraform[command]();
     }
 }
