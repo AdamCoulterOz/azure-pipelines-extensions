@@ -13,7 +13,7 @@ export class Terraform {
     }
 
     private dir: string;
-    private args: string | undefined;
+    private args: string;
     private provider: Provider;
     private backend: Backend;
 

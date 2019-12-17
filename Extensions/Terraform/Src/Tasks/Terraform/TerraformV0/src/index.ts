@@ -11,7 +11,6 @@ async function run() {
     let provider: Provider.Base;
     let backend: Backend.Base;
 
-    // TODO: does this need additional input validation?
     try {
         switch(tl.getInput("provider", true)) {
             case "azurerm": provider = new Provider.AzureRM(); break;
@@ -31,7 +30,7 @@ async function run() {
     
         // Run the corrresponding command according to command name
         let terraform: Terraform = new Terraform(backend, provider);
-        let result: Promise<number>;
+        let result;
         switch(tl.getInput("command", true)) {
             case "init": result = await terraform.init(); break;
             case "validate": result = await terraform.validate(); break;
