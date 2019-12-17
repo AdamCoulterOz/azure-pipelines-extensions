@@ -2,7 +2,7 @@ import ma = require('azure-pipelines-task-lib/mock-answer');
 import tmrm = require('azure-pipelines-task-lib/mock-run');
 import path = require('path');
 
-let tp = path.join(__dirname, './AWSInitFailInvalidWorkingDirectoryL0.js');
+let tp = path.join(__dirname, "../../index.js");
 let tr: tmrm.TaskMockRunner = new tmrm.TaskMockRunner(tp);
 
 tr.setInput('provider', 'aws');
@@ -10,9 +10,7 @@ tr.setInput('command', 'init');
 tr.setInput('workingDirectory', 'DummyWorkingDirectory');
 tr.setInput('commandOptions', '-no-color');
 
-tr.setInput('backendServiceAWS', 'AWS');
-tr.setInput('backendAWSBucketName', 'DummyBucket');
-tr.setInput('backendAWSKey', 'DummyKey');
+
 
 
 
