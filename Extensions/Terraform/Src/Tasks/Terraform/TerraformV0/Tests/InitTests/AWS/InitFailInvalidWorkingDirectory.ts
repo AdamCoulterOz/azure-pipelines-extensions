@@ -14,10 +14,7 @@ tr.setInput('backendServiceAWS', 'AWS');
 tr.setInput('backendAWSBucketName', 'DummyBucket');
 tr.setInput('backendAWSKey', 'DummyKey');
 
-process.env['ENDPOINT_AUTH_SCHEME_AWS'] = 'Basic';
-process.env['ENDPOINT_AUTH_PARAMETER_AWS_USERNAME'] = 'DummyUsername';
-process.env['ENDPOINT_AUTH_PARAMETER_AWS_PASSWORD'] = 'DummyPassword';
-process.env['ENDPOINT_AUTH_PARAMETER_AWS_REGION'] = 'DummyRegion';
+
 
 let a: ma.TaskLibAnswers = <ma.TaskLibAnswers> {
     "which": {

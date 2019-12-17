@@ -14,12 +14,7 @@ tr.setInput('backendServiceGCP', 'GCP');
 tr.setInput('backendGCPBucketName', 'DummyBucket');
 tr.setInput('backendGCPPrefix', 'DummyPrefix');
 
-process.env['ENDPOINT_AUTH_SCHEME_GCP'] = 'Jwt';
-process.env['ENDPOINT_DATA_GCP_PROJECT'] = 'DummyProject';
-process.env['ENDPOINT_AUTH_PARAMETER_GCP_ISSUER'] = 'Dummyissuer';
-process.env['ENDPOINT_AUTH_PARAMETER_GCP_AUDIENCE'] = 'DummyAudience';
-process.env['ENDPOINT_AUTH_PARAMETER_GCP_PRIVATEKEY'] = 'DummyPrivateKey';
-process.env['ENDPOINT_AUTH_PARAMETER_GCP_SCOPE'] = 'DummyScope';
+
 
 let credentialsFilePath = path.join(__dirname, '..', '..', '..', '..', '..', '..', 'Tests', 'credentials-123.json');
 

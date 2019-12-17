@@ -11,10 +11,7 @@ tr.setInput('workingDirectory', 'DummyWorkingDirectory');
 tr.setInput('environmentServiceNameAWS', 'AWS');
 tr.setInput('commandOptions', '-auto-approve -no-color');
 
-process.env['ENDPOINT_AUTH_SCHEME_AWS'] = 'Basic';
-process.env['ENDPOINT_AUTH_PARAMETER_AWS_USERNAME'] = 'DummyUsername';
-process.env['ENDPOINT_AUTH_PARAMETER_AWS_PASSWORD'] = 'DummyPassword';
-process.env['ENDPOINT_AUTH_PARAMETER_AWS_REGION'] = 'DummyRegion';
+
 
 let a: ma.TaskLibAnswers = <ma.TaskLibAnswers> {
     "which": {

@@ -11,12 +11,7 @@ tr.setInput('workingDirectory', 'DummyWorkingDirectory');
 tr.setInput('environmentServiceNameGCP', 'GCP');
 tr.setInput('commandOptions', '');
 
-process.env['ENDPOINT_AUTH_SCHEME_GCP'] = 'Jwt';
-process.env['ENDPOINT_DATA_GCP_PROJECT'] = 'DummyProject';
-process.env['ENDPOINT_AUTH_PARAMETER_GCP_ISSUER'] = 'Dummyissuer';
-process.env['ENDPOINT_AUTH_PARAMETER_GCP_AUDIENCE'] = 'DummyAudience';
-process.env['ENDPOINT_AUTH_PARAMETER_GCP_PRIVATEKEY'] = 'DummyPrivateKey';
-process.env['ENDPOINT_AUTH_PARAMETER_GCP_SCOPE'] = 'DummyScope';
+
 
 let a: ma.TaskLibAnswers = <ma.TaskLibAnswers> {
     "which": {

@@ -11,11 +11,7 @@ tr.setInput('workingDirectory', 'DummyWorkingDirectory');
 tr.setInput('environmentServiceNameAzureRM', 'AzureRM');
 tr.setInput('commandOptions', '-auto-approve -no-color');
 
-process.env['ENDPOINT_AUTH_SCHEME_AzureRM'] = 'ServicePrincipal';
-process.env['ENDPOINT_DATA_AzureRM_SUBSCRIPTIONID'] = 'DummmySubscriptionId';
-process.env['ENDPOINT_AUTH_PARAMETER_AzureRM_SERVICEPRINCIPALID'] = 'DummyServicePrincipalId';
-process.env['ENDPOINT_AUTH_PARAMETER_AzureRM_SERVICEPRINCIPALKEY'] = 'DummyServicePrincipalKey';
-process.env['ENDPOINT_AUTH_PARAMETER_AzureRM_TENANTID'] = 'DummyTenantId';
+
 
 let a: ma.TaskLibAnswers = <ma.TaskLibAnswers> {
     "which": {
