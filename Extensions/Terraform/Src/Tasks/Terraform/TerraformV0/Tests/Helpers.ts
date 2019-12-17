@@ -1,7 +1,7 @@
 export interface IEndpointConfig {
 
     name: string;
-    Init();
+    Init(): void;
 }
 
 export class EndpointConfigAWS implements IEndpointConfig {

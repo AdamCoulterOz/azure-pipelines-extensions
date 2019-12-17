@@ -9,5 +9,5 @@ export abstract class Provider {
         //values are currently only either: azurerm, aws or google
     }
 
-    public abstract HandleProvider();
+    public abstract HandleProvider(): void;
 }

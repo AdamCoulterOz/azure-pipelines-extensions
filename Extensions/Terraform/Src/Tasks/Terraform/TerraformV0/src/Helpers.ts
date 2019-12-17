@@ -1,6 +1,6 @@
 import tasks = require('azure-pipelines-task-lib/task');
 import path = require('path');
-import * as uuidV4 from 'uuid/v4';
+import uuidV4 = require('uuid/v4');
 
 export class GoogleHelpers
 {

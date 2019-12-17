@@ -1,4 +1,4 @@
-import tasks = require('azure-pipelines-task-lib/task');
+//import tasks = require('azure-pipelines-task-lib/task');
 import { Backend } from './base';
 
 export class BackendLocal extends Backend {

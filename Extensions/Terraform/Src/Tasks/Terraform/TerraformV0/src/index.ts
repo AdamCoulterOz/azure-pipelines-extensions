@@ -44,6 +44,7 @@ async function run() {
     }
     catch (error) {
         tl.setResult(tl.TaskResult.Failed, error.message);
+        return 0;
     }
 }
 

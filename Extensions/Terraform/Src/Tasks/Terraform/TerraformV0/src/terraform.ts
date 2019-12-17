@@ -1,6 +1,6 @@
 import tl = require('azure-pipelines-task-lib/task');
 import trl = require('azure-pipelines-task-lib/toolrunner');
-import semver = require('semver');
+//import semver = require('semver');
 import { Provider } from './provider/base';
 import { Backend } from './backend/base';
 
@@ -13,14 +13,15 @@ export class Terraform {
     }
 
     private dir: string;
-    private args: string;
+    private args: string | undefined;
     private provider: Provider;
     private backend: Backend;
 
     constructor(backend: Backend, provider: Provider) {
         this.provider = provider;
         this.backend = backend;
-        this.dir = tl.getInput("workingDirectory");
+
+        this.dir = tl.getInput("workingDirectory", true)!;
         this.args = tl.getInput("commandOptions");
     }
 
@@ -31,7 +32,7 @@ export class Terraform {
         return tl.tool(terraformPath);
     }
 
-    private async command(name: string, args: string) {
+    private async command(name: string, args: string | undefined) {
 
         let toolRunner = this.getToolRunner();
         if (this.ProviderCount() > 1) { tl.warning("Multiple provider blocks specified in the .tf files in the current working drectory."); }
@@ -54,23 +55,29 @@ export class Terraform {
     public async apply() { return await this.onlyApply(); };
     public async destroy() { return await this.command("destroy", this.addAutoApproveArg()); };
 
-    private supportsJsonOutput(): boolean {
-        let tool = this.getToolRunner();
-        tool.arg("version");
+    // private supportsJsonOutput(): boolean {
+    //     let tool = this.getToolRunner();
+    //     tool.arg("version");
 
-        let outputContents = tool.execSync(<trl.IExecSyncOptions>{ cwd: this.dir }).stdout;
-        let outputLines: string[] = outputContents.split('\n');
-        // First line has the format "Terraform v0.12.1"
-        let firstLine = outputLines[0];
-        // Extract only the version information from the first line i.e. "0.12.1"
-        let currentVersion = firstLine.substring(11);
-        // Check to see if this version is greater than or equal to 0.12.0
-        return semver.gt(currentVersion, "0.12.0"); // false
-    }
+    //     let outputContents = tool.execSync(<trl.IExecSyncOptions>{ cwd: this.dir }).stdout;
+    //     let outputLines: string[] = outputContents.split('\n');
+    //     // First line has the format "Terraform v0.12.1"
+    //     let firstLine = outputLines[0];
+    //     // Extract only the version information from the first line i.e. "0.12.1"
+    //     let currentVersion = firstLine.substring(11);
+    //     // Check to see if this version is greater than or equal to 0.12.0
+    //     return semver.gt(currentVersion, "0.12.0"); // false
+    // }
 
     private addAutoApproveArg() {
         let autoApprove: string = '-auto-approve';
-        return this.args.includes(autoApprove) === false ? `${autoApprove} ${this.args}` : this.args;
+        if(this.args) {
+            if(!this.args.includes(autoApprove)) {
+                return `${autoApprove} ${this.args}`
+            }
+            else return this.args;
+        }
+        else return autoApprove;
     }
 
     private ProviderCount(): number {

@@ -5,7 +5,7 @@ export abstract class Backend {
     protected backendConfig: Map<string, string>;
     backendServiceName: string;
 
-    protected abstract setupBackend(backendServiceName: string);
+    protected abstract setupBackend(backendServiceName: string): void;
     constructor() {
         this.backendConfig = new Map<string, string>();
         this.backendServiceName = "backendService" + tasks.getInput("backend", true)

@@ -6,8 +6,9 @@ export class BackendGCS extends Backend {
     constructor() { super(); }
 
     protected setupBackend(backendServiceName: string) {
-        this.backendConfig.set('bucket', tasks.getInput("backendGCPBucketName", true));
-        this.backendConfig.set('prefix', tasks.getInput("backendGCPPrefix", false));
+        this.backendConfig.set('bucket', tasks.getInput("backendGCPBucketName", true)!);
+        let prefix = tasks.getInput("backendGCPPrefix", false);
+        if(prefix) this.backendConfig.set('prefix', prefix);
         let jsonKeyFilePath = GoogleHelpers.GetJsonKeyFilePath(backendServiceName);
         this.backendConfig.set('credentials', jsonKeyFilePath);
     }
