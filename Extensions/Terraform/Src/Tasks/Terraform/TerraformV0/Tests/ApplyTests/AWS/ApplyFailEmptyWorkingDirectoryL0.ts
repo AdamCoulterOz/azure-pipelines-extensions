@@ -1,10 +1,7 @@
-import { Terraform as TerraformCommandHandlerAWS } from '../../../src/terraform';
+import { ToolCommands as TerraformCommandHandlerAWS } from '../../../src/toolcmds';
 import tl = require('azure-pipelines-task-lib');
 
-
-let backend:any = "aws"
-let provider:any = "s3"
-let terraformCommandHandlerAWS: TerraformCommandHandlerAWS = new TerraformCommandHandlerAWS(backend, provider);
+let terraformCommandHandlerAWS: TerraformCommandHandlerAWS = new TerraformCommandHandlerAWS();
 
 export async function run() {
     try {
