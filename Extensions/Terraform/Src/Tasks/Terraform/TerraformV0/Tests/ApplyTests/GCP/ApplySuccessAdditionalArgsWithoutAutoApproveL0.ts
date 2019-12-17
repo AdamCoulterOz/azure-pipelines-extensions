@@ -1,9 +1,7 @@
-import { Terraform as TerraformCommandHandlerGCP } from '../../../src/terraform';
+import { ToolCommands as TerraformCommandHandlerGCP } from '../../../src/toolcmds';
 import tl = require('azure-pipelines-task-lib');
 
-let backend:any = "gcp"
-let provider:any = "gcp"
-let terraformCommandHandlerGCP: TerraformCommandHandlerGCP = new TerraformCommandHandlerGCP(backend,provider);
+let terraformCommandHandlerGCP: TerraformCommandHandlerGCP = new TerraformCommandHandlerGCP();
 
 export async function run() {
     try {
