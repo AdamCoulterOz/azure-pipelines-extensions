@@ -1,10 +1,10 @@
-interface IEndpointConfig {
+export interface IEndpointConfig {
 
     name: string;
     Init();
 }
 
-class EndpointConfigAWS implements IEndpointConfig {
+export class EndpointConfigAWS implements IEndpointConfig {
 
     name: string;
     username: string;
@@ -26,7 +26,7 @@ class EndpointConfigAWS implements IEndpointConfig {
     }
 }
 
-class EndpointConfigAzure implements IEndpointConfig {
+export class EndpointConfigAzure implements IEndpointConfig {
 
     name: string;
     subscriptionId: string;
@@ -35,7 +35,7 @@ class EndpointConfigAzure implements IEndpointConfig {
     tenantId: string;
 
     constructor(subscriptionId: string, spId: string, spKey: string, tenantId: string) {
-        this.name = "azure";
+        this.name = "azurerm";
         this.subscriptionId = subscriptionId;
         this.spId = spId;
         this.spKey = spKey;
@@ -51,7 +51,7 @@ class EndpointConfigAzure implements IEndpointConfig {
     }
 }
 
-class EndpointConfigGoogle implements IEndpointConfig {
+export class EndpointConfigGoogle implements IEndpointConfig {
 
     name: string;
     project: string;
@@ -79,7 +79,7 @@ class EndpointConfigGoogle implements IEndpointConfig {
     }
 }
 
-function initProviders() {
+export function InitProviders() {
     let providers = [];
     providers.push(new EndpointConfigAWS("DummyUsername", "DummyPassword", "DummyRegion"));
     providers.push(new EndpointConfigAzure("DummySubscriptionId", "DummyServicePrincipalId", "DummyServicePrincipalKey", "DummyTenantId"));
