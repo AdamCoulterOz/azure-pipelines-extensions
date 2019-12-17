@@ -1,88 +1,105 @@
-export interface IEndpointConfig {
+export abstract class EndpointConfig {
 
     name: string;
-    Init(): void;
-}
-
-export class EndpointConfigAWS implements IEndpointConfig {
-
-    name: string;
-    username: string;
-    password: string;
-    region: string;
-
-    constructor(username: string, password: string, region: string) {
-        this.name = "aws";
-        this.username = username;
-        this.password = password;
-        this.region = region;
+    envVars: Map<string,string>;
+    
+    constructor(name: string){
+        this.name = name;
+        this.envVars = new Map<string,string>();
     }
 
-    public Init() {
-        process.env['ENDPOINT_AUTH_SCHEME_AWS'] = 'Basic';
-        process.env['ENDPOINT_AUTH_PARAMETER_AWS_USERNAME'] = this.username;
-        process.env['ENDPOINT_AUTH_PARAMETER_AWS_PASSWORD'] = this.password;
-        process.env['ENDPOINT_AUTH_PARAMETER_AWS_REGION'] = this.region;
+    Init(): void {
+        this.envVars.forEach((value: string, key: string) => {
+            process.env[key] = value
+        });
     }
 }
 
-export class EndpointConfigAzure implements IEndpointConfig {
-
-    name: string;
-    subscriptionId: string;
-    spId: string;
-    spKey: string;
-    tenantId: string;
-
-    constructor(subscriptionId: string, spId: string, spKey: string, tenantId: string) {
-        this.name = "azurerm";
-        this.subscriptionId = subscriptionId;
-        this.spId = spId;
-        this.spKey = spKey;
-        this.tenantId = tenantId;
-    }
-
-    public Init() {
-        process.env['ENDPOINT_AUTH_SCHEME_AzureRM'] = 'ServicePrincipal';
-        process.env['ENDPOINT_DATA_AzureRM_SUBSCRIPTIONID'] = this.subscriptionId;
-        process.env['ENDPOINT_AUTH_PARAMETER_AzureRM_SERVICEPRINCIPALID'] = this.spId;
-        process.env['ENDPOINT_AUTH_PARAMETER_AzureRM_SERVICEPRINCIPALKEY'] = this.spKey;
-        process.env['ENDPOINT_AUTH_PARAMETER_AzureRM_TENANTID'] = this.tenantId;
+export class EndpointConfigAWS extends EndpointConfig {
+    constructor() {
+        super("aws");
+        this.envVars.set("ENDPOINT_AUTH_SCHEME_AWS","Basic");
+        this.envVars.set('ENDPOINT_AUTH_PARAMETER_AWS_USERNAME',"DummyUsername");
+        this.envVars.set('ENDPOINT_AUTH_PARAMETER_AWS_PASSWORD',"DummaryPassword");
+        this.envVars.set('ENDPOINT_AUTH_PARAMETER_AWS_REGION',"DummaryRegion");
     }
 }
 
-export class EndpointConfigGoogle implements IEndpointConfig {
-
-    name: string;
-    project: string;
-    issuer: string;
-    audience: string;
-    privateKey: string;
-    scope: string;
-
-    constructor(project: string, issuer: string, audience: string, privateKey: string, scope: string) {
-        this.name = "google";
-        this.project = project;
-        this.issuer = issuer;
-        this.audience = audience;
-        this.privateKey = privateKey;
-        this.scope = scope;
+export class EndpointConfigAzure extends EndpointConfig {
+    constructor() {
+        super("azurerm");
+        this.envVars.set('ENDPOINT_AUTH_SCHEME_AzureRM','ServicePrincipal');
+        this.envVars.set('ENDPOINT_DATA_AzureRM_SUBSCRIPTIONID',"DummySubscriptionId");
+        this.envVars.set('ENDPOINT_AUTH_PARAMETER_AzureRM_SERVICEPRINCIPALID',"DummyServicePrincipalId");
+        this.envVars.set('ENDPOINT_AUTH_PARAMETER_AzureRM_SERVICEPRINCIPALKEY',"DummyServicePrincipalKey");
+        this.envVars.set('ENDPOINT_AUTH_PARAMETER_AzureRM_TENANTID',"DummyTenantId");
     }
+}
 
-    public Init() {
-        process.env['ENDPOINT_AUTH_SCHEME_GCP'] = 'Jwt';
-        process.env['ENDPOINT_DATA_GCP_PROJECT'] = this.project;
-        process.env['ENDPOINT_AUTH_PARAMETER_GCP_ISSUER'] = this.issuer;
-        process.env['ENDPOINT_AUTH_PARAMETER_GCP_AUDIENCE'] = this.audience;
-        process.env['ENDPOINT_AUTH_PARAMETER_GCP_PRIVATEKEY'] = this.privateKey;
-        process.env['ENDPOINT_AUTH_PARAMETER_GCP_SCOPE'] = this.scope;
+export class EndpointConfigGoogle extends EndpointConfig {
+    constructor() {
+        super("google");
+        this.envVars.set('ENDPOINT_AUTH_SCHEME_GCP','Jwt');
+        this.envVars.set('ENDPOINT_DATA_GCP_PROJECT',"DummyProject");
+        this.envVars.set('ENDPOINT_AUTH_PARAMETER_GCP_ISSUER',"DummyIssuer");
+        this.envVars.set('ENDPOINT_AUTH_PARAMETER_GCP_AUDIENCE',"DummyAudience");
+        this.envVars.set('ENDPOINT_AUTH_PARAMETER_GCP_PRIVATEKEY',"DummyPrivateKey");
+        this.envVars.set('ENDPOINT_AUTH_PARAMETER_GCP_SCOPE',"DummyScope");
+    }
+}
+
+export class EndpointConfigRemote extends EndpointConfig {
+    constructor() {
+        super("remote");
+    }
+}
+
+export class EndpointConfigLocal extends EndpointConfig {
+    constructor() {
+        super("local");
+    }
+}
+
+export class EndpointConfigS3 extends EndpointConfigAWS {
+    constructor() {
+        super();
+        this.envVars.set('ENDPOINT_DATA_S3_BUCKETNAME', 'DummyBucket');
+        this.envVars.set('ENDPOINT_AUTH_PARAMETER_S3_KEY', 'DummyKey');
+    }
+}
+
+export class EndpointConfigGCS extends EndpointConfigGoogle {
+    constructor() {
+        super();
+        this.envVars.set('ENDPOINT_DATA_GCS_BUCKETNAME', 'DummyBucket');
+        this.envVars.set('ENDPOINT_DATA_GCS_PREFIX', 'DummyPrefix');
+    }
+}
+
+export class EndpointConfigAZSA extends EndpointConfigAzure {
+    constructor() {
+        super();
+        this.envVars.set('ENDPOINT_DATA_AZSA_RG', 'DummyResourceGroup');
+        this.envVars.set('ENDPOINT_DATA_AZSA_NAME', 'DummyStorageAccount');
+        this.envVars.set('ENDPOINT_DATA_AZSA_CONTAINER', 'DummyContainer');
+        this.envVars.set('ENDPOINT_AUTH_PARAMETER_AZSA_KEY', 'DummyKey');
     }
 }
 
 export function InitProviders() {
     let providers = [];
-    providers.push(new EndpointConfigAWS("DummyUsername", "DummyPassword", "DummyRegion"));
-    providers.push(new EndpointConfigAzure("DummySubscriptionId", "DummyServicePrincipalId", "DummyServicePrincipalKey", "DummyTenantId"));
-    providers.push(new EndpointConfigGoogle("DummyProject", "DummyIssuer", "DummyAudience", "DummyPrivateKey", "DummyScope"));
+    providers.push(new EndpointConfigAWS());
+    providers.push(new EndpointConfigAzure());
+    providers.push(new EndpointConfigGoogle());
     return providers;
+}
+
+export function InitBackends() {
+    let backends = [];
+    backends.push(new EndpointConfigLocal());
+    backends.push(new EndpointConfigRemote());
+    backends.push(new EndpointConfigS3());
+    backends.push(new EndpointConfigAZSA());
+    backends.push(new EndpointConfigGCS());
+    return backends;
 }
