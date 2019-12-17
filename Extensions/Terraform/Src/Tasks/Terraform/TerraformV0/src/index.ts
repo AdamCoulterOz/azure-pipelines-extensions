@@ -31,7 +31,15 @@ async function run() {
     
         // Run the corrresponding command according to command name
         let terraform: Terraform = new Terraform(backend, provider);
-        let result = await terraform[tl.getInput("command", true)]();
+        let result: Promise<number>;
+        switch(tl.getInput("command", true)) {
+            case "init": result = await terraform.init(); break;
+            case "validate": result = await terraform.validate(); break;
+            case "plan": result = await terraform.plan(); break;
+            case "apply": result = await terraform.apply(); break;
+            case "destroy": result = await terraform.destroy(); break;
+            default: throw new Error("Invalid command specified. Please select init, validate, plan, apply or destroy.")
+        }
         tl.setResult(tl.TaskResult.Succeeded, "");
         return result;
     }
