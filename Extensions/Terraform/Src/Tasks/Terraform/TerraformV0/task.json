@@ -20,7 +20,7 @@
     "instanceNameFormat": "Terraform: $(provider)",
     "execution": {
         "Node": {
-            "target": "src/index.js"
+            "target": "index.js"
         }
     },
     "groups": [
