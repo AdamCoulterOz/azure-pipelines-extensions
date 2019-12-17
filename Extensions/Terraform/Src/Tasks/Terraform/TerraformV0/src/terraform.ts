@@ -1,8 +1,8 @@
 import tl = require('azure-pipelines-task-lib/task');
 import trl = require('azure-pipelines-task-lib/toolrunner');
+import semver = require('semver');
 import { Provider } from './provider/base';
 import { Backend } from './backend/base';
-import { GenericHelpers } from './Helpers'
 
 export class Terraform {
     static warnIfMultipleProviders() {
@@ -65,7 +65,7 @@ export class Terraform {
         // Extract only the version information from the first line i.e. "0.12.1"
         let currentVersion = firstLine.substring(11);
         // Check to see if this version is greater than or equal to 0.12.0
-        return GenericHelpers.CompareSemVers(currentVersion, "0.12.0") >= 0 ? true : false;
+        return semver.gt(currentVersion, "0.12.0"); // false
     }
 
     private addAutoApproveArg() {

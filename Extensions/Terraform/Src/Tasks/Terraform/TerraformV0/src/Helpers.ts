@@ -19,25 +19,3 @@ export class GoogleHelpers
         return jsonKeyFilePath;
     }
 }
-
-export class GenericHelpers
-{
-    static CompareSemVers(version1: string, version2: string) {
-        let versionNumbers1: string[] = version1.split('.');
-        let versionNumbers2: string[] = version2.split('.');
-
-        const smallerLength = Math.min(versionNumbers1.length, versionNumbers2.length);
-
-        let versionNumbersInt1: number[] = new Array(smallerLength);
-        let versionNumbersInt2: number[] = new Array(smallerLength);
-
-        for (let i = 0; i < smallerLength; i++) {
-            versionNumbersInt1[i] = parseInt(versionNumbers1[i], 10);
-            versionNumbersInt2[i] = parseInt(versionNumbers2[i], 10);
-            if (versionNumbersInt1[i] > versionNumbersInt2[i]) return 1;
-            if (versionNumbersInt1[i] < versionNumbersInt2[i]) return -1;
-        }
-
-        return versionNumbersInt1.length == versionNumbersInt2.length ? 0 : (versionNumbersInt1.length < versionNumbersInt2.length ? -1 : 1);
-    }
-}
