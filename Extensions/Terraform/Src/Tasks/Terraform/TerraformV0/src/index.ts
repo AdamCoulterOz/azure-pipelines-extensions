@@ -8,24 +8,31 @@ import { Terraform } from "./terraform";
 async function run() {
     tl.setResourcePath(path.join(__dirname, '..', 'task.json'));
 
-    let provider: Provider.Base;
-    let backend: Backend.Base;
+    let provider: Provider.Base | undefined;
+    let backend: Backend.Base | undefined;
+
+    let providerInput = tl.getInput("provider");
+    let backendInput = tl.getInput("backend");
 
     try {
-        switch(tl.getInput("provider", true)) {
-            case "azurerm": provider = new Provider.AzureRM(); break;
-            case "aws": provider = new Provider.AWS(); break;
-            case "google": provider = new Provider.Google(); break;
-            default: throw new Error("Invalid provider specified. Please select AzureRM, AWS or Google.")
+        if(providerInput) {
+            switch(providerInput) {
+                case "azurerm": provider = new Provider.AzureRM(); break;
+                case "aws": provider = new Provider.AWS(); break;
+                case "google": provider = new Provider.Google(); break;
+                default: throw new Error("Invalid provider specified. Please select AzureRM, AWS or Google.")
+            }
         }
     
-        switch(tl.getInput("backend", true)) {
-            case "local": backend = new Backend.Local(); break;
-            case "remote": backend = new Backend.Remote(); break;
-            case "azurerm": backend = new Backend.AzureRM(); break;
-            case "s3": backend = new Backend.S3(); break;
-            case "gcs": backend = new Backend.GCS(); break;
-            default: throw new Error("Invalid backend specified. Please select Local, Remote, AzureRM, S3 or GCS.")
+        if(backendInput){
+            switch(backendInput) {
+                case "local": backend = new Backend.Local(); break;
+                case "remote": backend = new Backend.Remote(); break;
+                case "azurerm": backend = new Backend.AzureRM(); break;
+                case "s3": backend = new Backend.S3(); break;
+                case "gcs": backend = new Backend.GCS(); break;
+                default: throw new Error("Invalid backend specified. Please select Local, Remote, AzureRM, S3 or GCS.")
+            }
         }
     
         // Run the corrresponding command according to command name

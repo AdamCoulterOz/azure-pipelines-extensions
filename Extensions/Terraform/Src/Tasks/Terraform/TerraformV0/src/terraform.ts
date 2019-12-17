@@ -5,19 +5,13 @@ import { Provider } from './provider/base';
 import { Backend } from './backend/base';
 
 export class Terraform {
-    static warnIfMultipleProviders() {
-        throw new Error("Method not implemented.");
-    }
-    public warnIfMultipleProviders() {
-        console.log("warnIfMultipleProviders() Method not implemented.");
-    }
 
     private dir: string;
     private args: string | undefined;
-    private provider: Provider;
-    private backend: Backend;
+    private provider: Provider | undefined;
+    private backend: Backend | undefined;
 
-    constructor(backend: Backend, provider: Provider) {
+    constructor(backend: Backend | undefined, provider: Provider | undefined) {
         this.provider = provider;
         this.backend = backend;
 

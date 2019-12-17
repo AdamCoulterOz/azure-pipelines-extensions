@@ -1,6 +1,6 @@
 import tasks = require('azure-pipelines-task-lib/task');
 import { Provider } from './base';
-import { GoogleHelpers } from "../Helpers"
+import { GoogleHelpers } from "../helpers";
 
 export class ProviderGoogle extends Provider {
     constructor() { super(); }
