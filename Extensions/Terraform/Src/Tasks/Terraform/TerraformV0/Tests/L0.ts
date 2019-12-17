@@ -31,12 +31,12 @@ describe('Terraform Test Suite', () => {
 
     const initFailMessages = [
         'There are some problems with the configuration, described below.\n\nThe Terraform configuration must be valid before initialization so that Terraform can determine which modules and providers need to be installed.',
-        'There are some problems with the configuration, described below.\n\nThe Terraform configuration must be valid before initialization so that Terraform can determine which modules and providers need to be installed.',
         'Execution failed: invalid config files',
     ];
 
     const planSuccessMessages = [
         'AzurePlanSuccessNoAdditionalArgsL0 should have succeeded.',
+        'AzurePlanSuccessAdditionalArgsL0 should have succeeded.',
         'AWSPlanSuccessNoAdditionalArgsL0 should have succeeded.',
         'AWSPlanSuccessAdditionalArgsL0 should have succeeded.',
         'GCPPlanSuccessNoAdditionalArgsL0 should have succeeded.',
@@ -55,18 +55,7 @@ describe('Terraform Test Suite', () => {
         'GCPDestroySuccessAdditionalArgsWithoutAutoApproveL0 should have succeeded.'
     ];
 
-    const planSuccessAdditionalMessages = [
-        'AzurePlanSuccessAdditionalArgsL0 should have succeeded.'
-    ];
-
-    const planInvalidParametersMessages = [
-        'Execution failed: invalid config files',
-        'Error: No configuration files'
-    ];
-
-    const planFailInvalidParameters = [
-        'Execution failed: invalid config files'
-    ];
+    const invalidConfigFilesMessage = 'Execution failed: invalid config files';
 
     const applySuccessParametersMessages = [
         'AzureApplySuccessNoAdditionalArgsL0 should have succeeded.',
@@ -78,10 +67,6 @@ describe('Terraform Test Suite', () => {
         'GCPApplySuccessNoAdditionalArgsL0 should have succeeded.',
         'GCPApplySuccessAdditionalArgsWithAutoApproveL0 should have succeeded.',
         'GCPApplySuccessAdditionalArgsWithoutAutoApproveL0 should have succeeded.'
-    ];
-
-    const applyFailEmptyWorkingDirectoryMessages = [
-        'Error: No configuration files'
     ];
 
     /********************************************/
@@ -125,7 +110,7 @@ describe('Terraform Test Suite', () => {
 
     it('aws init should fail with invalid working directory', (done: MochaDone) => {
         let tp = path.join(__dirname, './InitTests/InitFailInvalidWorkingDirectory.js');
-        providerInitFail(tp, done, initFailMessages[1]);
+        providerInitFail(tp, done, initFailMessages[0]);
     });
 
     it('gcp init should succeed with no additional args', (done: MochaDone) => {
@@ -145,7 +130,7 @@ describe('Terraform Test Suite', () => {
 
     it('gcp init should fail with invalid working directory', (done: MochaDone) => {
         let tp = path.join(__dirname, './InitTests/InitFailInvalidWorkingDirectory.js');
-        providerInitFail(tp, done, initFailMessages[1]);
+        providerInitFail(tp, done, initFailMessages[0]);
     });
 
     /********************************************/
@@ -169,7 +154,7 @@ describe('Terraform Test Suite', () => {
 
     it('azure validate should fail with invalid working directory', (done: MochaDone) => {
         let tp = path.join(__dirname, './ValidateTests/ValidateFailInvalidWorkingDirectory.js');
-        providerInitFail(tp, done, initFailMessages[2]);
+        providerInitFail(tp, done, initFailMessages[1]);
     });
 
     it('aws validate should succeed with no additional args', (done: MochaDone) => {
@@ -189,7 +174,7 @@ describe('Terraform Test Suite', () => {
 
     it('aws validate should fail with invalid working directory', (done: MochaDone) => {
         let tp = path.join(__dirname, './ValidateTests/ValidateFailInvalidWorkingDirectory.js');
-        providerInitFail(tp, done, initFailMessages[2]);
+        providerInitFail(tp, done, initFailMessages[1]);
     });
 
     it('gcp validate should succeed with no additional args', (done: MochaDone) => {
@@ -209,7 +194,7 @@ describe('Terraform Test Suite', () => {
 
     it('gcp validate should fail with invalid working directory', (done: MochaDone) => {
         let tp = path.join(__dirname, './ValidateTests/ValidateFailInvalidWorkingDirectory.js');
-        providerInitFail(tp, done, initFailMessages[2]);
+        providerInitFail(tp, done, initFailMessages[1]);
     });
 
     /********************************************/
@@ -223,57 +208,57 @@ describe('Terraform Test Suite', () => {
 
     it('azure plan should succeed with additional args', (done: MochaDone) => {
         let tp = path.join(__dirname, './PlanTests/PlanSuccessAdditionalArgs.js');
-        providerPlanSuccessAdditional(tp, done, planSuccessAdditionalMessages[0]);
+        providerPlanSuccess(tp, done, planSuccessMessages[1]);
     });
 
     it('azure plan should fail with invalid working directory', (done: MochaDone) => {
         let tp = path.join(__dirname, './PlanTests/PlanFailInvalidWorkingDirectory.js');
-        providerInvalidParameters(tp, done, planInvalidParametersMessages[0]);
+        providerInvalidParameters(tp, done, invalidConfigFilesMessage);
     });
 
     it('azure plan should fail with empty working directory', (done: MochaDone) => {
         let tp = path.join(__dirname, './PlanTests/PlanFailEmptyWorkingDirectory.js');
-        providerInvalidParameters(tp, done, planInvalidParametersMessages[0]);
+        providerInvalidParameters(tp, done, invalidConfigFilesMessage);
     });
 
     it('aws plan should succeed with no additional args', (done: MochaDone) => {
         let tp = path.join(__dirname, './PlanTests/PlanSuccessNoAdditionalArgs.js');
-        providerPlanSuccess(tp, done, planSuccessMessages[1]);
+        providerPlanSuccess(tp, done, planSuccessMessages[2]);
     });
 
     it('aws plan should succeed with additional args', (done: MochaDone) => {
         let tp = path.join(__dirname, './PlanTests/PlanSuccessAdditionalArgs.js');
-        providerPlanSuccess(tp, done, planSuccessMessages[2]);
+        providerPlanSuccess(tp, done, planSuccessMessages[3]);
     });
 
     it('aws plan should fail with invalid working directory', (done: MochaDone) => {
         let tp = path.join(__dirname, './PlanTests/PlanFailInvalidWorkingDirectory.js');
-        providerPlanFailInvalidParameters(tp, done, planFailInvalidParameters[0]);
+        providerPlanFailInvalidParameters(tp, done, invalidConfigFilesMessage);
     });
 
     it('aws plan should fail with empty working directory', (done: MochaDone) => {
         let tp = path.join(__dirname, './PlanTests/PlanFailEmptyWorkingDirectory.js');
-        providerPlanFailInvalidParameters(tp, done, planFailInvalidParameters[0]);
+        providerPlanFailInvalidParameters(tp, done, invalidConfigFilesMessage);
     });
 
     it('gcp plan should succeed with no additional args', (done: MochaDone) => {
         let tp = path.join(__dirname, './PlanTests/PlanSuccessNoAdditionalArgs.js');
-        providerPlanSuccess(tp, done, planSuccessMessages[3]);
+        providerPlanSuccess(tp, done, planSuccessMessages[4]);
     });
 
     it('gcp plan should succeed with additional args', (done: MochaDone) => {
         let tp = path.join(__dirname, './PlanTests/PlanSuccessAdditionalArgs.js');
-        providerPlanSuccess(tp, done, planSuccessMessages[4]);
+        providerPlanSuccess(tp, done, planSuccessMessages[5]);
     });
 
     it('gcp plan should fail with invalid working directory', (done: MochaDone) => {
         let tp = path.join(__dirname, './PlanTests/PlanFailInvalidWorkingDirectory.js');
-        providerPlanFailInvalidParameters(tp, done, planFailInvalidParameters[0]);
+        providerPlanFailInvalidParameters(tp, done, invalidConfigFilesMessage);
     });
 
     it('gcp plan should fail with empty working directory', (done: MochaDone) => {
         let tp = path.join(__dirname, './PlanTests/PlanFailEmptyWorkingDirectory.js');
-        providerPlanFailInvalidParameters(tp, done, planFailInvalidParameters[0]);
+        providerPlanFailInvalidParameters(tp, done, invalidConfigFilesMessage);
     });
 
     /********************************************/
@@ -297,12 +282,12 @@ describe('Terraform Test Suite', () => {
 
     it('azure apply should fail with invalid working directory', (done: MochaDone) => {
         let tp = path.join(__dirname, './ApplyTests/ApplyFailInvalidWorkingDirectory.js');
-        providerPlanFailInvalidParameters(tp, done, planFailInvalidParameters[0]);
+        providerPlanFailInvalidParameters(tp, done, invalidConfigFilesMessage);
     });
 
     it('azure apply should fail with empty working directory', (done: MochaDone) => {
         let tp = path.join(__dirname, './ApplyTests/ApplyFailEmptyWorkingDirectory.js');
-        providerApplyFailEmptyWorkingDirectory(tp, done, applyFailEmptyWorkingDirectoryMessages[0]);
+        providerApplyFailEmptyWorkingDirectory(tp, done, invalidConfigFilesMessage);
     });
 
     it('aws apply should succeed with no additional args', (done: MochaDone) => {
@@ -322,12 +307,12 @@ describe('Terraform Test Suite', () => {
 
     it('aws apply should fail with invalid working directory', (done: MochaDone) => {
         let tp = path.join(__dirname, './ApplyTests/ApplyFailInvalidWorkingDirectory.js');
-        providerPlanFailInvalidParameters(tp, done, planFailInvalidParameters[0]);
+        providerPlanFailInvalidParameters(tp, done, invalidConfigFilesMessage);
     });
 
     it('aws apply should fail with empty working directory', (done: MochaDone) => {
         let tp = path.join(__dirname, './ApplyTests/ApplyFailEmptyWorkingDirectory.js');
-        providerApplyFailEmptyWorkingDirectory(tp, done, applyFailEmptyWorkingDirectoryMessages[0]);
+        providerApplyFailEmptyWorkingDirectory(tp, done, invalidConfigFilesMessage);
     });
 
     it('gcp apply should succeed with no additional args', (done: MochaDone) => {
@@ -347,12 +332,12 @@ describe('Terraform Test Suite', () => {
 
     it('gcp apply should fail with invalid working directory', (done: MochaDone) => {
         let tp = path.join(__dirname, './ApplyTests/ApplyFailInvalidWorkingDirectory.js');
-        providerPlanFailInvalidParameters(tp, done, planFailInvalidParameters[0]);
+        providerPlanFailInvalidParameters(tp, done, invalidConfigFilesMessage);
     });
 
     it('gcp apply should fail with empty working directory', (done: MochaDone) => {
         let tp = path.join(__dirname, './ApplyTests/ApplyFailEmptyWorkingDirectory.js');
-        providerApplyFailEmptyWorkingDirectory(tp, done, applyFailEmptyWorkingDirectoryMessages[0]);
+        providerApplyFailEmptyWorkingDirectory(tp, done, invalidConfigFilesMessage);
     });
 
     /********************************************/
@@ -361,62 +346,62 @@ describe('Terraform Test Suite', () => {
 
     it('azure destroy should succeed with no additional args', (done: MochaDone) => {
         let tp = path.join(__dirname, './DestroyTests/DestroySuccessNoAdditionalArgs.js');
-        providerPlanSuccess(tp, done, planSuccessMessages[5]);
+        providerPlanSuccess(tp, done, planSuccessMessages[6]);
     });
 
     it('azure destroy should succeed with additional args with -auto-approve', (done: MochaDone) => {
         let tp = path.join(__dirname, './DestroyTests/DestroySuccessAdditionalArgsWithAutoApprove.js');
-        providerPlanSuccess(tp, done, planSuccessMessages[6]);
+        providerPlanSuccess(tp, done, planSuccessMessages[7]);
     });
 
     it('azure destroy should succeed with additional args without -auto-approve', (done: MochaDone) => {
         let tp = path.join(__dirname, './DestroyTests/DestroySuccessAdditionalArgsWithoutAutoApprove.js');
-        providerPlanSuccess(tp, done, planSuccessMessages[7]);
+        providerPlanSuccess(tp, done, planSuccessMessages[8]);
     });
 
     it('azure destroy should fail with invalid working directory', (done: MochaDone) => {
         let tp = path.join(__dirname, './DestroyTests/DestroyFailInvalidWorkingDirectory.js');
-        providerPlanFailInvalidParameters(tp, done, planFailInvalidParameters[0]);
+        providerPlanFailInvalidParameters(tp, done, invalidConfigFilesMessage);
     });
 
     it('aws destroy should succeed with no additional args', (done: MochaDone) => {
         let tp = path.join(__dirname, './DestroyTests/DestroySuccessNoAdditionalArgs.js');
-        providerPlanSuccess(tp, done, planSuccessMessages[8]);
+        providerPlanSuccess(tp, done, planSuccessMessages[9]);
     });
 
     it('aws destroy should succeed with additional args with -auto-approve', (done: MochaDone) => {
         let tp = path.join(__dirname, './DestroyTests/DestroySuccessAdditionalArgsWithAutoApprove.js');
-        providerPlanSuccess(tp, done, planSuccessMessages[9]);
+        providerPlanSuccess(tp, done, planSuccessMessages[10]);
     });
 
     it('aws destroy should succeed with additional args without -auto-approve', (done: MochaDone) => {
         let tp = path.join(__dirname, './DestroyTests/DestroySuccessAdditionalArgsWithoutAutoApprove.js');
-        providerPlanSuccess(tp, done, planSuccessMessages[10]);
+        providerPlanSuccess(tp, done, planSuccessMessages[11]);
     });
 
     it('aws destroy should fail with invalid working directory', (done: MochaDone) => {
         let tp = path.join(__dirname, './DestroyTests/DestroyFailInvalidWorkingDirectory.js');
-        providerPlanFailInvalidParameters(tp, done, planFailInvalidParameters[0]);
+        providerPlanFailInvalidParameters(tp, done, invalidConfigFilesMessage);
     });
 
     it('gcp destroy should succeed with no additional args', (done: MochaDone) => {
         let tp = path.join(__dirname, './DestroyTests/DestroySuccessNoAdditionalArgs.js');
-        providerPlanSuccess(tp, done, planSuccessMessages[11]);
+        providerPlanSuccess(tp, done, planSuccessMessages[12]);
     });
 
     it('gcp destroy should succeed with additional args with -auto-approve', (done: MochaDone) => {
         let tp = path.join(__dirname, './DestroyTests/DestroySuccessAdditionalArgsWithAutoApprove.js');
-        providerPlanSuccess(tp, done, planSuccessMessages[12]);
+        providerPlanSuccess(tp, done, planSuccessMessages[13]);
     });
 
     it('gcp destroy should succeed with additional args without -auto-approve', (done: MochaDone) => {
         let tp = path.join(__dirname, './DestroyTests/DestroySuccessAdditionalArgsWithoutAutoApprove.js');
-        providerPlanSuccess(tp, done, planSuccessMessages[13]);
+        providerPlanSuccess(tp, done, planSuccessMessages[14]);
     });
 
     it('gcp destroy should fail with invalid working directory', (done: MochaDone) => {
         let tp = path.join(__dirname, './DestroyTests/DestroyFailInvalidWorkingDirectory.js');
-        providerPlanFailInvalidParameters(tp, done, planFailInvalidParameters[0]);
+        providerPlanFailInvalidParameters(tp, done, invalidConfigFilesMessage);
     });
 
     /********************************************/
@@ -525,19 +510,6 @@ function providerPlanSuccess(tp: string, done: MochaDone, message: string) {
     }
 }
 
-function providerPlanSuccessAdditional(tp: string, done: MochaDone, message: string) {
-    let tr: ttm.MockTestRunner = new ttm.MockTestRunner(tp);
-    try {
-        tr.run();
-        assertPlanSuccessAddParameters(tr);
-        assert(tr.stdOutContained(message), 'Should have printed: ' + message);
-        done();
-    }
-    catch (error) {
-        done(error);
-    }
-}
-
 function providerInvalidParameters(tp: string, done: MochaDone, message: string) {
     let tr: ttm.MockTestRunner = new ttm.MockTestRunner(tp);
     try {
@@ -590,59 +562,61 @@ function providerApplySuccessNoParameters(tp: string, done: MochaDone, message: 
     }
 }
 
+const taskShouldHaveFailedMessage = 'task should have failed';
+const taskShouldHaveSuccseededMessage = 'task should have succeeded';
+
+const shoukdHaveOneErrorMessage = 'should have one error';
+const shoukdHaveNoErrorsMessage = 'should have no errors';
+
+const shouldHaveNoWarningsMessage = 'should have no warnings';
+
+
 function assertApplyFailEmptyParameters(tr: ttm.MockTestRunner) {
-    assert(tr.failed, 'task should have failed');
+    assert(tr.failed, taskShouldHaveFailedMessage);
     assert(tr.invokedToolCount === 3, 'tool should have been invoked three times. actual: ' + tr.invokedToolCount);
-    assert(tr.errorIssues.length === 1, 'should have one error');
-    assert(tr.warningIssues.length === 0, 'should have no warnings');
+    assert(tr.errorIssues.length === 1, shoukdHaveOneErrorMessage);
+    assert(tr.warningIssues.length === 0, shouldHaveNoWarningsMessage);
 }
 
 function assertApplySuccessNoParameters(tr: ttm.MockTestRunner) {
-    assert(tr.succeeded, 'task should have succeeded');
+    assert(tr.succeeded, taskShouldHaveSuccseededMessage);
     assert(tr.invokedToolCount === 3, 'tool should have been invoked three times. actual: ' + tr.invokedToolCount);
-    assert(tr.errorIssues.length === 0, 'should have no errors');
-    assert(tr.warningIssues.length === 0, 'should have no warnings');
+    assert(tr.errorIssues.length === 0, shoukdHaveNoErrorsMessage);
+    assert(tr.warningIssues.length === 0, shouldHaveNoWarningsMessage);
 
 }
 
 function assertPlanFailInvalidParameters(tr: ttm.MockTestRunner) {
-    assert(tr.failed, 'task should have failed');
+    assert(tr.failed, taskShouldHaveFailedMessage);
     assert(tr.invokedToolCount === 2, 'tool should have been invoked two times. actual: ' + tr.invokedToolCount);
-    assert(tr.errorIssues.length === 1, 'should have one error');
-    assert(tr.warningIssues.length === 0, 'should have no warnings');
+    assert(tr.errorIssues.length === 1, shoukdHaveOneErrorMessage);
+    assert(tr.warningIssues.length === 0, shouldHaveNoWarningsMessage);
 }
 
 function assertPlanSuccessParameters(tr: ttm.MockTestRunner) {
-    assert(tr.succeeded, 'task should have succeeded');
+    assert(tr.succeeded, taskShouldHaveSuccseededMessage);
     assert(tr.invokedToolCount === 2, 'tool should have been invoked two times. actual: ' + tr.invokedToolCount);
-    assert(tr.errorIssues.length === 0, 'should have no errors');
-    assert(tr.warningIssues.length === 0, 'should have no warnings');
+    assert(tr.errorIssues.length === 0, shoukdHaveNoErrorsMessage);
+    assert(tr.warningIssues.length === 0, shouldHaveNoWarningsMessage);
 }
 
 function assertPlanInvalidParameters(tr: ttm.MockTestRunner) {
-    assert(tr.failed, 'task should have failed');
+    assert(tr.failed, taskShouldHaveFailedMessage);
     assert(tr.invokedToolCount === 2, 'tool should have been invoked two times. actual: ' + tr.invokedToolCount);
-    assert(tr.errorIssues.length === 1, 'should have one error');
-    assert(tr.warningIssues.length === 0, 'should have no warnings');
-}
-
-function assertPlanSuccessAddParameters(tr: ttm.MockTestRunner) {
-    assert(tr.succeeded, 'task should have succeeded');
-    assert(tr.invokedToolCount === 2, 'tool should have been invoked two times. actual: ' + tr.invokedToolCount);
-    assert(tr.errorIssues.length === 0, 'should have no errors');
-    assert(tr.warningIssues.length === 0, 'should have no warnings');
+    assert(tr.errorIssues.length === 1, shoukdHaveOneErrorMessage);
+    assert(tr.warningIssues.length === 0, shouldHaveNoWarningsMessage);
 }
 
 function assertInitFailParameters(tr: ttm.MockTestRunner) {
-    assert(tr.failed, 'task should have failed');
+    assert(tr.failed, taskShouldHaveFailedMessage);
     assert(tr.invokedToolCount === 1, 'tool should have been invoked one time. actual: ' + tr.invokedToolCount);
-    assert(tr.errorIssues.length === 1, 'should have one error');
-    assert(tr.warningIssues.length === 0, 'should have no warnings');
+    assert(tr.errorIssues.length === 1, shoukdHaveOneErrorMessage);
+    assert(tr.warningIssues.length === 0, shouldHaveNoWarningsMessage);
 }
 
 function assertInitParameters(tr: ttm.MockTestRunner) {
-    assert(tr.succeeded, 'task should have succeeded');
+    assert(tr.succeeded, taskShouldHaveSuccseededMessage);
     assert(tr.invokedToolCount === 1, 'tool should have been invoked one time. actual: ' + tr.invokedToolCount);
-    assert(tr.errorIssues.length === 0, 'should have no errors');
-    assert(tr.warningIssues.length === 0, 'should have no warnings');
+    assert(tr.errorIssues.length === 0, shoukdHaveNoErrorsMessage);
+    assert(tr.warningIssues.length === 0, shouldHaveNoWarningsMessage);
 }
