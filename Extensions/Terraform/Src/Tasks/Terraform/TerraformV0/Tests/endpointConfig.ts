@@ -13,6 +13,10 @@ export abstract class EndpointConfig {
             process.env[key] = value
         });
     }
+
+    GetMockTFArgs(): void {
+        
+    }
 }
 
 export class EndpointConfigAWS extends EndpointConfig {
