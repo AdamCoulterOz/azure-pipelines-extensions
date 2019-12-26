@@ -40,7 +40,7 @@ foreach ($result in $items) {
     $repo = $parts[4]
 
     $filePath = ""
-    $fileName = ""
+    #$fileName = ""
 
     For ($i = 6; $i -lt $parts.Count; $i++) {
         $filePath += "$($parts[$i])/"
