@@ -1,0 +1,162 @@
+{
+    "manifestVersion": 1,
+    "id": "HockeyAppUWP",
+    "name": "Publish UWP to HockeyApp",
+    "version": "1.0.13",
+    "publisher": "Vitaliy-Leschenko-BY",
+    "public": true,
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Tools for publish UWP apps to HockeyApp.",
+    "content": {
+        "details": {"path": "overview.md"}
+    },
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "images/hockeyapp-logo.png",
+        "large": "images/hockeyapp-logo-large.png"
+    },
+    "screenshots": [
+         {
+             "path": "images/screen1.png"
+         },
+         {
+             "path": "images/screen2.png"
+         },
+         {
+             "path": "images/screen3.png"
+         }
+    ],
+    "files": [
+        {"path": "task"},
+        {"path": "images/settings.png", "addressable": true},
+        {"path": "images/service-endpoint-hockeyapp.png", "addressable": true},
+        {"path": "widget/configuration.htm", "addressable": true},
+        {"path": "widget/widget.htm", "addressable": true},
+        {"path": "widget/css/configuration.css", "addressable": true},
+        {"path": "widget/css/widget.css", "addressable": true},
+
+        {"path": "widget/img/configurationRequired.png", "addressable": true},
+        {"path": "widget/img/crashReports.png", "addressable": true},
+        {"path": "widget/img/download.png", "addressable": true},
+        {"path": "widget/img/errorIcon.png", "addressable": true},
+        {"path": "widget/img/loading.png", "addressable": true},
+        {"path": "widget/img/logo.png", "addressable": true},
+        {"path": "widget/img/overview.png", "addressable": true},
+        {"path": "widget/img/preview.png", "addressable": true},
+
+        {"path": "widget/js/configuration.js", "addressable": true},
+        {"path": "widget/js/q.js", "addressable": true},
+        {"path": "widget/js/widget.js", "addressable": true},
+
+        {"path": "widget/sdk/scripts/VSS.SDK.js", "addressable": true}
+    ],
+    "scopes": [
+        "vso.build_execute",
+        "vso.serviceendpoint_manage"
+    ],
+    "contributions": [
+        {
+            "id": "hockeyapp-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "task"
+            }
+        },
+        {
+            "id": "hockeyapp-endpoint-type",
+            "description": "HockeyApp provides analytics for mobile app.",
+            "type": "ms.vss-endpoint.service-endpoint-type",
+            "targets": [
+                "ms.vss-endpoint.endpoint-types"
+            ],
+            "properties": {
+                "name": "hockeyapp",
+                "displayName": "HockeyApp",
+                "url": "https://rink.hockeyapp.net/api/2/apps/",
+                "inputDescriptors": [],
+                "authenticationSchemes": [
+                    {
+                        "type": "ms.vss-endpoint.endpoint-auth-scheme-basic",
+                        "inputDescriptors": [
+                            {
+                                "id": "username",
+                                "name": "Username",
+                                "description": "Username",
+                                "inputMode": "textbox",
+                                "isConfidential": false,
+                                "validation": {
+                                    "isRequired": false,
+                                    "dataType": "string"
+                                },
+                                "values": {
+                                    "inputId": "usernameInput",
+                                    "defaultValue": "",
+                                    "isDisabled": true
+                                }
+                            },
+                            {
+                                "id": "password",
+                                "name": "API Token",
+                                "description": "API token to connect to HockeyApp account can be created <a href=\"https://rink.hockeyapp.net/manage/auth_tokens\" target=\"_blank\">here</a>.",
+                                "inputMode": "textbox",
+                                "isConfidential": false,
+                                "validation": {
+                                    "isRequired": true,
+                                    "dataType": "string"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "HockeyAppWidget",
+            "type": "ms.vss-dashboards-web.widget",
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog",
+                "ms.hockeyapp.HockeyAppWidget.Configuration"
+            ],
+            "properties": {
+                "name": "HockeyApp Widget",
+                "description": "Provides links to the HockeyApp overview information, crash reports and a link to download the app.",
+                "previewImageUrl": "widget/img/preview.png",
+                "loadingImageUrl": "widget/img/loading.png",
+                "uri": "widget/widget.htm",
+                "isVisibleFromCatalog": true,
+                "isNameConfigurable": true,
+                "configurationRequired": true,
+                "supportedSizes": [
+                    {
+                        "rowSpan": 1,
+                        "columnSpan": 2
+                    }
+                ],
+                "supportedScopes": [
+                    "project_team"
+                ]
+            }
+        },
+        {
+            "id": "HockeyAppWidget.Configuration",
+            "type": "ms.vss-dashboards-web.widget-configuration",
+            "targets": [
+                "ms.vss-dashboards-web.widget-configuration"
+            ],
+            "properties": {
+                "name": "HockeyApp Configuration",
+                "description": "Configures HockeyApp",
+                "uri": "widget/configuration.htm"
+            }
+        }
+    ]
+}

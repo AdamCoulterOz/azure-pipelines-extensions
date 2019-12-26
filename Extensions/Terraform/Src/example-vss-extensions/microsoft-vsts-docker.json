@@ -1,0 +1,231 @@
+{
+    "manifestVersion": 1,
+    "id": "docker",
+    "name": "Docker Integration",
+    "version": "0.4.0",
+    "publisher": "ms-vscs-rm",
+    "description": "Build, push, run or deploy Docker images and multi-container Docker applications.",
+    "galleryFlags": [
+        "Public"
+    ],
+    "icons": {
+        "default": "images/docker_logo.png",
+        "large": "images/docker_logo_large.png"
+    },
+    "categories": [
+        "Build and release"
+    ],
+    "tags": [
+        "docker",
+        "docker-compose"
+    ],
+    "links": {
+        "home": {
+            "uri": "http://aka.ms/dockertoolsforvsts"
+        }
+    },
+    "branding": {
+        "color": "#f6f7fb",
+        "theme": "light"
+    },
+    "content": {
+        "details": {
+            "path": "docker.md"
+        }
+    },
+    "files": [
+        {
+            "path": "tasks/docker"
+        },
+        {
+            "path": "tasks/dockerCompose"
+        },
+        {
+            "path": "tasks/dockerDeploy"
+        },
+        {
+            "path": "images",
+            "addressable": true
+        },
+        {
+            "path": "ThirdPartyNotices.txt"
+        },
+        {
+            "path": "DockerIntegration_ExtensionForVisualStudioTeamServices_Pre-ReleaseEULA.docx"
+        }
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "dockerregistry-endpoint-type",
+            "description": "Service Endpoint type for a Docker Registry",
+            "type": "ms.vss-endpoint.service-endpoint-type",
+            "targets": [
+                "ms.vss-endpoint.endpoint-types"
+            ],
+            "properties": {
+                "name": "dockerregistry",
+                "displayName": "Docker Registry",
+                "url": "http://hub.docker.com",
+                "authenticationSchemes": [
+                    {
+                        "type": "ms.vss-endpoint.endpoint-auth-scheme-basic",
+                        "inputDescriptors": [
+                            {
+                                "id": "registry",
+                                "name": "Docker Registry",
+                                "description": "The URL for your Docker Registry",
+                                "inputMode": "textbox",
+                                "isConfidential": false,
+                                "validation": {
+                                    "isRequired": false,
+                                    "dataType": "string"
+                                },
+                                "values": {
+                                    "inputId": "registryInput",
+                                    "defaultValue": "https://index.docker.io/v1/"
+                                }
+                            },
+                            {
+                                "id": "username",
+                                "name": "Docker ID",
+                                "description": "The username for your Docker Registry",
+                                "inputMode": "textbox",
+                                "isConfidential": false,
+                                "validation": {
+                                    "isRequired": true,
+                                    "dataType": "string"
+                                }
+                            },
+                            {
+                                "id": "password",
+                                "name": "Password",
+                                "description": "The password for your Docker Registry",
+                                "inputMode": "passwordBox",
+                                "isConfidential": true,
+                                "validation": {
+                                    "isRequired": true,
+                                    "dataType": "string"
+                                }
+                            },
+                            {
+                                "id": "email",
+                                "name": "Email",
+                                "description": "The email address for your Docker Registry",
+                                "inputMode": "textbox",
+                                "isConfidential": false,
+                                "validation": {
+                                    "isRequired": false,
+                                    "dataType": "string"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "dockerhost-endpoint-type",
+            "description": "Service Endpoint type for a Docker Host",
+            "type": "ms.vss-endpoint.service-endpoint-type",
+            "targets": [
+                "ms.vss-endpoint.endpoint-types"
+            ],
+            "properties": {
+                "name": "dockerhost",
+                "displayName": "Docker Host",
+                "authenticationSchemes": [
+                    {
+                        "type": "ms.vss-endpoint.endpoint-auth-scheme-cert",
+                        "inputDescriptors": [
+                            {
+                                "id": "cacert",
+                                "name": "CA Certificate",
+                                "description": "Contents of ca.pem",
+                                "inputMode": "textarea",
+                                "isConfidential": true,
+                                "validation": {
+                                    "isRequired": true,
+                                    "dataType": "string"
+                                }
+                            },
+                            {
+                                "id": "cert",
+                                "name": "Certificate",
+                                "description": "Contents of cert.pem",
+                                "inputMode": "textarea",
+                                "isConfidential": true,
+                                "validation": {
+                                    "isRequired": true,
+                                    "dataType": "string"
+                                }
+                            },
+                            {
+                                "id": "key",
+                                "name": "Key",
+                                "description": "Contents of key.pem",
+                                "inputMode": "textarea",
+                                "isConfidential": true,
+                                "validation": {
+                                    "isRequired": true,
+                                    "dataType": "string"
+                                }
+                            },
+                            {
+                                "id": "certificate",
+                                "name": "Certificate",
+                                "description": "Content of the certificate",
+                                "inputMode": "TextArea",
+                                "isConfidential": true,
+                                "validation": {
+                                    "isRequired": false,
+                                    "dataType": "string"
+                                },
+                                "values": {
+                                    "inputId": "certificateInput",
+                                    "defaultValue": "",
+                                    "isDisabled": true
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "helpMarkDown": "Refer <a href=\"http://aka.ms/ms-vscs-rm-secure-docker-daemon\" target=\"_blank\">link</a> to learn more"
+            }
+        },
+        {
+            "id": "docker-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "tasks/docker"
+            }
+        },
+        {
+            "id": "docker-compose-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "tasks/dockerCompose"
+            }
+        },
+        {
+            "id": "docker-deploy-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "tasks/dockerDeploy"
+            }
+        }
+    ]
+}

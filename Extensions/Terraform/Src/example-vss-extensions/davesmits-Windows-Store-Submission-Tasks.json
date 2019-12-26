@@ -1,0 +1,96 @@
+{
+  "manifestVersion": 1,
+  "id": "windows-store-automation",
+  "name": "Windows Store Automation",
+  "version": "0.0.3",
+  "publisher": "davesmits",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "scope": [
+    "vso.build",
+    "vso.serviceendpoint"
+  ],
+  "description": "Build task to publish to the windows store",
+  "categories": [
+    "Build and release"
+  ],
+  "icons": {
+    "default": "logo.png"
+  },
+  "files": [
+    {
+      "path": "DeployToStore"
+    },
+    {
+      "path": "VersionUpdate"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "custom-build-task-1",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "DeployToStore"
+      }
+    },
+    {
+      "id": "custom-build-task-2",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "VersionUpdate"
+      }
+    },
+    {
+      "id": "devcenter-service-endpoint",
+      "description": "Windows Dev Center",
+      "type": "ms.vss-endpoint.service-endpoint-type",
+      "targets": [
+        "ms.vss-endpoint.endpoint-types"
+      ],
+      "properties": {
+        "name": "devcenter-auth-key",
+        "displayName": "Windows Dev Center",
+        "url": "https://developer.windows.com/",
+        "authenticationSchemes": [
+          {
+            "type": "ms.vss-endpoint.endpoint-auth-scheme-token",
+            "inputDescriptors": [
+              {
+                "id": "tenantid",
+                "name": "Tenant Id",
+                "description": "Tenant of the Azure Active Directory",
+                "inputMode": "textbox",
+                "isConfidential": false,
+                "validation": {
+                  "isRequired": true,
+                  "dataType": "string"
+                }
+              },
+              {
+                "id": "clientid",
+                "name": "Client Id",
+                "description": "Client Id",
+                "inputMode": "textbox",
+                "isConfidential": false,
+                "validation": {
+                  "isRequired": true,
+                  "dataType": "string"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+
+  ]
+}

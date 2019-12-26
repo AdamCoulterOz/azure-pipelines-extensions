@@ -1,0 +1,179 @@
+{
+  "manifestVersion": 1,
+  "id": "jessehouwing-vsts-snyk-task",
+  "name": "[DEPRECATED] Snyk for Azure Pipelines",
+  "version": "2.0.0",
+  "publisher": "jessehouwing",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "scope": [
+    "vso.build"
+  ],
+  "description": "Snyk continuously finds and fixes vulnerabilities in your dependencies.",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "tags": [
+    "Extension",
+    "Build",
+    "Snyk",
+    "Code Analysis",
+    "Security",
+    "Scanning",
+    "Node",
+    "Npm",
+    "Xpirit"
+  ],
+  "screenshots": [
+    {
+      "path": "extension/Images/Screenshots/snyk-logo-small.png"
+    },
+    {
+      "path": "extension/Images/Screenshots/add-task.png"
+    },
+    {
+      "path": "extension/Images/Screenshots/task-config.png"
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "readme.md"
+    },
+    "license": {
+      "path": "LICENSE.md"
+    },
+    "privacy": {
+      "path": "PRIVACY.md"
+    }
+  },
+  "links": {
+    "home": {
+      "uri": "https://jessehouwing.net/"
+    },
+    "getstarted": {
+      "uri": "https://github.com/jessehouwing/azure-pipelines-snyk-task/wiki/Getting-Started"
+    },
+    "support": {
+      "uri": "https://github.com/jessehouwing/azure-pipelines-snyk-task/issues"
+    },
+    "issues": {
+      "uri": "https://github.com/jessehouwing/azure-pipelines-snyk-task/issues"
+    },
+    "license": {
+      "uri": "https://github.com/jessehouwing/azure-pipelines-snyk-task/LICENSE.md"
+    },
+    "privacypolicy": {
+      "uri": "https://github.com/jessehouwing/azure-pipelines-snyk-task/blob/master/PRIVACY.md"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/jessehouwing/azure-pipelines-snyk-task"
+  },
+  "branding": {
+    "color": "rgb(34, 34, 72)",
+    "theme": "dark"
+  },
+  "icons": {
+    "default": "extension/images/extension-icon-small.png",
+    "large": "extension/images/extension-icon.png"
+  },
+  "files": [
+    {
+      "path": "snyk/v1/node_modules"
+    },
+    {
+      "path": "snyk/v1/snyk.js"
+    },
+    {
+      "path": "snyk/v1/icon.png"
+    },
+    {
+      "path": "snyk/v1/icon.svg"
+    },
+    {
+      "path": "snyk/v1/task.json"
+    },
+    {
+      "path": "snyk/v2/node_modules"
+    },
+    {
+      "path": "snyk/v2/snyk.js"
+    },
+    {
+      "path": "snyk/v2/icon.png"
+    },
+    {
+      "path": "snyk/v2/icon.svg"
+    },
+    {
+      "path": "snyk/v2/task.json"
+    }
+  ],
+  "badges": [
+    {
+      "href": "https://snyk.io/test/github/jessehouwing/vsts-snyk-task?targetFile=vsts-snyk%2Fpackage.json",
+      "uri": "https://snyk.io/test/github/jessehouwing/vsts-snyk-task/badge.svg?targetFile=vsts-snyk%2Fpackage.json",
+      "description": "Snyk"
+    },
+    {
+      "href": "https://paypal.me/jessehouwing/5",
+      "uri": "https://github.com/jessehouwing/azure-pipelines-snyk-task/blob/master/extension/images/donate.png?raw=true",
+      "description": "Donate"
+    },
+    {
+      "href": "https://jessehouwing.visualstudio.com/vsts-extensions/_apps/hub/ms.vss-ciworkflow.build-ci-hub?_a=edit-build-definition&id=44",
+      "uri": "https://jessehouwing.visualstudio.com/_apis/public/build/definitions/a88536a2-a889-45a3-a955-ddf1af8aeba1/44/badge",
+      "description": "Build"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "vsts-snyk",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "snyk"
+      }
+    },
+
+    {
+      "id": "snykio-service-endpoint",
+      "description": "Snyk.io",
+      "type": "ms.vss-endpoint.service-endpoint-type",
+      "targets": [
+        "ms.vss-endpoint.endpoint-types"
+      ],
+      "properties": {
+        "name": "Snyk",
+        "displayName": "Snyk.io Auth Token",
+        "url": "https://snyk.io/",
+        "authenticationSchemes": [
+          {
+            "type": "ms.vss-endpoint.endpoint-auth-scheme-token",
+            "inputDescriptors": [
+              {
+                "id": "apitoken",
+                "name": "API Token",
+                "description": "Go to <a href=\"https://snyk.io/account/\" target=\"_blank\">snyk.io/account</a> or run `snyk auth` to find your API Token.",
+                "inputMode": "textbox",
+                "isConfidential": true,
+                "validation": {
+                  "isRequired": true,
+                  "dataType": "string"
+                }
+              }
+            ]
+          }
+        ],
+        "helpMarkDown": "Go to <a href=\"https://snyk.io/account/\">snyk.io/account</a> or run `snyk auth` to find your API Token."
+      }
+    }
+
+  ]
+}

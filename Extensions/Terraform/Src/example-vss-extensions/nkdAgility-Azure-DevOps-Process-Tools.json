@@ -1,0 +1,134 @@
+{
+  "manifestVersion": 1,
+  "id": "processtemplate",
+  "name": "Process Tools for Azure DevOps ",
+  "version": "#{GitVersion.Major}#.#{GitVersion.Minor}#.#{GitVersion.Patch}##{GitVersion.COMMITSSINCEVERSIONSOURCE}#",
+  "public": false,
+  "publisher": "nkdAgility",
+  "galleryFlags": [
+    "Public",
+    "Free"
+  ],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services.Cloud"
+    }
+  ],
+  "description": "Incudes tasks to help you manage your Processes (was Process Templates) in Azure DevOps Services. Supports both XML Process and the new Inherited Process.",
+  "categories": [
+    "Build and release"
+  ],
+  "tags": [
+    "release",
+    "build",
+    "process",
+    "process template",
+    "xml process",
+    "template",
+    "upload",
+    "import",
+    "export",
+    "migrate"
+  ],
+  "links": {
+    "home": {
+      "uri": "https://dev.azure.com/nkdagility/Azure-DevOps-Process-Tools/"
+    },
+    "getstarted": {
+      "uri": "https://dev.azure.com/nkdagility/Azure-DevOps-Process-Tools/_wiki/wikis/process-tools"
+    },
+    "learn": {
+      "uri": "https://dev.azure.com/nkdagility/Azure-DevOps-Process-Tools/_wiki/wikis/process-tools"
+    },
+    "support": {
+      "uri": "https://github.com/nkdAgility/Azure-DevOps-Process-Tools/issues"
+    },
+    "repository": {
+      "uri": "https://github.com/nkdAgility/Azure-DevOps-Process-Tools"
+    },
+    "issues": {
+      "uri": "https://github.com/nkdAgility/Azure-DevOps-Process-Tools/issues"
+    }
+  },
+  "CustomerQnASupport": {
+    "enableqna": "true",
+    "url": "https://github.com/nkdAgility/Azure-DevOps-Process-Tools/issues"
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/nkdAgility/Azure-DevOps-Process-Tools.git"
+  },
+  "icons": {
+    "default": "images/extension-icon.png"
+  },
+  "branding": {
+    "color": "#1C3272",
+    "theme": "dark"
+  },
+  "screenshots": [
+    {
+      "path": "images/screenshot-01.png"
+    },
+    {
+      "path": "images/screenshot-02.png"
+    },
+    {
+      "path": "images/screenshot-03.png"
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "README.md"
+    },
+    "license": {
+      "path": "LICENSE.txt"
+    }
+  },
+  "files": [
+    {
+      "path": "processtemplatetask"
+    },
+    {
+      "path": "inheritedprocessmigration"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "processtemplate-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "processtemplatetask"
+      }
+    },
+    {
+      "id": "inheritedprocessmigration-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "inheritedprocessmigration"
+      }
+    },
+    {
+      "id": "vstsProcess-endpoint",
+      "description": "Azure DevOps Service for Process Tools",
+      "type": "ms.vss-endpoint.service-endpoint-type",
+      "url": "https://dev.azure.com/myaccount",
+      "targets": [ "ms.vss-endpoint.endpoint-types" ],
+      "properties": {
+        "name": "VstsXmlProcessEndpoint",
+        "displayName": "Azure DevOps Service Organisation (was Account)",
+        "authenticationSchemes": [
+          {
+            "type": "ms.vss-endpoint.endpoint-auth-scheme-token"
+          }
+        ],
+        "helpMarkDown": "<a href=\"https://dev.azure.com/nkdagility/Azure-DevOps-Process-Tools/_wiki/wikis/process-tools/\" target=\"_blank\"><b>Learn More</b></a>"
+      }
+    }
+  ]
+}

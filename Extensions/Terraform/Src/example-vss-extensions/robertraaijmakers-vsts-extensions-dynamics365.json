@@ -1,0 +1,142 @@
+﻿{
+  "manifestVersion": 1,
+  "id": "robert-vsts-dynamics365",
+  "version": "0.2.6577.18212",
+  "name": "Dynamics 365 Tools",
+  "publisher": "robertraaijmakers",
+  "description": "Toolbox to help you set up automated builds and deployments for Dynamics 365.",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "icons": {
+    "default": "images/icon.png"
+  },
+  "categories": [
+    "Build and release"
+  ],
+  "branding": {
+    "color": "rgb(14, 32, 74)",
+    "theme": "dark"
+  },
+  "content": {
+    "details": {
+      "path": "README.md"
+    }
+  },
+  "links": {
+    "getstarted": {
+      "uri": "https://github.com/robertraaijmakers/vsts-extensions-dynamics365/wiki/"
+    },
+    "support": {
+      "uri": "https://github.com/robertraaijmakers/vsts-extensions-dynamics365/"
+    },
+    "repository": {
+      "uri": "https://robertraaijmakers.visualstudio.com/vsts-extensions-dynamics365/"
+    },
+    "issues": {
+      "uri": "https://github.com/robertraaijmakers/vsts-extension-huebuildlamp/issues/"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://robertraaijmakers.visualstudio.com/vsts-extensions-dynamics365/"
+  },
+  "files": [
+    {
+      "path": "BuildTasks"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "dynamics365-service-endpoint",
+      "description": "Service Endpoint type for Dynamics 365 connections",
+      "type": "ms.vss-endpoint.service-endpoint-type",
+      "targets": [
+        "ms.vss-endpoint.endpoint-types"
+      ],
+      "properties": {
+        "name": "dynamics365",
+        "displayName": "Dynamics 365 Endpoint",
+        "url": {
+          "displayName": "Server Url",
+          "helpText": "Url for the Dynamics 365 server to connect to."
+        },
+        "authenticationSchemes": [
+          {
+            "id": "authentication-schema-o365",
+            "type": "ms.vss-endpoint.endpoint-auth-scheme-none",
+            "displayName": "Office 365",
+            "inputDescriptors": [
+              {
+                "id": "username",
+                "name": "Username",
+                "description": "Dynamics 365 user name",
+                "inputMode": "textbox",
+                "isConfidential": false,
+                "validation": {
+                  "isRequired": true,
+                  "dataType": "string",
+                  "maxLength": 255
+                }
+              },
+              {
+                "id": "password",
+                "name": "Password",
+                "description": "User password",
+                "inputMode": "passwordbox",
+                "isConfidential": true,
+                "validation": {
+                  "isRequired": true,
+                  "dataType": "string",
+                  "maxLength": 100
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "dynamics365-solution-export-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "BuildTasks/ExportSolution"
+      }
+    },
+    {
+      "id": "dynamics365-solution-import-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "BuildTasks/ImportSolution"
+      }
+    },
+    {
+      "id": "dynamics365-activate-sla",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "BuildTasks/ActivateSla"
+      }
+    },
+    {
+      "id": "dynamics365-publish-duplicatedetectionrule",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "BuildTasks/SetDuplicateDetectionRuleStatus"
+      }
+    }
+  ]
+}
