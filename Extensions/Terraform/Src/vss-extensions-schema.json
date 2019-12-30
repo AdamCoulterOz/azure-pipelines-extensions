@@ -1,0 +1,2252 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "required": [
+            "manifestVersion",
+            "id",
+            "version",
+            "name",
+            "publisher",
+            "categories",
+            "targets"
+        ],
+        "properties": {
+            "manifestVersion": {
+                "type": "integer",
+                "title": "Manifest Version",
+                "description": "The version of the manifest format.",
+                "enum": [1],
+                "default": 1
+            },
+            "id": {
+                "type": "string",
+                "title": "Extension Identifier",
+                "description": "Must be unique among extensions from the same publisher. \nIt must start with an alphanumeric character and contain only alphanumeric and '-' (hyphen) characters.",
+                "pattern": "^\\w{1}(?:\\w|-)*\\w{1}$",
+                "examples": ["sample-extension","tools"]
+            },
+            "version": {
+                "title": "Extension Version",
+                "type": "string",
+                "description": "A string specifying the version of an extension. Should be in the format major.minor.patch as per (SemVer)[https://semver.org/].",
+                "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
+                "examples": ["0.1.0","2.4.8","3.0.1"]
+            },
+            "name": {
+                "title": "Extension Name",
+                "type": "string",
+                "description": "A short, human-readable name of the extension. Limited to 200 characters.",
+                "pattern": "^.{3,200}$",
+                "examples": ["Fabrikam Agile Board Extension"]
+            },
+            "publisher": {
+                "title": "Publisher Identifier",
+                "type": "string",
+                "description": "This identifier must match the identifier the extension is published under. See (Create and manage a publisher)[https://docs.microsoft.com/en-us/azure/devops/extend/publish/overview].",
+                "examples": ["fabrikam"]
+            },
+            "categories": {
+                "type": "array",
+                "title": "Extension Categories",
+                "description": "Categories your extension belongs to. At least one category must be provided and there is no limit to how many categories you may include. \\nUse version >=0.6.3 of the tfx-cli if you are publishing the extension programmatically. \\nIf using Azure DevOps Extension Tasks extension to publish then ensure that its version is >= 1.2.8 (you may need to approve the extension update due to recent scope changes).",
+                "items": {
+                    "type": "string",
+                    "title": "Azure DevOps Category",
+                    "enum": [
+                        "Azure Repos",
+                        "Azure Boards",
+                        "Azure Pipelines",
+                        "Azure Text Plans",
+                        "Azure Artifacts"
+                    ]
+                },
+                "additionalItems": false
+            },
+            "targets": {
+                "type": "array",
+                "title": "Product Targets",
+                "description": "The products and services supported by your integration or extension.",
+                "maxItems": 2,
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "title": "Target Product Identifier",
+                            "oneOf": [
+                                {"const": "Microsoft.VisualStudio.Services.Cloud", "description": "Works with Azure DevOps Services"},
+                                {"const": "Microsoft.TeamFoundation.Server", "description": "Works with Azure DevOps Server"},
+                                {"const": "Microsoft.VisualStudio.Services", "description": "Works with both Azure DevOps Services & Server"},
+                                {"const": "Microsoft.VisualStudio.Services.Cloud.Integration", "description": "Integrates with Azure DevOps Services"},
+                                {"const": "Microsoft.TeamFoundation.Server.Integration", "description": "Integrates with Azure DevOps Server"},
+                                {"const": "Microsoft.VisualStudio.Services.Integration", "description": "Integrates with both Azure DevOps Services & Server"}
+                            ],
+                            "enum": [
+                                "Microsoft.VisualStudio.Services",
+                                "Microsoft.VisualStudio.Services.Cloud",
+                                "Microsoft.VisualStudio.Services.Cloud.Integration",
+                                "Microsoft.VisualStudio.Services.Integration",
+                                "Microsoft.TeamFoundation.Server",
+                                "Microsoft.TeamFoundation.Server.Integration"
+                            ]
+                        },
+                        "version": {
+                            "title": "Target Product Minimum Version",
+                            "description": "Version of target product required in order to run this extension. NOTE: THIS IS ASSUMED BUT IS UNDOCUMENTED BY MICROSOFT.",
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "additionalItems": false
+            },
+            "description": {
+                "type": "string"
+            },
+            "files": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "path": {
+                            "type": "string"
+                        },
+                        "addressable": {
+                            "type": [
+                                "boolean",
+                                "string"
+                            ]
+                        },
+                        "packagePath": {
+                            "type": "string",
+                            "enum": [
+                                "lib",
+                                "UI_Versions/8_60_0/scripts",
+                                "/",
+                                "moment.js",
+                                "moment-timezone.js",
+                                "axios.js",
+                                "scripts"
+                            ]
+                        },
+                        "contentType": {
+                            "type": "string",
+                            "enum": [
+                                "text/plain"
+                            ]
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "additionalItems": false
+            },
+            "contributions": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "ms.vss-distributed-task.task",
+                                "ms.vss-endpoint.service-endpoint-type",
+                                "ms.vss-web.hub",
+                                "ms.vss-releaseManagement-web.release-summary-section",
+                                "ms.vss-build-web.build-results-tab",
+                                "ms.vss-build-web.build-results-section",
+                                "ms.vss-releaseartifact.release-artifact-type",
+                                "ms.vss-dashboards-web.widget",
+                                "ms.vss-dashboards-web.widget-configuration",
+                                "ms.azure-pipelines.pipeline-decorator",
+                                "ms.vss-web.control",
+                                "ms.vss-build.template",
+                                "ms.vss-endpoint.service-endpoint-auth-scheme"
+                            ]
+                        },
+                        "targets": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "ms.vss-distributed-task.tasks",
+                                    "ms.vss-endpoint.endpoint-types",
+                                    "ms.vss-code-web.code-hub-group",
+                                    "ms.vss-releaseManagement-web.release-details-summary-tab",
+                                    "ms.vss-build-web.build-results-view",
+                                    "ms.vss-build-web.build-results-summary-tab",
+                                    "ms.vss-releaseartifact.artifact-types",
+                                    "ms.vss-dashboards-web.widget-catalog",
+                                    ".OctopusDashboardWidget-Configuration",
+                                    "ms.vss-dashboards-web.widget-configuration",
+                                    "ms.azure-pipelines-agent-job.pre-job-tasks",
+                                    "ms.azure-pipelines-agent-job.post-job-tasks",
+                                    ".e56c6ff0-c6f9-43d0-bdef-b3f1aa0dc6dd",
+                                    "ms.vss-build.templates",
+                                    "ms.hockeyapp.HockeyAppWidget.Configuration",
+                                    "ms.vss-endpoint.endpoint-auth-schemes"
+                                ]
+                            },
+                            "additionalItems": false
+                        },
+                        "properties": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "displayName": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "type": [
+                                        "object",
+                                        "string"
+                                    ],
+                                    "properties": {
+                                        "displayName": {
+                                            "type": "string",
+                                            "enum": [
+                                                "Server Url",
+                                                "Curseforge site name",
+                                                "Coverity URL",
+                                                "Chef Supermarket URL",
+                                                "Chef Server URL",
+                                                "Habitat Depot URL",
+                                                "Service Now URL",
+                                                "Datadog API URL",
+                                                "TFS Collection Url",
+                                                "Dynatrace API Url",
+                                                "Server URL",
+                                                "API Url",
+                                                "Endpoint URL",
+                                                "i18n:Terraform Instance URL",
+                                                "i18n:Vault URL",
+                                                "i18n:Organization Url",
+                                                "Release Freezer URL",
+                                                "Kiuwan URL",
+                                                "Organization Url",
+                                                "SwaggerHub API URL",
+                                                "Marketplace URL",
+                                                "Azure DevOps Server Url",
+                                                "ServiceNow Url",
+                                                "Power BI API Url",
+                                                "Management API URL",
+                                                "SMTP Server Name",
+                                                "SharePoint Site Url",
+                                                "Feed Upload Url",
+                                                "New relic Server Url (v2)",
+                                                "Esquio API Url"
+                                            ]
+                                        },
+                                        "helpText": {
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "type": "string",
+                                            "enum": [
+                                                "https://s3.amazonaws.com/",
+                                                "https://www.googleapis.com/",
+                                                "https://aws.amazon.com/",
+                                                "https://api.datadoghq.com/api/v1",
+                                                "https://fusion.equinor.com",
+                                                "https://app.terraform.io",
+                                                "https://dev.azure.com/[organization]",
+                                                "https://marketplace.visualstudio.com",
+                                                "https://gitlab.com",
+                                                "",
+                                                "https://www.sendgrid.net",
+                                                "https://www.smtp.com",
+                                                "https://sonarcloud.io"
+                                            ]
+                                        },
+                                        "isVisible": {
+                                            "type": [
+                                                "string",
+                                                "boolean"
+                                            ]
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "required": {
+                                            "type": [
+                                                "string",
+                                                "boolean"
+                                            ]
+                                        },
+                                        "_displayName.comment": {
+                                            "type": "string"
+                                        },
+                                        "defaultValue": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                },
+                                "dataSources": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "AWS",
+                                                    "GCP",
+                                                    "CBT Screenshots",
+                                                    "TestConnection",
+                                                    "Game Dependencies",
+                                                    "Game Versions",
+                                                    "Augurk Products",
+                                                    "Augurk Product Groups",
+                                                    "Augurk Product Group Features",
+                                                    "ChangeRequests",
+                                                    "Projects",
+                                                    "Definitions",
+                                                    "Builds",
+                                                    "LatestBuild",
+                                                    "Artifacts",
+                                                    "ArtifactItems",
+                                                    "BranchName",
+                                                    "XamlProjects",
+                                                    "XamlDefinitions",
+                                                    "XamlBuilds",
+                                                    "LatestXamlBuild",
+                                                    "XamlBuild",
+                                                    "TfvcProjects",
+                                                    "TfvcChangesets",
+                                                    "TfvcLatestChangeset",
+                                                    "TfvcArtifacts",
+                                                    "TfvcArtifactItems",
+                                                    "Repositories",
+                                                    "Branches",
+                                                    "GitCommits",
+                                                    "GitLatestCommit",
+                                                    "GitArtifacts",
+                                                    "GitArtifactItems",
+                                                    "OctopusAllProjects",
+                                                    "OctopusAllEnvironments",
+                                                    "OctopusAllTenants",
+                                                    "OctopusDeployments",
+                                                    "Dynatrace Profiles",
+                                                    "ElectricFlowProjects",
+                                                    "ElectricFlowPipelines",
+                                                    "ElectricFlowReleases",
+                                                    "ElectricFlowRepositories",
+                                                    "ElectricFlowReleaseStages",
+                                                    "Fabrikam Projects",
+                                                    "BuildNames",
+                                                    "BuildNumbers",
+                                                    "collections",
+                                                    "projects",
+                                                    "buildDefinitions",
+                                                    "releaseDefinitions",
+                                                    "ListApplications",
+                                                    "ListModels",
+                                                    "StandardChangeTemplate",
+                                                    "Priority",
+                                                    "State",
+                                                    "Risk",
+                                                    "Impact",
+                                                    "Category",
+                                                    "Close code",
+                                                    "PriorityLabel",
+                                                    "StateLabel",
+                                                    "RiskLabel",
+                                                    "ImpactLabel",
+                                                    "CategoryLabel",
+                                                    "CloseCodeLabel",
+                                                    "Configuration Item",
+                                                    "Assignment Group",
+                                                    "AccessToken",
+                                                    "RefreshToken",
+                                                    "Power BI API",
+                                                    "CommitsFromSelectedBranch",
+                                                    "LatestCommit",
+                                                    "BuildConfigurations",
+                                                    "getStatus",
+                                                    "getBuildFullJobs",
+                                                    "getAuth",
+                                                    "New Relic Applications",
+                                                    "WhiteSource Projects",
+                                                    "EsquioProducts",
+                                                    "EsquioFlags",
+                                                    "EsquioFlagDetailed",
+                                                    "EsquioToggleDetailed",
+                                                    "EsquioProductsV2",
+                                                    "EsquioFlagsV2",
+                                                    "EsquioFlagDetailedV2",
+                                                    "EsquioToggleDetailedV2"
+                                                ]
+                                            },
+                                            "endpointUrl": {
+                                                "type": "string"
+                                            },
+                                            "RequestVerb": {
+                                                "type": "string"
+                                            },
+                                            "resultSelector": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "xpath://ListAllMyBucketsResult/Buckets/Bucket/Name",
+                                                    "jsonpath:$.items[*].name",
+                                                    "jsonpath:$[*].nm",
+                                                    "jsonpath:$[*]",
+                                                    "jsonpath:$[*].name",
+                                                    "jsonpath:$[*].title",
+                                                    "jsonpath:$.result[*]",
+                                                    "jsonpath:$.value[?(@.state=='wellFormed')]",
+                                                    "jsonpath:$.value[?(@.quality=='definition')]",
+                                                    "jsonpath:$.value[?(@.result=='succeeded')]",
+                                                    "jsonpath:$.value[0]",
+                                                    "jsonpath:$.value[*]",
+                                                    "jsonpath:$.sourceBranch",
+                                                    "jsonpath:$",
+                                                    "jsonpath:$.value[1:]",
+                                                    "jsonpath:$.[*]",
+                                                    "jsonpath:$.Items[?(@.IsCurrent)]",
+                                                    "jsonpath:$.systemprofiles.id",
+                                                    "jsonpath:$.project[*]",
+                                                    "jsonpath:$.pipeline[*].pipelineName",
+                                                    "jsonpath:$.release[*].releaseName",
+                                                    "jsonpath:$.repository[?(@.repositoryDisabled=='0')].repositoryName",
+                                                    "jsonpath:$.release[?(@.releaseName=='{{{releaseName}}}')].stages.stage[*].name",
+                                                    "jsonpath:$.values[*]",
+                                                    "$.project[*].projectName",
+                                                    "jsonpath:$.builds[*]",
+                                                    "jsonpath:$.buildsNumbers[*]",
+                                                    "jsonpath:$.value[*].name",
+                                                    "jsonpath:$[*].Key",
+                                                    "jsonpath:$.value[?(@.isDeleted==false)]",
+                                                    "jsonpath:$.username",
+                                                    "jsonpath:$.result",
+                                                    "jsonpath:$.result[*].label",
+                                                    "jsonpath:$.result[*].name",
+                                                    "jsonpath:$[0]",
+                                                    "jsonpath:$.project[?(@.id!='_Root')]",
+                                                    "jsonpath:$.buildType[*]",
+                                                    "jsonpath:$.build[?(@.status=='SUCCESS')]",
+                                                    "jsonpath:$.build[*]",
+                                                    "jsonpath:$.file[*]",
+                                                    "jsonpath:$.branchName",
+                                                    "jsonpath:$.status_message",
+                                                    "jsonpath:$.applications[*].name",
+                                                    "jsonpath:$.organizations[*]",
+                                                    "jsonpath:$.toggles[*]",
+                                                    "jsonpath:$.parameters[*]"
+                                                ]
+                                            },
+                                            "callbackContextTemplate": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "{\"table\": \"task\"}",
+                                                    "{\"skip\": \"{{add skip 5000}}\"}",
+                                                    "{\"skip\": \"{{add skip 1000}}\"}"
+                                                ]
+                                            },
+                                            "callbackRequiredTemplate": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "{{#equals table \"change_request\"}}{{isEqualNumber result.count 0}}{{else}}false{{/equals}}",
+                                                    "{{isEqualNumber result.count 5000}}",
+                                                    "{{isEqualNumber result.count 1000}}"
+                                                ]
+                                            },
+                                            "initialContextTemplate": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "{\"table\": \"change_request\"}",
+                                                    "{\"skip\": \"0\"}"
+                                                ]
+                                            },
+                                            "requestVerb": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Post"
+                                                ]
+                                            },
+                                            "requestContent": {
+                                                "type": "string"
+                                            },
+                                            "headers": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "Content-Type"
+                                                            ]
+                                                        },
+                                                        "value": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "application/x-www-form-urlencoded"
+                                                            ]
+                                                        }
+                                                    },
+                                                    "additionalProperties": false
+                                                },
+                                                "additionalItems": false
+                                            }
+                                        },
+                                        "additionalProperties": false
+                                    },
+                                    "additionalItems": false
+                                },
+                                "authenticationSchemes": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "ms.vss-endpoint.endpoint-auth-scheme-basic",
+                                                    "ms.vss-endpoint.endpoint-auth-scheme-JWT",
+                                                    "ms.vss-endpoint.endpoint-auth-scheme-token",
+                                                    "ms.vss-endpoint.endpoint-auth-scheme-none",
+                                                    "ms.vss-endpoint.endpoint-auth-scheme-oauth2",
+                                                    "ms.vss-endpoint.endpoint-auth-scheme-cert",
+                                                    "ms.vss-endpoint.endpoint-auth-scheme-service-principal",
+                                                    "endpoint-auth-scheme-custom"
+                                                ]
+                                            },
+                                            "headers": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "X-Amz-Date",
+                                                                "X-Amz-Content-Sha256",
+                                                                "Authorization",
+                                                                "X-Api-Token",
+                                                                "DD-API-KEY",
+                                                                "DD-APPLICATION-KEY",
+                                                                "X-Octopus-ApiKey",
+                                                                "X-KW-CORPORATE-DOMAIN-ID",
+                                                                "Private-Token",
+                                                                "X-NuGet-ApiKey",
+                                                                "X-Api-Key",
+                                                                "x-api-key"
+                                                            ]
+                                                        },
+                                                        "value": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "{{ #getCurrentUTCDate {} }}",
+                                                                "{{ #getHashedPayload {} }}",
+                                                                "{{ #getAuthorizationHeader { 'username' : 'endpoint.username', 'password' : 'endpoint.password', 'method': 'get' } }}",
+                                                                "{{endpoint.apitoken}}",
+                                                                "{{endpoint.appkey}}",
+                                                                "Basic {{ #base64 \"token\" \":\" endpoint.apitoken }}",
+                                                                "{{endpoint.apitoken}}:{{endpoint:apisecret}}",
+                                                                "Token {{endpoint.apitoken}}",
+                                                                "Bearer {{ endpoint.apitoken }}",
+                                                                "{{endpoint.domainid}}",
+                                                                "Bearer {{{endpoint.AccessToken}}}",
+                                                                "{{ endpoint.apitoken }}",
+                                                                "Basic {{ #base64 endpoint.apitoken \":\" }}"
+                                                            ]
+                                                        }
+                                                    },
+                                                    "additionalProperties": false
+                                                },
+                                                "additionalItems": false
+                                            },
+                                            "inputDescriptors": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "username",
+                                                                "password",
+                                                                "region",
+                                                                "Issuer",
+                                                                "Audience",
+                                                                "apitoken",
+                                                                "assumeRoleArn",
+                                                                "roleSessionName",
+                                                                "externalId",
+                                                                "signingKey",
+                                                                "authToken",
+                                                                "clientKey",
+                                                                "clientSecret",
+                                                                "appkey",
+                                                                "tenantid",
+                                                                "clientid",
+                                                                "apisecret",
+                                                                "skipCertCheck",
+                                                                "serveruri",
+                                                                "kubeconfig",
+                                                                "registry",
+                                                                "email",
+                                                                "cacert",
+                                                                "cert",
+                                                                "key",
+                                                                "certificate",
+                                                                "url",
+                                                                "tenantId",
+                                                                "servicePrincipalId",
+                                                                "servicePrincipalKey",
+                                                                "endpointId",
+                                                                "service",
+                                                                "subscriptionId",
+                                                                "resourceGroup",
+                                                                "identifier",
+                                                                "senderEmail",
+                                                                "senderName",
+                                                                "smtpserverNoAuth",
+                                                                "smtpportNoAuth",
+                                                                "tlsOptionsNoAuth",
+                                                                "smtpFromEmailNoAuth",
+                                                                "smtpFromNameNoAuth",
+                                                                "smtpserverUserPassword",
+                                                                "smtpportUserPassword",
+                                                                "tlsOptionsUserPassword",
+                                                                "smtpFromEmailUserPassword",
+                                                                "smtpFromNameUserPassword",
+                                                                "acceptUntrustedCerts",
+                                                                "certificateAuthorityFile",
+                                                                "datacenter",
+                                                                "pat",
+                                                                "comment",
+                                                                "tlscacert",
+                                                                "userKey"
+                                                            ]
+                                                        },
+                                                        "name": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "Access Key ID",
+                                                                "Secret Access Key",
+                                                                "Region",
+                                                                "Client Email",
+                                                                "Token URI",
+                                                                "Username",
+                                                                "Password",
+                                                                "i18n:API Token",
+                                                                "Role to Assume",
+                                                                "Role Session Name",
+                                                                "External ID",
+                                                                "Username (Node name)",
+                                                                "Client Key",
+                                                                "Password or Client Key",
+                                                                "Signing Key",
+                                                                "Habitat Auth Token",
+                                                                "OAuth Client ID",
+                                                                "OAuth Client Secret",
+                                                                "User Account",
+                                                                "User Password",
+                                                                "i18n:App Key",
+                                                                "Tenant Id",
+                                                                "Client Id",
+                                                                "Personal Access Token",
+                                                                "API Key",
+                                                                "User Name",
+                                                                "ClientId",
+                                                                "ClientSecret",
+                                                                "GoDaddy API Key",
+                                                                "GoDaddy API Secret",
+                                                                "API Token",
+                                                                "i18n:Token",
+                                                                "i18n:Vault Token",
+                                                                "i18n:Username",
+                                                                "i18n:Password",
+                                                                "Skip cert check",
+                                                                "External Access Token",
+                                                                "Raygun E-mail",
+                                                                "Server Location",
+                                                                "Access Token",
+                                                                "Kubeconfig",
+                                                                "Client ID",
+                                                                "Client Secret",
+                                                                "Personal access token",
+                                                                "ClientID",
+                                                                "Docker Registry",
+                                                                "Docker ID",
+                                                                "Email",
+                                                                "CA Certificate",
+                                                                "Certificate",
+                                                                "Key",
+                                                                "Windows Store API URL",
+                                                                "Azure tenant ID",
+                                                                "Client secret",
+                                                                "Endpoint ID",
+                                                                "API Management Service Name",
+                                                                "Azure Subcription Id",
+                                                                "Azure Resource Group Name",
+                                                                "Identifier",
+                                                                "Primary or Secondary key",
+                                                                "From E-Mail",
+                                                                "From Name",
+                                                                "SMTP Server",
+                                                                "SMTP Server Port",
+                                                                "TLS Options",
+                                                                "Accept untrusted SSL certificates",
+                                                                "Certificate Authority File",
+                                                                "Data Center",
+                                                                "X-Api-Key",
+                                                                "Azure Tenant ID",
+                                                                "SonarCloud Token",
+                                                                "PAT",
+                                                                "username",
+                                                                "password",
+                                                                "comment",
+                                                                "User Key"
+                                                            ]
+                                                        },
+                                                        "description": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "The AWS access key ID for signing programmatic requests",
+                                                                "The AWS secret access key for signing programmatic requests",
+                                                                "The region of the AWS bucket to use for storing the state file",
+                                                                "The client email for creating JWT",
+                                                                "The token uri for creating JWT",
+                                                                "Username",
+                                                                "Password",
+                                                                "i18n:API Token for connection to endpoint",
+                                                                "The AWS access key ID for signing programmatic requests.\nExample: AKIAIOSFODNN7EXAMPLE",
+                                                                "The AWS secret access key for signing programmatic requests.\nExample: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+                                                                "The Amazon Resource Name (ARN) of the role to assume.\nIf a role ARN is specified the access and secret keys configured in the endpoint will be used to generate temporary session credentials, scoped to the specified role, and used be used by the task.\nThe generated credentials for each AWS task will be valid for a default duration of 15 minutes. If your tasks need a longer duration (up to a maximum of one hour) set the variable 'aws.rolecredential.maxduration' on your build or release definition to the required duration (in seconds, minimum 900 and maximum 3600). Note that this setting will affect all tasks that use AWS endpoints configured to assume a role.",
+                                                                "Optional identifier for the assumed role session. If not specified the tasks will use a default name of 'aws-vsts-tools'.\nUse the role session name to uniquely identify a session when the same role is assumed by different principals or for different reasons. In cross-account scenarios, the role session name is visible to, and can be logged by the account that owns the role. The role session name is also used in the ARN of the assumed role principal. This means that subsequent cross-account API requests using the temporary security credentials will expose the role session name to the external account in their CloudTrail logs.",
+                                                                "A unique identifier that is used by third parties when assuming roles in their customers' accounts, aka cross-account role access.",
+                                                                "The username to access your Coverity instance",
+                                                                "The password to access your Coverity instance",
+                                                                "A username on the Chef server that has admin permissions",
+                                                                "The private key (in pem format) for the specified user",
+                                                                "Password or the private key (in pem format) for the specified user",
+                                                                "Signing item of the origin key pair",
+                                                                "Authentication token for publishing Habitat packages.",
+                                                                "OAuth Client ID",
+                                                                "OAuth Client Secret",
+                                                                "User account to authenticate OAuth requests",
+                                                                "Password for user account to authenticate OAuth requests",
+                                                                "Password for the user account.",
+                                                                "Checkmarx username",
+                                                                "Checkmarx user password",
+                                                                "i18n:API Token required to connect to Datadog",
+                                                                "i18n:App key required to connect to Datadog",
+                                                                "Tenant of the Azure Active Directory",
+                                                                "Client Id",
+                                                                "Personal access token is applicable only for endpoint targeting VSTS account or TFS 2016. Click <a href=\"https://www.visualstudio.com/en-us/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate\" target=\"_blank\">here</a>. for information on how to create Personal Access Token.",
+                                                                "API key for connection to Octopus Deploy",
+                                                                "Specify the user name for the ElectricFlow.",
+                                                                "Specify the user password for the ElectricFlow.",
+                                                                "Client ID for the app with management permissions",
+                                                                "Client Secret",
+                                                                "API Token for connection to endpoint",
+                                                                "API Secret for connection to endpoint",
+                                                                "API key for connection",
+                                                                "i18n:Token to use when accessing Terraform cloud and Enterprise",
+                                                                "i18n:Token to use when accessing vault",
+                                                                "i18n:Vault username",
+                                                                "i18n:Vault Password",
+                                                                "Skip cert check",
+                                                                "You can create this token within your <a href=\"https://app.raygun.io/user\" target=\"_blank\">user settings</a> in Raygun in the External Access Token section.",
+                                                                "The e-mail address of the service account used to authenticate with Raygun.",
+                                                                "Password for the account that is connecting to Raygun.",
+                                                                "Go to <a href=\"https://snyk.io/account/\" target=\"_blank\">snyk.io/account</a> or run `snyk auth` to find your API Token.",
+                                                                "TFS Server location",
+                                                                "Artifactory username with deploy permissions.",
+                                                                "Password or API key of an Artifactory user with deploy permissions.",
+                                                                "Access Token with deploy permissions. Click <a href=\"https://https://www.jfrog.com/confluence/display/ACC/Access+Tokens\" target=\"_blank\">here</a> for information on how to generate Access Tokens.",
+                                                                "Personal access token.",
+                                                                "This is your Kiuwan username",
+                                                                "Yup! this is your Kiuwan password",
+                                                                "Copy your kubectl config",
+                                                                "ALM Octane API client ID",
+                                                                "ALM Octane API client secret",
+                                                                "Azure DevOps personal access token. Requires at least the Marketplace (publish) scope.",
+                                                                "Personal Access Token (TFS 2017+ and Azure DevOps Server 2019).",
+                                                                "Username (TFS 2015.2+ with Basic Authentication enabled)",
+                                                                "Username to use for connection to the Power BI API",
+                                                                "Password of the user connecting to the Power BI API",
+                                                                "ClientID",
+                                                                "The URL for your Docker Registry",
+                                                                "The username for your Docker Registry",
+                                                                "The password for your Docker Registry",
+                                                                "The email address for your Docker Registry",
+                                                                "Contents of ca.pem",
+                                                                "Contents of cert.pem",
+                                                                "Contents of key.pem",
+                                                                "Content of the certificate",
+                                                                "Server URL",
+                                                                "ID of the Azure tenant",
+                                                                "ID of the client",
+                                                                "Secret of the client",
+                                                                "Endpoint ID on Portainer.io",
+                                                                "GitLab API Token",
+                                                                "Name of Azure API Management Service.",
+                                                                "Identifier of Azure subscription where API Management Service is deployed.",
+                                                                "Name of Azure Resource Group where API Management Service is deployed.",
+                                                                "Identifier for API Management REST API.",
+                                                                "Primary or Secondary key for APIM Management REST API.",
+                                                                "Parasoft CTP username",
+                                                                "Parasoft CTP password",
+                                                                "E-Mail Address where the e-mail is coming from",
+                                                                "Name where the e-mail is coming from",
+                                                                "SMTP Server Name",
+                                                                "SMTP Server Port",
+                                                                "TLS Options",
+                                                                "If checked, self-signed certificates will be accepted. Please do not use this option in production environment.",
+                                                                "The path to a certificate authority file to correctly and securely authenticates with an OpenShift server that uses HTTPS",
+                                                                "Dynamics 365 user name",
+                                                                "User password",
+                                                                "SauceLabs data center",
+                                                                "API Token Found on your saucelabs account page",
+                                                                "Authentication Token generated through SonarCloud (go to My Account > Security > Generate Tokens)",
+                                                                "Azure DevOps Personal Access Token here.",
+                                                                "Enter the username",
+                                                                "Enter the password",
+                                                                "Leave Free Comment (not required)",
+                                                                "Twistlock console username",
+                                                                "Twistlock console password",
+                                                                "CA Certificate used to verify Twistlock console",
+                                                                "API token to connect to HockeyApp account can be created <a href=\"https://rink.hockeyapp.net/manage/auth_tokens\" target=\"_blank\">here</a>.",
+                                                                "Unique identifier of the organization to update can be retrieved from the admin page in your WhiteSource account"
+                                                            ]
+                                                        },
+                                                        "inputMode": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "textbox",
+                                                                "passwordbox",
+                                                                "textarea",
+                                                                "passwordBox",
+                                                                "checkbox",
+                                                                "textArea",
+                                                                "TextArea",
+                                                                "combo"
+                                                            ]
+                                                        },
+                                                        "isConfidential": {
+                                                            "type": [
+                                                                "boolean",
+                                                                "string"
+                                                            ]
+                                                        },
+                                                        "validation": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "isRequired": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "dataType": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "string",
+                                                                        "String",
+                                                                        "boolean",
+                                                                        "number"
+                                                                    ]
+                                                                },
+                                                                "maxLength": {
+                                                                    "type": "integer",
+                                                                    "enum": [
+                                                                        300,
+                                                                        32,
+                                                                        100,
+                                                                        255
+                                                                    ]
+                                                                },
+                                                                "maxValue": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "65500"
+                                                                    ]
+                                                                },
+                                                                "minValue": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "1"
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "additionalProperties": false
+                                                        },
+                                                        "values": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "inputId": {
+                                                                    "type": "string"
+                                                                },
+                                                                "isDisabled": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "defaultValue": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "",
+                                                                        "https://index.docker.io/v1/",
+                                                                        "https://manage.devcenter.microsoft.com",
+                                                                        "identifier",
+                                                                        "auto"
+                                                                    ]
+                                                                },
+                                                                "possibleValues": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "@{value=force; displayValue=Force TLS}",
+                                                                            "@{value=auto; displayValue=Use TLS if the server supports STARTTLS}",
+                                                                            "@{value=ignore; displayValue=Do not use TLS, and ignore STARTTLS}",
+                                                                            "@{value=us-west-1; displayValue=US West 1}",
+                                                                            "@{value=eu-central-1; displayValue=EU Central 1}",
+                                                                            "@{value=us-east-1; displayValue=US East 1 (headless)}"
+                                                                        ]
+                                                                    },
+                                                                    "additionalItems": false
+                                                                },
+                                                                "isLimitedToPossibleValues": {
+                                                                    "type": "boolean"
+                                                                }
+                                                            },
+                                                            "additionalProperties": false
+                                                        },
+                                                        "helpText": {
+                                                            "type": "string"
+                                                        },
+                                                        "helpMarkDown": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "<a href=\"https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html\" target=\"_blank\"><b>Creating a personal access token</b></a>"
+                                                            ]
+                                                        },
+                                                        "defaultValue": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "AzureDevOps@dev.azure.com",
+                                                                "Azure DevOps"
+                                                            ]
+                                                        }
+                                                    },
+                                                    "additionalProperties": false
+                                                },
+                                                "additionalItems": false
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Basic Authorization",
+                                                    "token",
+                                                    "Userpass"
+                                                ]
+                                            },
+                                            "displayName": {
+                                                "type": "string"
+                                            },
+                                            "id": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "endpoint-auth-scheme-token",
+                                                    "endpoint-auth-scheme-userpass",
+                                                    "authentication-schema-o365"
+                                                ]
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "i18n:Token based endpoint authentication scheme",
+                                                    "i18n:Vault username endpoint authentication scheme"
+                                                ]
+                                            },
+                                            "authorizationUrl": {
+                                                "type": "string"
+                                            },
+                                            "dataSourceBindings": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "target": {
+                                                            "type": "string"
+                                                        },
+                                                        "dataSourceName": {
+                                                            "type": "string"
+                                                        },
+                                                        "resultTemplate": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "{\"AccessToken\" : \"{{{access_token}}}\", \"RefreshToken\" : \"{{{refresh_token}}}\", \"ExpiresIn\" : \"{{{expires_in}}}\", \"TokenType\" : \"{{{token_type}}}\", \"Scope\" : \"{{{scope}}}\", \"Error\" : \"{{{error}}}\", \"ErrorDescription\" : \"{{{error_description}}}\"}"
+                                                            ]
+                                                        }
+                                                    },
+                                                    "additionalProperties": false
+                                                },
+                                                "additionalItems": false
+                                            }
+                                        },
+                                        "additionalProperties": false
+                                    },
+                                    "additionalItems": false
+                                },
+                                "helpMarkDown": {
+                                    "type": "string"
+                                },
+                                "inputDescriptors": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "project",
+                                                    "sslVerify",
+                                                    "originName",
+                                                    "revision",
+                                                    "publicKey",
+                                                    "useSudo",
+                                                    "connection",
+                                                    "definition",
+                                                    "artifacts",
+                                                    "branch",
+                                                    "restVersion",
+                                                    "acceptUntrustedCerts",
+                                                    "defaultVersionType",
+                                                    "defaultVersionSpecific",
+                                                    "releaseUrl",
+                                                    "domainid",
+                                                    "instance_id",
+                                                    "username",
+                                                    "RAusername",
+                                                    "RApassword"
+                                                ]
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Project ID",
+                                                    "SSL Verification",
+                                                    "Origin Name",
+                                                    "Revision",
+                                                    "Public Key",
+                                                    "Use Sudo",
+                                                    "Service Endpoint",
+                                                    "Project",
+                                                    "Build Definition",
+                                                    "Artifacts",
+                                                    "Source (repository)",
+                                                    "Branch",
+                                                    "XAML Build Definition",
+                                                    "REST API Version",
+                                                    "Override Electric Flow SSL Validation Check",
+                                                    "Artifactory service",
+                                                    "Build Name",
+                                                    "Default Version",
+                                                    "Build Number",
+                                                    "i18n:Release API Url",
+                                                    "Kiuwan Domain ID",
+                                                    "Release API Url",
+                                                    "Instance ID",
+                                                    "Username",
+                                                    "i18n:Default version",
+                                                    "i18n: Branch",
+                                                    "Build Configuration",
+                                                    "Default version",
+                                                    "i18n:Version",
+                                                    "RA username",
+                                                    "RA password"
+                                                ]
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "The project id of the GCP project in which your resources will be managed",
+                                                    "Enables/disables the SSL certificate verification for the Chef Supermarket.  Set to `false` if you are using self-signed certificates.  Default: `true` (Chef Server certificate must be signed by a valid Certificate Authority)",
+                                                    "Enables/disables the SSL certificate verification for the Chef Server.  Set to `false` if you are using self-signed certificates.  Default: `true` (Chef Server certificate must be signed by a valid Certificate Authority)",
+                                                    "Name of the Habitat origin",
+                                                    "Revision of the origin to use",
+                                                    "Public item of the origin key pair",
+                                                    "Use sudo on habitat commands",
+                                                    "Service Endpoint Id",
+                                                    "Project Id",
+                                                    "Build Definition Id",
+                                                    "Build artifacts",
+                                                    "Projects",
+                                                    "Repository to pull",
+                                                    "Source Artifacts",
+                                                    "Branch to checkout",
+                                                    "XAML Build Definition Id",
+                                                    "Specify the version for the ElectricFlow REST API. For e.g., v1.",
+                                                    "By default SSL Validation Check will be performed. Choose this setting to override the check. If you do not want to override this check, perform the SSL certificate setup required in Jenkins and Electric Flow as per the Electric Flow Server documentation.",
+                                                    "The default version will be deployed when new releases are created. The version can be changed for manually created releases at the time of release creation",
+                                                    "The url of the release API",
+                                                    "If your Kiuwan account is configured for SSO authentication, set here the Domain ID for your account. Contact your Kiuwan admin for details.<br />Leave empty otherwise.<br /><b>WARNING</b>: for TFS 2005 set this to 0 (the number zero) for non-SSO Kiuwan accounts. In this case the combo with possible applications in the tasks definitions will not work. This is a shortcoming of TFS 2005 only",
+                                                    "Unique ID representing current Azure DevOps project in ALM Octane",
+                                                    "Username you use to login to GitLab. This is required only to validate your PAT token using 'Verify connection' link below.",
+                                                    "i18n:The default version will be deployed when new releases are created. The version can be changed for manually created releases at the time of release creation",
+                                                    "i18n: Artifacts from selected branch will be included in release.",
+                                                    "Build Configuration Id",
+                                                    "i18n:Version",
+                                                    "The username to access RA Server when using RA build task.",
+                                                    "The password to access RA Server when using RA build task."
+                                                ]
+                                            },
+                                            "inputMode": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "textbox",
+                                                    "combo",
+                                                    "textarea",
+                                                    "Combo",
+                                                    "none",
+                                                    "checkbox",
+                                                    "passwordbox"
+                                                ]
+                                            },
+                                            "isConfidential": {
+                                                "type": "boolean"
+                                            },
+                                            "validation": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "isRequired": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "dataType": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "string",
+                                                            "boolean"
+                                                        ]
+                                                    },
+                                                    "maxLength": {
+                                                        "type": "integer",
+                                                        "enum": [
+                                                            300,
+                                                            255
+                                                        ]
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            },
+                                            "values": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "inputId": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "sslVerifyValues",
+                                                            "useSudoValues",
+                                                            "restVersionValues",
+                                                            "defaultVersionTypeValues",
+                                                            "releaseUrlInput"
+                                                        ]
+                                                    },
+                                                    "defaultValue": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "1",
+                                                            "v1.0",
+                                                            "selectDuringReleaseCreationType",
+                                                            "https://vsrm.dev.azure.com/[organization]",
+                                                            "latestType"
+                                                        ]
+                                                    },
+                                                    "possibleValues": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "value": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "1",
+                                                                        "0",
+                                                                        "v1.0",
+                                                                        "selectDuringReleaseCreationType",
+                                                                        "specificVersionType",
+                                                                        "latestType",
+                                                                        "latestFromBranchType"
+                                                                    ]
+                                                                },
+                                                                "displayValue": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "True",
+                                                                        "False",
+                                                                        "v1.0",
+                                                                        "Specify at the time of release creation",
+                                                                        "Specify a specific build number",
+                                                                        "i18n:Latest from default branch",
+                                                                        "i18n:Latest from specific branch",
+                                                                        "i18n:Specify at the time of release creation",
+                                                                        "Latest",
+                                                                        "Specify specific version"
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "additionalProperties": false
+                                                        },
+                                                        "additionalItems": false
+                                                    },
+                                                    "isLimitedToPossibleValues": {
+                                                        "type": "boolean"
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            },
+                                            "hasDynamicValueInformation": {
+                                                "type": "boolean"
+                                            },
+                                            "dependencyInputIds": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "connection",
+                                                        "project",
+                                                        "definition",
+                                                        "branch",
+                                                        "defaultVersionType"
+                                                    ]
+                                                },
+                                                "additionalItems": false
+                                            },
+                                            "groupName": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "[{ \"Key\": \"defaultVersionType\", \"Value\": \"specificVersionType\"}]"
+                                                ]
+                                            },
+                                            "properties": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "visibleRule": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "defaultVersionType == specificVersionType",
+                                                            "defaultVersionType == latestFromBranchType"
+                                                        ]
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            }
+                                        },
+                                        "additionalProperties": false
+                                    },
+                                    "additionalItems": false
+                                },
+                                "uri": {
+                                    "type": "string"
+                                },
+                                "order": {
+                                    "type": "integer",
+                                    "enum": [
+                                        20
+                                    ]
+                                },
+                                "column": {
+                                    "type": "integer"
+                                },
+                                "height": {
+                                    "type": [
+                                        "string",
+                                        "integer"
+                                    ]
+                                },
+                                "width": {
+                                    "type": "string"
+                                },
+                                "icons": {
+                                    "type": "object",
+                                    "properties": {
+                                        "default": {
+                                            "type": "string",
+                                            "enum": [
+                                                "icon.png",
+                                                "icons/xabaril-endpoint-icon.png"
+                                            ]
+                                        },
+                                        "large": {
+                                            "type": "string"
+                                        },
+                                        "wide": {
+                                            "type": "string",
+                                            "enum": [
+                                                "icons/xabaril.png"
+                                            ]
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                },
+                                "_displayName.comment": {
+                                    "type": "string"
+                                },
+                                "endpointTypeId": {
+                                    "type": "string",
+                                    "enum": [
+                                        "ExternalTFS",
+                                        "artifactoryService",
+                                        "gitlab:Token",
+                                        "teamcity"
+                                    ]
+                                },
+                                "uniqueSourceIdentifier": {
+                                    "type": "string",
+                                    "enum": [
+                                        "{{connection}}:{{project}}:{{definition}}",
+                                        "{{{connection}}}:{{{project}}}:{{{definition}}}",
+                                        "{{connection}}:{{definition}}:{{buildNumber}}",
+                                        "{{connection}}:{{definition}}:{{branch}}"
+                                    ]
+                                },
+                                "artifactType": {
+                                    "type": "string",
+                                    "enum": [
+                                        "Build",
+                                        "SourceControl",
+                                        "Package"
+                                    ]
+                                },
+                                "dataSourceBindings": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "target": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "project",
+                                                    "definition",
+                                                    "versions",
+                                                    "latestVersion",
+                                                    "artifactDetails",
+                                                    "artifacts",
+                                                    "artifactItems",
+                                                    "branchName",
+                                                    "branch",
+                                                    "latestversion",
+                                                    "defaultVersionSpecific",
+                                                    "listwebhook",
+                                                    "createwebhook",
+                                                    "deletewebhook"
+                                                ]
+                                            },
+                                            "dataSourceName": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Projects",
+                                                    "Definitions",
+                                                    "Builds",
+                                                    "LatestBuild",
+                                                    "Artifacts",
+                                                    "ArtifactItems",
+                                                    "BranchName",
+                                                    "TfvcProjects",
+                                                    "TfvcChangesets",
+                                                    "TfvcLatestChangeset",
+                                                    "TfvcArtifacts",
+                                                    "TfvcArtifactItems",
+                                                    "Repositories",
+                                                    "Branches",
+                                                    "GitCommits",
+                                                    "GitLatestCommit",
+                                                    "GitArtifacts",
+                                                    "GitArtifactItems",
+                                                    "XamlProjects",
+                                                    "XamlDefinitions",
+                                                    "XamlBuilds",
+                                                    "LatestXamlBuild",
+                                                    "XamlBuild",
+                                                    "BuildNames",
+                                                    "BuildNumbers",
+                                                    "CommitsFromSelectedBranch",
+                                                    "LatestCommit",
+                                                    "BuildConfigurations"
+                                                ]
+                                            },
+                                            "resultTemplate": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "{ Value : \"{{id}}\", DisplayValue : \"{{{name}}}\" }",
+                                                    "{ Value : \"{{id}}\", DisplayValue : \"{{{buildNumber}}}\" }",
+                                                    "{ Name: \"{{name}}\", StreamType: \"{{resource.type}}\", downloadUrl : \"{{{resource.downloadUrl}}}\" }",
+                                                    "{ Value : \"{{{name}}}\", DisplayValue : \"{{{name}}}\", data: { artifactType: \"{{resource.type}}\", containerId:\"{{ #regex /([0-9]+)/ resource.data }}\" } }",
+                                                    "{ Value : \"{{{path}}}\", DisplayValue : \"{{{path}}}\", data: { itemType: \"{{{itemType}}}\", containerId:\"{{containerId}}\" } }",
+                                                    "{ Value : \"{{{id}}}\", DisplayValue : \"{{{name}}}\" }",
+                                                    "{ Value : \"{{#if supportsTFVC}}{{{project.id}}}{{else}}{{/if}}\", DisplayValue : \"{{#if supportsTFVC}}$/{{{project.name}}}{{else}}{{/if}}\" }",
+                                                    "{ Value : \"{{{changesetId}}}\", DisplayValue : \"Changeset {{{changesetId}}}\" }",
+                                                    "{ Value : \"{{{ #regex ([^/]*$) path}}}\", DisplayValue : \"{{{ #regex ([^/]*$) path}}}\", data: { artifactType: \"source\" } }",
+                                                    "{ Value : \"{{{ #stringReplace sourceName '' path}}}\", DisplayValue : \"{{{ #stringReplace sourceName '' path}}}\", data: { itemType: \"{{#if isFolder}}folder{{else}}file{{/if}}\" } }",
+                                                    "{ Value : \"{{{name}}}\", DisplayValue : \"{{{name}}}\" }",
+                                                    "{ Value : \"{{{commitId}}}\", DisplayValue : \"{{{ #subString 0 8 commitId }}}\" }",
+                                                    "{ Value : \"{{{ #regex ([^/]*$) path}}}\", DisplayValue : \"{{{ #regex ([^/]*$) path}}}\", data: { itemType: \"{{#if isFolder}}Folder{{else}}File{{/if}}\", artifactType: \"source\" } }",
+                                                    "{ Value : \"{{{ #stringReplace sourceName '' path}}}\", DisplayValue : \"{{{ #stringReplace sourceName '' path}}}\", data: { itemType: \"{{#if isFolder}}Folder{{else}}File{{/if}}\" } }",
+                                                    "{ Value : \"{{{id}}}\", DisplayValue : \"{{{buildNumber}}}\" }",
+                                                    "{ Name: \"drop\", StreamType: \"{{ #regex ^(..) dropLocation }}\", downloadUrl: \"{{endpoint.url}}/{{project}}/_api/_build/ItemContent?buildUri={{uri}}&path=/drop\", fileShareLocation : \"{{ #jsonEscape dropLocation }}\" }",
+                                                    "{ Value : \"drop\", DisplayValue : \"drop\", data: { artifactType: \"{{{ #regex ^(..) dropLocation }}}\", containerId:\"{{ #regex /([0-9]+)/ dropLocation }}\" } }",
+                                                    "{ \"Value\" : \"{{{ #regex /?(.*$) uri}}}\", \"DisplayValue\" : \"{{{ #regex /?(.*$) uri}}}\" }",
+                                                    "{ Value : \"{{{ #regex /?(.*$) uri}}}\", DisplayValue : \"{{{ #regex /?(.*$) uri}}}\" }",
+                                                    "{ \"Name\": \"{{version}}\", \"downloadUrl\" : \"{{endpoint.url}}\" }",
+                                                    "{ Value : \"{{id}}\", DisplayValue : \"{{{path_with_namespace}}}\" }",
+                                                    "{ Value : \"{{id}}\", DisplayValue : \"{{{short_id}}}\" }",
+                                                    "{ Value : \"{{{path}}}\", DisplayValue : \"{{{path}}}\", data: { {{ #stringReplace ['tree','blob'] ['artifactType:\"folder\"','itemType:\"file\"'] type }} } }",
+                                                    "{ Value : \"{{{path}}}\", DisplayValue : \"{{{path}}}\", data: { itemType: \"{{ #stringReplace ['tree','blob'] ['folder','file'] type }}\" } }",
+                                                    "{ Value : \"{{id}}\", DisplayValue : \"{{{name}}} ({{{id}}})\" }",
+                                                    "{ Value : \"{{id}}\", DisplayValue : \"{{{number}}}\" }",
+                                                    "{ Name: \"{{version}}\", StreamType: \"zip\", downloadUrl : \"{{endpoint.url}}downloadArtifacts.html?buildTypeId={{definition}}&buildId={{version}}\" }",
+                                                    "{ Value : \"{{#if itemPath}}{{{itemPath}}}/{{{name}}}{{else}}{{{name}}}{{/if}}\", DisplayValue : \"{{{name}}}\", data: { artifactType: \"{{#if children}}folder{{else}}archive{{/if}}\" } }",
+                                                    "{ Value : \"{{#if itemPath}}{{{itemPath}}}/{{{name}}}{{else}}{{{name}}}{{/if}}\", DisplayValue : \"{{{name}}}\", data: { itemType: \"{{#if children}}folder{{else}}file{{/if}}\" } }"
+                                                ]
+                                            },
+                                            "endpointUrl": {
+                                                "type": "string"
+                                            },
+                                            "requestVerb": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Post"
+                                                ]
+                                            },
+                                            "requestContent": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "{}"
+                                                ]
+                                            },
+                                            "resultSelector": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "jsonpath:$"
+                                                ]
+                                            }
+                                        },
+                                        "additionalProperties": false
+                                    },
+                                    "additionalItems": false
+                                },
+                                "browsableArtifactTypeMapping": {
+                                    "type": "object",
+                                    "properties": {
+                                        "container": {
+                                            "type": "string"
+                                        },
+                                        "source": {
+                                            "type": "string",
+                                            "enum": [
+                                                "artifactItems"
+                                            ]
+                                        },
+                                        "#/": {
+                                            "type": "string"
+                                        },
+                                        "folder": {
+                                            "type": "string",
+                                            "enum": [
+                                                "artifactItems"
+                                            ]
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                },
+                                "artifactTypeStreamMapping": {
+                                    "type": "object",
+                                    "properties": {
+                                        "container": {
+                                            "type": "string"
+                                        },
+                                        "filepath": {
+                                            "type": "string"
+                                        },
+                                        "#/": {
+                                            "type": "string"
+                                        },
+                                        "\\": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                },
+                                "downloadTaskId": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "catalogIconUrl:": {
+                                    "type": "string"
+                                },
+                                "previewImageUrl": {
+                                    "type": "string"
+                                },
+                                "supportedSizes": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "rowSpan": {
+                                                "type": "integer",
+                                                "enum": [
+                                                    1
+                                                ]
+                                            },
+                                            "columnSpan": {
+                                                "type": "integer",
+                                                "enum": [
+                                                    1,
+                                                    2,
+                                                    3
+                                                ]
+                                            }
+                                        },
+                                        "additionalProperties": false
+                                    },
+                                    "additionalItems": false
+                                },
+                                "supportedScopes": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string",
+                                        "enum": [
+                                            "project_team"
+                                        ]
+                                    },
+                                    "additionalItems": false
+                                },
+                                "supportsTasks": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string",
+                                        "enum": [
+                                            "f345ac07-f8a0-4859-bcaf-d71fd62bcf37",
+                                            "4e6e25e3-c0b5-4986-8714-5c751945c15f"
+                                        ]
+                                    },
+                                    "additionalItems": false
+                                },
+                                "helpMarkdown": {
+                                    "type": "string"
+                                },
+                                "config": {
+                                    "type": "object",
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "enum": [
+                                                "string"
+                                            ]
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "required": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                },
+                                "template": {
+                                    "type": "string"
+                                },
+                                "icon": {
+                                    "type": "string",
+                                    "enum": [
+                                        "images/gitlab16.png",
+                                        "images/MyGet.png",
+                                        "icons/SonarCloud_endpoint.png"
+                                    ]
+                                },
+                                "ArtifactTriggerConfiguration": {
+                                    "type": "object",
+                                    "properties": {
+                                        "isTriggerSupported": {
+                                            "type": "boolean"
+                                        },
+                                        "isTriggerSupportedOnlyInHosted": {
+                                            "type": "boolean"
+                                        },
+                                        "isWebhookSupportedAtServerLevel": {
+                                            "type": "boolean"
+                                        },
+                                        "resources": {
+                                            "type": "object",
+                                            "properties": {
+                                                "TriggerDisabledMessage": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        },
+                                        "payloadHashHeaderName": {
+                                            "type": "string"
+                                        },
+                                        "webhookPayloadMapping": {
+                                            "type": "object",
+                                            "properties": {
+                                                "version": {
+                                                    "type": "string"
+                                                },
+                                                "definition": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                },
+                                "loadingImageUrl": {
+                                    "type": "string"
+                                },
+                                "isVisibleFromCatalog": {
+                                    "type": "boolean"
+                                },
+                                "isNameConfigurable": {
+                                    "type": "boolean"
+                                },
+                                "configurationRequired": {
+                                    "type": "boolean"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "_description.comment": {
+                            "type": "string"
+                        },
+                        "url": {
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "additionalItems": false
+            },
+            "icons": {
+                "type": "object",
+                "properties": {
+                    "default": {
+                        "type": "string",
+                        "enum": [
+                            "images/CBTIcon.png",
+                            "static/images/logo.png",
+                            "extension-icon.png",
+                            "images/logo.png",
+                            "images/synopsys.png",
+                            "images/cheflogo.png",
+                            "images/habitat-logo.png",
+                            "media/snow-logo.png",
+                            "icon.png",
+                            "logo.png",
+                            "vss_default.png",
+                            "images/extension-icon.png",
+                            "images/extension-icon-120x120.png",
+                            "images/fossa-glyph-dark.png",
+                            "static/images/sdelements-icon.png",
+                            "images/icon.png",
+                            "raygun_default.png",
+                            "extension/images/extension-icon-small.png",
+                            "extension/images/extension-icon.png",
+                            "images/artifactory.png",
+                            "static/images/azSearch-128-logo.png",
+                            "static/images/azure-pipelines-logo-128.png",
+                            "media/calendargate-logo.png",
+                            "images/kiuwan-extension.png",
+                            "tools-icon.png",
+                            "images/servicenow.png",
+                            "powerbi.png",
+                            "images/docker_logo.png",
+                            "images/Vmware_logo.png",
+                            "images/portainer-icon.png",
+                            "images/gitlab128.png",
+                            "images\\tc-icon128px.png",
+                            "Images/Icon128.png",
+                            "images/saucelabs-icon.png",
+                            "images/Logo128x128.png",
+                            "static/images/sde.png",
+                            "img/logo.png",
+                            "images/testingbot-icon.png",
+                            "images/hockeyapp-logo.png",
+                            "icons/xabaril.png",
+                            "images/ca_as_128.png"
+                        ]
+                    },
+                    "large": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "scopes": {
+                "type": "array",
+                "title": "Authorization Scopes",
+                "description": "Authorization scopes providing permissions required by your extension. For example, vso.work and vs.code_write indicates your extension needs read-only access to work items and read/write access to source code (and related resource). Scopes are presented to the user when installing your extension.",
+                "items": {
+                    "type": "string",
+                    "enum": [
+                        "vso.build",
+                        "vso.build_execute",
+                        "vso.release",
+                        "vso.serviceendpoint_manage",
+                        "vso.extension.data_write",
+                        "vso.profile",
+                        "vso.serviceendpoint_query",
+                        "vso.release_execute",
+                        "vso.code",
+                        "vso.test",
+                        "vso.work",
+                        "vso.test_write",
+                        "vso.serviceendpoint"
+                    ]
+                },
+                "additionalItems": false
+            },
+            "galleryFlags": {
+                "type": "array",
+                "items": {
+                    "type": "string",
+                    "enum": [
+                        "Preview",
+                        "Public",
+                        "Free",
+                        "Private"
+                    ]
+                },
+                "additionalItems": false
+            },
+            "demands": {
+                "type": "array",
+                "items": {
+                    "type": "string",
+                    "enum": [
+                        "api-version/3.0",
+                        "contribution/ms.vss-releaseartifact.artifact-types",
+                        "api-version/5.0"
+                    ]
+                },
+                "additionalItems": false
+            },
+            "tags": {
+                "type": "array",
+                "items": {
+                    "type": "string",
+                    "enum": [
+                        "Sample",
+                        "AWS",
+                        "S3",
+                        "CloudFormation",
+                        "AWS CLI",
+                        "Lambda",
+                        "Serverless",
+                        "CodeDeploy",
+                        "Elastic Beanstalk",
+                        "SNS",
+                        "SQS",
+                        "AWSPowerShell",
+                        "Elastic Container Registry",
+                        "Systems Manager",
+                        "Secrets Manager",
+                        "Release",
+                        "Gate",
+                        "Service Now",
+                        "Security",
+                        "SCA",
+                        "Static Code Analysis",
+                        "Scan",
+                        "SAST",
+                        "Checkmarx",
+                        "CxSAST",
+                        "OSA",
+                        "Open source",
+                        "Software Composition Analysis",
+                        "monitoring",
+                        "datadog",
+                        "release",
+                        "staged",
+                        "canary",
+                        "Artifacts",
+                        "DevOps",
+                        "deploy",
+                        "octopus",
+                        "dashboard",
+                        "build",
+                        "GoDaddy DNS Zone",
+                        "Build",
+                        "Azure Pipelines",
+                        "macOS",
+                        "linux",
+                        "windows",
+                        "security",
+                        "devsecops",
+                        "continuous integration",
+                        "deploy task",
+                        "iOS",
+                        "Xcode",
+                        "Apple",
+                        "iPad",
+                        "iPhone",
+                        "tvOS",
+                        "watchOS",
+                        "Extension",
+                        "Snyk",
+                        "Code Analysis",
+                        "Scanning",
+                        "Node",
+                        "Npm",
+                        "Xpirit",
+                        "Marketplace",
+                        "Publish",
+                        "Package",
+                        "JFrog",
+                        "Artifactory",
+                        "Artifact",
+                        "Promote",
+                        "Upload",
+                        "Download",
+                        "Repository",
+                        "queue",
+                        "tasks",
+                        "trigger",
+                        "Azure Search",
+                        "Pipelines",
+                        "ci",
+                        "cd",
+                        "continuous deployment",
+                        "Calendar",
+                        "Code freeze",
+                        "DevSecOps",
+                        "Applcation security",
+                        "Security vulnerabilities",
+                        "OWASP Top 10",
+                        "Build Task",
+                        "Azure DevOps",
+                        "Trigger",
+                        "3fifty",
+                        "Install",
+                        "Continuous Integration",
+                        "Continuous Delivery",
+                        "Azure DevOps Extensions",
+                        "Visual Studio Extensions",
+                        "docker",
+                        "docker-compose",
+                        "Windows Store",
+                        "Windows Dev Center",
+                        "Deploy",
+                        "process",
+                        "process template",
+                        "xml process",
+                        "template",
+                        "upload",
+                        "import",
+                        "export",
+                        "migrate",
+                        "Utility",
+                        "Deploy API",
+                        "API Management",
+                        "Deploy Task",
+                        "Service Virtualization",
+                        "Stubs",
+                        "Microsoft service virtualization",
+                        "test",
+                        "build task",
+                        "test environments",
+                        "query",
+                        "work item",
+                        "schedule",
+                        "e-mail",
+                        "SharePoint",
+                        "PnP",
+                        "xml",
+                        "deployment",
+                        "PowerShell",
+                        "RazorSPoint",
+                        "utility",
+                        "openshift",
+                        "oc",
+                        "Binary",
+                        "Assembly",
+                        "Version",
+                        "Management",
+                        "Tasks",
+                        "New Relic",
+                        "Deployment",
+                        "Endpoint",
+                        "code quality",
+                        "static code analysis",
+                        "AzureDevOps",
+                        "kubernetes",
+                        "durable",
+                        "Nolio",
+                        "Release Automation",
+                        "CA Technologies"
+                    ]
+                },
+                "additionalItems": false
+            },
+            "screenshots": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "path": {
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "additionalItems": false
+            },
+            "content": {
+                "type": "object",
+                "properties": {
+                    "license": {
+                        "type": "object",
+                        "properties": {
+                            "path": {
+                                "type": "string",
+                                "enum": [
+                                    "license.md",
+                                    "LICENSE",
+                                    "license.txt",
+                                    "checkmarx-license-terms.md",
+                                    "license",
+                                    "LICENSE.md",
+                                    "LICENSE.txt",
+                                    "mp_terms.md",
+                                    "License.md",
+                                    "license-terms.md"
+                                ]
+                            }
+                        },
+                        "additionalProperties": false
+                    },
+                    "details": {
+                        "type": "object",
+                        "properties": {
+                            "path": {
+                                "type": "string",
+                                "enum": [
+                                    "overview.md",
+                                    "README.md",
+                                    "Marketplace/overview.md",
+                                    "readme.md",
+                                    "details.md",
+                                    "docs/vsts-README.md",
+                                    "docker.md",
+                                    "VMWare.md",
+                                    "docs/overview.md",
+                                    "extension-details.md",
+                                    "docs/details.md",
+                                    "Overview.md",
+                                    "deis.md",
+                                    "durable.md",
+                                    "k8s.md",
+                                    "RA.md"
+                                ]
+                            }
+                        },
+                        "additionalProperties": false
+                    },
+                    "privacy": {
+                        "type": "object",
+                        "properties": {
+                            "path": {
+                                "type": "string"
+                            }
+                        },
+                        "additionalProperties": false
+                    },
+                    "thirdpartynotice": {
+                        "type": "object",
+                        "properties": {
+                            "path": {
+                                "type": "string"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                },
+                "additionalProperties": false
+            },
+            "links": {
+                "type": "object",
+                "properties": {
+                    "getstarted": {
+                        "type": "object",
+                        "properties": {
+                            "uri": {
+                                "type": "string"
+                            }
+                        },
+                        "additionalProperties": false
+                    },
+                    "support": {
+                        "type": "object",
+                        "properties": {
+                            "uri": {
+                                "type": "string"
+                            }
+                        },
+                        "additionalProperties": false
+                    },
+                    "issues": {
+                        "type": "object",
+                        "properties": {
+                            "uri": {
+                                "type": "string"
+                            }
+                        },
+                        "additionalProperties": false
+                    },
+                    "learn": {
+                        "type": "object",
+                        "properties": {
+                            "uri": {
+                                "type": "string"
+                            }
+                        },
+                        "additionalProperties": false
+                    },
+                    "license": {
+                        "type": "object",
+                        "properties": {
+                            "uri": {
+                                "type": "string"
+                            }
+                        },
+                        "additionalProperties": false
+                    },
+                    "home": {
+                        "type": "object",
+                        "properties": {
+                            "uri": {
+                                "type": "string"
+                            }
+                        },
+                        "additionalProperties": false
+                    },
+                    "repository": {
+                        "type": "object",
+                        "properties": {
+                            "uri": {
+                                "type": "string"
+                            }
+                        },
+                        "additionalProperties": false
+                    },
+                    "privacypolicy": {
+                        "type": "object",
+                        "properties": {
+                            "uri": {
+                                "type": "string"
+                            }
+                        },
+                        "additionalProperties": false
+                    },
+                    "pricing": {
+                        "type": "object",
+                        "properties": {
+                            "uri": {
+                                "type": "string"
+                            }
+                        },
+                        "additionalProperties": false
+                    },
+                    "company": {
+                        "type": "object",
+                        "properties": {
+                            "uri": {
+                                "type": "string",
+                                "enum": [
+                                    "https://www.quadrotech-it.com/"
+                                ]
+                            }
+                        },
+                        "additionalProperties": false
+                    },
+                    "gettingstarted": {
+                        "type": "object",
+                        "properties": {
+                            "uri": {
+                                "type": "string"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                },
+                "additionalProperties": false
+            },
+            "repository": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "git"
+                        ]
+                    },
+                    "uri": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string",
+                        "enum": [
+                            "https://github.com/onlyutkarsh/gitlab-integration"
+                        ]
+                    }
+                },
+                "additionalProperties": false
+            },
+            "branding": {
+                "type": "object",
+                "properties": {
+                    "color": {
+                        "type": "string",
+                        "enum": [
+                            "rgb(220, 235, 252)",
+                            "#1D5309",
+                            "rgb(81, 53, 124)",
+                            "rgb(120, 71, 166)",
+                            "#5C2D91",
+                            "white",
+                            "rgb(78, 104, 193)",
+                            "rgb(34, 34, 72)",
+                            "rgb(36, 43, 50)",
+                            "ffffff",
+                            "rgb(255, 217, 0)",
+                            "#01a4a6",
+                            "rgb(0, 171, 236)",
+                            "rgb(135,135,135)",
+                            "#f6f7fb",
+                            "#1C3272",
+                            "#3B3E43",
+                            "#0088DC",
+                            "#004877",
+                            "rgb(34, 34, 34)",
+                            "rgb(240,240,240)",
+                            "rgb(14, 32, 74)",
+                            "rgb(243, 243, 243)",
+                            "rgb(111, 111, 111)"
+                        ]
+                    },
+                    "theme": {
+                        "type": "string",
+                        "enum": [
+                            "light",
+                            "dark"
+                        ]
+                    }
+                },
+                "additionalProperties": false
+            },
+            "public": {
+                "type": "boolean"
+            },
+            "contributionTypes": {
+                "type": "array",
+                "items": {
+                    "items": {},
+                    "additionalItems": false,
+                    "additionalProperties": false
+                },
+                "additionalItems": false
+            },
+            "badges": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "href": {
+                            "type": "string"
+                        },
+                        "uri": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "additionalItems": false
+            },
+            "_description.comment": {
+                "type": "string",
+                "enum": [
+                    "The below format to define artifact extensions is currently in preview and may change in future."
+                ]
+            },
+            "type": {
+                "type": "string"
+            },
+            "Tags": {
+                "type": "array",
+                "items": {
+                    "type": "string",
+                    "enum": [
+                        "Vault",
+                        "HashiCorp",
+                        "Secrets",
+                        "Release",
+                        "DevOps",
+                        "ServiceNow",
+                        "Change Management",
+                        "Release Gates",
+                        "Pipelines",
+                        "ReleaseGates",
+                        "GitLab",
+                        "Azure DevOps",
+                        "Azure Pipelines",
+                        "Artifacts",
+                        "Git",
+                        "Build",
+                        "TeamCity"
+                    ]
+                },
+                "additionalItems": false
+            },
+            "visibility": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "additionalItems": false
+            },
+            "CustomerQnASupport": {
+                "type": "object",
+                "properties": {
+                    "enableqna": {
+                        "type": "string",
+                        "enum": [
+                            "true"
+                        ]
+                    },
+                    "url": {
+                        "type": "string",
+                        "enum": [
+                            "https://github.com/nkdAgility/Azure-DevOps-Process-Tools/issues",
+                            "https://about.sonarcloud.io/contact/"
+                        ]
+                    }
+                },
+                "additionalProperties": false
+            },
+            "baseUri": {
+                "type": "string"
+            }
+        },
+        "additionalProperties": false
+    },
+    "additionalItems": false
+}
