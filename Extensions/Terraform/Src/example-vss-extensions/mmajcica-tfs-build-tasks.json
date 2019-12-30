@@ -65,6 +65,7 @@
         {
             "path": "vsts-extension-packageandpublish/icon.png"
         },
+
         {
             "path": "vsts-extension-share/vsts-extension-share.ps1"
         },
@@ -78,6 +79,7 @@
         {
             "path": "vsts-extension-share/icon.png"
         },
+
         {
             "path": "vsts-extension-publish/vsts-extension-publish.ps1"
         },
@@ -91,6 +93,7 @@
         {
             "path": "vsts-extension-publish/icon.png"
         },
+
         {
             "path": "vsts-extension-version/vsts-extension-version.ps1"
         },
@@ -104,6 +107,7 @@
         {
             "path": "vsts-extension-version/icon.png"
         },
+
         {
             "path": "vsts-extension-install/vsts-extension-install.ps1"
         },
@@ -184,6 +188,7 @@
                     {
                         "type": "ms.vss-endpoint.endpoint-auth-scheme-basic"
                     }
+
                 ]
             }
         }

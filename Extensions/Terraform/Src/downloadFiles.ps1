@@ -9,7 +9,7 @@ $items = $items + $response.items
 $itemsCount = $response.items.Count
 $pages = 1
 
-if ($response.items.Count -gt $response.total_count) {
+if ($response.items.Count -lt $response.total_count) {
     $partialPages = $response.total_count / $itemsCount
     $pages = [int][Math]::Ceiling($partialPages)
 }
@@ -18,6 +18,8 @@ for ($p = 2; $p -le $pages; $p++) {
     $response = Invoke-RestMethod "https://api.github.com/search/code?q=filename:vss-extension.json+ms.vss-endpoint.service-endpoint-type&page=$p" -Method 'GET' -Headers $headers
     $items = $items + $response.items
 }
+
+$index = @{};
 
 foreach ($result in $items) {
 
@@ -54,23 +56,40 @@ foreach ($result in $items) {
 
     $url = "https://raw.githubusercontent.com/$account/$repo/$filePath"
 
-    Invoke-WebRequest $url -OutFile "./vss-extensions/$account-$repo.json"
+    #Invoke-WebRequest $url -OutFile "./vss-extensions/$account-$repo.json"
+
+    if($index.ContainsKey("$account-$repo"))
+    {
+        $index["$account-$repo"]++;
+    }
+    else {
+        $index["$account-$repo"]=1;
+    }
+}
+$total = 0;
+foreach($value in $index.Values)
+{
+    $total+=$value;
 }
 
-$serviceEndpoints = @()
+$serviceEndpoints = @();
+$vssExtensions = @();
 
 foreach($file in Get-ChildItem -Path "./vss-extensions/")
 {
     $filePathName = "./vss-extensions/$($file.Name)"
     Write-Host "Reading: $filePathName"
     $vssExtn = Get-Content -Raw -Path $filePathName | ConvertFrom-Json
-    foreach($contribution in $vssExtn.contributions)
-    {
-        if($contribution.type -eq "ms.vss-endpoint.service-endpoint-type")
-        {
-            $serviceEndpoints += $contribution
-        }
-    }
+    $vssExtensions += $vssExtn;
+    # foreach($contribution in $vssExtn.contributions)
+    # {
+    #     if($contribution.type -eq "ms.vss-endpoint.service-endpoint-type")
+    #     {
+    #         #$serviceEndpoints += $contribution
+
+    #     }
+    # }
 }
 
-$serviceEndpoints | ConvertTo-Json -Depth 10 | Out-File -FilePath "./vss-extensions.json"
+$serviceEndpoints | ConvertTo-Json -Depth 10 | Out-File -FilePath "./vss-extensions-serviceconnections.json"
+$vssExtensions | ConvertTo-Json -Depth 10 | Out-File -FilePath "./vss-extensions.json"
