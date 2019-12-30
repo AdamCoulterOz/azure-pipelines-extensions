@@ -1,7 +1,7 @@
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Authorization", "Basic xxxxx")
 
-$response = Invoke-RestMethod "https://api.github.com/search/code?q=filename:vss-extension.json+ms.vss-endpoint.service-endpoint-type" -Method 'GET' -Headers $headers
+$response = Invoke-RestMethod "https://api.github.com/search/code?q=filename:vss-extension.json+Microsoft.VisualStudio.Services&per_page=100" -Method 'GET' -Headers $headers
 
 $items = @()
 $items = $items + $response.items
@@ -15,7 +15,7 @@ if ($response.items.Count -lt $response.total_count) {
 }
 
 for ($p = 2; $p -le $pages; $p++) {
-    $response = Invoke-RestMethod "https://api.github.com/search/code?q=filename:vss-extension.json+ms.vss-endpoint.service-endpoint-type&page=$p" -Method 'GET' -Headers $headers
+    $response = Invoke-RestMethod "https://api.github.com/search/code?q=filename:vss-extension.json+Microsoft.VisualStudio.Services&page=$p&per_page=100" -Method 'GET' -Headers $headers
     $items = $items + $response.items
 }
 
@@ -46,17 +46,22 @@ foreach ($result in $items) {
 
     For ($i = 6; $i -lt $parts.Count; $i++) {
         $filePath += "$($parts[$i])/"
-        # If($i -eq $parts.Count -1)
-        # {
-        #     $fileName = $parts[$i]
-        # }
+        If($i -eq $parts.Count -1)
+        {
+            if($parts[$i] -ne "vss-extension.json")
+            {
+                Write-Host "Error with: $url"
+            }
+        }
     }
 
     $filePath = $filePath.Substring(0, $filePath.Length - 1)
 
     $url = "https://raw.githubusercontent.com/$account/$repo/$filePath"
 
-    #Invoke-WebRequest $url -OutFile "./vss-extensions/$account-$repo.json"
+    if(-Not (Test-Path "./vss-extensions/$account-$repo.json" -PathType Leaf)) {
+        Invoke-WebRequest $url -OutFile "./vss-extensions/$account-$repo.json"
+    }
 
     if($index.ContainsKey("$account-$repo"))
     {
@@ -92,4 +97,4 @@ foreach($file in Get-ChildItem -Path "./vss-extensions/")
 }
 
 $serviceEndpoints | ConvertTo-Json -Depth 10 | Out-File -FilePath "./vss-extensions-serviceconnections.json"
-$vssExtensions | ConvertTo-Json -Depth 10 | Out-File -FilePath "./vss-extensions.json"
+$vssExtensions | ConvertTo-Json -Depth 10 | Out-File -FilePath "./vss-extensions-all.json"
