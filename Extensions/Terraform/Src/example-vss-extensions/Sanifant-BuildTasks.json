@@ -1,0 +1,62 @@
+{
+    "manifestVersion": 1,
+    "id": "build-release-task",
+    "version": "1.0.14",
+    "name": "SampleManager Build Tasks",
+    "publisher": "stefanpetersen",
+    "description": "Tools for building/deleting SampleManager Instances.",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "images/SampleManager.png"        
+    },    
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "scopes": [
+        "vso.build_execute",
+        "vso.release_execute"
+    ],
+    "content": {
+        "details": {
+            "path": "readme.md"
+        }
+    },
+    "contributions": [
+        {
+            "id": "sm-build-instance-taskv1",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "Create-Instance-Task"
+            }
+        },
+        {
+            "id": "sm-delete-instance-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "Delete-Instance-Task"
+            }
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/Sanifant/BuildTasks"
+    },
+    "files": [
+        {
+            "path": "Create-Instance-Task"
+        },
+        {
+            "path": "Delete-Instance-Task"
+        }
+    ]
+}

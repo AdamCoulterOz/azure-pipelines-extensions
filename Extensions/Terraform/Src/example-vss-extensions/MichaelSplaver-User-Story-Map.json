@@ -1,0 +1,44 @@
+{
+  "manifestVersion": 1,
+  "id": "user-story-map",
+  "publisher": "MichaelSplaver",
+  "version": "1.0.4",
+  "name": "User Story Map",
+  "description": "User Story Map",
+  "public": false,
+  "categories": [ "Azure Boards" ],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "user-story-map-hub",
+      "type": "ms.vss-web.hub",
+      "targets": [
+        "ms.vss-work-web.work-hub-group",
+        "ms.vss-work-web.requirement-backlog-toolpane",
+        "ms.vss-work-web.portfolio-backlog-toolpane",
+        "ms.vss-work-web.iteration-backlog-toolpane"
+      ],
+      "properties": {
+        "title": "User Story Map",
+        "name": "User Story Map",
+        "uri": "user-story-map-hub.html",
+        "registeredObjectId": "backlogPanelObject"
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "user-story-map-hub.html",
+      "addressable": true
+    },
+    {
+      "path": "node_modules/vss-web-extension-sdk/lib",
+      "addressable": true,
+      "packagePath": "lib"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+    "manifestVersion": 1,
+    "id": "appsettings-vars-in-artifacts",
+    "name": "Replace appsettings variables in artifacts",
+    "version": "0.0.12",
+    "publisher": "Estrada",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Replace appsettings json variables with environment variables in artifacts.",
+    "content": {
+        "details": {
+            "path": "overview.md"
+        }
+    },
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
+    "files": [
+        {
+            "path": "buildAndReleaseTask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildAndReleaseTask"
+            }
+        }
+    ]
+}

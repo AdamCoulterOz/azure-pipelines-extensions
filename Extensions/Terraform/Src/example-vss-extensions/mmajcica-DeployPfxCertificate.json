@@ -1,0 +1,88 @@
+{
+  "manifestVersion": 1,
+  "extensionId": "PicklesGenerator",
+  "name": "Pickles Generator",
+  "version": "1.0.2",
+  "publisher": "mmajcica",
+  "description": "Generates your Pickles living documentation.",
+  "public": false,
+  "galleryFlags": [
+    "Public"
+  ],
+  "icons": {
+    "default": "images/logo.png",
+    "large": "images/logo-large.png"
+  },
+  "categories": [
+    "Build and release"
+  ],
+  "tags": [
+    "Pickles",
+    "Test",
+    "Testing",    
+    "Living Documentation",
+    "Report",
+    "Reports"
+  ],
+  "links": {
+    "home": {
+      "uri": "http://blog.majcica.com/"
+    },
+    "support": {
+      "uri": "http://blog.majcica.com/2018/05/07/living-documentation-and-test-reports-in-vsts-tfs-pipelines/"
+    },
+    "repository": {
+        "uri": "https://github.com/mmajcica/PicklesGeneratorTask"
+    },
+    "issues": {
+        "uri": "https://github.com/mmajcica/PicklesGeneratorTask/issues"
+    }
+  },
+  "repository": {
+      "type": "git",
+      "uri": "https://github.com/mmajcica/PicklesGeneratorTask"
+  },
+  "branding": {
+    "color": "#e9ebed",
+    "theme": "light"
+  },
+  "screenshots": [
+    {
+        "path": "images/screenshot.png"
+    }
+  ],
+  "content": {
+    "details": {
+        "path": "README.md"
+    },
+    "license": {
+        "path": "LICENSE.txt"
+    }
+},
+  "files": [
+    {
+      "path": "images",
+      "addressable": true
+    },
+    {
+      "path": "task"
+    }
+  ],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "PicklesGeneratorTask",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "task"
+      }
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+    "manifestVersion": 1,
+    "id": "githubprlabels",
+    "name": "GitHub PR labels",
+    "version": "0.1.5",
+    "publisher": "fbeltrao",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Add or remove labels in GitHub pull request",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "tags": [
+        "github",
+        "pull request",
+        "label"
+    ],
+    "public": true,
+    "icons": {
+        "default": "images/icon.png"        
+    },   
+    "screenshots": [
+        { "path": "images/screenshot-01.png" }
+    ],
+    "bugs": {
+        "url": "https://github.com/fbeltrao/azure-pipeline-github-tasks/issues"
+    },
+    "homepage": "https://github.com/fbeltrao/azure-pipeline-github-tasks/blob/master/GitHubPRLabel/README.md",
+    "links": {
+        "getstarted": {
+            "uri": "https://github.com/fbeltrao/azure-pipeline-github-tasks"
+        },
+        "support": {
+            "uri": "https://github.com/fbeltrao/azure-pipeline-github-tasks/issues"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/fbeltrao/azure-pipeline-github-tasks"
+    },
+    "files": [
+        {
+            "path": "task"
+        },
+        {
+            "path": "images",
+            "addressable": true
+        }
+    ],
+    "content": {
+        "details": { "path": "readme.md" }
+    },
+    "contributions": [
+        {
+            "id": "task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": { "name": "task" }
+        }
+    ]
+}

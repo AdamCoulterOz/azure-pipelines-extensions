@@ -1,0 +1,73 @@
+{
+    "manifestVersion": 1,
+    "id": "GitDownloader",
+    "name": "Git Repository Downloader",
+    "version": "0.4.7",
+    "publisher": "fakhrulhilal-maktum",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Download additional git repository from public repository or this TFS",
+    "galleryFlags": [
+        "Public"
+    ],
+    "categories": [
+        "Build and release"
+    ],
+    "tags": [
+        "build",
+        "git"
+    ],
+    "icons": {
+        "default": "images/logo.png"        
+    },
+    "content": {
+        "details": { 
+            "path": "README.md"
+        },
+        "license": {
+            "path": "LICENSE"
+        }
+    },
+    "files": [
+        {
+            "path": "GitDownloader"
+		},
+        {
+            "path": "images",
+            "addressable": true
+        }
+    ],
+    "contributions": [
+        {
+            "id": "git-downloader",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "GitDownloader"
+            }
+        }
+    ],
+    "links": {
+        "learn": {
+            "uri": "https://github.com/fakhrulhilal/TFSGitDownloader/blob/master/README.md"
+        },
+        "repository": {
+            "uri": "https://github.com/fakhrulhilal/TFSGitDownloader.git"
+        },
+        "license": {
+            "uri": "https://github.com/fakhrulhilal/TFSGitDownloader/blob/master/LICENSE"
+        },
+        "issues": {
+            "uri": "https://github.com/fakhrulhilal/TFSGitDownloader/issues"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/fakhrulhilal/TFSGitDownloader.git"
+    }
+}

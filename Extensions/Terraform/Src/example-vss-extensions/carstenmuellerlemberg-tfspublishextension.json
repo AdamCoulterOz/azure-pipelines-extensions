@@ -1,0 +1,51 @@
+{
+    "manifestVersion": 1,
+    "id": "myappci-upload-task",
+    "name": "MyAppCI build tools",
+    "version": "0.0.88",
+    "public": true,
+    "publisher": "MyAppCI",
+    "content": {
+        "details": {
+            "path": "overview.md"
+        }
+    },
+    "galleryFlags": [
+            "Preview"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Tools to publish apps into MyAppCI CI branches.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "PublisherLogo.png"        
+    },
+    "links": {
+        "support": {
+            "uri": "https://myappci.com"
+        }
+    },
+    "files": [
+        {
+            "path": "publishTask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "publishTask"
+            }
+        }
+    ]
+}
+ 

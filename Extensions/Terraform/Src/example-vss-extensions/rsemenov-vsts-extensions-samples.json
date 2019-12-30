@@ -1,0 +1,61 @@
+{
+    "manifestVersion": 1,
+    "id": "pr-status-menu-extension-1",
+    "version": "0.1.11",
+    "name": "Dynamic menu extension to status",
+    "description": "Visual Studio Services extension",
+    "publisher": "MS-Sample",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "images/logo.png"
+    },
+    "contributions": [
+        {
+            "id": "sample-pr-status-menu",
+            "type": "ms.vss-web.menu",
+            "targets": [
+                "ms.vss-code-web.pull-request-status-menu"
+            ],
+            "properties": {
+                "statusGenre": "fabricam-ci-service",
+                "statusName": "ci-build"
+            }
+        },
+        {
+            "id": "sample-pr-status-action-provider",
+            "type": "ms.vss-web.action-provider",
+            "targets": [
+                "MS-Sample.pr-status-menu-extension-1.sample-pr-status-menu"
+            ],
+            "properties": {
+                "group": "contributed",
+                "uri": "dynamic.html"
+            }
+        }
+    ],
+    "scopes": [
+        "vso.code"
+    ],
+    "files": [
+        {
+            "path": "dynamic.html",
+            "addressable": true
+        },
+        {
+            "path": "scripts",
+            "addressable": true
+        },
+        {
+            "path": "node_modules/vss-web-extension-sdk",
+            "addressable": true
+        },
+        {
+            "path": "images/logo.png",
+            "addressable": true
+        }
+    ]
+}

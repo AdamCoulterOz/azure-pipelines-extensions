@@ -1,0 +1,36 @@
+{
+    "manifestVersion": 1,
+    "id": "pagespeed-benchmark-task",
+    "name": "PageSpeed Benchmark Tool",
+    "version": "0.0.6",
+    "publisher": "FerencHammerl",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "description": "Tools to track pageSpeed changes of your websites after each release",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/pagespeed-icon.png"
+    },
+    "files": [
+        {
+            "path": "pageSpeedTask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "pagespeed-benchmark-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "pageSpeedTask"
+            }
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "manifestVersion": 1,
+    "id": "my-sample-task",
+    "name": "Azure DevOps Sample Task",
+    "version": "0.0.21",
+    "publisher": "{{YOUR_PUBLISHER_NAME}}",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "The description here will appear in the Azure DevOps marketplace.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"
+    },
+    "files": [
+        {
+            "path": "My-Sample-Task"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "My-Sample-Task"
+            }
+        }
+    ]
+}

@@ -1,0 +1,35 @@
+{
+    "manifestVersion": 1,
+    "id": "IISAplicationManageinIIS",
+    "publisher": "IISAplicationManageinIIS",
+    "version": "1.0.4",
+    "name": "IIS Aplication Manage in IIS",
+    "description": "创建或更新网站、Web 应用、虚拟目录和应用程序池",
+    "public": false,
+    "categories": ["Build and release"],
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "IISAplicationManageinIIS.task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildAndReleaseTask"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "buildAndReleaseTask"
+        }
+    ]
+}

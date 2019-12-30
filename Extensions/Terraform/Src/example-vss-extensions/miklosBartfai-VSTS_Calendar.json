@@ -1,0 +1,53 @@
+{
+	"manifestVersion": 1,
+	"id": "CalendarExtension",
+	"version": "0.0.2",
+	"name": "Semilab Calendar Extension",
+	"description": "calendar extension",
+	"publisher": "MiklosBartfai",
+	"targets": 
+	[
+		{"id": "Microsoft.VisualStudio.Services"}
+	],
+	"icons": 
+	{
+		"default": "images/logo.png"
+	},
+	"content": 
+	{
+		"details": {"path": "README.md"}
+	},
+	"contributions": 
+	[
+		{
+			"id": "MiklosBartfai.CalendarExtension",
+			"type": "ms.vss-web.hub",
+			"description": "TODO",
+			"targets": 
+			[
+				"ms.vss-work-web.work-hub-group"
+			],
+			"properties": 
+			{
+				"name": "Calendar",
+				"order": 99,
+				"uri": "calendar.html"
+			}
+		}
+	],
+	"scopes": 
+	[
+		"vso.work"
+	],
+	"files": [
+		{
+			"path": "calendar.html", "addressable": true
+		},
+		{
+			"path": "scripts", "addressable": true
+		},
+		{
+			"path": "images/logo.png", "addressable": true
+		}
+	]
+}

@@ -1,0 +1,92 @@
+{
+  "id": "AdvancedInstallerTool",
+  "publisher": "Caphyon",
+  "name": "Advanced Installer Tool Installer",
+  "version": "1.1.0",
+  "description": "Acquires a specific version of Advanced Installer from internet or the tools cache and adds it to the PATH.",
+  "tags": [
+    "build",
+    "release",
+    "download",
+    "setup",
+    "advanced installer",
+    "tool installer"
+  ],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services.Cloud"
+    },
+    {
+      "id": "Microsoft.TeamFoundation.Server",
+      "version": "[16.0,)"
+    }
+  ],
+  "categories": [
+    "Build and release"
+  ],
+  "branding": {
+    "color": "rgb(239, 237, 233)",
+    "theme": "light"
+  },
+  "content": {
+    "details": {
+      "path": "README.md"
+    },
+    "license": {
+      "path": "LICENSE.txt"
+    },
+    "changelog": {
+      "path": "CHANGELOG.md"
+    }
+  },
+  "files": [
+    {
+      "path": "AdvinstTool"
+    },
+    {
+      "path": "images",
+      "addressable": true
+    }
+  ],
+  "icons": {
+    "default": "images/advinst-logo.png"
+  },
+  "links": {
+    "home": {
+      "uri": "https://www.advancedinstaller.com"
+    },
+    "learn": {
+      "uri": "http://www.advancedinstaller.com/features.html"
+    },
+    "repository": {
+      "uri": "https://github.com/caphyon/advinst-vsts-tool"
+    },
+    "issues": {
+      "uri": "https://github.com/caphyon/advinst-vsts-tool/issues"
+    },
+    "support": {
+      "uri": "http://www.advancedinstaller.com/support.html"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/caphyon/advinst-vsts-tool"
+  },
+  "galleryProperties": [
+    {
+      "markdownItParser": true
+    }
+  ],
+  "contributions": [
+    {
+      "id": "Caphyon.AdvancedInstaller.Tool",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "AdvinstTool"
+      }
+    }
+  ]
+}

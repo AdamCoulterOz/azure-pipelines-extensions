@@ -1,0 +1,99 @@
+{
+    "manifestVersion": 1,
+    "id": "storage-account-managment",
+    "name": "Manage Storage Account Release Tools",
+    "version": "0.5.1",
+    "publisher": "meanin",
+    "public": true,
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Tools for managing creation Storage Accounts and its objects.",
+    "categories": [
+        "Build and release"
+    ],
+    "tags": [
+        "Azure",
+        "Storage",
+        "Table",
+        "KeyVault",
+        "Json"
+    ],    
+    "content": {
+        "details": {
+            "path": "README.md"
+        },
+        "license": {
+            "path": "LICENSE"
+        }
+    },
+    "links": {
+        "getstarted": {
+            "uri": "https://github.com/meanin/vsts-tasks"
+        },
+        "support": {
+            "uri": "https://github.com/meanin/vsts-tasks"
+        }
+    },
+    "icons": {
+        "default": "extension-icon.png"        
+    },
+    "files": [
+        {
+            "path": "createstorageaccount"
+        },
+        {
+            "path": "connectionstringtokeyvault"
+        },
+        {
+            "path": "seedtablestorage"
+        },
+        {
+            "path": "overridejson"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "create-storage-account-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "createstorageaccount"
+            }
+        },
+        {
+            "id": "connection-string-to-keyvault-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "connectionstringtokeyvault"
+            }
+        },
+        {
+            "id": "seed-table-storage",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "seedtablestorage"
+            }
+        },
+        {
+            "id": "override-json",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "overridejson"
+            }
+        }
+    ]
+}

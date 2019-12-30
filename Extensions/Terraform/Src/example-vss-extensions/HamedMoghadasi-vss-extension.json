@@ -1,0 +1,73 @@
+{
+  "manifestVersion": 1.0,
+  "id": "leadTime-and-cycleTime-diagram",
+  "publisher": "HamedMoghadasi",
+  "version": "0.4.25",
+  "name": "LeadTime nd CycleTime diagram",
+  "description": "Calculate and display LeadTime and CycleTime digram in each work item.",
+  "public": false,
+  "tags": ["LeadTime", "CycleTime", "LeadTime And CycleTime"],
+  "categories": ["Plan and track"],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    },
+    {
+      "id": "Microsoft.TeamFoundation.Server",
+      "version": "[15.0,)"
+    }
+  ],
+  "icons": {
+    "default": "src/images/logo.png"
+  },
+  "scopes": ["vso.work"],
+  "files": [
+    {
+      "path": "App.html",
+      "addressable": true
+    },
+    {
+      "path": "src/modules",
+      "addressable": true,
+      "packagePath": "modules"
+    },
+    {
+      "path": "src/scripts",
+      "addressable": true,
+      "packagePath": "scripts"
+    },
+    {
+      "path": "node_modules/vss-web-extension-sdk/lib",
+      "addressable": true,
+      "packagePath": "lib"
+    },
+    {
+      "path": "src/styles",
+      "addressable": true,
+      "packagePath": "styles"
+    },
+    {
+      "path": "node_modules/jquery/dist",
+      "addressable": true,
+      "packagePath": "dist"
+    },
+    {
+      "path": "src/images",
+      "addressable": true,
+      "packagePath": "images"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "leadTime-and-cycleTime-diagram",
+      "type": "ms.vss-work-web.work-item-form-group",
+      "description": "Calculate and display LeadTime and CycleTime digram in each work item.",
+      "targets": ["ms.vss-work-web.work-item-form"],
+      "properties": {
+        "name": "Lead And Cycle Time Diagram",
+        "uri": "App.html",
+        "height": 250
+      }
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+	"manifestVersion": 1,
+	"id": "RS-Code-BuildDefinitionFromHere",
+	"version": "0.1.6",
+	"name": "Build Definition from here",
+	"description": "Easily create your build definition from a specific path in your repository",
+	"publisher": "ricardoserradasext",
+	"icons": {
+		"default": "images/logo.png"
+	},
+	"tags": [
+        "build",
+		"code",
+		"repository"
+    ],
+    "categories": [
+        "Build and release"
+    ],
+	"content": {
+		"details": {
+			"path": "details.md"
+		}
+	},
+	"links": {
+		"repository": {
+			"uri": "https://github.com/ricardoserradas/VSTS-BuildDefinition-FromSource"
+		}		
+	},
+	"branding": {
+		"color": "rgb(0, 128, 0)",
+		"theme": "dark"
+	},
+	"public": false,
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+	"contributions": [
+		{
+			"id": "RS-Code-BuildDefinitionFromHere-build-menu-item",
+			"description": "The menu option to create a build definition from there.",
+			"type": "ms.vss-web.action",
+			"targets": [
+				"ms.vss-code-web.source-item-menu"
+			],
+			"properties": {
+				"text": "Create a build definition from here",
+				"title": "Create a build definition from here",
+				"icon": "images/icon.png",
+				"groupId": "actions",
+				"uri": "build-menu-item.html"
+			}
+		}
+	],
+	"files":[
+		{
+			"path": "images/logo.png", "addressable": true
+		},
+		{
+			"path": "details.md", "addressable": true
+		},
+		{
+			"path": "build-menu-item.html", "addressable": true
+		},
+		{
+			"path": "sdk/scripts/VSS.SDK.js", "addressable": true
+		}
+	]
+}

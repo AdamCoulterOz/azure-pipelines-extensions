@@ -1,0 +1,63 @@
+{
+  "manifestVersion": 1,
+  "public": true,
+  "id": "BTDFProjectUpdater",
+  "version": "0.1.9",
+  "name": "BTDF Project Updater",
+  "description": "Modifies the Product Version and Product ID in the BTDFProj file prior to creating the MSI.",
+  "publisher": "MacrossPlusInc",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "icons": {
+    "default": "images/extension-icon.png"
+  },
+  "scopes": [
+    "vso.build",
+    "vso.build_execute"
+  ],
+  "categories": ["Azure Pipelines", "Azure Artifacts"],
+  "tags": [
+    "BTDF",
+    "BizTalk",
+    "Version",
+    "GitVersion"
+  ],
+
+  "content": {
+    "details": { "path": "overview.md" },
+    "license": { "path": "LICENSE" }
+  },
+  "links": {
+    "repository": {"uri": "https://github.com/Antebios/vsts-btdf-projver-task"  },
+    "support": { "uri": "https://github.com/Antebios/vsts-btdf-projver-task/issues" }
+  },
+  "repository": { 
+    "type": "git", 
+    "uri": "https://github.com/Antebios/vsts-btdf-projver-task" 
+  }, 
+  "contributions": [
+    {
+      "id": "btdf-project-updater-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "task"
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "images",
+      "addressable": true
+    },
+    {
+
+      "path": "task"
+    }
+  ]
+}

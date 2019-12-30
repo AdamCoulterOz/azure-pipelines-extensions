@@ -1,0 +1,62 @@
+{
+    "manifestVersion": 1,
+    "id": "appName",
+    "version": "0.0.1",
+    "name": "appName",
+    "publisher": "authorsName",
+    "description": "description",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"
+    },
+    "scopes": [
+        "vso.extension",
+        "vso.profile"
+    ],
+    "tags": [
+        ""
+    ],
+    "categories": [
+        "Build and release"
+    ],
+    "gallery-flags": [
+        "Preview"
+    ],
+    "branding": {
+        "color": "rgb(34, 34, 34)",
+        "theme": "dark"
+    },
+    "content": {
+        "details": {
+            "path": "EXTENSION.md"
+        },
+        "license": {
+            "path": ""
+        }
+    },
+    "links": {
+        "home": {
+            "uri": ""
+        },
+        "getstarted": {
+            "uri": ""
+        },
+        "support": {
+            "uri": ""
+        },
+        "repository": {
+            "uri": "https://insert-something-real-here"
+        },
+        "issues": {
+            "uri": ""
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://insert-something-real-here"
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "manifestVersion": 1,
+    "id": "DanielMeixnerBuildTools",
+    "name": "Daniel Meixner Build Tools",
+    "version": "G_VERSION",
+    "publisher": "DanielMeixner",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Daniel Meixner's build and release tools.",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "/images/icon.png"        
+    },
+    "files": [
+        {
+            "path": "buildtask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildtask"
+            }
+        }
+    ]
+}

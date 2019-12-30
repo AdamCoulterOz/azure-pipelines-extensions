@@ -1,0 +1,62 @@
+{
+    "manifestVersion": 1,
+    "id": "pull-request-column",
+    "version": "0.1.26",
+    "name": "Pull Request Column",
+    "scopes": [ "vso.work", "vso.work_write", "vso.code" ],
+    "description": "Describe your extension.",
+    "publisher": "your-publisher",
+    "icons": {
+        "default": "img/logo.png"
+    },
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "tags": [
+        "Sample"
+    ],
+    "content": {
+        "details": {
+            "path": "details.md"
+        }
+    },
+    "branding": {
+        "color": "rgb(220, 235, 252)",
+        "theme": "light"
+    },
+    "files": [
+        {
+            "path": "img",
+            "addressable": true
+        },
+        {
+            "path": "build",
+            "addressable": true
+        },
+        {
+            "path": "column.html",
+            "addressable": true
+        }
+    ],
+    "categories": [
+        "Integrate"
+    ],
+    "contributions": [
+        {
+            "id": "pull-request-column",
+            "type": "ms.vss-work-web.query-column",
+            "description": "",
+            "targets": [
+                "ms.vss-work-web.query-result-columns"
+            ],
+            "properties": {
+                "name": "Associated Pull Request",
+                "title": "Pull Request",
+                "group": "contributed",
+                "uri": "column.html"
+            }
+        }
+    ]
+}

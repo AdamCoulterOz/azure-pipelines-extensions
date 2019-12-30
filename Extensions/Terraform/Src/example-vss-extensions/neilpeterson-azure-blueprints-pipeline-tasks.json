@@ -1,0 +1,56 @@
+{
+	"manifestVersion": 1,
+	"id": "azure-blueprints",
+	"version": "1.6.0",
+	"name": "Azure Blueprints",
+	"description": "A VSTS Build Task that creates and assigns Azure Blueprints.",
+	"publisher": "nepeters",
+	"categories": [
+		"Azure Pipelines"
+	],
+    "content": {
+        "details": {
+            "path": "docs/overview.md"
+        }
+    },
+	"public": true,
+	"galleryFlags": [
+        "Preview"
+    ],
+	"targets": [{
+		"id": "Microsoft.VisualStudio.Services"
+	}],
+	"icons": {
+		"default": "icon.png"
+	},
+	"contributions": [{
+			"id": "CreateBlueprint",
+			"type": "ms.vss-distributed-task.task",
+			"targets": [
+				"ms.vss-distributed-task.tasks"
+			],
+			"properties": {
+				"name": "createBlueprint"
+			}
+		},
+		{
+			"id": "AssignBlueprint",
+			"type": "ms.vss-distributed-task.task",
+			"targets": [
+				"ms.vss-distributed-task.tasks"
+			],
+			"properties": {
+				"name": "assignBlueprint"
+			}
+		}
+	],
+	"files": [{
+			"path": "assignBlueprint",
+			"addressable": true
+		},
+		{
+			"path": "createBlueprint",
+			"addressable": true
+		}
+	]
+}

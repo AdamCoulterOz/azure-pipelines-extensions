@@ -1,0 +1,75 @@
+{
+    "manifestVersion": 1,
+    "id": "gl-vsts-tasks-files",
+    "name": "Files Helpers Build and Release Tasks",
+    "version": "0.0.0",
+    "publisher": "geeklearningio",    
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Zip (with xplat support) or copy files with full minimatch support using these Build and Release Management tasks.",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "extension-icon.png"        
+    },
+    "tags": [
+        "file",
+        "files",
+        "copy",
+        "zip",
+        "micromatch",
+        "multimatch",
+        "minimatch"
+    ],
+    "screenshots": [
+        {
+            "path": "Screenshots/TestBuild.png"
+        },
+        {
+            "path": "Screenshots/Add-Task-CopyExt.png"
+        }
+        ,
+        {
+            "path": "Screenshots/Add-Task-Zip.png"
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "overview.md"
+        },
+        "license": {
+            "path": "LICENSE.txt"
+        }
+    },
+    "links": {
+        "getstarted": {
+            "uri": "https://github.com/geeklearningio/gl-vsts-tasks-files/wiki"
+        },
+        "support": {
+            "uri": "https://github.com/geeklearningio/gl-vsts-tasks-files/issues"
+        },
+        "repository": {
+            "uri": "https://github.com/geeklearningio/gl-vsts-tasks-files"
+        },
+        "issues": {
+            "uri": "https://github.com/geeklearningio/gl-vsts-tasks-files/issues"
+        }
+    },
+    "branding": {
+        "color": "#008B8B",
+        "theme": "dark"
+    },  
+    "files": [
+        {
+            "path": "Tasks"
+        },
+        {
+            "path": "Screenshots",
+            "addressable": true
+        }
+    ]
+}

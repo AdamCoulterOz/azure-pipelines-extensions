@@ -1,44 +1,18 @@
 {
   "manifestVersion": 1,
-  "id": "maikvandergaag-trigger-pipeline",
-  "name": "Trigger Azure DevOps Pipeline",
-  "version": "1.0.0",
+  "id": "maikvandergaag-publish-power-bi-file",
+  "name": "Publish Power BI File",
+  "version": "1.2.4",
   "publisher": "maikvandergaag",
-  "description": "Build and Release Management task to trigger a Azure DevOps release or build pipeline.",
   "public": true,
   "targets": [
     {
       "id": "Microsoft.VisualStudio.Services"
     }
   ],
-  "icons": {
-    "default": "images/icon.png"
-  },
-  "categories": [
-    "Azure Pipelines"
-  ],
-  "tags": [
-    "Release",
-    "Build",
-    "Azure DevOps",
-    "Trigger",
-    "3fifty"
-  ],
-  "screenshots": [
-    {
-      "path": "images/screenshot-1.png"
-    },
-    {
-      "path": "images/screenshot-2.png"
-    }
-  ],
-  "content": {
-    "license": {
-      "path": "license.md"
-    },
-    "details": {
-      "path": "readme.md"
-    }
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/MaikvanderGaag/msft-extensions/tree/master/extensions/publishpowerbifile"
   },
   "links": {
     "getstarted": {
@@ -51,104 +25,67 @@
       "uri": "https://github.com/MaikvanderGaag/msft-extensions/issues"
     }
   },
-  "repository": {
-    "type": "git",
-    "uri": "https://github.com/maikvandergaag/msft-extensions/tree/master/azuredevops/triggerpipeline"
+  "scope": [
+    "vso.build"
+  ],
+  "description": "Build and Release Management tasks publishing a PowerBI (pbix) file to PowerBI.",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "tags": [
+    "Release",
+    "Build",
+    "PowerBI",
+    "pbix",
+    "3fifty"
+  ],
+  "content": {
+    "license": {
+      "path": "license.txt"
+    },
+    "details": {
+      "path": "readme.md"
+    }
   },
-  "branding": {
-    "color": "rgb(0, 171, 236)",
-    "theme": "light"
+  "icons": {
+    "default": "icon.png"
   },
   "contributions": [
     {
-      "id": "TriggerPipeline",
+      "id": "PublishPowerBIFile",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
       ],
       "properties": {
-        "name": "TriggerPipeline"
-      }
-    },
-    {
-      "id": "azuredevops-endpoint-type",
-      "description": "Service Endpoint for a Azure DevOps API connection",
-      "type": "ms.vss-endpoint.service-endpoint-type",
-      "targets": [
-        "ms.vss-endpoint.endpoint-types"
-      ],
-      "properties": {
-        "name": "azuredevopsAPI",
-        "displayName": "Azure DevOps API",
-        "url": {
-          "displayName": "Organization Url",
-          "value": "https://dev.azure.com/[organization]"
-        },
-        "dataSources": [
-          {
-            "name": "projects",
-            "endpointUrl": "{{endpoint.url}}/_apis/projects",
-            "resultSelector": "jsonpath:$.value[?(@.state=='wellFormed')]"
-          },
-          {
-            "name": "buildDefinitions",
-            "endpointUrl": "{{endpoint.url}}/{{project}}/_apis/build/definitions",
-            "resultSelector": "jsonpath:$.value[?(@.quality=='definition')]"
-          },
-          {
-            "name": "releaseDefinitions",
-            "endpointUrl": "{{endpoint.releaseUrl}}/{{project}}/_apis/release/definitions",
-            "resultSelector": "jsonpath:$.value[?(@.isDeleted==false)]"
-          }
-        ],
-        "inputDescriptors": [
-          {
-              "id": "releaseUrl",
-              "name": "Release API Url",
-              "description": "The url of the release API",
-              "inputMode": "textbox",
-              "isConfidential": false,
-              "validation": {
-                  "isRequired": true,
-                  "dataType": "string",
-                  "maxLength": 300
-              },
-              "values": {
-                "inputId": "releaseUrlInput",
-                "defaultValue": "https://vsrm.dev.azure.com/[organization]"
-              }
-          }
-        ],
-        "authenticationSchemes": [
-          {
-            "type": "ms.vss-endpoint.endpoint-auth-scheme-token",
-            "headers": [
-              {
-                "name": "Authorization",
-                "value": "Basic {{ #base64 \"token\" \":\" endpoint.apitoken }}"
-              }
-            ],
-            "inputDescriptors": [
-              {
-                "id": "apitoken",
-                "name": "Personal Access Token",
-                "description": "Personal access token.",
-                "inputMode": "passwordbox",
-                "isConfidential": true,
-                "validation": {
-                  "isRequired": true,
-                  "dataType": "string"
-                }
-              }
-            ]
-          }
-        ]
+        "name": "publishpowerbifile"
       }
     }
   ],
   "files": [
     {
-      "path": "triggerpipeline"
+      "path": "publishpowerbifile/publishpowerbi.ps1"
+    },
+    {
+      "path": "publishpowerbifile/run-task.ps1"
+    },
+    {
+      "path": "publishpowerbifile/task.json"
+    },
+    {
+      "path": "publishpowerbifile/icon.png"
+    },
+    {
+      "path": "publishpowerbifile/ps_modules/vststasksdk"
+    },
+    {
+      "path": "publishpowerbifile/ps_modules/PowerBi"
+    },
+    {
+      "path": "publishpowerbifile/Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
+    },
+    {
+      "path": "publishpowerbifile/Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll"
     }
   ]
 }

@@ -1,0 +1,45 @@
+{
+    "manifestVersion": 1,
+    "id": "vsts-pullrequests-hub",
+    "publisher": "bsg",
+    "version": "1.0.9",
+    "name": "VSTS Pullrequests Hub",
+    "description": "A Visual Studio Services extension to aggregate all pull requests from all repositories into a single overview.",
+    "public": false,
+    "categories": [
+        "Code"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "my-hub",
+            "type": "ms.vss-web.hub",
+            "targets": [
+                "ms.vss-code-web.code-hub-group"
+            ],
+            "properties": {
+                "name": "Pull Request Hub",
+                "uri": "my-hub.html"
+            }
+        }
+    ],
+    "scopes": [
+        "vso.code",
+        "vso.profile"
+    ],
+    "files": [
+        {
+            "path": "my-hub.html",
+            "addressable": true
+        },
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        }
+    ]
+}

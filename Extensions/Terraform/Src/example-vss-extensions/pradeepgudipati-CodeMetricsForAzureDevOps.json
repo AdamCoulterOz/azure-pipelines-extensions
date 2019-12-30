@@ -1,0 +1,52 @@
+{
+    "manifestVersion": 1,
+    "id": "VSTS-Code-Analytics",
+    "publisher": "PradeepGudipati",
+    "version": "1.0.1",
+    "name": "Project Code Analytics",
+    "description": "VSTS Extension that provides simple analytics for your repository",
+    "public": false,
+    "targets": [{
+        "id": "Microsoft.VisualStudio.Services"
+    }],
+    "contributions": [{
+        "id": "Project-Analytics",
+        "type": "ms.vss-web.hub",
+        "targets": [
+            "ms.vss-code-web.code-hub-group"
+        ],
+        "properties": {
+            "name": "Project Code Analytics",
+            "uri": "Project-Code-Analytics.html"
+        }
+    }],
+    "content": {
+        "details": {
+            "path": "overview.md"
+        }
+    },
+    "categories": [
+        "Code"
+    ],
+    "tags": [
+        "Code", "Analytics", "Commits", "Efficiency"
+    ],
+    "icons": {
+        "default": "images/logo.png"
+    },
+    "scopes": [
+        "vso.code",
+        "vso.code_status"
+
+    ],
+    "files": [{
+            "path": "Project-Code-Analytics.html",
+            "addressable": true
+        },
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        }
+    ]
+}

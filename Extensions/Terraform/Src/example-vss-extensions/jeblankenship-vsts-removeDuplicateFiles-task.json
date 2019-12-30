@@ -1,0 +1,68 @@
+{
+    "manifestVersion": 1,
+    "id": "removeduplicatefiles",
+    "name": "Remove Duplicate Files",
+    "version": "0.1.2",
+    "public": true,
+    "publisher": "docscode",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Task deletes files in destination folder if they exist in the source folder.",
+    "categories": [
+        "Build and release"
+    ],
+    "tags": [
+        "release",
+        "build",
+        "token",
+        "rename"
+    ],
+    "links": {
+        "learn": {
+            "uri": "https://github.com/jeblankenship/vsts-removeduplicatefiles-task#readme"
+        },
+        "support": {
+            "uri": "https://github.com/jeblankenship/vsts-removeduplicatefiles-task/issues"  
+        }
+    },
+    "icons": {
+        "default": "images/extension-icon.png"
+    },
+    "branding": {
+        "color": "#1C3272",
+        "theme": "dark"
+    },
+    "screenshots": [
+        {
+            "path": "images/screenshot-01.png"
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "README.md"
+        },
+        "license": {
+            "path": "LICENSE"
+        }
+    },
+    "files": [
+        {
+            "path": "task"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "removeduplicatefiles-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "task"
+            }
+        }
+    ]
+}

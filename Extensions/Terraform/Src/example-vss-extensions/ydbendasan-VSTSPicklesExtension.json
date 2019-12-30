@@ -1,0 +1,50 @@
+    {
+        "manifestVersion": 1,
+        "id": "pickles-extension",
+        "version": "0.1.1",
+        "name": "Pickles extension",
+        "description": "A new hub page to display Feature files as converted by Pickles.",
+        "publisher": "ydbendasan",
+        "targets": [
+            {
+                "id": "Microsoft.VisualStudio.Services"
+                }
+            ],
+        "icons": {
+            "default": "images/pickles.png"
+         },
+        "contributions": [
+            {
+                "id": "ydbendasan.Pickles",
+                "type": "ms.vss-web.hub",
+                "description": "Adds a 'Features' hub to the Work hub group.",
+                "targets": [
+                    "ms.vss-work-web.work-hub-group"
+                    ],
+                "properties": {
+                    "name": "Pickles",
+                    "order": 99,
+                    "uri": "PicklesTab.html"
+                }
+            }
+        ],
+        "scopes": [
+            "vso.work",
+            "vso.build",
+            "vso.test"
+        ],
+        "files": [
+            {
+                "path": "PicklesTab.html", "addressable": true
+            },
+            {
+                "path": "scripts", "addressable": true
+            },
+            {
+                "path": "sdk/scripts", "addressable": true
+            },
+            {
+                "path": "images/pickles.png", "addressable": true
+            }
+        ]
+    }

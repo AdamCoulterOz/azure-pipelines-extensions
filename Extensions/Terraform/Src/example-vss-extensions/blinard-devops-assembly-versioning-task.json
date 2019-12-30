@@ -1,0 +1,36 @@
+{
+    "manifestVersion": 1,
+    "id": "apply-assembly-versions-task",
+    "name": "Apply assembly version",
+    "version": "0.0.1",
+    "publisher": "idelata",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Tool to apply the provided version to the specified files in your repo.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": ""        
+    },
+    "files": [
+        {
+            "path": "buildAndReleaseTask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-apply-assembly-versions-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildAndReleaseTask"
+            }
+        }
+    ]
+}

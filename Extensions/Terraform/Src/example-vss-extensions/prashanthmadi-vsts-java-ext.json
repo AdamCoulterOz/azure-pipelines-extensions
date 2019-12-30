@@ -1,0 +1,68 @@
+{
+  "manifestVersion": 1,
+  "extensionId": "azure-java-deploy",
+  "name": "azure-java-deploy",
+  "version": "0.1.1",
+  "publisher": "prashanthmadi",
+  "description": "Best approach to deploy Java Application in Azure App Service",
+  "public": false,
+  "galleryFlags": [
+    "Preview"
+  ],
+  "icons": {
+    "default": "images/logo.png",
+    "large": "images/logo_large.png"
+  },
+  "categories": [
+    "Build and release"
+  ],
+  "tags": [
+    "Azure",
+    "App Service",
+    "Java",
+    "Deploy"
+  ],
+  "links": {
+    "home": {
+      "uri": "https://prmadi.com/"
+    },
+    "support": {
+      "uri": "https://prmadi.com/"
+    }
+  },
+  "branding": {
+    "color": "#777",
+    "theme": "light"
+  },
+  "content": {
+    "details": {
+      "path": "README.md"
+    }
+  },
+  "files": [
+    {
+      "path": "images",
+      "addressable": true
+    },
+    {
+      "path": "azure-java-deploy"
+    }
+  ],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "azure-java-deploy",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "azure-java-deploy"
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+    "manifestVersion": 1,
+    "id": "DacDeploy",
+    "name": "Data-tier Application Deployment",
+    "version": "1.0.0",
+    "publisher": "SocraticProgrammer",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "A task to deploy a Data-tier application package.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/SPLogo.png"
+    },
+    "files": [
+        {
+            "path": "DacDeploy"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "DacDeploy",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "DacDeploy"
+            }
+        }
+    ]
+}

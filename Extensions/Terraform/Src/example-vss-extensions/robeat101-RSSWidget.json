@@ -1,0 +1,48 @@
+ {
+        "manifestVersion": 1,
+        "id": "RSSFeed",
+        "version": "1.0.0",
+        "name": "My First Set of Widgets",
+        "description": "Samples containing different widgets extending dashboards",
+        "publisher": "rbansal",
+        "targets": [
+            {
+                "id": "Microsoft.VisualStudio.Services"
+            }
+        ],
+
+          "contributions": [
+            {
+                "id": "RSSFeedWidget",
+                "type": "ms.vss-dashboards-web.widget",
+                "targets": [
+                    "ms.vss-dashboards-web.widget-catalog"
+                ],
+                "properties": {
+                    "name": "RSS Feed Widget",
+                    "description": "This widget will display an RSS Feed",
+                    "previewImageUrl": "img/preview.png",                            
+                    "uri": "RSS-feed.html",
+                    "supportedSizes": [
+                         {
+                                "rowSpan": 3,
+                                "columnSpan": 2
+                            }
+                        ],
+                    "supportedScopes": ["project_team"]
+                }
+            }
+        ],
+
+                "files": [
+            {
+                "path": "RSS-feed.html", "addressable": true
+            },
+            {
+                "path": "sdk/scripts", "addressable": true
+            },
+            {
+                "path": "img", "addressable": true
+            }
+        ]
+    }

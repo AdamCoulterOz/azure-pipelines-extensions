@@ -1,0 +1,39 @@
+{
+    "manifestVersion": 1,
+    "id": "sample-extension",
+    "version": "0.1.0",
+    "name": "FunRetro for VSTS",
+    "description": "A simple extension for VSTS, which host FunRetro page",
+    "publisher": "rafarubiszewski",
+    "targets": [{
+        "id": "Microsoft.VisualStudio.Services"
+    }],
+    "icons": {
+        "default": "images/logo.png"
+    },
+    "contributions": [{
+        "id": "rafarubiszewski.FunRetro",
+        "type": "ms.vss-web.hub",
+        "description": "Adds a 'FunRetro' hub to the Work hub group.",
+        "targets": [
+            "ms.vss-work-web.work-hub-group"
+        ],
+        "properties": {
+            "name": "FunRetro",
+            "order": 99,
+            "uri": "retro.html"
+        }
+    }],
+    "scopes": [
+        "vso.work"
+    ],
+    "files": [{
+            "path": "retro.html",
+            "addressable": true
+        },
+        {
+            "path": "sdk/scripts",
+            "addressable": true
+        }
+    ]
+}

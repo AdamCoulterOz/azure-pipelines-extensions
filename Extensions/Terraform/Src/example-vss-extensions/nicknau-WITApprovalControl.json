@@ -1,0 +1,47 @@
+{
+    "manifestVersion": 1,
+    "id": "Approver-Embedded-Action-Control",
+    "publisher": "DriveTimeInc",
+    "version": "0.0.32",
+    "name": "Approver Embedded Action Control",
+    "description": "Changes the state of the change control when all approvers approve",
+    "icons": {
+        "default": "icon.png"
+    },
+    "public": false,
+    "categories": ["Code"],
+    "scopes": [
+        "vso.work_write"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {  
+            "id": "approver-work-item-form-control",
+            "type": "ms.vss-work-web.work-item-form-control",
+            "description": "Changes the state of the change control when all approvers approve",
+            "targets": [
+                "ms.vss-work-web.work-item-form"
+            ],
+            "properties": {
+                "name": "Approver Control",
+                "uri": "workItemControl.html",
+                "height": 30
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "workItemControl.html",
+            "addressable": true
+        },
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        }
+    ]
+}

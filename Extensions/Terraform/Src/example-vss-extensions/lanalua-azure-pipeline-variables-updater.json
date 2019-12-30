@@ -1,0 +1,80 @@
+{
+  "manifestVersion": 1,
+  "id": "lanalua-variableupdater",
+  "name": "Shared variable updater",
+  "version": "1.0.5",
+  "publisher": "lanalua",
+  "public": true,
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/lanalua/azure-pipeline-variables-updater/tree/master"
+  },
+  "links": {
+    "getstarted": {
+      "uri": "https://github.com/lanalua/azure-pipeline-variables-updater/wiki"
+    },
+    "repository": {
+      "uri": "https://github.com/lanalua/azure-pipeline-variables-updater"
+    },
+    "issues": {
+      "uri": "https://github.com/lanalua/azure-pipeline-variables-updater/issues"
+    }
+  },
+  "scope": [
+    "vso.build",
+    "vso.release"
+  ],
+  "description": "Task to update a variable in a variable group (library).\nRequires 'Allow Scripts to Access OAuth Token' and administrator role to 'Project Collection Build Service' in the variable group.",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "tags": [
+    "Build",
+    "Release",
+    "Variable",
+    "Pipeline",
+    "Azure DevOps"
+  ],
+  "content": {
+    "license": {
+      "path": "license.txt"
+    },
+    "details": {
+      "path": "readme.md"
+    }
+  },
+  "icons": {
+    "default": "icon.png"
+  },
+  "contributions": [
+    {
+      "id": "variableupdater",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "variableupdater"
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "variableupdater/run-task.ps1"
+    },
+    {
+      "path": "variableupdater/task.json"
+    },
+    {
+      "path": "variableupdater/icon.png"
+    },
+    {
+      "path": "variableupdater/ps_modules/vststasksdk"
+    }
+  ]
+}

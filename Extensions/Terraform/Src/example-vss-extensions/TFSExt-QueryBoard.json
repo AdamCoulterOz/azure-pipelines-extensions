@@ -1,0 +1,93 @@
+{
+  "manifestVersion": 1.0,
+  "id": "query-board",
+  "version": "0.0.1",
+  "name": "Query board",
+  "description": "",
+  "publisher": "boykoant",
+  "galleryFlags": [
+    "Preview"
+  ],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services.Cloud"
+    }
+  ],
+  "icons": {
+    "default": "img/icon.png"
+  },
+  "contributions": [
+    {
+      "id": "query-board",
+      "type": "ms.vss-web.tab",
+      "description": "",
+      "targets": [
+        "ms.vss-work-web.query-tabs"
+      ],
+      "properties": {
+        "name": "Board",
+        "title": "Board",
+        "uri": "board.html"
+      }
+    }
+  ],
+  "categories": [
+    "Plan and track"
+  ],
+  "tags": [
+    "query",
+    "board"
+  ],
+  "content": {
+    "details": {
+      "path": "docs/overview.md"
+    }
+  },
+  "links": {
+    "repository": {
+      "uri": "https://github.com/TFSExt/QueryBoard"
+    },
+    "issues": {
+      "uri": "https://github.com/TFSExt/QueryBoard/issues"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/TFSExt/QueryBoard"
+  },
+  "scopes": [
+		"vso.work"
+	],
+  "files": [
+    {
+      "path": "board.html",
+      "addressable": true
+    },
+    {
+      "path": "node_modules/vss-web-extension-sdk/lib",
+      "addressable": true,
+      "packagePath": "vsts"
+    },
+    {
+      "path": "node_modules/knockout/build/output",
+      "addressable": true,
+      "packagePath": "knockout"
+    },
+    {
+      "path": "node_modules/bootstrap/dist",
+      "addressable": true,
+      "packagePath": "bootstrap"
+    },
+    {
+      "path": "js",
+      "addressable": true,
+      "packagePath": "js"
+    },
+    {
+      "path": "docs/screenshots",
+      "addressable": true,
+      "packagePath": "screenshots"
+    }
+  ]
+}
+

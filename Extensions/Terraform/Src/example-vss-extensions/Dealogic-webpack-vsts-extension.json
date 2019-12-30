@@ -1,0 +1,79 @@
+{
+    "manifestVersion": 1,
+    "id": "webpack-vsts-extension",
+    "version": "4.2.0",
+    "name": "webpack",
+    "description": "bundle your assets, scripts, images, styles",
+    "publisher": "Dealogic",
+    "public": true,
+    "icons": {
+        "default": "icon.png",
+        "large": "icon-large.png"
+    },
+    "categories": [
+        "Build and release"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "screenshots": [
+        {
+            "path": "screenshots/WebpackBuildResult.png"
+        },
+        {
+            "path": "screenshots/WebpackBuildIssuesMini.png"
+        },
+        {
+            "path": "screenshots/TaskCatalog.png"
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "DETAILS.md"
+        },
+        "license": {
+            "path": "LICENSE"
+        }
+    },
+    "links": {
+        "getstarted": {
+            "uri": "https://github.com/Dealogic/webpack-vsts-extension"
+        },
+        "support": {
+            "uri": "https://github.com/Dealogic/webpack-vsts-extension/issues"
+        },
+        "repository": {
+            "uri": "https://github.com/Dealogic/webpack-vsts-extension"
+        },
+        "issues": {
+            "uri": "https://github.com/Dealogic/webpack-vsts-extension/issues"
+        }
+    },
+    "tags": [
+        "webpack",
+        "build",
+        "module",
+        "bundler",
+        "javascript",
+        "typescript"
+    ],
+    "files": [
+        {
+            "path": "tasks/webpack-build-task"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "webpack",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "tasks/webpack-build-task"
+            }
+        }
+    ]
+}

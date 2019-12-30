@@ -1,0 +1,65 @@
+{
+    "manifestVersion": 1.0,
+    "id": "vsts-ticket-printing",
+    "version": "0.0.69",
+    "name": "VSTS Ticket Printing",
+    "description": "An extension to help print tickets",
+    "public": false,
+    "publisher": "AdenEarnshaw",
+    "icons": {
+        "default": "static/images/extension-logo.png"
+    },
+    "categories": [
+        "Plan and track"
+    ],
+    "branding": {
+        "color": "rgb(211,47,47)",
+        "theme": "dark"
+    },
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "scopes":[
+        "vso.work",
+        "vso.work_write"
+    ],
+    "files": [
+        {
+            "path": "dist",
+            "addressable":true
+        },
+        {
+            "path": "static",
+            "addressable": true
+        },
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        },
+        {
+            "path": "node_modules/handlebars/dist",
+            "addressable": true,
+            "packagePath": "lib"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "printTicketsAction",
+            "type": "ms.vss-web.action",
+            "description" : "An extension to help print tickets",
+            "targets": [
+                "ms.vss-work-web.work-item-context-menu"
+            ],
+            "properties": {
+                "text": "Print",
+                "title": "Print work items as tickets",
+                "toolbarText": "Print!",
+                "icon": "static/images/menu-icon.png",
+                "uri": "static/app.html"
+            }
+        }
+    ]    
+}

@@ -1,0 +1,117 @@
+{
+  "manifestVersion": 1,
+  "id": "vsts-extensions-rota-widget",
+  "version": "1.0.78",
+  "name": "Rota",
+  "publisher": "GregTrevellick",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Rota calendar in your project dashboard",
+  "icons": {
+    "default": "src/images/DefaultIcon.png"
+  },
+  "categories": [
+    "Collaborate"
+  ],
+  "tags": [
+    "dashboard",
+    "rota",
+    "widget"
+  ],
+  "links": {
+    "home": {
+      "uri": "https://marketplace.visualstudio.com/items?itemName=GregTrevellick.vsts-extensions-rota"
+    },
+    "repository": {
+      "uri": "https://github.com/GregTrevellick/AzureDevOpsRotaWidget"
+    },
+    "issues": {
+      "uri": "https://github.com/GregTrevellick/AzureDevOpsRotaWidget/issues"
+    },
+    "support": {
+      "uri": "https://github.com/GregTrevellick/AzureDevOpsRotaWidget/issues"
+    },
+    "getstarted": {
+      "uri": "https://github.com/GregTrevellick/AzureDevOpsRotaWidget"
+    },
+    "learn": {
+      "uri": "https://github.com/GregTrevellick/AzureDevOpsRotaWidget"
+    }
+  },
+  "screenshots": [
+    {
+      "path": "VsmpArtefacts/Screenshot.png"
+    }
+  ],
+  "branding": {
+    "color": "rgb(32, 117, 184)",
+    "theme": "dark"
+  },
+  "contributions": [
+    {
+      "id": "VSSRegisterName_Rota",
+      "type": "ms.vss-dashboards-web.widget",
+      "targets": [
+        "ms.vss-dashboards-web.widget-catalog",
+        "GregTrevellick.vsts-extensions-rota-widget.VSSRegisterName_Rota_Configuration"
+      ],
+      "properties": {
+        "name": "Rota",
+        "description": "Display support calendar rota in your project dashboard",
+        "catalogIconUrl:": "src/images/CatalogIcon.png",
+        "previewImageUrl": "src/images/DefaultIcon.png",
+        "uri": "dist/myapp/index.html",
+        "supportedSizes": [
+          {
+            "rowSpan": 1,
+            "columnSpan": 2
+          },
+          {
+            "rowSpan": 2,
+            "columnSpan": 2
+          }
+        ],
+        "isNameConfigurable": true,
+        "supportedScopes": [ "project_team" ]
+      }
+    },
+    {
+      "id": "VSSRegisterName_Rota_Configuration",
+      "type": "ms.vss-dashboards-web.widget-configuration",
+      "targets": [
+        "ms.vss-dashboards-web.widget-configuration"
+      ],
+      "properties": {
+        "name": "Rota Configuration",
+        "description": "Configures rota calendar",
+        "uri": "dist/WidgetConfiguration/index.html"
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "dist",
+      "addressable": true
+    },
+    {
+      "path": "src/images",
+      "addressable": true
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "VsmpArtefacts/Overview.md"
+    },
+
+    "license": {
+      "path": "VsmpArtefacts/Licence.md"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/GregTrevellick/AzureDevOpsRotaWidget"
+  }
+}

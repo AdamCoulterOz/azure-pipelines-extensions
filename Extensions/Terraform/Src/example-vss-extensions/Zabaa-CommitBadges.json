@@ -1,0 +1,55 @@
+﻿{
+  "namespace": "CommitBadges",
+  "name": "Commit Badges",
+  "version": "0.1.20",
+  "description": "A simple extension for Visual Studio Online of a user's badges for achivements like numbers of resolved bugs",
+  "publisher": "lukaszzaborski",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "icons": {
+    "default": "static/images/logo.png"
+  },
+  "contributions": [
+    {
+      "id": "commit-badges-work",
+      "type": "ms.vss-web.hub",
+      "description": "Adds a 'Commit badges' hub to the Work hub group.",
+      "targets": [
+        "ms.vss-work-web.work-hub-group"
+      ],
+      "properties": {
+        "name": "CommitBadges",
+        "order": 99,
+        "uri": "index.html"
+      }
+    }
+  ],
+  "scopes": [
+    "vso.work",
+    "vso.profile",
+    "vso.code"
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "addressable": true
+    },
+    {
+      "path": "node_modules/vss-web-extension-sdk/lib",
+      "addressable": true,
+      "packagePath": "lib"
+    },
+    {
+      "path": "static",
+      "addressable": true,
+      "packagePath": "static"
+    },
+    {
+      "path": "src",
+      "addressable": true
+    }
+  ]
+}

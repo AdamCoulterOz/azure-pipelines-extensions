@@ -1,0 +1,95 @@
+{
+  "manifestVersion": 1,
+  "id": "GitflowBranchGate",
+  "name": "Gitflow Branch Gate",
+  "version": "1.0.4",
+  "publisher": "kerwincarpede",
+  "galleryFlags": [
+    "Public"
+  ],
+  "scopes": [
+    "vso.work",
+    "vso.code",
+    "vso.build_execute"
+  ],
+  "demands": [
+    "api-version/3.0"
+  ],
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/kerwinc/VSTSTasks/tree/master/Tasks/GitflowBranchGate"
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "A branch gate build task to help you prevent stale branches and avoid rolling back changes",
+  "categories": [
+    "Build and release"
+  ],
+  "tags": [
+    "Gates",
+    "Gitflow",
+    "Build",
+    "Rules",
+    "Stale Branches"
+  ],
+  "screenshots": [
+    {
+      "path": "images/buildtask.png"
+    },
+    {
+      "path": "images/branches.png"
+    },
+    {
+      "path": "images/limits.png"
+    },
+    {
+      "path": "images/Rules.png"
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "overview.md"
+    },
+    "license": {
+      "path": "license.txt"
+    }
+  },
+  "links": {
+    "home": {
+      "uri": "http://devbraino.com"
+    },
+    "repository": {
+      "uri": "https://github.com/kerwinc/VSTSTasks/tree/master/Tasks/GitflowBranchGate"
+    },
+    "issues": {
+      "uri": "https://github.com/kerwinc/VSTSTasks/issues"
+    }
+  },
+  "branding": {
+    "color": "#8e44ad",
+    "theme": "dark"
+  },
+  "icons": {
+    "default": "images/extension-icon.png"
+  },
+  "files": [
+    {
+      "path": "Task"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "gitflow-branch-gate-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Task"
+      }
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+﻿{
+  "manifestVersion": 1,
+  "id": "dne-build-tasks",
+  "name": "JH - Build & Release Tools",
+  "version": "3.0.0",
+  "publisher": "dne",
+  "public":  true,
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Build extensions for assembly versioning & more.",
+  "categories": [
+    "Build and release"
+  ],
+  "tags": [
+    "version",
+    "build"
+  ],
+  "screenshots": [
+    {
+      "path": "Images/ScreenChangeAssemblyVersions1.png"
+    },
+    {
+      "path": "Images/ScreenChangeAssemblyVersions2.png"
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "extension-overview.md"
+    },
+    "license": {
+      "path": "license.txt"
+    }
+  },
+  "links": {
+    "home": {
+      "uri": "https://github.com/Scordo/BuildTasks"
+    },
+    "getstarted": {
+      "uri": "https://github.com/Scordo/BuildTasks"
+    },
+    "learn": {
+      "uri": "https://github.com/Scordo/BuildTasks"
+    },
+    "repository": {
+      "uri": "https://github.com/Scordo/BuildTasks"
+    },
+    "support": {
+      "uri": "https://github.com/Scordo/BuildTasks/issues"
+    },
+    "issues": {
+      "uri": "https://github.com/Scordo/BuildTasks/issues"
+    }
+  },
+  "branding": {
+    "color": "rgb(0, 0, 0)",
+    "theme": "dark"
+  },
+  "icons": {
+    "default": "extension-icon.png"
+  },
+  "files": [
+    {
+      "path": "ChangeAssemblyVersionsTask"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "dne-build-tasks-change-assembly-versions",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "ChangeAssemblyVersionsTask"
+      }
+    }
+  ]
+}

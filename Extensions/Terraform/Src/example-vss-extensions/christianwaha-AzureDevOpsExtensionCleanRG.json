@@ -1,0 +1,43 @@
+{
+  "manifestVersion": 1,
+  "id": "azure-clean-resourcegroup-deployment",
+  "name": "Clean Azure Resourcegroup deployment",
+  "version": "1.0.<BUILDNUMBER>",
+  "publisher": "cwlabsconsultingservices",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "There is a limit of 800 deployments to an Azure Resourcegroup so it is recommended to clean it by every build or release.",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "icons": {
+    "default": "images/ResourceGroup_Deployment_delete.png"
+  },
+  "files": [
+    {
+      "path": "buildAndReleaseTask"
+    }
+  ],
+
+  "content": {
+    "details": {
+      "path": "overview.md"
+    }
+  },
+
+  "contributions": [
+    {
+      "id": "azure-clean-resourcegroup-deployment",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "buildAndReleaseTask"
+      }
+    }
+  ]
+}

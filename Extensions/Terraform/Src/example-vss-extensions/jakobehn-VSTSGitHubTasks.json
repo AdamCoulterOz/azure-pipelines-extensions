@@ -1,0 +1,70 @@
+﻿{
+  "manifestVersion": 1,
+  "id": "jakobehn-vsts-github-tasks",
+  "name": "VSTS Build and Release tasks for GitHub",
+  "version": "0.11.2",
+  "publisher": "jakobehn",
+  "galleryFlags": [
+    "Public"
+  ],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Build and Release tasks for Visual Studio Team Services for GitHub integration. Publish a GitHub release.",
+  "categories": [
+    "Build and release"
+  ],
+  "icons": {
+    "default": "icon.png"
+  },
+  "branding": {
+    "color": "rgb(0, 128, 0)",
+    "theme": "dark"
+  },
+  "tags": [
+    "GitHub",
+    "Release",
+    "Integration",
+    "Publish"
+  ],
+  "links": {
+    "getstarted": {
+      "uri": "https://github.com/jakobehn/VSTSGitHubTasks/wiki"
+    },
+    "support": {
+      "uri": "https://github.com/jakobehn/VSTSGitHubTasks/issues"
+    }
+  },
+  "screenshots": [
+    {
+      "path": "screenshot1.png"
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "readme.md"
+    },
+    "license": {
+      "path": "license.md"
+    }
+  },
+  "files": [
+    {
+      "path": "PublishGitHubReleaseTask"
+    }
+  ],
+  "contributions": [  
+    {
+      "id": "publish-github-release",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "PublishGitHubReleaseTask"
+      }
+    }
+  ]
+}

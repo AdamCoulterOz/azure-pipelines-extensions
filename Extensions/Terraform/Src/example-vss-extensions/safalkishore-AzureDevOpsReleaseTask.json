@@ -1,0 +1,40 @@
+{
+    "manifestVersion": 1,
+    "id": "build-release-task",
+    "name": "CSEO APIM Build and Release Tools",
+    "version": "1.5.1",
+    "publisher": "SafalKishore",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Tools for building/releasing with Fabrikam. Includes one build/release task.",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
+    "files": [
+        {
+            "path": "apim"
+        },
+        {
+          "path": "images",
+          "addressable": true
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "apim"
+            }
+        }
+    ]
+}

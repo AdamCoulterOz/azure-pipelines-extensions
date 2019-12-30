@@ -1,0 +1,66 @@
+{
+    "manifestVersion": 1,
+    "id": "links-group",
+    "version": "1.0.50",
+    "name": "Links Group",
+    "scopes": [ "vso.work", "vso.work_write" ],
+    "description": "Update links from first page of the work item form.",
+    "publisher": "ottostreifel",
+    "icons": {
+        "default": "img/logo.png"
+    },
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "tags": [
+        "Work Item",
+        "Group",
+        "Productivity",
+        "Link",
+        "Child",
+        "Related",
+        "Form"
+    ],
+    "content": {
+        "details": {
+            "path": "details.md"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/ostreifel/Links-Group"
+    },
+    "branding": {
+        "color": "rgb(220, 235, 252)",
+        "theme": "light"
+    },
+    "files": [
+        {
+            "path": "img",
+            "addressable": true
+        },
+        {
+            "path": "dist",
+            "addressable": true
+        }
+    ],
+    "categories": [
+        "Plan and track"
+    ],
+    "contributions": [
+        {
+            "id": "links-group",
+            "type": "ms.vss-work-web.work-item-form-group",
+            "description": "Show links associated with the current workitem",
+            "targets": [
+                "ms.vss-work-web.work-item-form"
+            ],
+            "properties": {
+                "name": "Links",
+                "uri": "dist/linkGroup.html"
+            }
+        }
+    ]
+}

@@ -1,0 +1,48 @@
+{
+    "manifestVersion": 1,
+    "id": "vsts-etensions-myUniqueName2",
+    "version": "1.0.5487",
+    "name": "My First Set of Widgets 2",
+    "description": "Samples containing different widgets extending dashboards",
+    "publisher": "DanielKapellusch",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "dist/img/logo.png"
+    },
+    "contributions": [
+        {
+            "id": "HelloWorldWidget2",
+            "type": "ms.vss-dashboards-web.widget",
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog"
+            ],
+            "properties": {
+                "name": "Hello World Widget2",
+                "description": "My first widget2",
+                "uri": "dist/index.html",
+                "catalogIconUrl:": "logo.png",
+                "previewImageUrl": "logo.png", 
+                "supportedSizes": [
+                     {
+                            "rowSpan": 1,
+                            "columnSpan": 2
+                        }
+                    ],
+                "supportedScopes": ["project_team"]
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "dist",
+            "addressable": true
+        }
+    ],
+    "scopes":[
+        "vso.work"
+    ]
+}

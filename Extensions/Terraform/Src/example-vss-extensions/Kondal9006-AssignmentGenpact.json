@@ -1,0 +1,35 @@
+{
+  "manifestVersion": 1,
+  "id": "TestApp",
+  "version": "0.0.5",
+  "publisher": "TestApplication",
+  "name": "Test Application",
+  "description": "Test Application.",
+  "public": false,
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "My-hub",
+            "type": "ms.vss-web.hub",
+            "targets": [
+                "ms.vss-code-web.code-hub-group"
+            ],
+            "properties": {
+                "name": "My Hub",
+                "uri": "My-hub.html"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "My-hub.html",
+            "addressable": true
+        }
+    ]
+       
+   
+}

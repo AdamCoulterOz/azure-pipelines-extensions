@@ -1,0 +1,33 @@
+{
+	"manifestVersion": 1,
+	"id": "TestBuildTask",
+	"version": "1.0.0",
+	"name": "Hello World",
+	"description": "A VSTS Build Task that prints Hello World to the Console",
+	"publisher": "corystein",
+	"targets": [
+		{
+			"id": "Microsoft.VisualStudio.Services"
+			}
+		],
+	"icons": {
+		"default": "icon.png"
+	 },
+	"contributions": [
+		{
+			"id": "TestBuildTask",
+			"type": "ms.vss-distributed-task.task",
+			"targets": [
+				"ms.vss-distributed-task.tasks"
+			],
+			"properties": {
+				"name": "buildtask"
+			}
+		}
+	],
+	"files":[
+		{
+			"path": "buildtask"			
+		}
+	]
+}

@@ -1,0 +1,67 @@
+{
+  "manifestVersion": 1,
+  "id": "kubernetesconfigmap",
+  "name": "Kubernetes ConfigMap",
+  "version": "1.0.0",
+  "public": false,
+  "publisher": "yzhelezko",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services.Cloud"
+    },
+    {
+      "id": "Microsoft.TeamFoundation.Server",
+      "version":  "[15.0,)"
+    }
+  ],
+  "description": "Kubernetes save configmap variables",
+  "categories": [
+    "Build and release"
+  ],
+  "tags": [
+    "release",
+    "build",
+    "variable"
+  ],
+  "links": {
+    "support": {
+      "uri": "https://github.com/yzhelezko"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/yzhelezko/kubernetesconfigmap"
+  },
+  "icons": {
+    "default": "images/extension-icon.png"
+  },
+  "branding": {
+    "color": "#1C3272",
+    "theme": "dark"
+  },
+  "content": {
+    "details": {
+      "path": "README.md"
+    },
+    "license": {
+      "path": "LICENSE.txt"
+    }
+  },
+  "files": [
+    {
+      "path": "kubernetesconfigmap-task"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "kubernetesconfigmap-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "kubernetesconfigmap-task"
+      }
+    }
+  ]
+}

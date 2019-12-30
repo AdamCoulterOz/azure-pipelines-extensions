@@ -1,0 +1,51 @@
+{
+    "manifestVersion": 1,
+    "id": "akamai-fast-purge",
+    "publisher": "ScottDavies",
+    "version": "1.2.0",
+    "name": "Akamai Fast Purge",
+    "description": "A simple implementation of the Akamai Fast Purge API",
+    "icons": {
+        "default": "images/akamai-logo.png"
+    },
+    "public": true,    
+    "categories": [
+        "Build and release"
+    ],
+    "tags": [
+        "utility",
+        "tasks"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "overview.md"
+        }
+    },
+    "contributions": [
+        {
+            "id": "akamai-fast-purge",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "akamai-fast-purge"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        },
+        {
+            "path": "akamai-fast-purge"
+        }
+    ]
+}

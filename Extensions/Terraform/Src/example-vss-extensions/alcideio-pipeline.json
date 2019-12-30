@@ -1,0 +1,73 @@
+{
+    "manifestVersion": 1,
+    "id": "alcide-kubernetes-advisor-ce",
+    "publisher": "Alcide",
+    "version": "2.1.8",
+    "name": "Alcide Kubernetes Advisor",
+    "description": "A Kubernetes Security & Hygiene Scanner for CI+CD pipleines",
+    "public": true,
+    "categories": ["Azure Pipelines"],
+    "tags": [
+        "security","kubernetes", "alcide", 
+        "advisor", "vulnerability", "scan", "ci+cd", 
+        "container", "docker", "release", 
+        "container service", "aks", "build task", "compliance", "audit"
+    ],
+    "content": {
+        "details": {
+            "path": "overview.md"
+        },
+        "license": {
+            "path": "eula.md"
+        }
+    },
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "branding": {
+        "color": "rgb(0,120,212)",
+        "theme": "dark"
+    },
+    "links": {
+        "support": {
+            "uri": "mailto:support@alcide.io"
+        },
+        "license": {
+            "uri": "https://demo.alcide.io/eula"
+        }
+    },
+    "screenshots": [
+        {
+            "path": "images/advisor-screenshot-2.png"
+        },
+        {
+            "path": "images/advisor-screenshot-1.png"
+        }
+    ],        
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "tasks/advisor"
+            }
+        }       
+    ],
+    "icons": {
+        "default": "images/alcide-icon.png"
+    },    
+    "files": [
+        {
+            "path": "images",
+            "addressable": true
+        },        
+        {
+            "path": "tasks/advisor"
+        }
+    ]
+}

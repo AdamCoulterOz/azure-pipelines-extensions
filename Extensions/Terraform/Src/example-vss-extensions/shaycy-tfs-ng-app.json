@@ -1,0 +1,49 @@
+{
+  "manifestVersion": 1,
+  "id": "NG-App",
+  "version": "0.0.2",
+  "name": "NG-App",
+  "description": "Angular TFS Extension",
+  "publisher": "Unknown",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "icons": {
+    "default": "assets/logo.png"
+  },
+  "contributions": [
+    {
+      "id": "Work.NG-App",
+      "type": "ms.vss-web.hub",
+      "description": "Adds NG-App to the work-tab.",
+      "targets": [
+        "ms.vss-work-web.work-hub-group"
+      ],
+      "properties": {
+        "name": "NG-App",
+        "order": 99,
+        "uri": "dist/index.html"
+      }
+    }
+  ],
+  "scopes": [
+    "vso.work"
+  ],
+  "files": [
+    {
+      "path": "dist",
+      "addressable": true,
+      "packagePath": "dist"
+    },
+    {
+      "path": "node_modules/vss-web-extension-sdk/lib/VSS.SDK.js",
+      "addressable": true
+    },
+    {
+      "path": "assets/logo.png",
+      "addressable": true
+    }
+  ]
+}

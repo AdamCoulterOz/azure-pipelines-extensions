@@ -1,0 +1,81 @@
+{
+    "manifestVersion": 1,
+    "id": "jankratochvil-estimate",
+    "publisher": "JanKratochvil",
+    "version": "1.0.52",
+    "name": "Estimate - Planning Poker Estimation",
+    "description": "Real-time backlog estimation using planning poker",
+    "public": false,
+    "categories": ["Azure Boards"],
+    "scopes": [
+        "vso.profile",
+        "vso.work_full"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "demands": ["api-version/5.0"],
+    "contributions": [
+        {
+            "id": "my-hub",
+            "type": "ms.vss-web.hub",
+            "targets": [
+                "ms.vss-work-web.work-hub-group"
+            ],
+            "properties": {
+                "name": "Estimate",
+                "uri": "estimate-hub.html",
+                "order": 99,
+                "icon": {
+                    "light": "assets/logo_128.png",
+                    "dark": "assets/logo_128_dark.png"
+                }
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "estimate-hub.html",
+            "addressable": true
+        },
+        {
+            "path": "dist",
+            "addressable": true
+        },
+        {
+            "path": "assets",
+            "addressable": true
+        },
+        {
+            "path": "gallery",
+            "addressable": true
+        }
+    ],
+    "icons": {
+        "default": "assets/logo_128.png"
+    },
+    "content": {
+        "details": {
+            "path": "gallery/overview.md"
+        },
+        "license": {
+            "path": "gallery/licence.md"
+        }
+    },
+    "links": {
+        "support": {
+            "uri": "kratochvil.jan@outlook.com"
+        }
+    },
+    "screenshots": [
+        {
+            "path": "gallery/images/banner.png"
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/jankratochvilcz/azuredevops-extensions"
+    }
+}

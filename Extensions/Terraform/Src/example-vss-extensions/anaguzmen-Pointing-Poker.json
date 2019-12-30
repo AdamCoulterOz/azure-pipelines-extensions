@@ -1,0 +1,49 @@
+{       
+    "manifestVersion": 1,
+    "id": "sample-extension",
+    "version": "0.1.9",
+    "name": "My first sample extension",
+    "description": "A sample Visual Studio Services extension.",
+    "publisher": "dgomezdi",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "scopes": [
+        "vso.work"
+    ],
+    "contributions": [
+        {
+            "id": "dgomezdi.HelloWorld",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a 'Hello' hub to the Work hub group.",
+            "targets": [
+                "ms.vss-work-web.work-hub-group"
+                ],
+            "properties": {
+                "name": "Hello",
+                "uri": "static/home.html"
+            }
+        }
+    ],
+    "icons": {
+        "default": "static/images/logo.png"
+     },
+	"files": [
+        {
+            "path": "dist",
+            "addressable": true
+        },
+        {
+            "path": "static",
+            "addressable": true
+        },
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        }
+    ]
+}
+        

@@ -1,0 +1,72 @@
+{
+  "manifestVersion": 1,
+  "id": "azure-devops-pipelines-sleep",
+  "publisher": "LeslyBernaola",
+  "name": "Sleep",
+  "version": "1.0.2",
+  "description": "Stops the build or release execution for a given period of time (in seconds)",
+  "tags": [
+    "Sleep",
+    "Pause",
+    "Build",
+    "Release",
+    "Azure Pipelines",
+    "Azure DevOps Extensions"
+  ],
+  "icons": {
+    "default": "images/extension-icon.png"
+  },
+  "public": true,
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "scopes": [],
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "branding": {
+    "color": "rgb(87, 168, 158)",
+    "theme": "dark"
+  },
+  "files": [
+    {
+      "path": "src",
+      "addressable": true
+    },
+    {
+      "path": "images",
+      "addressable": true
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "overview.md"
+    },
+    "license": {
+      "path": "license.txt"
+    }
+  },
+  "links": {
+    "repository": {
+      "uri": "https://github.com/leslyb/AzureDevOpsTasks"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/leslyb/AzureDevOpsTasks"
+  },
+  "contributions": [
+    {
+      "id": "sleep-build-release-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "src"
+      }
+    }
+  ]
+}

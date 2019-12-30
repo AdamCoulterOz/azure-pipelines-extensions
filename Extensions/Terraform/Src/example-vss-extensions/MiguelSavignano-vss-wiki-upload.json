@@ -1,0 +1,51 @@
+{
+  "manifestVersion": 1,
+  "id": "wiki-upload",
+  "name": "wiki upload",
+  "version": "0.0.6",
+  "publisher": "miguel-savignano",
+  "content": {
+    "details": {
+      "path": "README.md"
+    },
+    "license": {
+      "path": "LICENSE.md"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/MiguelSavignano/vss-wiki-upload"
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "scopes": [
+    "vso.wiki_write"
+  ],
+  "description": "wiki upload",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "icons": {
+    "default": "images/icon.png"
+  },
+  "files": [
+    {
+      "path": "./buildAndReleaseTask"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "custom-build-release-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "buildAndReleaseTask"
+      }
+    }
+  ]
+}

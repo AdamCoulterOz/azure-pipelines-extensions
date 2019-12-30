@@ -1,0 +1,64 @@
+{
+    "manifestVersion": 1,
+    "id": "vsts-tools-for-netscaler",
+    "version": "0.0.5",
+    "name": "VSTS Tools for NetScaler",
+    "publisher": "murattufekcioglu",
+    "public": true,
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "description": "Tools for managing a Citrix NetScaler appliance from VSTS/TFS Build or Release definitions.",
+    "categories": "Build and release",
+    "tags": [
+        "citrix",
+        "netscaler",
+        "load balance"
+    ],
+    "screenshots": [
+        {
+            "path": "extension/images/NetScalerChangeServiceState-1.png"
+        },
+        {
+            "path": "extension/images/NetScalerChangeServiceState-2.png"
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "README.md"
+        },
+        "license": {
+            "path": "LICENSE.txt"
+        }
+    },
+    "links": {
+        "home": {
+            "uri": "https://github.com/murattufekcioglu/vsts-tools-for-netscaler"
+        },
+        "support": {
+            "uri": "https://github.com/murattufekcioglu/vsts-tools-for-netscaler/issues"
+        }
+    },
+    "icons": {
+        "default": "extension/images/extension-icon.png"
+    },
+    "files": [
+        {
+            "path": "netscaler-change-service-state"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "nstools-change-service-state",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "netscaler-change-service-state"
+            }
+        }
+    ]
+}

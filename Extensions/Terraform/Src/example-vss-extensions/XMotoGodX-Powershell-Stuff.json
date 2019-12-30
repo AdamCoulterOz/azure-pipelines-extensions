@@ -1,0 +1,38 @@
+{
+    "manifestVersion": 1,
+    "id": "app-offline-online",
+    "name": "NCHFA - App Offline / Online",
+    "version": "1.0.8",
+    "publisher": "nchfadevops",
+    "public": false,
+	"categories": [
+        "Build and release"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Take Application Offline or Online using a file rename",
+
+    "icons": {
+        "default": "icon.png"        
+    },
+    "files": [
+        {
+            "path": "AppOfflineOnline"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "AppOfflineOnline",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "AppOfflineOnline"
+            }
+        }
+    ]
+}

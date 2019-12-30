@@ -1,0 +1,64 @@
+{
+  "manifestVersion": 1,
+  "id": "SqlReportngServices",
+  "name": "SQL Server Reporting Services Deployment",
+  "version": "1.5.3",
+  "publisher": "tobania",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "links": {
+    "home": {
+      "uri": "https://www.tobania.be/"
+    },
+    "support": {
+      "uri": "https://github.com/tobania/VSTS.Extension.SqlReportingServices/issues"
+    },
+    "repository": {
+      "uri": "https://github.com/tobania/VSTS.Extension.SqlReportingServices"
+    },
+    "issues": {
+      "uri": "https://github.com/tobania/VSTS.Extension.SqlReportingServices/issues"
+    }
+  },
+  "description": "Contains a task for deploying Report Files to SQL Server Reporting Services",
+  "categories": [
+    "Build and release"
+  ],
+  "icons": {
+    "default": "icon.png"
+  },
+  "content": {
+    "details": {
+      "path": "overview.md"
+    }
+  },
+  "files": [
+    { "path": "SqlReportingServicesDeployment" },
+    { "path": "SqlReportingServicesFolderDeployment" }
+  ],
+  "contributions": [
+    {
+      "id": "SqlReportingServicesDeployment",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "SqlReportingServicesDeployment"
+      }
+    },
+    {
+      "id": "SqlReportingServicesFolderDeployment",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "SqlReportingServicesFolderDeployment"
+      }
+    }
+  ]
+}

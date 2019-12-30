@@ -1,0 +1,51 @@
+{
+  "manifestVersion": 1,
+  "id": "cosmos-db-tasks",
+  "name": "Cosmos DB VSTS Release Tasks",
+  "version": "#{MajorVersion}#.#{MinorVersion}#.#{RevisionVersion}#",
+  "publisher": "johndowns",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "VSTS release tasks for creating Cosmos DB collections, and for installing server-side scripts to Cosmos DB collections.",
+  "categories": [
+    "Build and release"
+  ],
+  "icons": {
+    "default": "icon.png"
+  },
+  "files": [
+    {
+      "path": "output/CreateCosmosDbCollection",
+      "packagePath": "CreateCosmosDbCollection"
+    },
+    {
+      "path": "output/InstallCosmosDbServerScript",
+      "packagePath": "InstallCosmosDbServerScript"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "create-cosmos-db-collection-step",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "CreateCosmosDbCollection"
+      }
+    },
+    {
+      "id": "install-cosmos-db-server-script-step",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "InstallCosmosDbServerScript"
+      }
+    }
+  ]
+}

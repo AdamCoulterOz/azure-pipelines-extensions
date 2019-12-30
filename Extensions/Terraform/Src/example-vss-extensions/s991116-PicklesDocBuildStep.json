@@ -1,0 +1,36 @@
+{
+    "manifestVersion": 1,
+    "id": "PicklesDoc",
+    "name": "Pickles Document Generator",
+    "version": "0.0.12",
+    "publisher": "philipjuhl",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Uses PicklesDoc to generate documentation from Gherkin specifications.",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
+    "files": [
+        {
+            "path": "scripts"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "scripts"
+            }
+        }
+    ]
+}

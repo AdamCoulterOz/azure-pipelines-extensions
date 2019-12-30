@@ -1,33 +1,24 @@
 {
     "manifestVersion": 1,
-    "id": "CBT-Screenshot-Test-Task",
-    "name": "CBT Screenshot Test Task",
-    "version": "0.0.10",
+    "id": "CBT-Automated-Test-Task",
+    "name": "CBT Automated Test Task",
+    "version": "0.0.1",
     "publisher": "NathanielStokes3",
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
         }
     ],    
-    "description": "Task to start a Screenshot Test Task with CBT",
+    "description": "Task to start an Automated Test Task with CBT",
     "categories": [
-        "Azure Pipelines", "Azure Repos"
+        "Azure Pipelines"
     ],
     "icons": {
         "default": "images/CBTIcon.png"        
     },
     "files": [
         {
-            "path": "CBTScreenshotTask"
-        },
-        {
-          "path": "my-hub.html",
-          "addressable": true
-        },
-        {
-          "path": "node_modules/vss-web-extension-sdk/lib",
-          "addressable": true,
-          "packagePath": "lib"
+            "path": "CBTAutomatedTask"
         }
     ],
     "contributions": [
@@ -38,83 +29,8 @@
                 "ms.vss-distributed-task.tasks"
             ],
             "properties": {
-                "name": "CBTScreenshotTask"
+                "name": "CBTAutomatedTask"
             }
-        },
-        {
-          "id": "my-hub",
-          "type": "ms.vss-web.hub",
-          "targets": [
-            "ms.vss-code-web.code-hub-group"
-          ],
-          "properties": {
-            "name": "My Hub",
-            "uri": "my-hub.html"
-          }
-        },
-        {
-        "id": "service-endpoint",
-        "description": "Connection to CBT API for screenshot browsers",
-        "type": "ms.vss-endpoint.service-endpoint-type",
-        "targets": [ "ms.vss-endpoint.endpoint-types" ],
-        "properties": {
-          "name": "CBTScreenshotEndpoint",
-          "displayName": "CrossBrowserTesting Screenshot Api connection",
-          "url": {
-            "displayName": "Server Url",
-            "helpText": "Url for the CBT server to connect to."
-          },
-          "dataSources": [
-            {
-              "name": "CBT Screenshots",
-              "endpointUrl": "{{endpoint.url}}api/projects/index",
-              "resultSelector": "jsonpath:$[*].nm"
-            }
-  
-          ],
-          "authenticationSchemes": [
-            {
-              "type": "ms.vss-endpoint.endpoint-auth-scheme-token"
-            },
-            {
-              "type": "ms.vss-endpoint.endpoint-auth-scheme-basic",
-              "inputDescriptors": [
-                {
-                  "id": "username",
-                  "name": "Username",
-                  "description": "Username",
-                  "inputMode": "textbox",
-                  "validation": {
-                    "isRequired": false,
-                    "dataType": "string"
-                  }
-                },
-                {
-                  "id": "password",
-                  "name": "Password",
-                  "description": "Password",
-                  "inputMode": "passwordbox",
-                  "isConfidential": true,
-                  "validation": {
-                    "isRequired": false,
-                    "dataType": "string"
-                  }
-                }
-              ]
-            }
-        ],
-          "helpMarkDown": "<a href=\"url-to-documentation\" target=\"_blank\"><b>Learn More</b></a>"
         }
-        
-    },
-    {
-        "id": "build-task",
-        "description": "Task with a dynamic property getting data from an endpoint REST data source",
-        "type": "ms.vss-distributed-task.task",
-        "targets": [ "ms.vss-distributed-task.tasks" ],
-        "properties": {
-          "name": "CBTScreenshotTask"
-        }
-      }
     ]
 }

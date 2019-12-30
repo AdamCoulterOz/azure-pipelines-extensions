@@ -1,0 +1,36 @@
+{
+    "manifestVersion": 1,
+    "id": "azure-ad-task",
+    "name": "Azure AD Tasks",
+    "version": "0.0.1",
+    "publisher": "mabbettmethodltd",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Tools for building/releasing with Mabbett Method. Includes one build/release task.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
+    "files": [
+        {
+            "path": "cli"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "cli"
+            }
+        }
+    ]
+}

@@ -1,0 +1,34 @@
+{
+    "manifestVersion": 1,
+    "id": "anypoint-deploy",
+    "version": "1.0.1",
+    "name": "AnyPoint Deploy",
+    "description": "Task to deploy to an AnyPoint Cloud instance",
+    "publisher": "levifuller",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+            }
+        ],
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "images/logo.png"
+    },
+    "files": [
+        { "path": "deploytask"}
+    ],
+    "contributions": [
+        {
+            "id": "levifuller.AnyPoint",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "deploytask"
+            }
+        }
+    ]
+}

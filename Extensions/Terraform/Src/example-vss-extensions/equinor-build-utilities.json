@@ -1,0 +1,32 @@
+{
+    "manifestVersion": 1,
+    "id": "common-build-utilities",
+    "version": "0.1.10",
+    "name": "Build Utilities",
+    "publisher": "froderoslandhus",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "categories": [
+        "Build and release"
+    ],
+    "files": [
+        {
+            "path": "LibVulnerability"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "statoil-check-package-vulnerability-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "LibVulnerability"
+            }
+        }
+    ]
+}

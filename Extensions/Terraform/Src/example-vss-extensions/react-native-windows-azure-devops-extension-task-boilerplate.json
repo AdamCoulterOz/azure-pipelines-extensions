@@ -1,0 +1,64 @@
+{
+  "manifestVersion": 1,
+  "id": "hello-world-tasks",
+  "publisher": "licanhua",
+  "name": "Azure DevOps Extension Tasks",
+  "version": "0.0.1",
+  "description": "Example",
+  "tags": [
+    "HelloWorld"
+  ],
+  "icons": {
+    "default": "icon.png"
+  },
+  "public": true,
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "scopes": [],
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "content": {
+    "details": {
+      "path": "overview.md"
+    },
+    "license": {
+      "path": "license.txt"
+    }
+  },
+  "links": {
+    "repository": {
+      "uri": "https://github.com/react-native-windows/azure-devops-extension-task-boilerplate"
+    },
+    "issues": {
+      "uri": "https://github.com/react-native-windows/azure-devops-extension-task-boilerplate/issues"
+    },
+    "support": {
+      "uri": "mailto:licanhua@live.com"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/react-native-windows/azure-devops-extension-task-boilerplate"
+  },
+  "files": [
+    {
+      "path": "BuildTasks/HelloWorldExtension"
+    }
+   ],
+  "contributions": [
+    {
+      "id": "package-extension-build-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "BuildTasks/HelloWorldExtension"
+      }
+    }
+  ]
+}

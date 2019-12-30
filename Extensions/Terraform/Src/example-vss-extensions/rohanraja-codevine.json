@@ -1,0 +1,57 @@
+{
+    "manifestVersion": 1,
+    "id": "my-first-extension",
+    "publisher": "RohanRaja",
+    "version": "1.0.12",
+    "name": "My First Extension",
+    "description": "A sample Visual Studio Services extension",
+    "public": false,
+    "categories": ["Code"],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "my-hub",
+            "type": "ms.vss-web.hub",
+            "targets": [
+                "ms.vss-code-web.code-hub-group"
+            ],
+            "properties": {
+                "name": "My Hub",
+                "uri": "my-hub.html"
+            }
+        },
+
+        {  
+          "id": "sample-work-item-form-page",
+          "type": "ms.vss-work-web.work-item-form-page",
+          "description": "CodeVines work item form page",
+          "targets": [
+              "ms.vss-work-web.work-item-form"
+          ],
+          "properties": {
+              "name": "Codevines",
+              "uri": "workItemPage.html"
+          } 
+        }
+
+    ],
+    "files": [
+        {
+            "path": "my-hub.html",
+            "addressable": true
+        },
+        {
+            "path": "workItemPage.html",
+            "addressable": true
+        },
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        }
+    ]
+}

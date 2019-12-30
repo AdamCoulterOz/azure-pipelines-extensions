@@ -1,0 +1,76 @@
+{
+    "manifestVersion": 1,
+    "id": "next-folder-task",
+    "name": "Folder Name Generator",
+    "version": "0.0.1",
+    "publisher": "dp7g09",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "galleryFlags": [
+        "Public"
+    ],
+    "description": "Set Azure DevOps variable(s) with next folder name incremented from existing names. E.g. RC3, if RC1 & RC2 already exist.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "tags": [
+        "folder",
+        "directory",
+        "Release Candidate",
+        "RC"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"
+    },
+    "screenshots": [
+        {
+            "path": "images/screenshots/nfn1.png"
+        },
+        {
+            "path": "images/screenshots/nfn2.png"
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "Overview.md"
+        }
+    },
+    "links": {
+        "home": {
+            "uri": "https://github.com/dp7g09/azure-devops-nextfolder"
+        },
+        "support": {
+            "uri": "https://github.com/dp7g09/azure-devops-nextfolder/issues"
+        },
+        "repository": {
+            "uri": "https://github.com/dp7g09/azure-devops-nextfolder"
+        },
+        "issues": {
+            "uri": "https://github.com/dp7g09/azure-devops-nextfolder/issues"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/dp7g09/azure-devops-nextfolder"
+    },
+    "files": [
+        {
+            "path": "nextFolderNameTask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "nextFolderNameTask"
+            }
+        }
+    ]
+}

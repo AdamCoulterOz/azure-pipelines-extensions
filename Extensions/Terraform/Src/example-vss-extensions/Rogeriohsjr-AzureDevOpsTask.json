@@ -1,0 +1,57 @@
+{
+    "manifestVersion": 1,
+    "id": "build-release-task",
+    "name": "Coverage Converter",
+    "version": "0.1.19",
+    "publisher": "rogeriohsjr",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "description": "Convert .coverage file into .coveragexml for use in Code Coverage Report",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/engine-outline512x512.png"
+    },
+    "files": [
+        {
+            "path": "buildAndReleaseTask"
+        }
+    ],
+    "tags": [
+        "devops",
+        "code coverage",
+        "convert .coverage",
+        "coverage",
+        "report",
+        "vstest",
+        "mstest"
+    ],
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/Rogeriohsjr/AzureDevOpsTask"
+    },
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildAndReleaseTask"
+            }
+        }
+    ],
+    "galleryFlags": [
+        "Public"
+    ],
+    "content": {
+        "details": {
+            "path": "overview.md"
+        }
+    }
+}
