@@ -1,6 +1,7 @@
 {
-    "$id": "http://dev.azure.com/vss-extension.json",
+    "$id": "ms.vss-endpoint.service-endpoint-type",
     "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
     "properties": {
         "name": {
             "type": "string"
@@ -27,8 +28,21 @@
                 "isVisible": {
                     "name": "URL Is Visible",
                     "type": "boolean"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "defaultValue": {
+                    "type": "string"
                 }
-            }
+            },
+            "additionalProperties": false,
+            "required": [
+                "displayName"
+            ]
         },
         "dataSources": {
             "type": "array",
@@ -64,9 +78,68 @@
                             "jsonpath:$.items[*].name"
                         ],
                         "description": "Supports either an xpath or jsonpath filter on the response data."
+                    },
+                    "callbackContextTemplate": {
+                        "type": "string",
+                        "enum": [
+                            "{\"table\": \"task\"}",
+                            "{\"skip\": \"{{add skip 5000}}\"}",
+                            "{\"skip\": \"{{add skip 1000}}\"}"
+                        ]
+                    },
+                    "callbackRequiredTemplate": {
+                        "type": "string",
+                        "enum": [
+                            "{{#equals table \"change_request\"}}{{isEqualNumber result.count 0}}{{else}}false{{/equals}}",
+                            "{{isEqualNumber result.count 5000}}",
+                            "{{isEqualNumber result.count 1000}}"
+                        ]
+                    },
+                    "initialContextTemplate": {
+                        "type": "string",
+                        "enum": [
+                            "{\"table\": \"change_request\"}",
+                            "{\"skip\": \"0\"}"
+                        ]
+                    },
+                    "requestContent": {
+                        "type": "string"
+                    },
+                    "headers": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "enum": [
+                                        "Content-Type"
+                                    ]
+                                },
+                                "value": {
+                                    "type": "string",
+                                    "enum": [
+                                        "application/x-www-form-urlencoded"
+                                    ]
+                                }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                                "name",
+                                "value"
+                            ]
+                        },
+                        "additionalItems": false
                     }
-                }
-            }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "name",
+                    "endpointUrl",
+                    "resultSelector"
+                ]
+            },
+            "additionalItems": false
         },
         "authenticationSchemes": {
             "type": "array",
@@ -107,8 +180,14 @@
                                         "{{ #getCurrentUTCDate {} }}"
                                     ]
                                 }
-                            }
-                        }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                                "name",
+                                "value"
+                            ]
+                        },
+                        "additionalItems": false
                     },
                     "inputDescriptors": {
                         "type": "array",
@@ -132,7 +211,9 @@
                                         "none",
                                         "passwordbox",
                                         "textarea",
-                                        "textbox"
+                                        "textbox",
+                                        "checkbox",
+                                        "combo"
                                     ]
                                 },
                                 "isConfidential": {
@@ -152,15 +233,349 @@
                                                 "number",
                                                 "boolean"
                                             ]
+                                        },
+                                        "maxLength": {
+                                            "type": "integer",
+                                            "enum": [
+                                                300,
+                                                32,
+                                                100,
+                                                255
+                                            ]
+                                        },
+                                        "maxValue": {
+                                            "type": "string",
+                                            "enum": [
+                                                "65500"
+                                            ]
+                                        },
+                                        "minValue": {
+                                            "type": "string",
+                                            "enum": [
+                                                "1"
+                                            ]
                                         }
-                                    }
+                                    },
+                                    "additionalProperties": false,
+                                    "required": [
+                                        "dataType"
+                                    ]
+                                },
+                                "values": {
+                                    "type": "object",
+                                    "properties": {
+                                        "inputId": {
+                                            "type": "string"
+                                        },
+                                        "isDisabled": {
+                                            "type": "boolean"
+                                        },
+                                        "defaultValue": {
+                                            "type": "string",
+                                            "enum": [
+                                                "",
+                                                "https://index.docker.io/v1/",
+                                                "https://manage.devcenter.microsoft.com",
+                                                "identifier",
+                                                "auto"
+                                            ]
+                                        },
+                                        "possibleValues": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "@{value=force; displayValue=Force TLS}",
+                                                    "@{value=auto; displayValue=Use TLS if the server supports STARTTLS}",
+                                                    "@{value=ignore; displayValue=Do not use TLS, and ignore STARTTLS}",
+                                                    "@{value=us-west-1; displayValue=US West 1}",
+                                                    "@{value=eu-central-1; displayValue=EU Central 1}",
+                                                    "@{value=us-east-1; displayValue=US East 1 (headless)}"
+                                                ]
+                                            },
+                                            "additionalItems": false
+                                        },
+                                        "isLimitedToPossibleValues": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "additionalProperties": false,
+                                    "required": [
+                                        "inputId"
+                                    ]
+                                },
+                                "helpText": {
+                                    "type": "string"
+                                },
+                                "helpMarkDown": {
+                                    "type": "string"
+                                },
+                                "defaultValue": {
+                                    "type": "string",
+                                    "enum": [
+                                        "AzureDevOps@dev.azure.com",
+                                        "Azure DevOps"
+                                    ]
                                 }
-                            }
-                        }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                                "id",
+                                "name",
+                                "inputMode",
+                                "validation"
+                            ]
+                        },
+                        "additionalItems": false
+                    },
+                    "name": {
+                        "type": "string",
+                        "enum": [
+                            "Basic Authorization",
+                            "token",
+                            "Userpass"
+                        ]
+                    },
+                    "displayName": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "enum": [
+                            "endpoint-auth-scheme-token",
+                            "endpoint-auth-scheme-userpass",
+                            "authentication-schema-o365"
+                        ]
+                    },
+                    "description": {
+                        "type": "string",
+                        "enum": [
+                            "i18n:Token based endpoint authentication scheme",
+                            "i18n:Vault username endpoint authentication scheme"
+                        ]
+                    },
+                    "authorizationUrl": {
+                        "type": "string"
+                    },
+                    "dataSourceBindings": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "target": {
+                                    "type": "string"
+                                },
+                                "dataSourceName": {
+                                    "type": "string"
+                                },
+                                "resultTemplate": {
+                                    "type": "string",
+                                    "enum": [
+                                        "{\"AccessToken\" : \"{{{access_token}}}\", \"RefreshToken\" : \"{{{refresh_token}}}\", \"ExpiresIn\" : \"{{{expires_in}}}\", \"TokenType\" : \"{{{token_type}}}\", \"Scope\" : \"{{{scope}}}\", \"Error\" : \"{{{error}}}\", \"ErrorDescription\" : \"{{{error_description}}}\"}"
+                                    ]
+                                }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                                "target",
+                                "dataSourceName",
+                                "resultTemplate"
+                            ]
+                        },
+                        "additionalItems": false
                     }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "type"
+                ]
+            },
+            "additionalItems": false
+        },
+        "helpMarkDown": {
+            "type": "string"
+        },
+        "inputDescriptors": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "inputMode": {
+                        "type": "string",
+                        "enum": [
+                            "textbox",
+                            "combo",
+                            "textarea",
+                            "checkbox"
+                        ]
+                    },
+                    "isConfidential": {
+                        "type": "boolean"
+                    },
+                    "validation": {
+                        "type": "object",
+                        "properties": {
+                            "isRequired": {
+                                "type": "boolean"
+                            },
+                            "dataType": {
+                                "type": "string",
+                                "enum": [
+                                    "string",
+                                    "boolean"
+                                ]
+                            },
+                            "maxLength": {
+                                "type": "integer",
+                                "enum": [
+                                    300,
+                                    255
+                                ]
+                            }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                            "isRequired",
+                            "dataType"
+                        ]
+                    },
+                    "values": {
+                        "type": "object",
+                        "properties": {
+                            "inputId": {
+                                "type": "string",
+                                "enum": [
+                                    "sslVerifyValues",
+                                    "useSudoValues",
+                                    "restVersionValues",
+                                    "releaseUrlInput"
+                                ]
+                            },
+                            "defaultValue": {
+                                "type": "string",
+                                "enum": [
+                                    "1",
+                                    "v1.0",
+                                    "https://vsrm.dev.azure.com/[organization]"
+                                ]
+                            },
+                            "possibleValues": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "type": "string",
+                                            "enum": [
+                                                "1",
+                                                "0",
+                                                "v1.0"
+                                            ]
+                                        },
+                                        "displayValue": {
+                                            "type": "string",
+                                            "enum": [
+                                                "True",
+                                                "False",
+                                                "v1.0"
+                                            ]
+                                        }
+                                    },
+                                    "additionalProperties": false,
+                                    "required": [
+                                        "value",
+                                        "displayValue"
+                                    ]
+                                },
+                                "additionalItems": false
+                            }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                            "inputId",
+                            "defaultValue"
+                        ]
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "inputMode",
+                    "validation"
+                ]
+            },
+            "additionalItems": false
+        },
+        "icons": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "string",
+                    "enum": [
+                        "icon.png",
+                        "icons/xabaril-endpoint-icon.png"
+                    ]
+                },
+                "large": {
+                    "type": "string"
+                },
+                "wide": {
+                    "type": "string",
+                    "enum": [
+                        "icons/xabaril.png"
+                    ]
                 }
-            }
+            },
+            "additionalProperties": false,
+            "required": [
+                "default"
+            ]
+        },
+        "helpMarkdown": {
+            "type": "string"
+        },
+        "config": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "string"
+                    ]
+                },
+                "description": {
+                    "type": "string"
+                },
+                "required": {
+                    "type": "boolean"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "type",
+                "description",
+                "required"
+            ]
+        },
+        "icon": {
+            "type": "string"
         }
     },
+    "required": [
+        "name",
+        "displayName",
+        "authenticationSchemes"
+    ],
     "type": "object"
 }
