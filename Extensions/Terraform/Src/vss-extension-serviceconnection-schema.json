@@ -1,194 +1,194 @@
 {
-	"$id": "http://dev.azure.com/vss-extension.json",
-	"$schema": "http://json-schema.org/draft-07/schema#",
-	"properties": {
-		"id": {
-			"type": "string",
-			"description": "A unique id for this contribution."
-		},
-		"description": {
-			"type": "string",
-			"description": "A description of what this contribution provides."
-		},
-		"type": {
-			"type": "string",
-			"enum": [
-				"ms.vss-endpoint.service-endpoint-type"
-			]
-		},
-		"targets": {
-			"type": "array",
-			"items": {
-				"type": "string",
-				"enum": [
-					"ms.vss-endpoint.endpoint-types"
-				]
-			}
-		},
-		"properties": {
-			"type": "object",
-			"properties": {
-				"name": {
-					"type": "string"
-				},
-				"displayName": {
-					"type": "string"
-				},
-				"url": {
-					"type": "object",
-					"description": "URL to create service connection to.",
-					"properties": {
-						"displayName": {
-							"name": "URL Display Name",
-							"type": "string"
-						},
-						"helpText": {
-							"name": "URL Help Text",
-							"type": "string"
-						},
-						"value": {
-							"name": "URL Value",
-							"type": "string"
-						},
-						"isVisible": {
-							"name": "URL Is Visible",
-							"type": "boolean"
-						}
-					}
-				},
-				"dataSources": {
-					"type": "array",
-					"items": {
-						"name": "Data Source",
-						"type": "object",
-						"properties": {
-							"name": {
-								"type": "string"
-							},
-							"endpointUrl": {
-								"type": "string",
-								"examples": [
-									"{{endpoint.url}}/api/object/path"
-								],
-								"description": "Full URL to retrieve data from, build URL using references from other attributes inside double braces, e.g. \"{{endpoint.url}}/api/object/path\""
-							},
-							"requestVerb": {
-								"name": "HTTP Request Method",
-								"type": "string",
-								"enum": [
-									"GET",
-									"POST",
-									"PUT",
-									"PATCH"
-								]
-							},
-							"resultSelector": {
-								"name": "Response Result Selector Path",
-								"type": "string",
-								"examples": [
-									"xpath://results/items/item/name",
-									"jsonpath:$.items[*].name"
-								],
-								"description": "Supports either an xpath or jsonpath filter on the response data."
-							}
-						}
-					}
-				},
-				"authenticationSchemes": {
-					"type": "array",
-					"items": {
-						"name": "Authentication Scheme",
-						"type": "object",
-						"properties": {
-							"type": {
-								"type": "string",
-								"enum": [
-									"ms.vss-endpoint.endpoint-auth-scheme-basic",
-									"ms.vss-endpoint.endpoint-auth-scheme-cert",
-									"ms.vss-endpoint.endpoint-auth-scheme-JWT",
-									"ms.vss-endpoint.endpoint-auth-scheme-none",
-									"ms.vss-endpoint.endpoint-auth-scheme-oauth2",
-									"ms.vss-endpoint.endpoint-auth-scheme-service-principal",
-									"ms.vss-endpoint.endpoint-auth-scheme-token"
-								]
-							},
-							"headers": {
-								"type": "array",
-								"items": {
-									"name": "Header",
-									"type": "object",
-									"properties": {
-										"name": {
-											"name": "Header Name",
-											"type": "string",
-											"examples": [
-												"Authorization",
-												"X-Date"
-											]
-										},
-										"value": {
-											"type": "string",
-											"examples": [
-												"Basic {{ #base64 endpoint.apitoken \":\" }}",
-												"{{ #getCurrentUTCDate {} }}"
-											]
-										}
-									}
-								}
-							},
-							"inputDescriptors": {
-								"type": "array",
-								"items": {
-									"name": "Connection Input",
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "string"
-										},
-										"name": {
-											"type": "string"
-										},
-										"description": {
-											"type": "string"
-										},
-										"inputMode": {
-											"type": "string",
-											"default": "textbox",
-											"enum": [
-												"none",
-												"passwordbox",
-												"textarea",
-												"textbox"
-											]
-										},
-										"isConfidential": {
-											"type": "boolean"
-										},
-										"validation": {
-											"type": "object",
-											"properties": {
-												"isRequired": {
-													"type": "boolean"
-												},
-												"dataType": {
-													"type": "string",
-													"default": "string",
-													"enum": [
-														"string",
-														"number",
-														"boolean"
-													]
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	},
-	"type": "object"
+    "$id": "http://dev.azure.com/vss-extension.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "A unique id for this contribution."
+        },
+        "description": {
+            "type": "string",
+            "description": "A description of what this contribution provides."
+        },
+        "type": {
+            "type": "string",
+            "enum": [
+                "ms.vss-endpoint.service-endpoint-type"
+            ]
+        },
+        "targets": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "ms.vss-endpoint.endpoint-types"
+                ]
+            }
+        },
+        "properties": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "object",
+                    "description": "URL to create service connection to.",
+                    "properties": {
+                        "displayName": {
+                            "name": "URL Display Name",
+                            "type": "string"
+                        },
+                        "helpText": {
+                            "name": "URL Help Text",
+                            "type": "string"
+                        },
+                        "value": {
+                            "name": "URL Value",
+                            "type": "string"
+                        },
+                        "isVisible": {
+                            "name": "URL Is Visible",
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "dataSources": {
+                    "type": "array",
+                    "items": {
+                        "name": "Data Source",
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "endpointUrl": {
+                                "type": "string",
+                                "examples": [
+                                    "{{endpoint.url}}/api/object/path"
+                                ],
+                                "description": "Full URL to retrieve data from, build URL using references from other attributes inside double braces, e.g. \"{{endpoint.url}}/api/object/path\""
+                            },
+                            "requestVerb": {
+                                "name": "HTTP Request Method",
+                                "type": "string",
+                                "enum": [
+                                    "GET",
+                                    "POST",
+                                    "PUT",
+                                    "PATCH"
+                                ]
+                            },
+                            "resultSelector": {
+                                "name": "Response Result Selector Path",
+                                "type": "string",
+                                "examples": [
+                                    "xpath://results/items/item/name",
+                                    "jsonpath:$.items[*].name"
+                                ],
+                                "description": "Supports either an xpath or jsonpath filter on the response data."
+                            }
+                        }
+                    }
+                },
+                "authenticationSchemes": {
+                    "type": "array",
+                    "items": {
+                        "name": "Authentication Scheme",
+                        "type": "object",
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "ms.vss-endpoint.endpoint-auth-scheme-basic",
+                                    "ms.vss-endpoint.endpoint-auth-scheme-cert",
+                                    "ms.vss-endpoint.endpoint-auth-scheme-JWT",
+                                    "ms.vss-endpoint.endpoint-auth-scheme-none",
+                                    "ms.vss-endpoint.endpoint-auth-scheme-oauth2",
+                                    "ms.vss-endpoint.endpoint-auth-scheme-service-principal",
+                                    "ms.vss-endpoint.endpoint-auth-scheme-token"
+                                ]
+                            },
+                            "headers": {
+                                "type": "array",
+                                "items": {
+                                    "name": "Header",
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "name": "Header Name",
+                                            "type": "string",
+                                            "examples": [
+                                                "Authorization",
+                                                "X-Date"
+                                            ]
+                                        },
+                                        "value": {
+                                            "type": "string",
+                                            "examples": [
+                                                "Basic {{ #base64 endpoint.apitoken \":\" }}",
+                                                "{{ #getCurrentUTCDate {} }}"
+                                            ]
+                                        }
+                                    }
+                                }
+                            },
+                            "inputDescriptors": {
+                                "type": "array",
+                                "items": {
+                                    "name": "Connection Input",
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "inputMode": {
+                                            "type": "string",
+                                            "default": "textbox",
+                                            "enum": [
+                                                "none",
+                                                "passwordbox",
+                                                "textarea",
+                                                "textbox"
+                                            ]
+                                        },
+                                        "isConfidential": {
+                                            "type": "boolean"
+                                        },
+                                        "validation": {
+                                            "type": "object",
+                                            "properties": {
+                                                "isRequired": {
+                                                    "type": "boolean"
+                                                },
+                                                "dataType": {
+                                                    "type": "string",
+                                                    "default": "string",
+                                                    "enum": [
+                                                        "string",
+                                                        "number",
+                                                        "boolean"
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "type": "object"
 }
