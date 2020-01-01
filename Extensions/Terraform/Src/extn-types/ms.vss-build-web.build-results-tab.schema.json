@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "ms.vss-build-web.build-results-tab",
+    "type": "object",
+    "required": [
+        "name",
+        "uri"
+    ],
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "uri": {
+            "type": "string"
+        },
+        "dynamic": {
+            "type": "boolean"
+        },
+        "height": {
+            "type": "string"
+        },
+        "width": {
+            "type": "string"
+        },
+        "supportsTasks": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "additionalProperties": false
+}
