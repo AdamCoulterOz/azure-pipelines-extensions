@@ -80,9 +80,9 @@ foreach($value in $index.Values)
 $serviceEndpoints = @();
 $vssExtensions = @();
 
-foreach($file in Get-ChildItem -Path "./vss-extensions/")
+foreach($file in Get-ChildItem -Path "./example-vss-extensions/")
 {
-    $filePathName = "./vss-extensions/$($file.Name)"
+    $filePathName = "./example-vss-extensions/$($file.Name)"
     Write-Host "Reading: $filePathName"
     $vssExtn = Get-Content -Raw -Path $filePathName | ConvertFrom-Json
     $vssExtensions += $vssExtn;
