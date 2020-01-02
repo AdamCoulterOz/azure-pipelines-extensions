@@ -1,75 +1,47 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "ms.vss-endpoint.service-endpoint-type",
-    "type": "object",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
     "properties": {
         "name": {
+            "title": "Name",
             "type": "string"
         },
         "displayName": {
+            "title": "Display Name",
             "type": "string"
         },
         "url": {
-            "type": [
-                "object",
-                "string"
-            ],
+            "title": "URL",
+            "type": "object",
+            "description": "URL to create service connection to.",
             "properties": {
                 "displayName": {
-                    "type": "string",
-                    "enum": [
-                        "Server Url",
-                        "Curseforge site name",
-                        "Coverity URL",
-                        "Chef Supermarket URL",
-                        "Chef Server URL",
-                        "Habitat Depot URL",
-                        "Service Now URL",
-                        "Datadog API URL",
-                        "Dynatrace API Url",
-                        "Server URL",
-                        "API Url",
-                        "Endpoint URL",
-                        "i18n:Terraform Instance URL",
-                        "i18n:Vault URL",
-                        "i18n:Organization Url",
-                        "Release Freezer URL",
-                        "Kiuwan URL",
-                        "SwaggerHub API URL",
-                        "Marketplace URL",
-                        "Azure DevOps Server Url",
-                        "ServiceNow Url",
-                        "Power BI API Url",
-                        "Management API URL",
-                        "SMTP Server Name",
-                        "SharePoint Site Url",
-                        "Feed Upload Url",
-                        "New relic Server Url (v2)",
-                        "Esquio API Url"
-                    ]
+                    "name": "URL Display Name",
+                    "type": "string"
                 },
                 "helpText": {
+                    "name": "URL Help Text",
                     "type": "string"
                 },
                 "value": {
+                    "name": "URL Value",
                     "type": "string"
                 },
                 "isVisible": {
-                    "type": [
-                        "string",
-                        "boolean"
-                    ]
+                    "name": "URL Is Visible",
+                    "type": "boolean"
                 },
                 "description": {
+                    "title": "Description",
                     "type": "string"
                 },
                 "required": {
-                    "type": [
-                        "string",
-                        "boolean"
-                    ]
+                    "title": "Required",
+                    "type": "boolean"
                 },
                 "defaultValue": {
+                    "title": "Default Value",
                     "type": "string"
                 }
             },
@@ -79,124 +51,41 @@
             ]
         },
         "dataSources": {
+            "title": "Data Sources",
             "type": "array",
             "items": {
+                "name": "Data Source",
                 "type": "object",
                 "properties": {
                     "name": {
-                        "type": "string",
-                        "enum": [
-                            "AWS",
-                            "GCP",
-                            "TestConnection",
-                            "Game Dependencies",
-                            "Game Versions",
-                            "Augurk Products",
-                            "Augurk Product Groups",
-                            "Augurk Product Group Features",
-                            "ChangeRequests",
-                            "OctopusAllProjects",
-                            "OctopusAllEnvironments",
-                            "OctopusAllTenants",
-                            "OctopusDeployments",
-                            "Dynatrace Profiles",
-                            "ElectricFlowProjects",
-                            "ElectricFlowPipelines",
-                            "ElectricFlowReleases",
-                            "ElectricFlowRepositories",
-                            "ElectricFlowReleaseStages",
-                            "Fabrikam Projects",
-                            "BuildNames",
-                            "BuildNumbers",
-                            "collections",
-                            "projects",
-                            "buildDefinitions",
-                            "releaseDefinitions",
-                            "ListApplications",
-                            "ListModels",
-                            "StandardChangeTemplate",
-                            "Priority",
-                            "State",
-                            "Risk",
-                            "Impact",
-                            "Category",
-                            "Close code",
-                            "PriorityLabel",
-                            "StateLabel",
-                            "RiskLabel",
-                            "ImpactLabel",
-                            "CategoryLabel",
-                            "CloseCodeLabel",
-                            "Configuration Item",
-                            "Assignment Group",
-                            "AccessToken",
-                            "RefreshToken",
-                            "Power BI API",
-                            "Repositories",
-                            "Branches",
-                            "CommitsFromSelectedBranch",
-                            "LatestCommit",
-                            "Artifacts",
-                            "getStatus",
-                            "getBuildFullJobs",
-                            "getAuth",
-                            "New Relic Applications",
-                            "WhiteSource Projects",
-                            "EsquioProducts",
-                            "EsquioFlags",
-                            "EsquioFlagDetailed",
-                            "EsquioToggleDetailed",
-                            "EsquioProductsV2",
-                            "EsquioFlagsV2",
-                            "EsquioFlagDetailedV2",
-                            "EsquioToggleDetailedV2"
-                        ]
+                        "title": "Name",
+                        "type": "string"
                     },
                     "endpointUrl": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Full URL to retrieve data from, build URL using references from other attributes inside double braces, e.g. \"{{endpoint.url}}/api/object/path\"",
+                        "examples": [
+                            "{{endpoint.url}}/api/object/path"
+                        ]
                     },
-                    "RequestVerb": {
-                        "type": "string"
-                    },
-                    "resultSelector": {
+                    "requestVerb": {
+                        "name": "HTTP Request Method",
                         "type": "string",
                         "enum": [
-                            "xpath://ListAllMyBucketsResult/Buckets/Bucket/Name",
-                            "jsonpath:$.items[*].name",
-                            "jsonpath:$[*]",
-                            "jsonpath:$[*].name",
-                            "jsonpath:$[*].title",
-                            "jsonpath:$[*].nm",
-                            "jsonpath:$.result[*]",
-                            "jsonpath:$.[*]",
-                            "jsonpath:$.Items[?(@.IsCurrent)]",
-                            "jsonpath:$.systemprofiles.id",
-                            "jsonpath:$.project[*]",
-                            "jsonpath:$.pipeline[*].pipelineName",
-                            "jsonpath:$.release[*].releaseName",
-                            "jsonpath:$.repository[?(@.repositoryDisabled=='0')].repositoryName",
-                            "jsonpath:$.release[?(@.releaseName=='{{{releaseName}}}')].stages.stage[*].name",
-                            "jsonpath:$.values[*]",
-                            "$.project[*].projectName",
-                            "jsonpath:$.builds[*]",
-                            "jsonpath:$.buildsNumbers[*]",
-                            "jsonpath:$.value[*].name",
-                            "jsonpath:$.value[?(@.state=='wellFormed')]",
-                            "jsonpath:$.value[?(@.quality=='definition')]",
-                            "jsonpath:$[*].Key",
-                            "jsonpath:$.value[?(@.isDeleted==false)]",
-                            "jsonpath:$.username",
-                            "jsonpath:$.result",
-                            "jsonpath:$.result[*].label",
-                            "jsonpath:$.result[*].name",
-                            "jsonpath:$",
-                            "jsonpath:$[0]",
-                            "jsonpath:$.status_message",
-                            "jsonpath:$.applications[*].name",
-                            "jsonpath:$.organizations[*]",
-                            "jsonpath:$.toggles[*]",
-                            "jsonpath:$.parameters[*]"
+                            "GET",
+                            "POST",
+                            "PUT",
+                            "PATCH"
                         ]
+                    },
+                    "resultSelector": {
+                        "name": "Response Result Selector Path",
+                        "type": "string",
+                        "examples": [
+                            "xpath://results/items/item/name",
+                            "jsonpath:$.items[*].name"
+                        ],
+                        "description": "Supports either an xpath or jsonpath filter on the response data."
                     },
                     "callbackContextTemplate": {
                         "type": "string",
@@ -219,12 +108,6 @@
                         "enum": [
                             "{\"table\": \"change_request\"}",
                             "{\"skip\": \"0\"}"
-                        ]
-                    },
-                    "requestVerb": {
-                        "type": "string",
-                        "enum": [
-                            "Post"
                         ]
                     },
                     "requestContent": {
@@ -269,59 +152,40 @@
         "authenticationSchemes": {
             "type": "array",
             "items": {
+                "name": "Authentication Scheme",
                 "type": "object",
                 "properties": {
                     "type": {
                         "type": "string",
                         "enum": [
                             "ms.vss-endpoint.endpoint-auth-scheme-basic",
+                            "ms.vss-endpoint.endpoint-auth-scheme-cert",
                             "ms.vss-endpoint.endpoint-auth-scheme-JWT",
-                            "ms.vss-endpoint.endpoint-auth-scheme-token",
                             "ms.vss-endpoint.endpoint-auth-scheme-none",
                             "ms.vss-endpoint.endpoint-auth-scheme-oauth2",
-                            "ms.vss-endpoint.endpoint-auth-scheme-cert",
                             "ms.vss-endpoint.endpoint-auth-scheme-service-principal",
-                            "endpoint-auth-scheme-custom"
+                            "ms.vss-endpoint.endpoint-auth-scheme-token"
                         ]
                     },
                     "headers": {
                         "type": "array",
                         "items": {
+                            "name": "Header",
                             "type": "object",
                             "properties": {
                                 "name": {
+                                    "name": "Header Name",
                                     "type": "string",
-                                    "enum": [
-                                        "X-Amz-Date",
-                                        "X-Amz-Content-Sha256",
+                                    "examples": [
                                         "Authorization",
-                                        "X-Api-Token",
-                                        "DD-API-KEY",
-                                        "DD-APPLICATION-KEY",
-                                        "X-Octopus-ApiKey",
-                                        "X-KW-CORPORATE-DOMAIN-ID",
-                                        "Private-Token",
-                                        "X-NuGet-ApiKey",
-                                        "X-Api-Key",
-                                        "x-api-key"
+                                        "X-Date"
                                     ]
                                 },
                                 "value": {
                                     "type": "string",
-                                    "enum": [
-                                        "{{ #getCurrentUTCDate {} }}",
-                                        "{{ #getHashedPayload {} }}",
-                                        "{{ #getAuthorizationHeader { 'username' : 'endpoint.username', 'password' : 'endpoint.password', 'method': 'get' } }}",
-                                        "{{endpoint.apitoken}}",
-                                        "{{endpoint.appkey}}",
-                                        "{{endpoint.apitoken}}:{{endpoint:apisecret}}",
-                                        "Token {{endpoint.apitoken}}",
-                                        "Bearer {{ endpoint.apitoken }}",
-                                        "Basic {{ #base64 \"token\" \":\" endpoint.apitoken }}",
-                                        "{{endpoint.domainid}}",
-                                        "Bearer {{{endpoint.AccessToken}}}",
-                                        "{{ endpoint.apitoken }}",
-                                        "Basic {{ #base64 endpoint.apitoken \":\" }}"
+                                    "examples": [
+                                        "Basic {{ #base64 endpoint.apitoken \":\" }}",
+                                        "{{ #getCurrentUTCDate {} }}"
                                     ]
                                 }
                             },
@@ -335,279 +199,34 @@
                     },
                     "inputDescriptors": {
                         "type": "array",
+                        "additionalItems": false,
                         "items": {
+                            "name": "Connection Input",
                             "type": "object",
                             "properties": {
                                 "id": {
-                                    "type": "string",
-                                    "enum": [
-                                        "username",
-                                        "password",
-                                        "region",
-                                        "Issuer",
-                                        "Audience",
-                                        "apitoken",
-                                        "assumeRoleArn",
-                                        "roleSessionName",
-                                        "externalId",
-                                        "signingKey",
-                                        "authToken",
-                                        "clientKey",
-                                        "clientSecret",
-                                        "appkey",
-                                        "tenantid",
-                                        "clientid",
-                                        "apisecret",
-                                        "skipCertCheck",
-                                        "serveruri",
-                                        "kubeconfig",
-                                        "registry",
-                                        "email",
-                                        "cacert",
-                                        "cert",
-                                        "key",
-                                        "certificate",
-                                        "url",
-                                        "tenantId",
-                                        "servicePrincipalId",
-                                        "servicePrincipalKey",
-                                        "endpointId",
-                                        "service",
-                                        "subscriptionId",
-                                        "resourceGroup",
-                                        "identifier",
-                                        "senderEmail",
-                                        "senderName",
-                                        "smtpserverNoAuth",
-                                        "smtpportNoAuth",
-                                        "tlsOptionsNoAuth",
-                                        "smtpFromEmailNoAuth",
-                                        "smtpFromNameNoAuth",
-                                        "smtpserverUserPassword",
-                                        "smtpportUserPassword",
-                                        "tlsOptionsUserPassword",
-                                        "smtpFromEmailUserPassword",
-                                        "smtpFromNameUserPassword",
-                                        "acceptUntrustedCerts",
-                                        "certificateAuthorityFile",
-                                        "datacenter",
-                                        "pat",
-                                        "comment",
-                                        "tlscacert",
-                                        "userKey"
-                                    ]
+                                    "type": "string"
                                 },
                                 "name": {
-                                    "type": "string",
-                                    "enum": [
-                                        "Access Key ID",
-                                        "Secret Access Key",
-                                        "Region",
-                                        "Client Email",
-                                        "Token URI",
-                                        "i18n:API Token",
-                                        "Username",
-                                        "Password",
-                                        "Role to Assume",
-                                        "Role Session Name",
-                                        "External ID",
-                                        "Username (Node name)",
-                                        "Client Key",
-                                        "Password or Client Key",
-                                        "Signing Key",
-                                        "Habitat Auth Token",
-                                        "OAuth Client ID",
-                                        "OAuth Client Secret",
-                                        "User Account",
-                                        "User Password",
-                                        "i18n:App Key",
-                                        "Tenant Id",
-                                        "Client Id",
-                                        "API Key",
-                                        "User Name",
-                                        "ClientId",
-                                        "ClientSecret",
-                                        "GoDaddy API Key",
-                                        "GoDaddy API Secret",
-                                        "API Token",
-                                        "i18n:Token",
-                                        "i18n:Vault Token",
-                                        "i18n:Username",
-                                        "i18n:Password",
-                                        "Skip cert check",
-                                        "External Access Token",
-                                        "Raygun E-mail",
-                                        "Server Location",
-                                        "Access Token",
-                                        "Personal Access Token",
-                                        "Kubeconfig",
-                                        "Client ID",
-                                        "Client Secret",
-                                        "Personal access token",
-                                        "ClientID",
-                                        "Docker Registry",
-                                        "Docker ID",
-                                        "Email",
-                                        "CA Certificate",
-                                        "Certificate",
-                                        "Key",
-                                        "Windows Store API URL",
-                                        "Azure tenant ID",
-                                        "Client secret",
-                                        "Endpoint ID",
-                                        "API Management Service Name",
-                                        "Azure Subcription Id",
-                                        "Azure Resource Group Name",
-                                        "Identifier",
-                                        "Primary or Secondary key",
-                                        "From E-Mail",
-                                        "From Name",
-                                        "SMTP Server",
-                                        "SMTP Server Port",
-                                        "TLS Options",
-                                        "Accept untrusted SSL certificates",
-                                        "Certificate Authority File",
-                                        "Data Center",
-                                        "X-Api-Key",
-                                        "Azure Tenant ID",
-                                        "SonarCloud Token",
-                                        "PAT",
-                                        "username",
-                                        "password",
-                                        "comment",
-                                        "User Key"
-                                    ]
+                                    "type": "string"
                                 },
                                 "description": {
-                                    "type": "string",
-                                    "enum": [
-                                        "The AWS access key ID for signing programmatic requests",
-                                        "The AWS secret access key for signing programmatic requests",
-                                        "The region of the AWS bucket to use for storing the state file",
-                                        "The client email for creating JWT",
-                                        "The token uri for creating JWT",
-                                        "i18n:API Token for connection to endpoint",
-                                        "Username",
-                                        "Password",
-                                        "The AWS access key ID for signing programmatic requests.\nExample: AKIAIOSFODNN7EXAMPLE",
-                                        "The AWS secret access key for signing programmatic requests.\nExample: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
-                                        "The Amazon Resource Name (ARN) of the role to assume.\nIf a role ARN is specified the access and secret keys configured in the endpoint will be used to generate temporary session credentials, scoped to the specified role, and used be used by the task.\nThe generated credentials for each AWS task will be valid for a default duration of 15 minutes. If your tasks need a longer duration (up to a maximum of one hour) set the variable 'aws.rolecredential.maxduration' on your build or release definition to the required duration (in seconds, minimum 900 and maximum 3600). Note that this setting will affect all tasks that use AWS endpoints configured to assume a role.",
-                                        "Optional identifier for the assumed role session. If not specified the tasks will use a default name of 'aws-vsts-tools'.\nUse the role session name to uniquely identify a session when the same role is assumed by different principals or for different reasons. In cross-account scenarios, the role session name is visible to, and can be logged by the account that owns the role. The role session name is also used in the ARN of the assumed role principal. This means that subsequent cross-account API requests using the temporary security credentials will expose the role session name to the external account in their CloudTrail logs.",
-                                        "A unique identifier that is used by third parties when assuming roles in their customers' accounts, aka cross-account role access.",
-                                        "The username to access your Coverity instance",
-                                        "The password to access your Coverity instance",
-                                        "A username on the Chef server that has admin permissions",
-                                        "The private key (in pem format) for the specified user",
-                                        "Password or the private key (in pem format) for the specified user",
-                                        "Signing item of the origin key pair",
-                                        "Authentication token for publishing Habitat packages.",
-                                        "OAuth Client ID",
-                                        "OAuth Client Secret",
-                                        "User account to authenticate OAuth requests",
-                                        "Password for user account to authenticate OAuth requests",
-                                        "Password for the user account.",
-                                        "Checkmarx username",
-                                        "Checkmarx user password",
-                                        "i18n:API Token required to connect to Datadog",
-                                        "i18n:App key required to connect to Datadog",
-                                        "Tenant of the Azure Active Directory",
-                                        "Client Id",
-                                        "API key for connection to Octopus Deploy",
-                                        "Specify the user name for the ElectricFlow.",
-                                        "Specify the user password for the ElectricFlow.",
-                                        "Client ID for the app with management permissions",
-                                        "Client Secret",
-                                        "API Token for connection to endpoint",
-                                        "API Secret for connection to endpoint",
-                                        "API key for connection",
-                                        "i18n:Token to use when accessing Terraform cloud and Enterprise",
-                                        "i18n:Token to use when accessing vault",
-                                        "i18n:Vault username",
-                                        "i18n:Vault Password",
-                                        "Skip cert check",
-                                        "You can create this token within your <a href=\"https://app.raygun.io/user\" target=\"_blank\">user settings</a> in Raygun in the External Access Token section.",
-                                        "The e-mail address of the service account used to authenticate with Raygun.",
-                                        "Password for the account that is connecting to Raygun.",
-                                        "Go to <a href=\"https://snyk.io/account/\" target=\"_blank\">snyk.io/account</a> or run `snyk auth` to find your API Token.",
-                                        "TFS Server location",
-                                        "Artifactory username with deploy permissions.",
-                                        "Password or API key of an Artifactory user with deploy permissions.",
-                                        "Access Token with deploy permissions. Click <a href=\"https://https://www.jfrog.com/confluence/display/ACC/Access+Tokens\" target=\"_blank\">here</a> for information on how to generate Access Tokens.",
-                                        "Personal access token is applicable only for endpoint targeting VSTS account or TFS 2016. Click <a href=\"https://www.visualstudio.com/en-us/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate\" target=\"_blank\">here</a>. for information on how to create Personal Access Token.",
-                                        "Personal access token.",
-                                        "This is your Kiuwan username",
-                                        "Yup! this is your Kiuwan password",
-                                        "Copy your kubectl config",
-                                        "ALM Octane API client ID",
-                                        "ALM Octane API client secret",
-                                        "Azure DevOps personal access token. Requires at least the Marketplace (publish) scope.",
-                                        "Personal Access Token (TFS 2017+ and Azure DevOps Server 2019).",
-                                        "Username (TFS 2015.2+ with Basic Authentication enabled)",
-                                        "Username to use for connection to the Power BI API",
-                                        "Password of the user connecting to the Power BI API",
-                                        "ClientID",
-                                        "The URL for your Docker Registry",
-                                        "The username for your Docker Registry",
-                                        "The password for your Docker Registry",
-                                        "The email address for your Docker Registry",
-                                        "Contents of ca.pem",
-                                        "Contents of cert.pem",
-                                        "Contents of key.pem",
-                                        "Content of the certificate",
-                                        "Server URL",
-                                        "ID of the Azure tenant",
-                                        "ID of the client",
-                                        "Secret of the client",
-                                        "Endpoint ID on Portainer.io",
-                                        "GitLab API Token",
-                                        "Name of Azure API Management Service.",
-                                        "Identifier of Azure subscription where API Management Service is deployed.",
-                                        "Name of Azure Resource Group where API Management Service is deployed.",
-                                        "Identifier for API Management REST API.",
-                                        "Primary or Secondary key for APIM Management REST API.",
-                                        "Parasoft CTP username",
-                                        "Parasoft CTP password",
-                                        "E-Mail Address where the e-mail is coming from",
-                                        "Name where the e-mail is coming from",
-                                        "SMTP Server Name",
-                                        "SMTP Server Port",
-                                        "TLS Options",
-                                        "If checked, self-signed certificates will be accepted. Please do not use this option in production environment.",
-                                        "The path to a certificate authority file to correctly and securely authenticates with an OpenShift server that uses HTTPS",
-                                        "Dynamics 365 user name",
-                                        "User password",
-                                        "SauceLabs data center",
-                                        "API Token Found on your saucelabs account page",
-                                        "Authentication Token generated through SonarCloud (go to My Account > Security > Generate Tokens)",
-                                        "Azure DevOps Personal Access Token here.",
-                                        "Enter the username",
-                                        "Enter the password",
-                                        "Leave Free Comment (not required)",
-                                        "Twistlock console username",
-                                        "Twistlock console password",
-                                        "CA Certificate used to verify Twistlock console",
-                                        "API token to connect to HockeyApp account can be created <a href=\"https://rink.hockeyapp.net/manage/auth_tokens\" target=\"_blank\">here</a>.",
-                                        "Unique identifier of the organization to update can be retrieved from the admin page in your WhiteSource account"
-                                    ]
+                                    "type": "string"
                                 },
                                 "inputMode": {
                                     "type": "string",
+                                    "default": "textbox",
                                     "enum": [
-                                        "textbox",
+                                        "none",
                                         "passwordbox",
                                         "textarea",
-                                        "passwordBox",
+                                        "textbox",
                                         "checkbox",
-                                        "textArea",
-                                        "TextArea",
                                         "combo"
                                     ]
                                 },
                                 "isConfidential": {
-                                    "type": [
-                                        "boolean",
-                                        "string"
-                                    ]
+                                    "type": "boolean"
                                 },
                                 "validation": {
                                     "type": "object",
@@ -617,11 +236,11 @@
                                         },
                                         "dataType": {
                                             "type": "string",
+                                            "default": "string",
                                             "enum": [
                                                 "string",
-                                                "String",
-                                                "boolean",
-                                                "number"
+                                                "number",
+                                                "boolean"
                                             ]
                                         },
                                         "maxLength": {
@@ -648,6 +267,7 @@
                                     },
                                     "additionalProperties": false,
                                     "required": [
+                                        "isRequired",
                                         "dataType"
                                     ]
                                 },
@@ -655,7 +275,13 @@
                                     "type": "object",
                                     "properties": {
                                         "inputId": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "enum": [
+                                                "sslVerifyValues",
+                                                "useSudoValues",
+                                                "restVersionValues",
+                                                "releaseUrlInput"
+                                            ]
                                         },
                                         "isDisabled": {
                                             "type": "boolean"
@@ -663,6 +289,9 @@
                                         "defaultValue": {
                                             "type": "string",
                                             "enum": [
+                                                "1",
+                                                "v1.0",
+                                                "https://vsrm.dev.azure.com/[organization]",
                                                 "",
                                                 "https://index.docker.io/v1/",
                                                 "https://manage.devcenter.microsoft.com",
@@ -673,17 +302,43 @@
                                         "possibleValues": {
                                             "type": "array",
                                             "items": {
-                                                "type": "string",
-                                                "enum": [
-                                                    "@{value=force; displayValue=Force TLS}",
-                                                    "@{value=auto; displayValue=Use TLS if the server supports STARTTLS}",
-                                                    "@{value=ignore; displayValue=Do not use TLS, and ignore STARTTLS}",
-                                                    "@{value=us-west-1; displayValue=US West 1}",
-                                                    "@{value=eu-central-1; displayValue=EU Central 1}",
-                                                    "@{value=us-east-1; displayValue=US East 1 (headless)}"
+                                                "type": "object",
+                                                "properties": {
+                                                    "value": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "1",
+                                                            "0",
+                                                            "v1.0",
+                                                            "@{value=force; displayValue=Force TLS}",
+                                                            "@{value=auto; displayValue=Use TLS if the server supports STARTTLS}",
+                                                            "@{value=ignore; displayValue=Do not use TLS, and ignore STARTTLS}",
+                                                            "@{value=us-west-1; displayValue=US West 1}",
+                                                            "@{value=eu-central-1; displayValue=EU Central 1}",
+                                                            "@{value=us-east-1; displayValue=US East 1 (headless)}"
+                                                        ]
+                                                    },
+                                                    "displayValue": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "True",
+                                                            "False",
+                                                            "v1.0"
+                                                        ]
+                                                    }
+                                                },
+                                                "additionalProperties": false,
+                                                "required": [
+                                                    "value",
+                                                    "displayValue",
+                                                    "defaultValue"
                                                 ]
                                             },
-                                            "additionalItems": false
+                                            "additionalItems": false,
+                                            "required": [
+                                                "inputId",
+                                                "defaultValue"
+                                            ]
                                         },
                                         "isLimitedToPossibleValues": {
                                             "type": "boolean"
@@ -691,7 +346,8 @@
                                     },
                                     "additionalProperties": false,
                                     "required": [
-                                        "inputId"
+                                        "inputId",
+                                        "defaultValue"
                                     ]
                                 },
                                 "helpText": {
@@ -712,11 +368,11 @@
                             "required": [
                                 "id",
                                 "name",
+                                "description",
                                 "inputMode",
                                 "validation"
                             ]
-                        },
-                        "additionalItems": false
+                        }
                     },
                     "name": {
                         "type": "string",
@@ -785,187 +441,14 @@
         "helpMarkDown": {
             "type": "string"
         },
-        "inputDescriptors": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "string"
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "description": {
-                        "type": "string"
-                    },
-                    "inputMode": {
-                        "type": "string",
-                        "enum": [
-                            "textbox",
-                            "combo",
-                            "textarea",
-                            "checkbox"
-                        ]
-                    },
-                    "isConfidential": {
-                        "type": "boolean"
-                    },
-                    "validation": {
-                        "type": "object",
-                        "properties": {
-                            "isRequired": {
-                                "type": "boolean"
-                            },
-                            "dataType": {
-                                "type": "string",
-                                "enum": [
-                                    "string",
-                                    "boolean"
-                                ]
-                            },
-                            "maxLength": {
-                                "type": "integer",
-                                "enum": [
-                                    300,
-                                    255
-                                ]
-                            }
-                        },
-                        "additionalProperties": false,
-                        "required": [
-                            "isRequired",
-                            "dataType"
-                        ]
-                    },
-                    "values": {
-                        "type": "object",
-                        "properties": {
-                            "inputId": {
-                                "type": "string",
-                                "enum": [
-                                    "sslVerifyValues",
-                                    "useSudoValues",
-                                    "restVersionValues",
-                                    "releaseUrlInput"
-                                ]
-                            },
-                            "defaultValue": {
-                                "type": "string",
-                                "enum": [
-                                    "1",
-                                    "v1.0",
-                                    "https://vsrm.dev.azure.com/[organization]"
-                                ]
-                            },
-                            "possibleValues": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "value": {
-                                            "type": "string",
-                                            "enum": [
-                                                "1",
-                                                "0",
-                                                "v1.0"
-                                            ]
-                                        },
-                                        "displayValue": {
-                                            "type": "string",
-                                            "enum": [
-                                                "True",
-                                                "False",
-                                                "v1.0"
-                                            ]
-                                        }
-                                    },
-                                    "additionalProperties": false,
-                                    "required": [
-                                        "value",
-                                        "displayValue"
-                                    ]
-                                },
-                                "additionalItems": false
-                            }
-                        },
-                        "additionalProperties": false,
-                        "required": [
-                            "inputId",
-                            "defaultValue"
-                        ]
-                    }
-                },
-                "additionalProperties": false,
-                "required": [
-                    "id",
-                    "name",
-                    "description",
-                    "inputMode",
-                    "validation"
-                ]
-            },
-            "additionalItems": false
-        },
-        "icons": {
-            "type": "object",
-            "properties": {
-                "default": {
-                    "type": "string",
-                    "enum": [
-                        "icon.png",
-                        "icons/xabaril-endpoint-icon.png"
-                    ]
-                },
-                "large": {
-                    "type": "string"
-                },
-                "wide": {
-                    "type": "string",
-                    "enum": [
-                        "icons/xabaril.png"
-                    ]
-                }
-            },
-            "additionalProperties": false,
-            "required": [
-                "default"
-            ]
-        },
-        "helpMarkdown": {
-            "type": "string"
-        },
-        "config": {
-            "type": "object",
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "enum": [
-                        "string"
-                    ]
-                },
-                "description": {
-                    "type": "string"
-                },
-                "required": {
-                    "type": "boolean"
-                }
-            },
-            "additionalProperties": false,
-            "required": [
-                "type",
-                "description",
-                "required"
-            ]
-        },
         "icon": {
             "type": "string"
         }
     },
-    "additionalProperties": false,
     "required": [
         "name",
         "displayName",
         "authenticationSchemes"
-    ]
+    ],
+    "type": "object"
 }
