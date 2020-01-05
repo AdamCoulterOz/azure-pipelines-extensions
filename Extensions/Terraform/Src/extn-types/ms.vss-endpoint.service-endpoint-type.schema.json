@@ -1,15 +1,24 @@
 {
     "$id": "ms.vss-endpoint.service-endpoint-type",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "additionalProperties": false,
+    "help": "https://github.com/microsoft/azure-pipelines-extensions/blob/master/docs/authoring/endpoints/serviceEndpoints.md",
+    "type": "object",
+    "required": [
+        "name",
+        "displayName",
+        "authenticationSchemes"
+    ],
     "properties": {
         "name": {
             "title": "Name",
-            "type": "string"
+            "type": "string",
+            "description": "Reference name for the authentication endpoint.",
+            "maxLength": 50
         },
         "displayName": {
             "title": "Display Name",
-            "type": "string"
+            "type": "string",
+            "description": "Display name for the authentication endpoint."
         },
         "url": {
             "title": "URL",
@@ -43,6 +52,27 @@
                 "defaultValue": {
                     "title": "Default Value",
                     "type": "string"
+                },
+                "dependsOn": {
+                    "description": "URL can be dependent on value of another input field in the endpoint type. As and when the value of the input changes, URL value will also get updated in the endpoint creation UI. For example, the Azure Classic endpoint type’s URL depends on “environment” input. A map of the “environment” input to the “URL” values is defined in the endpoint type & based on this, the value of URL gets populated.",
+                    "type":"object",
+                    "properties": {
+                        "input": {
+                            "type":"string",
+                            "description": "Input field to read key value from."
+                        },
+                        "map":{
+                            "type":"array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "key": {"type":"string",
+                                    "description": "A possible value from the input field."},
+                                    "value": { "type":"string","description": "URL value to return given the input field key value."}
+                                }
+                            }
+                        }
+                    }
                 }
             },
             "additionalProperties": false,
@@ -151,8 +181,12 @@
         },
         "authenticationSchemes": {
             "type": "array",
+            "title": "Authentication Schemes",
+            "description": "An authentication scheme in a service endpoint determines the credentials that are used to connect to the external service. In order to populate task drop downs, Azure DevOps connects to the external service using the credentials provided as part of the endpoint. Azure DevOps effectively becomes a client of the external service querying for details pertaining to the task input. Azure DevOps supports a closed set of authentication schemes that can be utilized by a custom service endpoint type.",
+            "minItems": 1,
             "items": {
                 "name": "Authentication Scheme",
+                "description": "A single authentication scheme object. See Authentication Schemes collection object for more details.",
                 "type": "object",
                 "properties": {
                     "type": {
@@ -199,6 +233,7 @@
                     },
                     "inputDescriptors": {
                         "type": "array",
+                        "description": "Endpoint type can include inputs in addition to name, URL and the auth. parameters. For example, the Azure Classic endpoint type includes inputs of: subscriptionId and subscriptionName.",
                         "additionalItems": false,
                         "items": {
                             "name": "Connection Input",
@@ -211,11 +246,16 @@
                                     "type": "string"
                                 },
                                 "description": {
-                                    "type": "string"
+                                    "description": "Help text can be provided for inputs & they can include hyperlinks as well. For e.g. subscription name input of Azure Classic endpoint type has customized help.",
+                                    "type": "string",
+                                    "examples": [
+                                        "i18n:Subscription Name from the <a href=\"https://go.microsoft.com/fwlink/?LinkID=312990\" target=\"_blank\">publish settings file</a>"
+                                    ]
                                 },
                                 "inputMode": {
                                     "type": "string",
                                     "default": "textbox",
+                                    "description": "Text box, Text area, Combo inputs are supported. When specifying combo input, the set of possible values & default value can be provided. For example, the Azure Classic endpoint uses a combo input for environment (AzureCloud, AzureChinaCloud, AzureUSGovernment, AzureGermanCloud).",
                                     "enum": [
                                         "none",
                                         "passwordbox",
@@ -439,16 +479,13 @@
             "additionalItems": false
         },
         "helpMarkDown": {
-            "type": "string"
+            "type": "string",
+            "title": "Help Markdown Text",
+            "description": "Help text including help links can be specified for the endpoint type that appears in the bottom of the create/update endpoint UI."
         },
         "icon": {
             "type": "string"
         }
     },
-    "required": [
-        "name",
-        "displayName",
-        "authenticationSchemes"
-    ],
-    "type": "object"
+    "additionalProperties": false
 }
