@@ -54,11 +54,11 @@
                     "properties": {
                         "type": "object",
                         "properties": {
-                            "abc": {
+                            "invalidContributionType": {
                                 "type": "string"
                             }
                         },
-                        "required": ["abc"],
+                        "required": ["invalidContributionType"],
                         "additionalProperties": false
                     }
                 }
