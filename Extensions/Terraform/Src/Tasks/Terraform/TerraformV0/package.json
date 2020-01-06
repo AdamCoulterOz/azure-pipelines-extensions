@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "#! mocha tests/_suite.js"
+    "test": "#! mocha tests/_suite.js",
+    "build": "tsc -outDir bin"
   },
   "author": "",
   "license": "ISC",
