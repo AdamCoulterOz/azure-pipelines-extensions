@@ -1,0 +1,44 @@
+{
+    "id": "endpoint-auth-scheme-basic",
+    "description": "Basic Authentication based endpoint authentication scheme",
+    "type": "ms.vss-endpoint.service-endpoint-auth-scheme",
+    "targets": [
+        "ms.vss-endpoint.endpoint-auth-schemes"
+    ],
+    "properties": {
+        "name": "UsernamePassword",
+        "displayName": "i18n:Basic Authentication",
+        "headers": [
+            {
+                "name": "Authorization",
+                "value": "Basic {{ #base64 endpoint.username \":\" endpoint.password }}"
+            }
+        ],
+        "inputDescriptors": [
+            {
+                "id": "username",
+                "name": "i18n:Username",
+                "description": "i18n:Username for connecting to the endpoint",
+                "inputMode": "textbox",
+                "isConfidential": false,
+                "validation": {
+                    "isRequired": true,
+                    "dataType": "string",
+                    "maxLength": 300
+                }
+            },
+            {
+                "id": "password",
+                "name": "i18n:Password",
+                "description": "i18n:Password for connecting to the endpoint",
+                "inputMode": "passwordbox",
+                "isConfidential": true,
+                "validation": {
+                    "isRequired": true,
+                    "dataType": "string",
+                    "maxLength": 300
+                }
+            }
+        ]
+    }
+}
