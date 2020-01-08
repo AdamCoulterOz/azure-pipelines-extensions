@@ -417,7 +417,7 @@
                         "additionalItems": false
                     },
                     "inputDescriptors":{
-                        "$ref": "#/descriptors/inputDescriptors"
+                        "$ref": "#/definitions/inputDescriptors"
                     },
                     "name": {
                         "type": "string",
@@ -484,7 +484,7 @@
             "additionalItems": false
         },
         "inputDescriptors":{
-            "$ref": "#/descriptors/inputDescriptors"
+            "$ref": "#/definitions/inputDescriptors"
         },
         "helpMarkDown": {
             "type": "string",
