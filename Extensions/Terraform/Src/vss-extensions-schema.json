@@ -633,7 +633,7 @@
                 "pricing": { "$ref": "#/definitions/link" },
                 "privacy": { "$ref": "#/definitions/link" },
                 "installation": { "$ref": "#/definitions/link" },
-                "overview": { "$ref": "#/definitions/link" },
+                "overview": { "$ref": "#/definitions/link" }
             },
             "additionalProperties": false
         },
