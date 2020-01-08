@@ -8,6 +8,191 @@
         "displayName",
         "authenticationSchemes"
     ],
+    "definitions": {
+        "inputDescriptors": {
+            "type": "array",
+            "description": "Endpoint type can include inputs in addition to name, URL and the auth. parameters. For example, the Azure Classic endpoint type includes inputs of: subscriptionId and subscriptionName.",
+            "additionalItems": false,
+            "items": {
+                "name": "Connection Input",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Help text can be provided for inputs & they can include hyperlinks as well. For e.g. subscription name input of Azure Classic endpoint type has customized help.",
+                        "type": "string",
+                        "examples": [
+                            "i18n:Subscription Name from the <a href=\"https://go.microsoft.com/fwlink/?LinkID=312990\" target=\"_blank\">publish settings file</a>"
+                        ]
+                    },
+                    "inputMode": {
+                        "type": "string",
+                        "default": "textbox",
+                        "description": "Text box, Text area, Combo inputs are supported. When specifying combo input, the set of possible values & default value can be provided. For example, the Azure Classic endpoint uses a combo input for environment (AzureCloud, AzureChinaCloud, AzureUSGovernment, AzureGermanCloud).",
+                        "enum": [
+                            "none",
+                            "passwordbox",
+                            "textarea",
+                            "textbox",
+                            "checkbox",
+                            "combo"
+                        ]
+                    },
+                    "isConfidential": {
+                        "type": "boolean"
+                    },
+                    "validation": {
+                        "type": "object",
+                        "properties": {
+                            "isRequired": {
+                                "type": "boolean"
+                            },
+                            "dataType": {
+                                "type": "string",
+                                "default": "string",
+                                "enum": [
+                                    "string",
+                                    "number",
+                                    "boolean"
+                                ]
+                            },
+                            "maxLength": {
+                                "type": "integer",
+                                "enum": [
+                                    300,
+                                    32,
+                                    100,
+                                    255
+                                ]
+                            },
+                            "maxValue": {
+                                "type": "string",
+                                "enum": [
+                                    "65500"
+                                ]
+                            },
+                            "minValue": {
+                                "type": "string",
+                                "enum": [
+                                    "1"
+                                ]
+                            }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                            "isRequired",
+                            "dataType"
+                        ]
+                    },
+                    "values": {
+                        "type": "object",
+                        "properties": {
+                            "inputId": {
+                                "type": "string",
+                                "enum": [
+                                    "sslVerifyValues",
+                                    "useSudoValues",
+                                    "restVersionValues",
+                                    "releaseUrlInput"
+                                ]
+                            },
+                            "isDisabled": {
+                                "type": "boolean"
+                            },
+                            "defaultValue": {
+                                "type": "string",
+                                "enum": [
+                                    "1",
+                                    "v1.0",
+                                    "https://vsrm.dev.azure.com/[organization]",
+                                    "",
+                                    "https://index.docker.io/v1/",
+                                    "https://manage.devcenter.microsoft.com",
+                                    "identifier",
+                                    "auto"
+                                ]
+                            },
+                            "possibleValues": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "type": "string",
+                                            "enum": [
+                                                "1",
+                                                "0",
+                                                "v1.0",
+                                                "@{value=force; displayValue=Force TLS}",
+                                                "@{value=auto; displayValue=Use TLS if the server supports STARTTLS}",
+                                                "@{value=ignore; displayValue=Do not use TLS, and ignore STARTTLS}",
+                                                "@{value=us-west-1; displayValue=US West 1}",
+                                                "@{value=eu-central-1; displayValue=EU Central 1}",
+                                                "@{value=us-east-1; displayValue=US East 1 (headless)}"
+                                            ]
+                                        },
+                                        "displayValue": {
+                                            "type": "string",
+                                            "enum": [
+                                                "True",
+                                                "False",
+                                                "v1.0"
+                                            ]
+                                        }
+                                    },
+                                    "additionalProperties": false,
+                                    "required": [
+                                        "value",
+                                        "displayValue",
+                                        "defaultValue"
+                                    ]
+                                },
+                                "additionalItems": false,
+                                "required": [
+                                    "inputId",
+                                    "defaultValue"
+                                ]
+                            },
+                            "isLimitedToPossibleValues": {
+                                "type": "boolean"
+                            }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                            "inputId",
+                            "defaultValue"
+                        ]
+                    },
+                    "helpText": {
+                        "type": "string"
+                    },
+                    "helpMarkDown": {
+                        "type": "string"
+                    },
+                    "defaultValue": {
+                        "type": "string",
+                        "enum": [
+                            "AzureDevOps@dev.azure.com",
+                            "Azure DevOps"
+                        ]
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "inputMode",
+                    "validation"
+                ]
+            }
+        }
+    },
     "properties": {
         "name": {
             "title": "Name",
@@ -231,188 +416,8 @@
                         },
                         "additionalItems": false
                     },
-                    "inputDescriptors": {
-                        "type": "array",
-                        "description": "Endpoint type can include inputs in addition to name, URL and the auth. parameters. For example, the Azure Classic endpoint type includes inputs of: subscriptionId and subscriptionName.",
-                        "additionalItems": false,
-                        "items": {
-                            "name": "Connection Input",
-                            "type": "object",
-                            "properties": {
-                                "id": {
-                                    "type": "string"
-                                },
-                                "name": {
-                                    "type": "string"
-                                },
-                                "description": {
-                                    "description": "Help text can be provided for inputs & they can include hyperlinks as well. For e.g. subscription name input of Azure Classic endpoint type has customized help.",
-                                    "type": "string",
-                                    "examples": [
-                                        "i18n:Subscription Name from the <a href=\"https://go.microsoft.com/fwlink/?LinkID=312990\" target=\"_blank\">publish settings file</a>"
-                                    ]
-                                },
-                                "inputMode": {
-                                    "type": "string",
-                                    "default": "textbox",
-                                    "description": "Text box, Text area, Combo inputs are supported. When specifying combo input, the set of possible values & default value can be provided. For example, the Azure Classic endpoint uses a combo input for environment (AzureCloud, AzureChinaCloud, AzureUSGovernment, AzureGermanCloud).",
-                                    "enum": [
-                                        "none",
-                                        "passwordbox",
-                                        "textarea",
-                                        "textbox",
-                                        "checkbox",
-                                        "combo"
-                                    ]
-                                },
-                                "isConfidential": {
-                                    "type": "boolean"
-                                },
-                                "validation": {
-                                    "type": "object",
-                                    "properties": {
-                                        "isRequired": {
-                                            "type": "boolean"
-                                        },
-                                        "dataType": {
-                                            "type": "string",
-                                            "default": "string",
-                                            "enum": [
-                                                "string",
-                                                "number",
-                                                "boolean"
-                                            ]
-                                        },
-                                        "maxLength": {
-                                            "type": "integer",
-                                            "enum": [
-                                                300,
-                                                32,
-                                                100,
-                                                255
-                                            ]
-                                        },
-                                        "maxValue": {
-                                            "type": "string",
-                                            "enum": [
-                                                "65500"
-                                            ]
-                                        },
-                                        "minValue": {
-                                            "type": "string",
-                                            "enum": [
-                                                "1"
-                                            ]
-                                        }
-                                    },
-                                    "additionalProperties": false,
-                                    "required": [
-                                        "isRequired",
-                                        "dataType"
-                                    ]
-                                },
-                                "values": {
-                                    "type": "object",
-                                    "properties": {
-                                        "inputId": {
-                                            "type": "string",
-                                            "enum": [
-                                                "sslVerifyValues",
-                                                "useSudoValues",
-                                                "restVersionValues",
-                                                "releaseUrlInput"
-                                            ]
-                                        },
-                                        "isDisabled": {
-                                            "type": "boolean"
-                                        },
-                                        "defaultValue": {
-                                            "type": "string",
-                                            "enum": [
-                                                "1",
-                                                "v1.0",
-                                                "https://vsrm.dev.azure.com/[organization]",
-                                                "",
-                                                "https://index.docker.io/v1/",
-                                                "https://manage.devcenter.microsoft.com",
-                                                "identifier",
-                                                "auto"
-                                            ]
-                                        },
-                                        "possibleValues": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "value": {
-                                                        "type": "string",
-                                                        "enum": [
-                                                            "1",
-                                                            "0",
-                                                            "v1.0",
-                                                            "@{value=force; displayValue=Force TLS}",
-                                                            "@{value=auto; displayValue=Use TLS if the server supports STARTTLS}",
-                                                            "@{value=ignore; displayValue=Do not use TLS, and ignore STARTTLS}",
-                                                            "@{value=us-west-1; displayValue=US West 1}",
-                                                            "@{value=eu-central-1; displayValue=EU Central 1}",
-                                                            "@{value=us-east-1; displayValue=US East 1 (headless)}"
-                                                        ]
-                                                    },
-                                                    "displayValue": {
-                                                        "type": "string",
-                                                        "enum": [
-                                                            "True",
-                                                            "False",
-                                                            "v1.0"
-                                                        ]
-                                                    }
-                                                },
-                                                "additionalProperties": false,
-                                                "required": [
-                                                    "value",
-                                                    "displayValue",
-                                                    "defaultValue"
-                                                ]
-                                            },
-                                            "additionalItems": false,
-                                            "required": [
-                                                "inputId",
-                                                "defaultValue"
-                                            ]
-                                        },
-                                        "isLimitedToPossibleValues": {
-                                            "type": "boolean"
-                                        }
-                                    },
-                                    "additionalProperties": false,
-                                    "required": [
-                                        "inputId",
-                                        "defaultValue"
-                                    ]
-                                },
-                                "helpText": {
-                                    "type": "string"
-                                },
-                                "helpMarkDown": {
-                                    "type": "string"
-                                },
-                                "defaultValue": {
-                                    "type": "string",
-                                    "enum": [
-                                        "AzureDevOps@dev.azure.com",
-                                        "Azure DevOps"
-                                    ]
-                                }
-                            },
-                            "additionalProperties": false,
-                            "required": [
-                                "id",
-                                "name",
-                                "description",
-                                "inputMode",
-                                "validation"
-                            ]
-                        }
+                    "inputDescriptors":{
+                        "$ref": "#/descriptors/inputDescriptors"
                     },
                     "name": {
                         "type": "string",
@@ -477,6 +482,9 @@
                 ]
             },
             "additionalItems": false
+        },
+        "inputDescriptors":{
+            "$ref": "#/descriptors/inputDescriptors"
         },
         "helpMarkDown": {
             "type": "string",

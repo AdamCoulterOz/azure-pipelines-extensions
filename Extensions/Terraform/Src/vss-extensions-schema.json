@@ -10,6 +10,17 @@
         "categories",
         "targets"
     ],
+    "definitions": {
+        "link":{
+            "type": "object",
+            "properties": {
+                "uri": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false
+        }
+    },
     "properties": {
         "$schema": {
             "type": "string"
@@ -604,187 +615,25 @@
         "links": {
             "type": "object",
             "properties": {
-                "home": {
-                    "type": "object",
-                    "properties": {
-                        "uri": {
-                            "type": "string"
-                        }
-                    },
-                    "additionalProperties": false
-                },
-                "getStarted": {
-                    "type": "object",
-                    "properties": {
-                        "uri": {
-                            "type": "string"
-                        }
-                    },
-                    "additionalProperties": false
-                },
-                "learn": {
-                    "type": "object",
-                    "properties": {
-                        "uri": {
-                            "type": "string"
-                        }
-                    },
-                    "additionalProperties": false
-                },
-                "support": {
-                    "type": [
-                        "object",
-                        "string"
-                    ],
-                    "properties": {
-                        "uri": {
-                            "type": "string"
-                        }
-                    },
-                    "additionalProperties": false
-                },
-                "issues": {
-                    "type": "object",
-                    "properties": {
-                        "uri": {
-                            "type": "string"
-                        }
-                    },
-                    "additionalProperties": false
-                },
-                "repository": {
-                    "type": "object",
-                    "properties": {
-                        "uri": {
-                            "type": "string"
-                        },
-                        "type": {
-                            "type": "string"
-                        }
-                    },
-                    "additionalProperties": false
-                },
-                "privacypolicy": {
-                    "type": "object",
-                    "properties": {
-                        "uri": {
-                            "type": "string"
-                        }
-                    },
-                    "additionalProperties": false
-                },
-                "screenshots": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "path": {
-                                "type": "string"
-                            }
-                        },
-                        "additionalProperties": false
-                    },
-                    "additionalItems": false
-                },
-                "license": {
-                    "type": "object",
-                    "properties": {
-                        "uri": {
-                            "type": "string"
-                        }
-                    },
-                    "additionalProperties": false
-                },
-                "terraGrunt": {
-                    "type": "object",
-                    "properties": {
-                        "uri": {
-                            "type": "string"
-                        }
-                    },
-                    "additionalProperties": false
-                },
-                "bigAvocado": {
-                    "type": "object",
-                    "properties": {
-                        "uri": {
-                            "type": "string"
-                        }
-                    },
-                    "additionalProperties": false
-                },
-                "source": {
-                    "type": "object",
-                    "properties": {
-                        "uri": {
-                            "type": "string"
-                        }
-                    },
-                    "additionalProperties": false
-                },
-                "blog": {
-                    "type": "object",
-                    "properties": {
-                        "uri": {
-                            "type": "string"
-                        }
-                    },
-                    "additionalProperties": false
-                },
-                "company": {
-                    "type": "object",
-                    "properties": {
-                        "uri": {
-                            "type": "string"
-                        }
-                    },
-                    "additionalProperties": false
-                },
-                "sourceCode": {
-                    "type": "object",
-                    "properties": {
-                        "uri": {
-                            "type": "string"
-                        }
-                    },
-                    "additionalProperties": false
-                },
-                "pricing": {
-                    "type": "object",
-                    "properties": {
-                        "path": {
-                            "type": "string"
-                        }
-                    },
-                    "additionalProperties": false
-                },
-                "privacy": {
-                    "type": "object",
-                    "properties": {
-                        "path": {
-                            "type": "string"
-                        }
-                    },
-                    "additionalProperties": false
-                },
-                "installation": {
-                    "type": "object",
-                    "properties": {
-                        "uri": {
-                            "type": "string"
-                        }
-                    },
-                    "additionalProperties": false
-                },
-                "overview": {
-                    "type": "object",
-                    "properties": {
-                        "uri": {
-                            "type": "string"
-                        }
-                    },
-                    "additionalProperties": false
-                }
+                "home": { "$ref": "#/definitions/link" },
+                "getStarted": { "$ref": "#/definitions/link" },
+                "learn": { "$ref": "#/definitions/link" },
+                "support": { "$ref": "#/definitions/link" },
+                "issues": { "$ref": "#/definitions/link" },
+                "repository": { "$ref": "#/definitions/link" },
+                "privacypolicy": { "$ref": "#/definitions/link" },
+                "screenshots": { "$ref": "#/definitions/link" },
+                "license": { "$ref": "#/definitions/link" },
+                "terraGrunt": { "$ref": "#/definitions/link" },
+                "bigAvocado": { "$ref": "#/definitions/link" },
+                "source": { "$ref": "#/definitions/link" },
+                "blog": { "$ref": "#/definitions/link" },
+                "company": { "$ref": "#/definitions/link" },
+                "sourceCode": { "$ref": "#/definitions/link" },
+                "pricing": { "$ref": "#/definitions/link" },
+                "privacy": { "$ref": "#/definitions/link" },
+                "installation": { "$ref": "#/definitions/link" },
+                "overview": { "$ref": "#/definitions/link" },
             },
             "additionalProperties": false
         },
