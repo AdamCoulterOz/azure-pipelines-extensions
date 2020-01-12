@@ -40,7 +40,8 @@
                             "textarea",
                             "textbox",
                             "checkbox",
-                            "combo"
+                            "combo",
+                            "radiobuttons"
                         ]
                     },
                     "isConfidential": {
@@ -58,7 +59,8 @@
                                 "enum": [
                                     "string",
                                     "number",
-                                    "boolean"
+                                    "boolean",
+                                    "guid"
                                 ]
                             },
                             "maxLength": {
@@ -304,7 +306,7 @@
                     },
                     "callbackContextTemplate": {
                         "type": "string",
-                        "enum": [
+                        "examples": [
                             "{\"table\": \"task\"}",
                             "{\"skip\": \"{{add skip 5000}}\"}",
                             "{\"skip\": \"{{add skip 1000}}\"}"
@@ -353,6 +355,13 @@
                             ]
                         },
                         "additionalItems": false
+                    },
+                    "authenticationScheme":{
+                        "title": "Authentication Scheme",
+                        "type":"string"
+                    },
+                    "resourceUrl": {
+                        "type":"string"
                     }
                 },
                 "additionalProperties": false,
