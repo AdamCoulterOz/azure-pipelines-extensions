@@ -1,0 +1,52 @@
+{
+  "manifestVersion": 1,
+  "id": "buildbuddy-extension",
+  "version": "0.1.70",
+  "name": "BuildBuddy",
+  "description": "Allows all short of shenanigans with VSTS-Builds.",
+  "publisher": "DrMueller",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "icons": {
+    "default": "src/assets/b.png"
+  },
+  "contributions": [
+    {
+      "id": "Mmu.BuildBuddy",
+      "type": "ms.vss-web.hub",
+      "description": "Adds the entry-point to the work-tab.",
+      "targets": [
+        "ms.vss-work-web.work-hub-group"
+      ],
+      "properties": {
+        "name": "Build-Buddy",
+        "order": 99,
+        "uri": "dist/index.html"
+      }
+    }
+  ],
+  "scopes": [
+    "vso.work",
+    "vso.build",
+    "vso.project",
+    "vso.code"
+  ],
+  "files": [
+    {
+      "path": "dist",
+      "addressable": true,
+      "packagePath": "dist"
+    },
+    {
+      "path": "node_modules/vss-web-extension-sdk/lib/VSS.SDK.js",
+      "addressable": true
+    },
+    {
+      "path": "src/assets/b.png",
+      "addressable": true
+    }
+  ]
+}

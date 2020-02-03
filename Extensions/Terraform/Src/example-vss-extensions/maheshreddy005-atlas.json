@@ -1,0 +1,49 @@
+{
+    "manifestVersion": 1,
+    "id": "atlas-task",
+    "name": "Atlas Build and Release Tools",
+    "version": "0.1.0",
+    "publisher": "lodejard",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Tools for building/releasing with Atlas.",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "images/atlas.ico"        
+    },
+    "files": [
+        {
+            "path": "AtlasV0"
+        },
+        {
+            "path": "AtlasInstallerV0"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-atlas-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "AtlasV0"
+            }
+        },
+        {
+            "id": "custom-atlas-installer-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "AtlasInstallerV0"
+            }
+        }
+    ]
+}

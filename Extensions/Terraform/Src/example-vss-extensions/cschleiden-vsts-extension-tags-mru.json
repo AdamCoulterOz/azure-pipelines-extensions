@@ -1,0 +1,80 @@
+{
+    "manifestVersion": 1,
+    "id": "tags-mru",
+    "version": "1.0.2",
+    "name": "Tags MRU",
+    "scopes": [ "vso.work", "vso.work_write" ],
+    "description": "Keeps a list of the most recently used work item tags and allows adding them with a single click.",
+    "publisher": "cschleiden",
+    "public": true,
+    "icons": {
+        "default": "img/logo.png"
+    },
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "tags": [
+        "Tags"
+    ],
+    "content": {
+        "details": {
+            "path": "overview.md"
+        }
+    },
+    "links": {
+        "support": {
+            "uri": "http://www.cschleiden.de"
+        }
+    },
+    "branding": {
+        "color": "rgb(220, 235, 252)",
+        "theme": "light"
+    },
+    "files": [
+        {
+            "path": "img",
+            "addressable": true
+        },
+        {
+            "path": "scripts",
+            "addressable": true
+        },
+        {
+            "path": "index.html",
+            "addressable": true
+        },
+        {
+            "path": "overview.md",
+            "addressable": true
+        }
+    ],
+    "categories": [
+        "Plan and track"
+    ],
+    "contributions": [
+        {
+            "id": "tags-mru-work-item-menu",
+            "type": "ms.vss-web.action-provider",
+            "description": "",
+            "targets": [
+                "ms.vss-work-web.work-item-context-menu"
+            ],
+            "properties": {
+                "group": "contributed",
+                "uri": "index.html"
+            }
+        },
+        {
+            "id": "tags-mru-work-item-form-observer",
+            "type": "ms.vss-work-web.work-item-notifications",
+            "targets": [
+                "ms.vss-work-web.work-item-form"
+            ],
+            "properties": {
+                "uri": "index.html"
+            }
+        }
+    ]
+}

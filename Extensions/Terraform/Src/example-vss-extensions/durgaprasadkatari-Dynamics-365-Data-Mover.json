@@ -1,0 +1,76 @@
+{
+  "manifestVersion": 1,
+  "id": "DataMover",
+  "name": "Dynamics 365 CI/CD Data Mover",
+  "version": "1.2.0.1",
+  "publisher": "durgaprasadkatari",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "galleryFlags": [
+    "Public"
+  ],
+  "description": "Moves configuration data between two Dynamics CRM instances",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "icons": {
+    "default": "extension-icon.png"
+  },
+  "tags": [
+    "Dynamics 365",
+    "Data",
+    "Remove OptionSet Value"
+  ],
+  "files": [
+    {
+      "path": "buildtasks"
+    },
+    {
+      "path": "buildtasks/DataMover"
+    },
+    {
+      "path": "buildtasks/DeleteOptionSetValue"
+    },
+    {
+      "addressable": true,
+      "path": "images/DataMoverSample.PNG"
+    },
+    {
+      "path": "images/DeleteOptionSetSample.png",
+      "addressable": true
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "README.md"
+    },
+    "license": {
+      "path": "LICENSE.md"
+    }
+  },
+  "contributions": [
+    {
+      "id": "DataMover",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "buildtasks/DataMover"
+      }
+    },
+    {
+      "id": "DeleteOptionSetValue",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "buildtasks/DeleteOptionSetValue"
+      }
+    }
+  ]
+}

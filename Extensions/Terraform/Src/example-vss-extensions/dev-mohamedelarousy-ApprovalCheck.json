@@ -1,0 +1,57 @@
+
+    {
+        "manifestVersion": 1,
+        "id": "Thiqah-ps-approval-check",
+        "name": "Thiqah-ps-approval-check",
+        "version": "0.0.1",
+        "publisher": "Mohamed-Elarousy",
+        "public": true,
+        "targets": [
+            {
+                "id": "Microsoft.VisualStudio.Services"
+            }
+        ],    
+        "description": "This task chek for any pending approvals related to the current Definition .",
+        "categories": [
+            "Azure Pipelines"
+        ],
+        "tags": [
+            "Release",
+            "Pipeline",
+            "Orchestration",
+            "Microservices",
+            "Deploy",
+            "DevOps",
+            "Tasks"
+          ],
+        "icons": {
+            "default": "ApprovalCheck/icon.png"        
+        },
+        "content": {
+            "details": {
+              "path": "readme.md"
+            },
+            "license": {
+              "path": "license.md"
+            }
+          },
+        "files": [
+            {
+                "path": "ApprovalCheck"
+            }
+        ],
+        "contributions": [
+            {
+                "id": "Thiqah-ps-approval-check",
+                "type": "ms.vss-distributed-task.task",
+                "targets": [
+                    "ms.vss-distributed-task.tasks"
+                ],
+                "properties": {
+                    "name": "ApprovalCheck"
+                }
+            }
+        ]
+    }
+    
+    

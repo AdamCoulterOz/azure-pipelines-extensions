@@ -1,0 +1,36 @@
+{
+    "manifestVersion": 1,
+    "id": "Dotnet-Nuget-Build-Task",
+    "name": "Dotnet Nuget",
+    "version": "1.0.10",
+    "publisher": "SocraticProgrammer",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Task for working with Nuget via dotnet cli",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/SPLogo.png"
+    },
+    "files": [
+        {
+            "path": "buildAndReleaseTask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "Socratic-Dotnet-Nuget-Build-Task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildAndReleaseTask"
+            }
+        }
+    ]
+}

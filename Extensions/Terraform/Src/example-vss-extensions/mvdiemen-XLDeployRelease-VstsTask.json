@@ -1,0 +1,33 @@
+{
+    "manifestVersion": 1,
+    "id": "XLDeploy",
+    "name": "Deploy with XL Deploy",
+    "version": "2.1.2",
+    "publisher": "mvdiemen",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Release task for deploying an application with XL Deploy",
+    "categories": [
+        "Build and release"
+    ],
+    "files": [
+        {
+            "path": "XLDeployReleaseTask"
+        }
+    ],
+    "contributions": [
+ {
+      "id": "DE49AD21-B675-49E2-8308-7C4D149FDFE7",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "XLDeployReleaseTask"
+      }
+    }
+    ]
+}

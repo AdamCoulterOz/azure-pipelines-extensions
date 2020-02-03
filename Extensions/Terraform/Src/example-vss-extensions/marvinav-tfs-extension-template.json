@@ -1,0 +1,18 @@
+{
+    "manifestVersion": 1,
+    "publisher": "[Your publisher name]",
+    "version": "0.0.9",
+    "public": false,
+    "categories": [
+        "Project"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "scopes": [
+        "vso.work",
+        "vso.project"
+    ]
+}

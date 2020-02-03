@@ -1,0 +1,58 @@
+{
+    "manifestVersion": 1,
+    "id": "swagger-documentation-deployment",
+    "publisher": "MariusDrasutis",
+    "version": "1.0.9",
+    "name": "Swagger Documentation Deployment",
+    "description": "Deploy Docker API updates from a document in your repository.",
+    "public": false,
+    "categories": ["Azure Repos"],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "service-endpoint",
+            "description": "Service endpoint for interacting with the SwaggerHub Registry API.",
+            "type": "ms.vss-endpoint.service-endpoint-type",
+            "targets": [ "ms.vss-endpoint.endpoint-types" ],
+            "properties": {
+                "name": "swagger-hub",
+                "displayName": "SwaggerHub",
+                "url": {
+                    "displayName": "SwaggerHub API URL",
+                    "helpText": "URL for the SwaggerHub Registry API.",
+                    "defaultValue": "https://api.swaggerhub.com"
+                },
+                "authenticationSchemes": [
+                    {
+                        "type": "ms.vss-endpoint.endpoint-auth-scheme-token"
+                    }
+                ],
+                "helpMarkDown": "Get the API key for SwaggerHub <a href=\"https://app.swaggerhub.com/settings/apiKey\" target=\"_blank\"><b>here</b></a>."
+            }
+        },
+        {
+            "id": "build-task",
+            "description": "SwaggerHub API interaction.",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [ "ms.vss-distributed-task.tasks" ],
+            "properties": {
+                "name": "build_tasks"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        },
+        {
+            "path": "build_tasks",
+            "addressable": true
+        }
+    ]
+}

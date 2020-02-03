@@ -1,0 +1,94 @@
+{
+  "manifestVersion": 1,
+  "id": "release-freezer",
+  "publisher": "trfc",
+  "name": "Release Freezer",
+  "version": "0.0.3",
+  "description": "Gate releases based off of dates (also referred to as 'code freezes')",
+  "tags": [
+    "Release",
+    "Gate",
+    "Calendar",
+    "Code freeze"
+  ],
+  "icons": {
+    "default": "media/calendargate-logo.png"
+  },
+  "public": false,
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "scopes": [],
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "content": {
+    "details": {
+      "path": "README.md"
+    },
+    "license": {
+      "path": "LICENSE"
+    }
+  },
+  "screenshots": [
+    {
+      "path": "media/calendargate-logo.png"
+    }
+  ],
+  "links": {
+    "home": {
+      "uri": "https://github.com/JoshuaTheMiller/ReleaseFreezer-Task"
+    },
+    "repository": {
+      "uri": "https://github.com/JoshuaTheMiller/ReleaseFreezer-Task"
+    },
+    "issues": {
+      "uri": "https://github.com/JoshuaTheMiller/ReleaseFreezer-Task/issues"
+    }
+  },
+  "badges": [],
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/JoshuaTheMiller/ReleaseFreezer-Task"
+  },
+  "files": [
+    {
+      "path": "Tasks/CalendarGate"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "trfc-date-gate",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/CalendarGate"
+      }
+    },
+    {
+      "id": "trfc-date-gate-endpoint-type",
+      "type": "ms.vss-endpoint.service-endpoint-type",
+      "targets": [
+        "ms.vss-endpoint.endpoint-types"
+      ],
+      "properties": {
+        "name": "ReleaseFreezer",
+        "displayName": "Release Freezer",
+        "helpMarkDown": "Create a controlled connection to a Release Freezer instance.",
+        "url": {
+          "displayName": "Release Freezer URL",
+          "description": "The Release Freezer instance Url, e.g. `https://instance.release-freezer.com`."
+        },
+        "authenticationSchemes": [
+          {
+            "type": "ms.vss-endpoint.endpoint-auth-scheme-none"
+          }
+        ]
+      }      
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+    "manifestVersion": 1,
+    "id": "ShortGitVersionHashExtractor",
+    "name": "Short git version hash extractor",
+    "version": "1.0.0",
+    "publisher": "MikhaelRegni",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Tool if you need the short version hash while building/releasing. Includes one build/release task.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/icon.png"        
+    },
+	"tags": [
+		"git", 
+		"hash", 
+		"commit", 
+		"short"
+	],
+	"repository": {
+		"type": "git",
+		"uri": "https://github.com/mregni/Azure-DevOps-short-version-hash"
+	},
+	"content": {
+        "details": {
+            "path": "README.md"
+        },
+		"license": {
+			"path": "LICENSE"
+		}
+    },
+	"CustomerQnASupport": {
+        "enableqna":"true"
+    },
+	"files": [
+		{
+			"path": "ShortGitVersionHashExtractor"
+		}
+	],
+	"links": {
+		"repository": {
+			"uri": "https://github.com/mregni/Azure-DevOps-short-version-hash"
+		},
+		"issues": {
+			"uri": "https://github.com/mregni/Azure-DevOps-short-version-hash/issues"
+		}
+	},
+	"scope": [
+		"vso.build"
+	],
+	"contributions": [
+		{
+			"id": "ShortGitVersionHashExtractor",
+			"type": "ms.vss-distributed-task.task",
+			"targets": [
+				"ms.vss-distributed-task.tasks"
+			],
+			"properties": {
+				"name": "ShortGitVersionHashExtractor"
+			}
+		}
+	],
+    "screenshots": [
+        {
+            "path": "images/screen.png"
+        }
+    ]
+}

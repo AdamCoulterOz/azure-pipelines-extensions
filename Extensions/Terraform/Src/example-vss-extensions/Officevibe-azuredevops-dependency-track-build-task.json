@@ -1,0 +1,60 @@
+{
+  "manifestVersion": 1,
+  "id": "dependency-track-build-tasks",
+  "version": "0.1.6",
+  "name": "Dependency Track Build Tasks",
+  "description": "Tasks that help with the integration between Azure DevOps and Dependency Track.",
+  "publisher": "officevibe",
+  "icons": {
+    "default": "images/icon128.png"
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "tags": [
+    "Dependency Track",
+    "Security",
+    "OWASP"
+  ],
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "scopes": [
+    "vso.build_execute"
+  ],
+  "files": [
+    {
+      "path": "UploadBOM"
+    },
+    {
+      "path": "images",
+      "addressable": true
+    }
+  ],
+  "contributions": [
+    {
+      "id": "upload-bom-dtrack-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "UploadBOM"
+      }
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "README.md"
+    },
+    "license": {
+      "path": "LICENSE"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/Officevibe/azuredevops-dependency-track-build-task"
+  }
+}

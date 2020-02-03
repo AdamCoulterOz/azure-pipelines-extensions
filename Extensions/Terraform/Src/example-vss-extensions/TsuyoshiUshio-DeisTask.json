@@ -1,0 +1,90 @@
+{
+"manifestVersion": 1,
+  "id": "deis-workflow-endpoint",
+  "version": "0.1.9",
+  "name": "Deis extension",
+  "description": "Enabling Deis command with storing secret on the endpoint",
+  "publisher": "TsuyoshiUshio",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],  
+  "icons": {
+    "default": "images/logo.png"
+  },
+  "categories": [
+    "Build and release"
+  ],
+  "tags": [
+    "kubernetes"
+  ],
+  "content": {
+    "details": {
+      "path": "deis.md"
+    }
+  },
+    "contributions": [
+    {
+      "id": "service-endpoint",
+      "description": "Service Endpoint type for Deis connection",
+      "type": "ms.vss-endpoint.service-endpoint-type",
+      "targets": [ "ms.vss-endpoint.endpoint-types" ],
+      "properties": {
+        "name": "deis",
+        "displayName": "Deis workflow",
+        "config": {
+          "type": "string",
+          "description": "Configure youre deis connection",
+          "required": true
+        },
+                "authenticationSchemes": [
+          {
+            "type": "ms.vss-endpoint.endpoint-auth-scheme-none",
+            "inputDescriptors": [
+              {
+                "id": "username",
+                "name": "username",
+                "description": "Enter the username",
+                "inputMode": "textbox",
+                "isConfidential": false,
+                "validation": {
+                  "isRequired": true,
+                  "dataType": "string"
+                }
+              },
+              {
+                  "id": "password",
+                  "name": "password",
+                  "description": "Enter the password",
+                  "inputMode": "passwordbox",
+                  "isConfidential": true,
+                  "validation": {
+                      "isRequired": true,
+                      "dataType": "string"
+                  }
+
+              }
+            ]
+          }
+
+        ],
+        "helpMarkDown": "<a href=\"https://github.com/TsuyoshiUshio/DeisTask\" target=\"_blank\"><b>Learn More</b></a>"
+      }
+    },
+    {
+      "id": "deis-task",
+      "description": "Task executes deis workflow general command for you.",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [ "ms.vss-distributed-task.tasks" ],
+      "properties": {
+        "name": "tasks/general"
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "tasks/general"
+    }
+  ]
+}

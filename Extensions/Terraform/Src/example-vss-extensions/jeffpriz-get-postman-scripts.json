@@ -1,0 +1,69 @@
+{
+    "manifestVersion": 1,
+    "id": "getPostmanJSON",
+    "name": "Get Postman Scripts",
+    "version": "1.0.1",
+    "publisher": "OneLuckiDev",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "images/postman_icon_small.png"
+    },
+    "description": "Download your Postman scripts from your Postman enterprise account.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "files": [
+        {
+            "path": "GetPostmanData"
+        },
+        {
+            "path": "images/postman_icon_small.png",
+            "addressable": true
+        },
+        {
+            "path": "images/taskOutput.PNG",
+            "addressable": true
+        },
+        {
+            "path": "images/taskSetup.PNG",
+            "addressable": true
+        }
+    ],
+    "badges": [
+        {
+            "href": "https://oneluckidev.visualstudio.com/OneLuckiDev/_apis/build/status/get-postman-task",
+            "uri": "https://oneluckidev.visualstudio.com/OneLuckiDev/_apis/build/status/get-postman-task",
+            "description": "Build for this Task run in Azure DevOps"
+        }
+    ],
+    "branding": {
+        "color": "rgb(120, 113, 136)",
+        "theme": "dark"
+    },
+    "contributions": [
+        {
+            "id": "vsts-release-web-test",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "GetPostmanData"
+            }
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "README.md"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/jeffpriz/get-postman-scripts"
+    },
+    "public": true
+}

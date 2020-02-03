@@ -1,0 +1,51 @@
+{
+  "manifestVersion": 1,
+  "id": "4tecture-HOL-BuildExtensibility-AssemblyVersioning",
+  "version": "0.5.0",
+  "name": "Build and Assembly Versioning",
+  "scopes": [],
+  "description": "This extension adds Build Tasks for build and assembly versioning",
+  "baseUri": "https://localhost",
+  "publisher": "4tecture",
+  "public": false,
+  "icons": {
+    "default": "img/logo.png"
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "tags": [
+    "Sample"
+  ],
+  "links": {
+    "home": {
+      "uri": "https://www.4tecture.ch"
+    }
+  },
+  "branding": {
+    "color": "rgb(220, 235, 252)",
+    "theme": "light"
+  },
+  "files": [
+    {
+      "path": "AssemblyVersioning"
+    }
+  ],
+  "categories": [
+    "Build and release"
+  ],
+  "contributions": [
+    {
+      "id": "AssemblyVersioning",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "type": "ms.vss-distributed-task.task",
+      "properties": {
+        "name": "AssemblyVersioning"
+      }
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "manifestVersion": 1,
+  "id": "aadv1appprovisioning",
+  "name": "Azure Active Directory v1.0 App Provisioning",
+  "version": "1.0.6",
+  "publisher": "stephane-eyskens",
+  "tags": [
+    "Azure Active Directory",
+    "Modern Authentication"
+  ],
+  "content": {
+    "details": {
+      "path": "overview.md"
+    }
+  },
+  "public": true,
+  "links": {
+    "getstarted": {
+      "uri": "https://github.com/stephaneey/azure-ad-vsts-extension"
+    },
+    "support": {
+      "uri": "https://github.com/stephaneey/azure-ad-vsts-extension/issues"
+    }
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Provision AAD v1.0 Apps, typically B2E scenario",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "icons": {
+    "default": "images/extension-icon.png"
+  },
+  "files": [
+    {
+      "path": "aadv1appprovisioning"
+    },
+    {
+      "path": "aadv1appprovisioninguserassignment"
+    },
+    {
+      "path": "images",
+      "addressable": true
+    }
+  ],
+
+  "contributions": [
+    {
+      "id": "aadv1appprovisioning",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "aadv1appprovisioning"
+      }
+    },
+    {
+      "id": "aadv1appprovisioninguserassignment",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "aadv1appprovisioninguserassignment"
+      }
+    }
+  ]
+}

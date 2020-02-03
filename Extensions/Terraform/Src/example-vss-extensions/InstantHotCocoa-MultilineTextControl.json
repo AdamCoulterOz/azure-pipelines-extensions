@@ -1,0 +1,68 @@
+{
+    "manifestVersion": 1.0,
+    "id": "vsts-extensions-multiline-text-control",
+    "version": "0.0.14",
+    "name": "MultilineTextControl",
+    "description": ".",
+    "publisher": "InstantHotCocoa",
+    "icons": {
+        "default": "img/logo.png"
+    },
+    "categories": [
+        "Azure Boards"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "files": [
+        {
+            "path": "dist",
+            "addressable": true
+        },
+        {
+            "path": "img",
+            "addressable": true
+        }
+    ],
+    "tags": [
+        "Work Items",
+        "Extensions",
+        "Work Item Control",
+        "Sample",
+        "Multivalue Control"
+    ],
+    "scopes": [
+        "vso.work"
+    ],
+    "contributions": [
+        {
+            "id": "multiline-form-control",
+            "type": "ms.vss-work-web.work-item-form-control",
+            "description": "A work item form control allows you write multiline plain text and synchronize values between it and other work item fields.",
+            "targets": [
+                "ms.vss-work-web.work-item-form"
+            ],
+            "properties": {
+                "name": "Multiline control",
+                "uri": "dist/multiline.html",
+                "height": 100,
+                "inputs": [
+                    {
+                        "id":"FieldName",
+                        "name": "Select the field for this control. This is the only input needed if the field is a picklist field with suggested values.",
+                        "type": "WorkItemField",
+                        "properties": {
+                            "workItemFieldTypes": ["String", "PlainText", "HTML"]
+                        },
+                        "validation": {
+                            "dataType": "String",
+                            "isRequired": true
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,51 @@
+{
+  "manifestVersion": 1,
+  "id": "tslint-report",
+  "name": "tslint report",
+  "version": "0.1.8",
+  "publisher": "miguel-savignano",
+  "content": {
+    "details": {
+      "path": "README.md"
+    },
+    "license": {
+      "path": "LICENSE.md"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/MiguelSavignano/vss-tslint-report"
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "tslint report",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "icons": {
+    "default": "images/icon.png"
+  },
+  "files": [
+    {
+      "path": "buildAndReleaseTask"
+    },
+    {
+      "path": "images"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "custom-build-release-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "buildAndReleaseTask"
+      }
+    }
+  ]
+}

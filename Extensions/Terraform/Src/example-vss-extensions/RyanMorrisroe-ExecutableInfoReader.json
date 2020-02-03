@@ -1,0 +1,66 @@
+{
+  "manifestVersion": 1,
+  "id": "ExecutableInfoReader",
+  "name": "Executable Version Info Reader",
+  "version": "1.0.0",
+  "publisher": "RyanMorrisroe",
+  "public": true,
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Build/Release Pipeline Task that reads file, program, and optionally assembly version info from executables (and dlls)",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "tags": [
+    "Assembly",
+    "AssemblyInfo",
+    "Version",
+    "VersionInfo",
+    "AssemblyVersion",
+    "FileVersion",
+    "ProductVersion"
+  ],
+  "icons": {
+    "default": "images/icon.png"
+  },
+  "files": [
+    {
+      "path": "ExecutableInfoReader"
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "readme.md"
+    },
+    "license": {
+      "path": "license"
+    }
+  },
+  "links": {
+    "getstarted": {
+      "uri": "https://github.com/RyanMorrisroe/ExecutableInfoReader"
+    },
+    "issues": {
+      "uri": "https://github.com/RyanMorrisroe/ExecutableInfoReader/issues"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/RyanMorrisroe/ExecutableInfoReader"
+  },
+  "contributions": [
+    {
+      "id": "executable-info-reader-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "ExecutableInfoReader"
+      }
+    }
+  ]
+}

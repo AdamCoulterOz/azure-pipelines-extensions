@@ -1,0 +1,41 @@
+{
+    "manifestVersion": 1,
+    "id": "my-first-extension",
+    "publisher": "RohitAggarwal",
+    "version": "1.0.0",
+    "name": "My First Extension",
+    "description": "A sample Visual Studio Services extension",
+    "public": false,
+    "categories": ["Azure Repos"],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "files": [
+
+        {
+            "path": "workItemPage.html",
+            "addressable": true
+        }, 
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib/VSS.SDK.min.js",
+            "addressable": true
+        }        
+    ],
+    "contributions": [
+       
+        {
+            "id": "sample-work-item-form-notifications",
+            "type": "ms.vss-work-web.work-item-notifications",
+            "description": "Gets events about the current work item form",
+            "targets": [
+                "ms.vss-work-web.work-item-form"
+            ],
+            "properties": {
+                "uri": "workItemPage.html"
+            }
+        }
+        
+    ]
+}

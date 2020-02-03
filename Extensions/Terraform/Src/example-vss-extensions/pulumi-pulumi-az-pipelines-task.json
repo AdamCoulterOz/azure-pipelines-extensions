@@ -1,0 +1,74 @@
+{
+    "manifestVersion": 1,
+    "id": "build-and-release-task",
+    "name": "Pulumi Azure Pipelines Task",
+    "version": "1.0.3",
+    "publisher": "pulumi",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "description": "Build/release task for running Pulumi apps in Azure Pipelines.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/pulumi_mark_flat_on_light_128x128.png"
+    },
+    "tags": [
+        "infrastructure as code",
+        "infrastructure as software",
+        "deploy azure resources using code",
+        "code based deployment"
+    ],
+    "files": [
+        {
+            "path": "buildAndReleaseTask"
+        }
+    ],
+    "links": {
+        "home": {
+            "uri": "https://www.pulumi.com"
+        },
+        "getstarted": {
+            "uri": "https://www.pulumi.com/docs/get-started/"
+        },
+        "learn": {
+            "uri": "https://www.pulumi.com"
+        },
+        "support": {
+            "uri": "https://slack.pulumi.com"
+        },
+        "repository": {
+            "uri": "https://github.com/pulumi/pulumi-az-pipelines-task"
+        },
+        "issues": {
+            "uri": "https://github.com/pulumi/pulumi-az-pipelines-task/issues"
+        }
+    },
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildAndReleaseTask"
+            }
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/pulumi/pulumi-az-pipelines-task"
+    },
+    "content": {
+        "details": {
+            "path": "overview.md"
+        }
+    },
+    "galleryFlags": [
+        "Public"
+    ]
+}

@@ -1,0 +1,33 @@
+{
+    "manifestVersion": 1,
+    "id": "Extension-Task-With-DataSources",
+    "name": "Extension for Task With Data Sources",
+    "version": "0.0.18",
+    "publisher": "marcomansi",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Tools for building/releasing with Fabrikam. Includes one build/release task.",
+    "categories": [
+        "Build and release"
+    ],
+    "files": [
+        {
+            "path": "TaskWithDataSources"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "Task-With-DataSources",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "TaskWithDataSources"
+            }
+        }
+    ]
+}

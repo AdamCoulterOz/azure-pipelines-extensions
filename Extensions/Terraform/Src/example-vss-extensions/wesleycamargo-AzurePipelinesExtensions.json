@@ -1,0 +1,75 @@
+{
+    "manifestVersion": 1,
+    "id": "build-release-task",
+    "name": "Azure DevOps Release Tools",
+    "version": "0.0.99",
+    "publisher": "WesleyCamargo",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Tools for building/releasing with Azure Pipelines.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "logo.png"        
+    },
+    "files": [
+        {
+            "path": "Tasks/WebAppBackup"
+        },
+        {
+            "path": "Tasks/CreatePullRequest"
+        },
+        {
+            "path": "Tasks/KeyVaultTransform"
+        },
+        {
+            "path": "Tasks/SendMail"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "WebAppBackup",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "Tasks/WebAppBackup"
+            }
+        },
+        {
+            "id": "CreateGitPullRequest",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "Tasks/CreatePullRequest"
+            }
+        },        
+        {
+            "id": "KeyVaultTransform",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "Tasks/KeyVaultTransform"
+            }
+        },        
+        {
+            "id": "SendMail",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "Tasks/SendMail"
+            }
+        }
+    ]
+}

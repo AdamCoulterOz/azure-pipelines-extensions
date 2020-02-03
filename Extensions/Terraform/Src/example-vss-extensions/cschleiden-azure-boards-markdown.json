@@ -1,0 +1,99 @@
+{
+    "manifestVersion": 1,
+    "version": "0.5.0",
+    "name": "Markdown",
+    "scopes": [
+        "vso.work",
+        "vso.work_write"
+    ],
+    "description": "Markdown editor for the work item form",
+    "publisher": "cschleiden",
+    "id": "markdown",
+    "icons": {
+        "default": "marketplace/logo.png"
+    },
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services.Cloud"
+        }
+    ],
+    "tags": [
+        "work items", "markdown", "editor", "custom control"
+    ],
+    "content": {
+        "details": {
+            "path": "marketplace/details.md"
+        }
+    },
+    "links": {
+        "support": {
+            "uri": "mailto:christopher.schleiden@microsoft.com"
+        }
+    },
+    "branding": {
+        "color": "rgb(220, 235, 252)",
+        "theme": "light"
+    },
+    "categories": [
+        "Plan and track"
+    ],
+    "contributions": [
+        {
+            "id": "markdown-control",
+            "type": "ms.vss-work-web.work-item-form-control",
+            "description": "Markdown",
+            "targets": [
+                "ms.vss-work-web.work-item-form"
+            ],
+            "properties": {
+                "name": "Markdown",
+                "uri": "src/index.html",
+                "height": 150,
+                "inputs": [
+                    {
+                        "id": "FieldName",
+                        "name": "HTML field to show Markdown editor for",
+                        "description": "The field associated with the control.",
+                        "type": "WorkItemField",
+                        "properties": {
+                            "workItemFieldTypes": [
+                                "HTML"
+                            ]
+                        },
+                        "validation": {
+                            "dataType": "String",
+                            "isRequired": true
+                        }
+                    },
+                    {
+                        "id": "height",
+                        "name": "Initial height",
+                        "description": "Height of the control on the form (default 150px)",
+                        "validation": {
+                            "dataType": "Number",
+                            "isRequired": false,
+                            "default": 150
+                        }
+                    },
+                    {
+                        "id": "fullHeight",
+                        "name": "Full height",
+                        "description": "Height of the control on the form when maximized (default 500px)",
+                        "validation": {
+                            "dataType": "Number",
+                            "isRequired": false
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "fullscreenView",
+            "type": "ms.vss-web.control",
+            "targets": [],
+            "properties": {
+                "uri": "src/dialog.html"
+            }
+        }
+    ]
+}

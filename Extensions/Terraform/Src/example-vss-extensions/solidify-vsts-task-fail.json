@@ -1,0 +1,80 @@
+{
+   "manifestVersion": 1,
+   "id": "intentional-failure",
+   "version": "1.0.0",
+   "name": "Intentional failure",
+   "scopes": [],
+   "description": "Fail a build or release based on various conditions.",
+   "publisher": "Solidify Labs",
+   "icons": {
+      "default": "img/extension-icon.png"
+   },
+   "targets": [
+      {
+         "id": "Microsoft.VisualStudio.Services"
+      }
+   ],
+   "tags": [
+    "Fail",
+	  "Stop",
+	  "Date",
+	  "Expression",
+	  "Build",
+	  "Release"
+   ],
+  "content": {
+    "license": {
+      "path": "Docs/LICENSE.md"
+    },
+    "details": {
+      "path": "Docs/overview.md"
+    }
+  },
+ "links": {
+    "home": {
+      "uri": "https://github.com/solidify/vsts-task-fail"
+    },
+    "getstarted": {
+      "uri": "https://github.com/solidify/vsts-task-fail"
+    },
+    "learn": {
+      "uri": "https://github.com/solidify/vsts-task-fail"
+    },
+    "support": {
+      "uri": "https://github.com/solidify/vsts-task-fail/issues"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/solidify/vsts-task-fail"
+  },
+   "branding": {
+      "color": "rgb(0, 0, 0)",
+      "theme": "dark"
+   },
+   "files": [
+        {
+         "path": "Fail",
+         "addressable": true
+		},
+		{
+         "path": "img/configure-task.png",
+         "addressable": true
+		}
+   ],
+   "categories": [
+      "Build and release"
+   ],
+   "contributions": [
+      {
+         "id": "Fail",
+         "targets": [
+            "ms.vss-distributed-task.tasks"
+         ],
+         "type": "ms.vss-distributed-task.task",
+         "properties": {
+            "name": "Fail"
+         }
+      }
+   ]
+}

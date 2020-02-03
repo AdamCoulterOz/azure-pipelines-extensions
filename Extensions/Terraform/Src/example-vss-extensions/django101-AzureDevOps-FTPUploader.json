@@ -1,0 +1,35 @@
+{
+    "manifestVersion": 1,
+    "id": "upload-via-ftp",
+    "publisher": "django101",
+    "version": "1.0.6",
+    "name": "Upload via FTP",
+    "description": "For uploading files using FTP protocol.",
+    "public": false,
+    "icons": {
+        "default": "icon.png"
+    },
+    "categories": ["Azure Pipelines, Azure Repos"],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "upload-via-ftp",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildtask"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "buildtask"
+        }
+    ]
+}

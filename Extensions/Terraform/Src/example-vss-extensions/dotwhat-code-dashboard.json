@@ -1,0 +1,41 @@
+{
+    "manifestVersion": 1,
+    "id": "code-dashboard",
+    "publisher": "dotwhat",
+    "version": "1.0.1",
+    "name": "Code Dashboard",
+    "description": "A sample Angular application",
+    "public": false,
+    "categories": [
+        "Azure Repos"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "code-dashboard",
+            "type": "ms.vss-web.hub",
+            "description": "Hello devops",
+            "targets": [
+                "ms.vss-code-web.code-hub-group"
+            ],
+            "properties": {
+                "name": "Code dashboard",
+                "uri": "dist/index.html"
+            }
+        }
+    ],
+    "scopes": [
+        "vso.code",
+        "vso.project"
+    ],
+    "files": [
+        {
+            "path": "dist",
+            "addressable": true
+        }
+    ]
+}

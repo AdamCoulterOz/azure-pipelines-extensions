@@ -1,0 +1,46 @@
+{
+    "manifestVersion": 1,
+    "id": "roadmap-extension",
+    "version": "0.1.29",
+    "name": "Roadmap",
+    "description": "Easily build a roadmap of your backlog",
+    "publisher": "pierrickblons-eco",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+            }
+        ],
+    "icons": {
+        "default": "images/logo.png"
+     },
+    "contributions": [
+        {
+            "id": "PierrickBlons.Roadmap",
+            "type": "ms.vss-web.hub",
+            "description": "Build your roadmap",
+            "targets": [
+                "ms.vss-work-web.work-hub-group"
+                ],
+            "properties": {
+                "name": "Roadmap",
+                "order": 99,
+                "uri": "index.html"
+            }
+        }
+    ],
+    "scopes": [
+        "vso.work",
+        "vso.project"
+    ],
+    "files": [
+        {
+            "path": "index.html", "addressable": true
+        },
+        {
+            "path": "sdk/scripts", "addressable": true
+        },
+        {
+            "path": "images/logo.png", "addressable": true
+        }
+    ]
+}

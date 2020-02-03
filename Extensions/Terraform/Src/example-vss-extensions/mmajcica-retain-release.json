@@ -1,0 +1,86 @@
+{
+  "manifestVersion": 1,
+  "extensionId": "retain-release",
+  "name": "Retain indefinitely current release",
+  "version": "2.0.5",
+  "publisher": "mmajcica",
+  "description": "Retain indefinitely current release",
+  "public": false,
+  "galleryFlags": [
+    "Public"
+  ],
+  "icons": {
+    "default": "images/logo.png",
+    "large": "images/logo-large.png"
+  },
+  "categories": [
+    "Build and release"
+  ],
+  "tags": [
+    "retain",
+    "retain indefinitely",
+    "indefinitely",
+    "release"
+  ],
+  "links": {
+    "home": {
+      "uri": "http://blog.majcica.com/"
+    },
+    "support": {
+      "uri": "http://blog.majcica.com/2018/02/12/automate-settings-retain-indefinitely-flag-on-your-releases"
+    },
+    "repository": {
+        "uri": "https://github.com/mmajcica/retain-release"
+    },
+    "issues": {
+        "uri": "https://github.com/mmajcica/retain-release/issues"
+    }
+  },
+  "repository": {
+      "type": "git",
+      "uri": "https://github.com/mmajcica/retain-release"
+  },
+  "branding": {
+    "color": "#e9ebed",
+    "theme": "light"
+  },
+  "screenshots": [
+    {
+        "path": "images/retain-release.png"
+    }
+  ],
+  "content": {
+    "details": {
+        "path": "README.md"
+    },
+    "license": {
+        "path": "LICENSE.txt"
+    }
+  },
+  "files": [
+    {
+      "path": "images",
+      "addressable": true
+    },
+    {
+      "path": "retain-release"
+    }
+  ],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "retain-release",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "retain-release"
+      }
+    }
+  ]
+}

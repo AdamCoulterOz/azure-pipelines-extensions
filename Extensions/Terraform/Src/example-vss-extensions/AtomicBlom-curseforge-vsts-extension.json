@@ -1,0 +1,134 @@
+{
+  "manifestVersion": 1,
+  "id": "curseforgetasks",
+  "version": "0.1.1",
+  "name": "CurseForge Tasks",
+  "scopes": [],
+  "description": "Tasks for deploying mods and other artifacts to CurseForge",
+  "publisher": "atomicblom",
+  "galleryFlags": [
+    "Preview"
+  ],
+  "icons": {
+    "default": "static/images/logo.png"
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "demands": [
+    "api-version/3.0"
+  ],
+  "tags": [
+    "Sample"
+  ],
+  "categories": [
+    "Build and release"
+  ],
+  "screenshots": [
+    {
+      "path": "static/images/screen1.png"
+    }
+  ],
+  "content": {
+    "license": {
+      "path": "license.md"
+    },
+    "details": {
+      "path": "overview.md"
+    }
+  },
+  "links": {
+    "getstarted": {
+      "uri": "https://bit.ly"
+    },
+    "support": {
+      "uri": "https://bit.ly"
+    },
+    "issues": {
+      "uri": "https://bit.ly"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://bit.ly"
+  },
+  "branding": {
+    "color": "rgb(220, 235, 252)",
+    "theme": "light"
+  },
+  "files": [
+    {
+      "path": "DeployProject"
+    }
+  ],
+  "contributions": [
+      {
+      "id": "curseforge-vsts-service-endpoint",
+      "description": "Service endpoint type for Curseforge connections",
+      "type": "ms.vss-endpoint.service-endpoint-type",
+      "targets": [ "ms.vss-endpoint.endpoint-types" ],
+      "properties": {
+        "name": "CurseForge",
+        "displayName": "CurseForge",
+        "url": {
+          "displayName": "Curseforge site name",
+          "helpText": "the root of the site, based on the game being modded, e.g., curseforge.com"
+        },
+        "dataSources": [
+          {
+            "name": "TestConnection",
+            "endpointUrl": "{{endpoint.url}}/api/game/versions",
+            "resultSelector": "jsonpath:$[*]"
+          },
+          {
+            "name": "Game Dependencies",
+            "endpointUrl": "{{endpoint.url}}/api/game/dependencies",
+            "resultSelector": "jsonpath:$[*]"
+          },
+          {
+            "name": "Game Versions",
+            "endpointUrl": "{{endpoint.url}}/api/game/versions",
+            "resultSelector": "jsonpath:$[*]"
+          }
+        ],
+        "authenticationSchemes": [
+          {
+            "type": "ms.vss-endpoint.endpoint-auth-scheme-token",
+            "headers": [
+              {
+                  "name": "X-Api-Token",
+                  "value": "{{endpoint.apitoken}}"
+              }
+            ],
+            "inputDescriptors": [
+              {
+                  "id": "apitoken",
+                  "name": "i18n:API Token",
+                  "description": "i18n:API Token for connection to endpoint",
+                  "inputMode": "textbox",
+                  "isConfidential": true,
+                  "validation": {
+                      "isRequired": true,
+                      "dataType": "string",
+                      "maxLength": 300
+                  }
+              }
+          ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "DeployProject",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "type": "ms.vss-distributed-task.task",
+      "properties": {
+        "name": "DeployProject"
+      }
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+    "manifestVersion": 1,
+    "id": "unify-release-pack",
+    "name": "Unify Release",
+    "version": "0.0.4",
+    "publisher": "PauloBaima",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "details": {
+        "path": "README.md"
+    },
+    "description": "Unify Relase is a simple build task for Azure DevOps to enable two or more builds from the same source code to trigger a single Release.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/psbds/azuredevops-unify-release"
+    },
+    "files": [
+        {
+            "path": "unify-release-build-task"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "unify-release-build-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "unify-release-build-task"
+            }
+        }
+    ]
+}

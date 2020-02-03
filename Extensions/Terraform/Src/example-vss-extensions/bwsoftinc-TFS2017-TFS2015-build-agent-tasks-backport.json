@@ -1,0 +1,46 @@
+{
+  "manifestVersion": 1,
+	"id": "copyfilesoverssh",
+	"version": "1.0.0",
+	"name": "Copy Files Over SSH",
+	"description": "A SSH file upload build deploy task",
+	"publisher": "BWSOFTINC",
+	"targets": [
+		{
+			"id": "Microsoft.VisualStudio.Services"
+		}
+	],
+    "content": {
+        "details": {
+            "path": "overview.md"
+        }
+    },
+	"icons": {
+            "default": "icon.png"
+    },
+    "contributions": [
+        {
+            "id": "bwsoftinc.copyfilesoverssh-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "CopyFilesOverSSH"
+            }
+        }
+    ],
+    "scopes": [],
+    "contributionTypes": [],
+	"files": [
+		{
+			"path": "." 
+		},
+		{
+			"path": "task.json", "addressable" : true 
+		},
+		{	
+			"path": "icon.png", "addressable": true
+		}
+	]
+}

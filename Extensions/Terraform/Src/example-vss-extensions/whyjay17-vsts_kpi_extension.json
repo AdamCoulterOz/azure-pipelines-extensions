@@ -1,0 +1,84 @@
+{
+    "manifestVersion": 1,
+    "id": "kpi-package",
+    "publisher": "YJ",
+    "version": "0.0.34",
+    "name": "KPI Extension Package",
+    "description": "An extension for Microsoft's Visual Studio Team Services (VSTS), which is a cloud service for collaborating on code development, to manage KPIs within an organization.",
+    "public": false,
+    "categories": ["Plan and track"],
+    "icons": {
+        "default": "img/kpi.png"
+    },
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "kpi-manager",
+            "type": "ms.vss-web.hub",
+            "targets": [
+                "ms.vss-work-web.work-hub-group"
+            ],
+            "properties": {
+                "name": "KPI Manager",
+                "uri": "kpi-hub.html",
+                "iconAsset": "YJ.kpi-manager/img/hub-icon.png"
+            }
+        },
+        {
+            "id": "kpi-widget",
+            "type": "ms.vss-dashboards-web.widget",
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog"
+            ],    
+            "properties": {
+                "name": "KPI Table Widget",
+                "description": "A widget that display the KPI of this project.",
+                "catalogIconUrl": "img/kpi_98x98.png",
+                "previewImageUrl": "img/kpi_330x160.png",
+                "uri": "kpi-widget.html",
+                "supportedSizes": [
+                    {
+                        "rowSpan": 2,
+                        "columnSpan": 3
+                    }
+                ],
+                "supportedScopes": [
+                    "project_team"
+                ]
+            }
+        }
+    ],
+    "scopes": [
+        "vso.project"
+    ],
+    "files": [
+        {
+            "path": "css/table.css",
+            "addressable": true
+        },
+        {
+            "path": "css/hub.css",
+            "addressable": true
+        },
+        {
+            "path": "kpi-hub.html",
+            "addressable": true
+        },
+        {
+            "path": "kpi-widget.html",
+            "addressable": true
+        },
+        {
+            "path": "img", "addressable": true
+        },
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        }
+    ]
+}

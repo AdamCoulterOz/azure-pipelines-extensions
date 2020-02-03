@@ -1,0 +1,45 @@
+{
+    "manifestVersion": 1,
+    "id": "open-test-plan-extension",
+    "publisher": "{PUBLISHER_ID}",
+    "version": "1.0.0",
+    "name": "Open Test Plan",
+    "description": "Open Test Plan View from Queries",
+    "public": true,
+    "categories": ["Plan and track"],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+		{  
+			"id": "open-test-plan-work-item-menu",  
+			"type": "ms.vss-web.action",  
+			"description": "Toolbar item which open the test plan view at the test management hub",  
+			"targets": [  
+				"ms.vss-work-web.work-item-context-menu"  
+			],  
+			"properties": {  
+			"text": "Open Test Plan",  
+			"title": "Open Test Plan",  
+			"toolbarText": "Open Test Plan",
+			"uri": "index.html"  
+			}  
+		}
+	],
+	"scopes": [
+		"vso.work"
+    ],
+    "files": [
+        {
+            "path": "index.html",
+            "addressable": true
+        },
+        {
+            "path": "sdk/node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        }
+    ]
+}

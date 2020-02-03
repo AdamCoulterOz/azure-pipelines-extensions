@@ -1,0 +1,47 @@
+{
+    "manifestVersion": 1,
+    "id": "sample-extension",
+    "version": "0.23.0",
+    "name": "My first sample extension",
+    "description": "A sample Visual Studio Services extension.",
+    "publisher": "lean-soft",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "images/logo.png"
+    },
+    "contributions": [
+        {  
+            "id": "sample-work-item-form-page",
+            "type": "ms.vss-work-web.work-item-form-page",
+            "description": "Custom work item form page",
+            "targets": [
+                "ms.vss-work-web.work-item-form"
+            ],
+            "properties": {
+                "name": "My Page",
+                "uri": "workItemPage.html"
+            } 
+        }
+    ],
+    "scopes": [
+        "vso.work"
+    ],
+    "files": [
+        {
+            "path": "workItemPage.html",
+            "addressable": true
+        },
+        {
+            "path": "sdk/scripts",
+            "addressable": true
+        },
+        {
+            "path": "images/logo.png",
+            "addressable": true
+        }
+    ]
+}

@@ -1,0 +1,76 @@
+{
+    "manifestVersion": 1,
+    "id": "cloc-vsts-extension",
+    "version": "1.2.1",
+    "name": "Count Lines of Code",
+    "description": "Count Lines of Code with cloc CLI by Al Danial.",
+    "publisher": "Dealogic",
+    "public": true,
+    "icons": {
+        "default": "icon.png",
+        "large": "icon-large.png"
+    },
+    "categories": [
+        "Build and release"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "screenshots": [
+        {
+            "path": "screenshots/BuildSummary.png"
+        },
+        {
+            "path": "screenshots/TaskList.png"
+        },
+        {
+            "path": "screenshots/AllSettings.png"
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "DETAILS.md"
+        },
+        "license": {
+            "path": "LICENSE"
+        }
+    },
+    "links": {
+        "getstarted": {
+            "uri": "https://github.com/Dealogic/cloc-vsts-extension"
+        },
+        "support": {
+            "uri": "https://github.com/Dealogic/cloc-vsts-extension/issues"
+        },
+        "repository": {
+            "uri": "https://github.com/Dealogic/cloc-vsts-extension"
+        },
+        "issues": {
+            "uri": "https://github.com/Dealogic/cloc-vsts-extension/issues"
+        }
+    },
+    "tags": [
+        "cloc",
+        "build",
+        "count lines of code"
+    ],
+    "files": [
+        {
+            "path": "tasks/cloc-build-task"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "cloc",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "tasks/cloc-build-task"
+            }
+        }
+    ]
+}

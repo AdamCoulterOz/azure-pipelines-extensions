@@ -1,0 +1,42 @@
+{
+    "manifestVersion": 1.0,
+    "id": "vue-vsts",
+    "name": "Vue Vsts",
+	"version": "1.0.0",
+    "publisher": "donbabbeo",
+    "targets": [{ "id": "Microsoft.VisualStudio.Services" }],
+    "icons": { "default": "static/logo.png" },
+    "scopes": [ "vso.work" ],
+    "contributions": [{
+        "id": "Main",
+        "type": "ms.vss-dashboards-web.widget",
+		"targets": [
+			"ms.vss-dashboards-web.widget-catalog",
+			".Main.Configuration"
+		 ],
+		"properties": {
+			"name": "Main page",
+			"description": "Description",
+			"catalogImageUrl": "static/catalog.png",
+			"previewImageUrl": "static/preview.png",
+        	"uri": "wwwroot/main.html",
+			"supportedScopes": [ "project_team" ],
+			"supportedSizes": [
+				{ "rowSpan": 4, "columnSpan": 4 }
+			]
+		}
+    }, {
+    	"id": "Main.Configuration",
+        "type": "ms.vss-dashboards-web.widget-configuration",
+        "targets": [ "ms.vss-dashboards-web.widget-configuration" ],
+        "properties": {
+        	"name": "Configuration page",
+            "description": "Description",
+            "uri": "wwwroot/config.html"
+        }
+    }],
+	"files": [
+		{ "path": "wwwroot", "addressable": true },
+		{ "path": "static", "addressable": true }
+	]
+}

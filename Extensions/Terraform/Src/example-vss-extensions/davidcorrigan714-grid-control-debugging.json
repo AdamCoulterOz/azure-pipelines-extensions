@@ -1,0 +1,53 @@
+{
+    "manifestVersion": 1.0,
+    "id": "vsts-extensions-grid-debug",
+    "version": "0.0.0.69",
+    "name": "Grid Debugging",
+    "description": "Figuring out why the grid control isn't working.",
+    "public": false,
+    "publisher": "davidcorrigan2",
+    "categories": [
+        "Azure Boards"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "files": [
+        {
+            "path": "dist",
+            "addressable": true
+        },
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        }
+    ],
+    "tags": [
+        "Work Items"
+    ],
+    "content": {
+        "details": {
+            "path": "readme.md"
+        }
+    },
+    "scopes": [
+    ],
+    "contributions": [
+        {
+            "id": "products-hub",
+            "type": "ms.vss-web.hub",
+            "description": "Adds the products editing hub to the preferences.",
+            "targets": [
+                "ms.vss-web.project-admin-hub-group"
+                ],
+            "properties": {
+                "name": "Grid Debug 2",
+                "order": 99,
+                "uri": "dist/productshub.html"
+            }
+        }
+    ]
+}

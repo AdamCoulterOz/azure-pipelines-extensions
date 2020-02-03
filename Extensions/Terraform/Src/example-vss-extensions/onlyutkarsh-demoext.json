@@ -1,0 +1,84 @@
+{
+    "manifestVersion": 1,
+    "id": "demoext",
+    "version": "0.0.1",
+    "name": "DemoExt",
+    "public": false,
+    "scopes": [
+      "vso.build",
+      "vso.serviceendpoint"
+    ],
+    "description": "",
+    "publisher": "utkarsh",
+    "targets": [
+      {
+        "id": "Microsoft.VisualStudio.Services"
+      }
+    ],
+   "icons": {
+      "default": "img/save-as-128x128.png"
+    },
+    "categories": [
+      "Build and release"
+    ],
+    "tags": [
+      "Build",
+      "Release",
+      "Definition"
+    ],
+    "content": {
+      "details": {
+        "path": "intro.md"
+      },
+      "license": {
+        "path": "license.txt"
+      }
+    },
+    "branding": {
+      "color": "rgb(8,39,68)",
+      "theme": "dark"
+    },
+    "files": [
+      {
+        "path": "css",
+        "addressable": true
+      },
+      {
+        "path": "img",
+        "addressable": true
+      },
+      {
+        "path": "libs",
+        "addressable": true
+      },
+      {
+        "path": "src",
+        "addressable": true
+      }
+    ],
+    "contributions": [
+      {
+        "id": "demo-ext-menu",
+        "type": "ms.vss-web.action",
+        "targets": [
+          "ms.vss-build-web.build-definition-menu"
+        ],
+        "properties": {
+          "text": "DemoExt",
+          "group": "editing",
+          "icon": "img/save-as-16x16.png",
+          "uri": "src/main.html",
+          "registeredObjectId": "menuExt"
+        }
+      },
+      {
+        "id": "dialogPage",
+        "type": "ms.vss-web.control",
+        "description": "Dialog page",
+        "targets": [],
+        "properties": {
+          "uri": "src/main.html"
+        }
+      }
+    ]
+  }

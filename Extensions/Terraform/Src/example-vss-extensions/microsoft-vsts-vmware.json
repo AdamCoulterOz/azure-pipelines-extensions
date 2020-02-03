@@ -1,0 +1,85 @@
+﻿{
+    "manifestVersion": 1,
+    "id": "vmwareapp",
+    "name": "VMware Resource Deployment",
+    "version": "1.0.1",
+    "publisher": "ms-vscs-rm",
+    "description": "Connect to a VMware vCenter Server, and easily provision VMs, and perform actions on them like snapshot, revert snapshot, start, stop etc.",
+    "public": true,
+    "icons": {
+        "default": "images/Vmware_logo.png",
+        "large": "images/VMware-logo-large.png"
+    },
+    "categories": [
+        "Build and release"
+    ],
+    "tags": [ ],
+    "links": {
+        "support": {
+            "uri": "http://aka.ms/vmwaresupport"
+        },
+        "pricing": {
+            "uri": "http://aka.ms/vstspricing"
+        },
+        "home": {
+            "uri": "http://aka.ms/vmwarehelp"
+        }
+    },
+    "branding": {
+        "color": "#f6f7fb",
+        "theme": "light"
+    },
+    "content": {
+        "details": {
+            "path": "VMWare.md"
+        }
+    },
+    "files": [
+        {
+            "path": "Tasks/vmOperations"
+        },
+        {
+            "path": "images",
+            "addressable": true
+        }
+    ],
+    "scopes": [
+        "vso.build_execute",
+        "vso.serviceendpoint_manage"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "vmware-endpoint-type",
+            "description": "VMwareConnectionServiceEndpoint",
+            "type": "ms.vss-endpoint.service-endpoint-type",
+            "targets": [
+                "ms.vss-endpoint.endpoint-types"
+            ],
+            "properties": {
+                "name": "vmware",
+                "displayName": "VMware vCenter Server",
+                "authenticationSchemes": [
+                    {
+                        "type": "ms.vss-endpoint.endpoint-auth-scheme-basic"
+                    }
+                ],
+                "helpMarkDown": "<a href=\"http://aka.ms/vmwareconnection\" target=\"_blank\"><b>Learn More</b></a>"
+            }
+        },
+        {
+            "id": "vmwareresourcedeployment-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "Tasks/vmOperations"
+            }
+        }
+    ]
+}

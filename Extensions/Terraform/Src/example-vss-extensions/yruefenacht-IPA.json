@@ -1,0 +1,64 @@
+{
+  "manifestVersion": 1,
+  "id": "Admeira-TfsExtensions-TestcaseOverview",
+  "version": "0.1.335",
+  "name": "TestcaseOverview",
+  "description": "Testcase Overview displays and manages testcases. Concise and clear!",
+  "publisher": "AdmeiraAG",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+
+  "icons": {
+    "default": "img/logo.png"
+  },
+
+  "scopes": [
+    "vso.test",
+    "vso.test_write",
+    "vso.work",
+    "vso.work_write",
+    "vso.build"
+  ],
+
+  "contributions": [
+    {
+      "id": "TestcaseOverview.Hub",
+      "type": "ms.vss-web.hub",
+      "description": "Adds a 'Tests Overview' hub to the Work hub group",
+      "targets": [
+        "ms.vss-test-web.test-hub-group"
+      ],
+      "properties": {
+        "name": "Tests Overview",
+        "order": 99,
+        "uri": "index.html"
+      }
+    }
+  ],
+
+  "files": [
+    {
+      "path": "index.html",
+      "addressable": true
+    },
+    {
+      "path": "img",
+      "addressable": true
+    },
+    {
+      "path": "css",
+      "addressable": true
+    },
+    {
+      "path": "sdk",
+      "addressable": true
+    },
+    {
+      "path": "js",
+      "addressable": true
+    }
+  ]
+}

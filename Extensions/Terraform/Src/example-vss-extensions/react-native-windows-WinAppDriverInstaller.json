@@ -1,0 +1,57 @@
+{
+    "manifestVersion": 1,
+    "id": "windows-application-driver-installer",
+    "name": "WinAppDriver Installer",
+    "version": "0.0.1",
+    "publisher": "licanhua",
+    "public": true,
+    "content": {
+        "details": {
+          "path": "Overview.md"
+        },
+        "license": {
+          "path": "license.txt"
+        }
+      },
+      "links": {
+        "repository": {
+          "uri": "https://github.com/react-native-windows/WinAppDriverInstaller"
+        },
+        "issues": {
+          "uri": "https://github.com/react-native-windows/WinAppDriverInstaller/issues"
+        }
+      },
+      "repository": {
+        "type": "git",
+        "uri": "https://github.com/react-native-windows/WinAppDriverInstaller"
+      },
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "description": "Task to install WinAppDriver to agent.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "icon.png"
+    },
+    "files": [
+        {
+            "path": "BuildTasks/WinAppDriverInstaller"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "WinAppDriverInstaller",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "BuildTasks/WinAppDriverInstaller"
+            }
+        }
+    ]
+}

@@ -1,0 +1,44 @@
+{
+    "manifestVersion": 1,
+    "id": "gitversion-tools",
+    "name": "Git Version Tools",
+    "version": "0.6.3",
+    "publisher": "albertweinert",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "galleryFlags": [
+        "Public"
+    ],
+    "description": "Tools for using together with GitVersion",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "albert.png"
+    },
+    "files": [
+        {
+            "path": "Ensure-TaggedBuild"
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "overview.md"
+        }
+    },
+    "contributions": [
+        {
+            "id": "Ensure-TaggedBuild",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "Ensure-TaggedBuild"
+            }
+        }
+    ]
+}

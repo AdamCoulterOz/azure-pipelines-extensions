@@ -1,0 +1,89 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "name": {
+            "title": "Name",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "type": "string"
+        },
+        "catalogIconUrl:": {
+            "title": "Catalog Icon URL",
+            "type": "string",
+            "examples": [
+                "img/CatalogIcon.png",
+                "picture.jpg"
+            ]
+        },
+        "previewImageUrl": {
+            "title": "Preview Image URL",
+            "type": "string",
+            "examples": [
+                "img/logo.png",
+                "logo.png"
+            ]
+        },
+        "uri": {
+            "title": "URI",
+            "type": "string",
+            "examples": [
+                "index.html",
+                "widget.html",
+                "my-hub.html",
+                "app/dashboard-widget.html",
+                "content/widget.html"
+            ]
+        },
+        "supportedSizes": {
+            "title": "Supported Sizes",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "rowSpan": {
+                        "title": "Row Span",
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10
+                    },
+                    "columnSpan": {
+                        "title": "Column Span",
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "rowSpan",
+                    "columnSpan"
+                ]
+            },
+            "additionalItems": false
+        },
+        "supportedScopes": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "default": "project_team"
+            },
+            "additionalItems": false
+        },
+        "isNameConfigurable": {
+            "title": "Is Name Configurable",
+            "type": "boolean"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "name",
+        "description",
+        "previewImageUrl",
+        "uri",
+        "supportedSizes",
+        "supportedScopes"
+    ]
+}

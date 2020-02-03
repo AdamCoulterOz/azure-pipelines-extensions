@@ -1,0 +1,58 @@
+{
+  "manifestVersion": 1,
+  "id": "jessehouwing-vsts-ping-task",
+  "name": "Ping Task",
+  "version": "2.1.2",
+  "publisher": "jessehouwing",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "public": false,
+  "scope": [
+    "vso.build"
+  ],
+  "description": "Simple task that pings a remote host.",
+  "categories": [
+    "Build and release"
+  ],
+  "tags": [
+    "Build",
+    "Ping",
+    "Network"
+  ],
+  "screenshots": [
+    {
+      "path": "icon.png"
+    }
+  ],
+  "content": {
+  },
+  "links": {
+  },
+  "branding": {
+    "color": "rgb(36, 43, 50)",
+    "theme": "dark"
+  },
+  "icons": {
+    "default": "icon.png"
+  },
+  "files": [
+    {
+      "path": "PingTask"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "PingTask",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "PingTask"
+      }
+    }
+  ]
+}

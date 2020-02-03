@@ -1,0 +1,67 @@
+{
+  "manifestVersion": 1,
+  "id": "VisualStudioInstallerPatcher",
+  "version": "1.2.2",
+  "name": "Visual Studio Installer Patcher",
+  "description": "Patches the version for Visual Studio Installer projects (vdproj) and updates all necessary guids.",
+  "publisher": "RedAppleGroup",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sourceinsurance/Visual-Studio-Installer-Patcher"
+  },
+  "links": {
+    "support": "https://github.com/sourceinsurance/Visual-Studio-Installer-Patcher"
+  },
+  "screenshots": [
+    {
+      "path": "Images\\Task.png"
+    },
+    {
+      "path": "Images\\TaskOptions.png"
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "README.md"
+    }
+  },
+  "tags": [
+    "Release Management",
+    "Azure DevOps Pipelines",
+    "Visual Studio Installer",
+    "Update",
+    "Patch",
+    "vdproj",
+    "VSTS",
+    "Visual Studio Team Services"
+  ],
+  "license": "MIT",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "icons": {
+    "default": "Images\\icon.png"
+  },
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "contributions": [
+    {
+      "id": "VisualStudioInstallerPatcher",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "VisualStudioInstallerPatcher"
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "VisualStudioInstallerPatcher"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "manifestVersion": 1,
+  "id": "dynatracepushevent",
+  "version": "1.0.4",
+  "name": "Dynatrace Push Event (DEV)",
+  "description": "Azure DevOps Extension to enable Dynatrace Integration",
+  "publisher": "DTDemosDev",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services.Cloud"
+    }
+  ],
+  "icons": {
+    "default": "icon.png"
+  },
+  "public": false,
+  "tags": [
+    "dynatrace"
+  ],
+  "galleryFlags": [
+    "Free"
+  ],
+  "repository": {
+      "type": "git",
+      "uri": "https://github.com/dt-demos/azure-devops-extension-dt-push-event"
+  },
+  "content": {
+    "details": {
+      "path": "README.md"
+    },
+    "license": {
+        "path": "LICENSE.md"
+    }
+  },
+  "contributions": [
+    {
+      "id": "pushEvent",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "pushEvent"
+      }
+    }
+  ],
+  "links": {
+    "support": {
+        "uri": "https://github.com/dt-demos/azure-devops-extension-dt-push-event"
+    }
+  },
+  "files": [
+    {
+      "path": "src", "packagePath": "/pushEvent"
+    },
+    {
+      "path": "images",
+      "addressable": true
+    }
+  ]
+}

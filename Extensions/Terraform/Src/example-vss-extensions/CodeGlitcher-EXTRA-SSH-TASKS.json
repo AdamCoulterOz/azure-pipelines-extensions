@@ -1,0 +1,36 @@
+{
+    "manifestVersion": 1,
+    "id": "build-release-task",
+    "name": "Extra SSH tasks",
+    "version": "2.1.0",
+    "publisher": "CodeGlitcher",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "SSH with passwords",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
+    "files": [
+        {
+            "path": "tasks/DynamicSSH"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "DynamicSSH-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "tasks/DynamicSSH"
+            }
+        }
+    ]
+}

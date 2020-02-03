@@ -1,0 +1,78 @@
+{
+	"manifestVersion": 1,
+	"id": "vsts-kudu-tasks",
+	"name": "VSTS Kudu Tasks",
+	"version": "0.1.7",
+	"publisher": "sergiibomko",
+	"public": true,
+	"targets": [
+		{
+			"id": "Microsoft.VisualStudio.Services"
+		}
+	],
+	"scope": [
+		"vso.build"
+	],
+	"description": "Extension that enable you to integrate with Kudu",
+	"categories": [
+		"Build and release"
+	],
+	"tags": [
+		"kudu",
+		"azure",
+		"publish",
+		"upload",
+		"deployment",
+		"tasks"
+	],
+	"content": {
+		"details": {
+			"path": "README.md"
+		},
+		"license": {
+			"path": "LICENSE",
+			"contentType": "text/plain"
+		}
+	},
+	"links": {
+		"getstarted": {
+			"uri": "https://github.com/aquiladev/vsts-kudu-tasks"
+		},
+		"support": {
+			"uri": "https://github.com/aquiladev/vsts-kudu-tasks/issues"
+		}
+	},
+	"branding": {
+		"color": "#eff1f3",
+		"theme": "light"
+	},
+	"icons": {
+		"default": "Extension/icon.svg"
+	},
+	"files": [
+		{
+			"path": "VSTS.Kudu.Tasks.Upload/Upload.ps1"
+		},
+		{
+			"path": "VSTS.Kudu.Tasks.Upload/task.json"
+		},
+		{
+			"path": "VSTS.Kudu.Tasks.Upload/icon.png"
+		},
+		{
+			"path": "VSTS.Kudu.Tasks.Upload/icon.svg"
+		}
+	],
+	"contributions": [
+		{
+			"id": "VSTS.Kudu.Tasks.Upload",
+			"type": "ms.vss-distributed-task.task",
+			"targets": [
+				"ms.vss-distributed-task.tasks"
+			],
+			"properties": {
+				"name": "VSTS.Kudu.Tasks.Upload"
+			}
+		}
+	]
+}

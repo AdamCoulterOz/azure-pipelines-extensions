@@ -1,0 +1,54 @@
+{
+  "manifestVersion": 1,
+  "id": "apache-tomcat-extensions",
+  "name": "Apache Tomcat Utilities",
+  "version": "0.0.0",
+  "publisher": "",
+  "galleryFlags": ["preview"],
+  "targets": [{ "id": "Microsoft.VisualStudio.Services" }],
+  "description": "Apache Tomcat Deployment Utilities",
+  "categories": ["Azure Pipelines"],
+  "content": {
+    "details": {
+      "path": "overview.md"
+    }
+  },
+  "icons": {
+    "default": "images/tomcat.png"
+  },
+  "tags": ["Tomcat", "Java", "War"],
+  "files": [
+    { "path": "DeployWarTask" },
+    { "path": "DecryptFilesTask" }
+  ],
+  "links": {
+    "home": { "uri": "https://dev.azure.com/prairiegrade/Apache%20Tomcat%20Extensions" },
+    "repository": {
+      "uri": "https://prairiegrade@dev.azure.com/prairiegrade/Apache%20Tomcat%20Extensions/_git/tomcat-extension"
+    }
+  },
+  "contributions": [
+    {
+      "id": "deploy-war-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": ["ms.vss-distributed-task.tasks"],
+      "properties": {
+        "name": "DeployWarTask"
+      }
+    },
+    {
+      "id": "decrypt-files-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": ["ms.vss-distributed-task.tasks"],
+      "properties": {
+        "name": "DecryptFilesTask"
+      }
+    }
+  ],
+  "screenshots": [
+    { "path": "images/screenshot-v4-preview.png" },
+    { "path": "images/deploy-war-task-screenshot1.png" },
+    { "path": "images/deploy-war-template-screenshot1.png" },
+    { "path": "images/v2-success-screen.png" }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "manifestVersion": 1,
+  "id": "7zip",
+  "version": "0.1.4",
+  "name": "7zip",
+  "scopes": [],
+  "description": "7zip is a task!",
+  "publisher": "carlowahlstedt",
+  "galleryFlags": [
+    "Public"
+  ],
+  "icons": {
+    "default": "static/images/logo.png"
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "demands": [
+    "api-version/3.0"
+  ],
+  "tags": [
+    "7zip",
+    "self extracting"
+  ],
+  "categories": [
+    "Build and release"
+  ],
+  "content": {
+    "license": {
+      "path": "license.md"
+    },
+    "details": {
+      "path": "README.md"
+    }
+  },
+  "links": {
+    "getstarted": {
+      "uri": "https://github.com/carlowahlstedt/7zip_VSTS_Task"
+    },
+    "support": {
+      "uri": "https://github.com/carlowahlstedt/7zip_VSTS_Task"
+    },
+    "issues": {
+      "uri": "https://github.com/carlowahlstedt/7zip_VSTS_Task/issues"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/carlowahlstedt/7zip_VSTS_Task"
+  },
+  "CustomerQnASupport": {
+    "enableqna": "false",
+    "url": "https://github.com/carlowahlstedt/NewmanPostman_VSTS_Task/issues"
+  },
+  "branding": {
+    "color": "rgb(0, 165, 255)",
+    "theme": "light"
+  },
+  "files": [
+    {
+      "path": "7zip"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "7zip",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "type": "ms.vss-distributed-task.task",
+      "properties": {
+        "name": "7zip"
+      }
+    }
+  ]
+}

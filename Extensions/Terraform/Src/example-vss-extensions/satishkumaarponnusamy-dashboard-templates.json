@@ -1,0 +1,57 @@
+{
+  "manifestVersion": 1,
+  "id": "dashboard-templates",
+  "version": "0.0.1",
+  "name": "Dashboard Templates",
+  "publisher": "satishkumaarponnusamy",
+  "description": "Enables user to create new dashboards from dashboard templates",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "scopes": [
+    "vso.dashboards_manage"
+  ],
+  "contributions": [
+    {
+      "id": "hub-actions",
+      "type": "ms.vss-tfs-web.hub-actions-menu",
+      "description": "Hub icon on Toolbar",
+      "targets": [
+        "ms.vss-dashboards-web.dashboards-hub"
+      ],
+      "properties": {
+        "name": "Template Icon",
+        "title": "Opens template dialog",
+        "uri": "static/button.html"
+      }
+    },
+    {
+      "id": "dialog",
+      "type": "ms.vss-web.control",
+      "description": "Dialog control",
+      "targets": [],
+      "properties": {
+        "name": "Template Dialog",
+        "title": "Dashboard Templates",
+        "uri": "static/dialog.html"
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "node_modules/vss-web-extension-sdk/lib",
+      "addressable": true,
+      "packagePath": "lib"
+    },
+    {
+      "path": "dist",
+      "addressable": true
+    },
+    {
+      "path": "static",
+      "addressable": true
+    }
+  ]
+}

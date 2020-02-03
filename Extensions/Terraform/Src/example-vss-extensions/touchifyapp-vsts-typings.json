@@ -1,0 +1,82 @@
+{
+    "manifestVersion": 1,
+    "id": "vsts-typings",
+    "version": "0.1.0",
+    "name": "Typings",
+    "description": "The TypeScript Definition Manager.",
+    "publisher": "Touchify",
+    "public": true,
+    "icons": {
+        "default": "icon.png",
+        "large": "icon-large.png"
+    },
+    "categories": [
+        "Build and release"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "screenshots": [
+        {
+            "path": "screenshots/screen-add.png"
+        },
+        {
+            "path": "screenshots/screen-simple.png"
+        },
+        {
+            "path": "screenshots/screen-advanced.png"
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "README.md"
+        },
+        "license": {
+            "path": "LICENSE"
+        }
+    },
+    "links": {
+        "home": {
+            "uri": "https://github.com/touchifyapp/vsts-typings"
+        },
+        "repository": {
+            "uri": "https://github.com/touchifyapp/vsts-typings"
+        },
+        "issues": {
+            "uri": "https://github.com/touchifyapp/vsts-typings/issues"
+        }
+    },
+    "branding": {
+        "color": "#f39200",
+        "theme": "light"
+    },
+    "tags": [
+        "typings",
+        "definition",
+        "manager",
+        "typescript",
+        "javascript",
+        "tsd",
+        "dependency",
+        "library"
+    ],
+    "files": [
+        {
+            "path": "typings-task"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "typings-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "typings-task"
+            }
+        }
+    ]
+}

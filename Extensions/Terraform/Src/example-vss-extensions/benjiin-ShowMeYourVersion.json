@@ -1,0 +1,48 @@
+{
+  "manifestVersion": 1,
+  "id": "sample-extension",
+  "version": "0.1.13",
+  "name": "Zeige mir Release",
+  "description": "Erster Versuch.",
+  "publisher": "internship",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "icons": {
+    "default": "images/logo.png"
+  },
+  "contributions": [
+    {
+      "id": "internship.showrelease",
+      "type": "ms.vss-web.hub",
+      "description": "Zeig mir die Release",
+      "targets": [
+        "ms.vss-build-web.build-release-hub-group"
+      ],
+      "properties": {
+        "name": "Zeig mir den Release",
+        "order": 99,
+        "uri": "showrelease.html"
+      }
+    }
+  ],
+  "scopes": [
+    "vso.work"
+  ],
+  "files": [
+    {
+      "path": "showrelease.html",
+      "addressable": true
+    },
+    {
+      "path": "sdk/scripts",
+      "addressable": true
+    },
+    {
+      "path": "images/logo.png",
+      "addressable": true
+    }
+  ]
+}

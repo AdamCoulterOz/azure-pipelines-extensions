@@ -1,0 +1,52 @@
+{
+    "manifestVersion": 1,
+    "id": "azure-storage-uploader",
+    "publisher": "hmbarona",
+    "version": "1.0.0",
+    "name": "Azure Storage Uploader",
+    "description": "An extension that allows to upload one or more files to an existing Azure Storage Container. Supports regular expressions, option to keep original files' paths, and more.",
+    "public": false,
+    "categories": ["Code"],
+    "icons": {
+        "default": "images/fabrikam-logo.png"
+    },
+    "tags": [
+        "Build"
+    ],
+     "scopes": [
+        "vso.build_execute"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildAndReleaseTask"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "images",
+            "addressable": true          
+        },
+        {
+            "path": "dist",
+            "addressable": true,
+            "packagePath": "scripts"
+        },
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        }
+    ]
+}

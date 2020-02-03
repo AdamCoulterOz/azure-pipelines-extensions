@@ -1,0 +1,72 @@
+{
+  "manifestVersion": 1,
+  "id": "AssemblyInfoReader",
+  "name": "Assembly Info Reader",
+  "version": "2.0.6",
+  "publisher": "kherzog",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "A build task that reads the assembly attributes from the AssemblyInfo file and makes them available as build variables.",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "tags": [
+    "AssemblyInfo",
+    "Version",
+    "Build Variables"
+  ],
+  "icons": {
+    "default": "images/extension-icon.png"
+  },
+  "files": [
+    {
+      "path": "AssemblyInfoReaderTask"
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "readme.md"
+    },
+    "license": {
+      "path": "license"
+    }
+  },
+  "links": {
+    "getstarted": {
+      "uri": "https://github.com/kyleherzog/AssemblyInfoReaderTask"
+    },
+    "support": {
+      "uri": "https://github.com/kyleherzog/AssemblyInfoReaderTask/issues"
+    }
+  },
+  "screenshots": [
+    {
+      "path": "images/screenshot1.png"
+    },
+    {
+      "path":  "images/screenshot2.png"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/kyleherzog/AssemblyInfoReaderTask"
+  },
+  "galleryFlags": [
+    "Public"
+  ],
+  "contributions": [
+    {
+      "id": "assembly-info-reader-build-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "AssemblyInfoReaderTask"
+      }
+    }
+  ]
+}

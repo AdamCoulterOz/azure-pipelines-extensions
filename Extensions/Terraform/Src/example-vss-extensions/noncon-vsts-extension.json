@@ -1,0 +1,76 @@
+{
+    "manifestVersion": 1,
+    "id": "sample-extension",
+    "version": "0.1.9",
+    "name": "My first sample extension",
+    "description": "A sample Visual Studio Services extension.",
+    "publisher": "sachinma",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+            }
+        ],
+    "icons": {
+        "default": "images/icon.png"
+     },
+    "contributions": [
+        {
+            "id": "HelloWorld",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a 'Hello' hub to the Work hub group.",
+            "targets": [
+                "ms.vss-work-web.work-hub-group"
+                ],
+            "properties": {
+                "name": "Hello",
+                "order": 99,
+                "uri": "hello-world.html"
+            }
+        },
+        {
+            "id": "my-task-editor-extension",
+            "type": "ms.vss-distributed-task.task-input-editor",
+            "targets": [ "ms.vss-distributed-task.task-input-editors" ],
+            "properties": {
+                "name": "Editor extension for my custom object",
+                "uri": "task-editor-extension.html"
+            }
+        },
+        {
+            "id": "my-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+              "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+              "name": "Tasks/TestTask"
+            }
+      }
+
+    ],
+    "scopes": [
+        "vso.work"
+    ],
+    "files": [
+        {
+            "path": "hello-world.html", "addressable": true
+        },
+        {
+            "path": "task-editor-extension.html", "addressable": true
+        },
+        {
+            "path": "scripts", "addressable": true
+        },
+        {
+            "path": "Tasks", "addressable": true
+        },
+        {
+            "path": "images/icon.png", "addressable": true
+        },
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        }
+    ]
+}

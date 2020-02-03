@@ -1,0 +1,177 @@
+{
+  "manifestVersion": 1,
+  "id": "jessehouwing-vsts-variable-tasks",
+  "name": "Variable Toolbox",
+  "version": "0.0.0",
+  "publisher": "jessehouwing",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "scope": [
+    "vso.build"
+  ],
+  "description": "Azure Pipelines tasks for setting and expanding variables.",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "tags": [
+    "Extension",
+    "Release",
+    "Build",
+    "Variable",
+    "Expand",
+    "Override",
+    "Xpirit"
+  ],
+  "screenshots": [
+    {
+      "path": "extension/Images/Screenshots/in-workflow.png"
+    },
+    {
+      "path": "extension/Images/Screenshots/setvariable.png"
+    },
+    {
+      "path": "extension/Images/Screenshots/expandvariables.png"
+
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "readme.md"
+    },
+    "license": {
+      "path": "LICENSE.md"
+    },
+    "privacy": {
+      "path": "PRIVACY.md"
+    }
+  },
+  "links": {
+    "getstarted": {
+      "uri": "https://github.com/jessehouwing/azure-pipelines-variable-tasks/wiki"
+    },
+    "support": {
+      "uri": "https://github.com/jessehouwing/azure-pipelines-variable-tasks/issues"
+    },
+    "license": {
+      "uri": "https://github.com/jessehouwing/azure-pipelines-variable-tasks/LICENSE.md"
+    },
+    "privacypolicy": {
+      "uri": "https://github.com/jessehouwing/azure-pipelines-variable-tasks/blob/master/PRIVACY.md"
+    }
+  },
+  "badges": [
+    {
+      "href": "https://paypal.me/jessehouwing/5",
+      "uri": "https://raw.githubusercontent.com/jessehouwing/azure-pipelines-variable-tasks/master/extension/images/donate.png",
+      "description": "Donate"
+    },
+    {
+      "href": "//gitter.im/jessehouwing/vsts-variable-tasks?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge",
+      "uri": "//badges.gitter.im/jessehouwing/vsts-variable-tasks.svg",
+      "description": "Chat"
+    },
+    {
+      "href": "https://jessehouwing.visualstudio.com/vsts-extensions/vsts-extensions%20Team/_build/index?definitionId=47&_a=completed",
+      "uri": "https://jessehouwing.visualstudio.com/_apis/public/build/definitions/a88536a2-a889-45a3-a955-ddf1af8aeba1/47/badge",
+      "description": "Build"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/jessehouwing/azure-pipelines-variable-tasks"
+  },
+  "branding": {
+    "color": "rgb(36, 43, 50)",
+    "theme": "dark"
+  },
+  "icons": {
+    "default": "extension/images/extension-icon.png"
+  },
+  "files": [
+    {
+      "path": "vsts-variable-set/ps_modules/vststasksdk"
+    },
+    {
+      "path": "vsts-variable-set/vsts-variable-set.v1.ps1"
+    },
+    {
+      "path": "vsts-variable-set/vsts-variable-set.v3.ps1"
+    },
+    {
+      "path": "vsts-variable-set/vsts-variable-set.js"
+    },
+    {
+      "path": "vsts-variable-set/node_modules"
+    },
+    {
+      "path": "vsts-variable-set/task.json"
+    },
+    {
+      "path": "vsts-variable-set/icon.png"
+    },
+
+    {
+      "path": "vsts-variable-expand/ps_modules/vststasksdk"
+    },
+    {
+      "path": "vsts-variable-expand/vsts-variable-expand.v1.ps1"
+    },
+    {
+      "path": "vsts-variable-expand/vsts-variable-expand.v3.ps1"
+    },
+    {
+      "path": "vsts-variable-expand/task.json"
+    },
+    {
+      "path": "vsts-variable-expand/icon.png"
+    },
+
+    {
+      "path": "vsts-variable-transform/vsts-variable-transform.js"
+    },
+    {
+      "path": "vsts-variable-transform/task.json"
+    },
+    {
+      "path": "vsts-variable-transform/icon.png"
+    },
+    {
+      "path": "vsts-variable-transform/node_modules"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "vsts-variable-set",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "vsts-variable-set"
+      }
+    },
+    {
+      "id": "vsts-variable-expand",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "vsts-variable-expand"
+      }
+    },
+    {
+      "id": "vsts-variable-transform",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "vsts-variable-transform"
+      }
+    }
+  ]
+}

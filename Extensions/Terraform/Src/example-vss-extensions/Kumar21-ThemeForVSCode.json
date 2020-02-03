@@ -1,0 +1,49 @@
+{
+    "manifestVersion": 1,
+    "id": "Green",
+    "version": "1.0.0",
+    "name": "Soothing Green",
+    "publisher": "KumarShanu",
+	 "displayName": "SoothingGreen",
+    "description": "Simple Green Theme for Visual Code",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+	"icons": {
+        "default": "Images/SoothingGreen.png"
+    },
+	 "scopes": [
+        "vso.work",
+        "vso.code_write",
+        "vso.build_execute"
+    ],
+	"categories": [
+        "Themes"
+    ],
+	"branding": {
+        "color": "rgb(116, 168, 116)",
+        "theme": "light"
+    },
+	"content": {
+        "details": {
+            "path": "README.md"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Kumar21/ThemeForVSCode.git"
+    },
+    "contributions": [
+        {
+            "id": "Green",
+            "type": "ms.vss-web.action",
+            "description": "Adds a menu action from builds grid to show associated items.",
+            "targets": [
+                "ms.vss-build-web.completed-build-menu"
+            ]
+        }
+    ]
+
+}

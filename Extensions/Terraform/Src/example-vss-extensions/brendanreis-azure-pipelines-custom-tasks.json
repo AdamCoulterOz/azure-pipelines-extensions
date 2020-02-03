@@ -1,0 +1,37 @@
+{
+    "manifestVersion": 1,
+    "id": "google-sheets-versioning",
+    "name": "Google Sheets Versioning",
+    "version": "0.2.1",
+    "publisher": "brendanreis",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Reads the version from a Google Sheets spreadsheet and outputs it as a variable.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "large_icon.png"        
+    },
+    "files": [
+        {
+            "path": "versioningTask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "versioning-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "versioningTask"
+            }
+        }
+    ]
+}
+

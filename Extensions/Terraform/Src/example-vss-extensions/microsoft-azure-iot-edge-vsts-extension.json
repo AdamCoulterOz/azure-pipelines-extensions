@@ -1,0 +1,71 @@
+{
+  "manifestVersion": 1,
+  "id": "iot-edge-build-deploy",
+  "name": "Azure IoT Edge For Azure Pipelines",
+  "version": "1.1.3",
+  "publisher": "vsc-iot",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "A tool for continuous integration(build and push docker image) and continuous deployment(create Edge deployment on Azure)",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "tags": [
+    "Build task",
+    "Deploy task",
+    "Azure IoT",
+    "Edge"
+  ],
+  "content": {
+    "details": {
+      "path": "README.md"
+    },
+    "changelog": {
+      "path": "CHANGELOG.md"
+    }
+  },
+  "links": {
+    "getstarted": {
+      "uri": "https://docs.microsoft.com/en-us/azure/iot-edge/how-to-ci-cd"
+    },
+    "repository": {
+      "uri": "https://github.com/Microsoft/azure-iot-edge-vsts-extension"
+    },
+    "issues": {
+      "uri": "https://github.com/Microsoft/azure-iot-edge-vsts-extension/issues"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/Microsoft/azure-iot-edge-vsts-extension"
+  },
+  "icons": {
+    "default": "images/extension-icon.png"
+  },
+  "files": [
+    {
+      "path": "buildAndReleaseTask"
+    },
+    {
+      "path":"images",
+      "addressable":true
+    }
+  ],
+  "contributions": [
+    {
+      "id": "custom-build-release-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "buildAndReleaseTask"
+      }
+    }
+  ],
+  "scopes": [],
+  "public": true
+}

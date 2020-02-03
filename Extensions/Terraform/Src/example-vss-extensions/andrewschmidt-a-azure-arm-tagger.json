@@ -1,0 +1,36 @@
+{
+    "manifestVersion": 1,
+    "id": "azure-arm-tagger",
+    "name": "Azure ARM Tagger",
+    "version": "0.0.2",
+    "publisher": "3m-azure",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "A Utility for tagging your resources before deploying them",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "3m.png"        
+    },
+    "files": [
+        {
+            "path": "azure-arm-tagger"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "azure-arm-tagger"
+            }
+        }
+    ]
+}

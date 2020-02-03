@@ -1,0 +1,44 @@
+{
+    "manifestVersion": 1,
+    "id": "tfs-gantt-chart",
+    "version": "0.0.2",
+    "name": "TFS Gantt Chart",
+    "description": "A Gantt Chart to visualize your progress",
+    "publisher": "nt",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+            }
+        ],
+    "icons": {
+        "default": "images/logo.png"
+     },
+    "contributions": [
+        {
+            "id": "Numtech.TfsGanttChart",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a 'TFS Gantt Chart' hub to the Work hub group.",
+            "targets": [
+                "ms.vss-work-web.work-hub-group"
+                ],
+            "properties": {
+                "name": "TfsGantChartt",
+                "order": 99,
+                "uri": "index.html"
+            }
+        }
+    ],
+    "scopes": [
+        "vso.work"
+    ],
+    "files": [
+        {
+            "path": "dist",
+            "addressable": true
+        },
+        {
+          "addressable": true,
+          "path": "ThirdPartyNotices.txt"
+        }
+    ]
+}

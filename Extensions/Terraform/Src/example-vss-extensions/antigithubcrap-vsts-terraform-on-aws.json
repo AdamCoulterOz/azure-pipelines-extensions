@@ -1,0 +1,60 @@
+{
+    "manifestVersion": 1,
+    "id": "terraform-on-aws",
+    "name": "Terraform on AWS",
+    "version": "0.5.11",
+    "publisher": "e-commerce-labs",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "description": "Terraform on AWS.",
+    "categories": [
+        "Build and release"
+    ],
+    "tags": [
+        "Terraform",
+        "VSTS",
+        "Visual Studio Team Services",
+        "Visual Studio",
+        "AWS",
+        "IaC",
+        "Infrastructure as Code",
+        "Hashicorp",
+        "Marceline Abadeer",
+        "CI",
+        "CD",
+        "deploy"
+    ],
+    "content": {
+        "details": {
+            "path": "task/README.md"
+        }
+    },
+    "links": {
+        "support": {
+            "uri": "https://github.com/antigithubcrap/terraform-on-aws"
+        }
+    },
+    "icons": {
+        "default": "images/extension-icon.png"
+    },
+    "files": [
+        {
+            "path": "task"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "terraform-on-aws-20180206",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "task"
+            }
+        }
+    ]
+}

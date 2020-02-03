@@ -1,0 +1,88 @@
+{
+    "manifestVersion": 1,
+    "id": "synopsys-coverity-azure-devops",
+    "name": "Synopsys Coverity Azure DevOps",
+    "version": "1.0.0.11",
+    "publisher": "synopsys-coverity",
+    "public": true,
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "description": "Tools for building Synopsys Coverity.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/synopsys.png"
+    },
+    "files": [
+        {
+            "path": "coverityTask"
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "overview.md"
+        }
+    },
+    "contributions": [
+        {
+            "id": "coverity-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "coverityTask"
+            }
+        },
+        {
+            "id": "coverity-endpoint",
+            "description": "Service Endpoint for Coverity connections",
+            "type": "ms.vss-endpoint.service-endpoint-type",
+            "targets": [
+                "ms.vss-endpoint.endpoint-types"
+            ],
+            "properties": {
+                "name": "coverity",
+                "displayName": "Coverity",
+                "url": {
+                    "displayName": "Coverity URL",
+                    "helpText": "Provide the URL for your Coverity Server - please include the port if other than 80 (http) or 443 (https)"
+                },
+                "authenticationSchemes": [
+                    {
+                        "name": "Basic Authorization",
+                        "displayName": "Basic Authentication",
+                        "type": "ms.vss-endpoint.endpoint-auth-scheme-basic",
+                        "inputDescriptors": [
+                            {
+                                "id": "username",
+                                "name": "Username",
+                                "description": "The username to access your Coverity instance",
+                                "inputMode": "textbox",
+                                "validation": {
+                                    "isRequired": true,
+                                    "dataType": "string"
+                                }
+                            },
+                            {
+                                "id": "password",
+                                "name": "Password",
+                                "description": "The password to access your Coverity instance",
+                                "inputMode": "passwordbox",
+                                "isConfidential": true,
+                                "validation": {
+                                    "isRequired": true,
+                                    "dataType": "string"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,70 @@
+{
+    "manifestVersion": 1,
+    "id": "deployToAzureAnalysisServices",
+    "name": "Deploy to Azure Analysis Services",
+    "version": "1.0.6",
+    "publisher": "christoph-bergmeister",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Deploy to Azure Analysis Services",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "tags" :[
+		"Deployment",
+        "Azure Analysis Services",
+        "Add member to role",
+        "Roles",
+        "AAS",
+        "XMLA",
+		"Analyis Services"
+    ],
+    "links": {
+        "support": {
+          "uri": "https://github.com/bergmeister/azure-pipelines-deploy-aas/issues"
+        }
+      },
+    "content":{
+
+        "details":{
+            "path": "README.md"
+        },
+
+        "license": {
+            "path": "LICENCE"
+        }
+    },
+    "files": [
+        {
+            "path": "deployToAzureAnalysisServices"
+        },
+        {
+            "path": "addRoleMemberToAzureAnalysisServices"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "deploy-to-azure-analysis-services-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "deployToAzureAnalysisServices"
+            }
+        },
+        {
+            "id": "add-member-to-role-azure-analysis-services-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "addRoleMemberToAzureAnalysisServices"
+            }
+        }
+    ]
+}

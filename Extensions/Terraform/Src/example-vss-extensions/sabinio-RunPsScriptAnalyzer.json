@@ -1,0 +1,55 @@
+{
+    "manifestVersion": 1,
+    "version": "0.5.0",
+    "id": "RunPsScriptAnalyzer",
+    "name": "Run PsScriptAnalyzer",
+    "description": "Downloads PsScriptAnalyzer if not installed and run PScriptAnalyzer against a folder.",
+    "categories": [
+        "Build and release"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "publisher": "sabinio",
+        "icons": {
+            "default": "images/packageDefaultIcon.png"
+         },
+    "content": {
+        "details": {
+            "path": "overview.md"
+        }
+    },
+    "contributions": [
+        {
+            "id": "powershell-run-psscriptanalyzer-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "RunPsScriptAnalyzer"
+            }
+        }
+    ],
+    "scopes": [],
+    "contributionTypes": [],
+     "files": [
+            {
+                "path": "RunPsScriptAnalyzer/icon.png", "addressable": true
+            },
+            {
+                "path": "RunPsScriptAnalyzer/RunPsScriptAnalyzer.ps1", "addressable": true
+            },
+            {
+                "path": "RunPsScriptAnalyzer/task.json", "addressable": true
+            },
+            {
+                "path": "images/packageDefaultIcon.png", "addressable": true
+            },
+            {
+                "path": "vss-extension.json", "addressable": true
+            }
+        ]
+}

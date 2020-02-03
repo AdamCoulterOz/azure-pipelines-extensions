@@ -1,0 +1,49 @@
+{
+  "manifestVersion": 1,
+  "id": "vsts-extension-angular-seed",
+  "version": "0.1.0",
+  "name": "VSTS Extension Angular Seed",
+  "scopes": ["vso.profile"],
+  "description": "DESCRIPTION",
+  "publisher": "PUBLISHER",
+  "icons": {
+    "default": "static/images/logo.png"
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "demands": ["api-version/3.0"],
+  "tags": [],
+  "screenshots": [
+    {
+      "path": "static/images/project-admin.png"
+    }
+  ],
+  "content": {
+    "license": {
+      "path": "license.md"
+    },
+    "details": {
+      "path": "overview.md"
+    }
+  },
+  "links": {
+    "support": {
+      "uri": ""
+    },
+    "privacypolicy": {
+      "uri": ""
+    }
+  },
+  "files": [
+    {
+      "path": "dist",
+      "addressable": true
+    }
+  ],
+  "categories": ["Code"],
+  "contributions": [
+  ]
+}

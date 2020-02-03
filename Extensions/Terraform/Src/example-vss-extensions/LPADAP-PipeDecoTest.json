@@ -1,0 +1,32 @@
+{
+    "manifestVersion": 1,
+    "id": "lpa-pipe-deco-test",
+    "name": "LPA pipeline decorator test",
+    "version": "0.0.2",
+    "publisher": "LPAGmbH",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "description": "LPA pipeline decorator test",
+    "categories": ["Azure Pipelines"],
+    "icons": {
+        "default": "images/extension-icon.png"
+    },
+    "files": [
+        {
+            "path": "task"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "lpa-pipe-deco-test",
+            "type": "ms.azure-pipelines.pipeline-decorator",
+            "targets": ["ms.azure-pipelines-agent-job.post-job-tasks"],
+            "properties": {
+                "template": "ws-decorator.yml"
+            }
+        }
+    ]
+}

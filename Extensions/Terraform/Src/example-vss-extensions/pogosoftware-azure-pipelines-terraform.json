@@ -1,0 +1,58 @@
+{
+    "manifestVersion": 1,
+    "id": "terraform",
+    "name": "Terraform",
+    "version": "0.0.159",
+    "publisher": "pogosoftware",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Executing terraform commands during Build & Release pipelines.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "tags": [
+        "terraform",
+        "azure",
+        "infrastructure as code",
+        "iac"
+    ],
+    "content": {
+        "details": {
+            "path": "README.md"
+        }
+    },
+    "links": {
+        "getstarted": {
+            "uri": "https://github.com/pogosoftware/azure-pipelines-terraform"
+        },
+        "support": {
+            "uri": "https://github.com/pogosoftware/azure-pipelines-terraform/issues"
+        },
+        "license": {
+            "uri": "https://github.com/pogosoftware/azure-pipelines-terraform/blob/master/LICENSE"
+        }
+    }, 
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
+    "files": [
+        {
+            "path": "terraformTask/dist", "packagePath": "terraformTask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "terraform",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "terraformTask"
+            }
+        }
+    ]
+}

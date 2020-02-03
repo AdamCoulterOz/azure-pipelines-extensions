@@ -1,0 +1,63 @@
+{
+    "manifestVersion": 1,
+    "id": "vsts-menu-item-provider",
+    "version": "0.1.30",
+    "name": "Sample Menu Items",
+    "scopes": [ "vso.work", "vso.work_write" ],
+    "description": "Sample extension for dynamic context menu items.",
+    "publisher": "ottostreifel",
+    "icons": {
+        "default": "img/logo.png"
+    },
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "tags": [
+        "Sample",
+        "Work Items",
+        "Menus",
+        "Dynamic"
+    ],
+    "content": {
+        "details": {
+            "path": "details.md"
+        }
+    },
+    "branding": {
+        "color": "rgb(220, 235, 252)",
+        "theme": "light"
+    },
+    "files": [
+        {
+            "path": "img",
+            "addressable": true
+        },
+        {
+            "path": "build",
+            "addressable": true
+        },
+        {
+            "path": "index.html",
+            "addressable": true
+        }
+    ],
+    "categories": [
+        "Integrate"
+    ],
+    "contributions": [
+        {
+            "id": "vsts-menu-item-provider-simple-action",
+            "type": "ms.vss-web.action-provider",
+            "description": "",
+            "targets": [
+                "ms.vss-work-web.work-item-context-menu", "ms.vss-work-web.work-item-form"
+            ],
+            "properties": {
+                "group": "contributed",
+                "uri": "index.html"
+            }
+        }
+    ]
+}

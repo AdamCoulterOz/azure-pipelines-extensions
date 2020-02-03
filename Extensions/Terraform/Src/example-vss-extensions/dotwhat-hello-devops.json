@@ -1,0 +1,41 @@
+{
+    "manifestVersion": 1,
+    "id": "hello-devops",
+    "publisher": "<your publisher-id>",
+    "version": "1.0.0",
+    "name": "Hello DevOps",
+    "description": "A sample Angular application",
+    "public": false,
+    "categories": [
+        "Azure Repos"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "hello-devops",
+            "type": "ms.vss-web.hub",
+            "description": "Hello devops",
+            "targets": [
+                "ms.vss-code-web.code-hub-group"
+            ],
+            "properties": {
+                "name": "Hello devops page",
+                "uri": "dist/index.html"
+            }
+        }
+    ],
+    "scopes": [
+        "vso.code",
+        "vso.project"
+    ],
+    "files": [
+        {
+            "path": "dist",
+            "addressable": true
+        }
+    ]
+}

@@ -1,0 +1,90 @@
+{
+    "manifestVersion": 1,
+    "id": "AzureADPowerShell",
+    "name": "AzureAD PowerShell",
+    "version": "0.0.8",
+    "publisher": "SmokedLinq",
+    "targets": [
+      {
+        "id": "Microsoft.VisualStudio.Services.Cloud"
+      }
+    ],
+    "description": "Run a PowerShell script against an AzureAD tenant",
+    "categories": [
+      "Build and release"
+    ],
+    "icons": {
+      "default": "icon.png"
+    },
+    "scopes": [
+      "vso.release"
+    ],
+    "contributions": [
+      {
+        "id": "AzureADPowerShell",
+        "type": "ms.vss-distributed-task.task",
+        "targets": [
+          "ms.vss-distributed-task.tasks"
+        ],
+        "properties": {
+          "name": "Tasks/AzureADPowerShell"
+        }
+      },
+      {
+        "id": "azuread-service-endpoint",
+        "description": "Service Endpoint for AzureAD",
+        "type": "ms.vss-endpoint.service-endpoint-type",
+        "targets": [ "ms.vss-endpoint.endpoint-types" ],
+        "properties": {
+          "name": "azureAD",
+          "displayName": "Azure Active Directory",
+          "authenticationSchemes": [
+            {
+              "type": "ms.vss-endpoint.endpoint-auth-scheme-service-principal",
+              "inputDescriptors": [
+                {
+                  "id": "tenantId",
+                  "name": "Azure Tenant ID",
+                  "inputMode": "textbox",
+                  "isConfidential": false,
+                  "validation": {
+                    "isRequired": true,
+                    "dataType": "string"
+                  }
+                },
+                {
+                    "id": "servicePrincipalId",
+                    "name": "Client ID",
+                    "inputMode": "textbox",
+                    "isConfidential": false,
+                    "validation": {
+                        "isRequired": true,
+                        "dataType": "string"
+                    }
+                },
+                {
+                    "id": "servicePrincipalKey",
+                    "name": "Client Secret",
+                    "inputMode": "passwordbox",
+                    "isConfidential": true,
+                    "validation": {
+                        "isRequired": true,
+                        "dataType": "string"
+                    }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "files": [  
+      {
+        "path": "Tasks"
+      }
+    ],
+    "repository": {
+      "type": "git",
+      "uri": "https://github.com/smokedlinq/vsts-task-azureadpowershell/"
+    }
+  }

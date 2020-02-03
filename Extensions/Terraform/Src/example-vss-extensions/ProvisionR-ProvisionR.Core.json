@@ -1,0 +1,53 @@
+{
+  "manifestVersion": 1,
+  "id": "MarkTeksharepoint-release-extension",
+  "version": "1.0.6",
+  "name": "MarkTek Release Extension for SharePoint",
+  "scopes": [ "vso.build", "vso.code_write" ],
+  "description": "This solution contains custom build extensions for managing SharePoint Online Deployment.",
+  "publisher": "markcunninghamuk",
+  "public": true,
+  "icons": {
+    "default": "logo.png"
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "tags": [
+    "SharePoint build",
+    "SharePoint Release",
+    "PnP",
+    "SP Online"
+  ],
+  "content": {
+    "details": {
+      "path": "overview.md"
+    }
+  },
+  "branding": {
+    "color": "rgb(220, 235, 252)",
+    "theme": "light"
+  },
+  "files": [
+   {
+      "path": "ReleaseSharePointCustomisations"
+    }
+  ],
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "contributions": [
+   {
+      "id": "ReleaseSharePointCustomisations-task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "type": "ms.vss-distributed-task.task",
+      "properties": {
+        "name": "ReleaseSharePointCustomisations"
+      }
+    }
+  ]
+}

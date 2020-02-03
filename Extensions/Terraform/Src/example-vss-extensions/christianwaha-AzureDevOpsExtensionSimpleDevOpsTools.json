@@ -1,0 +1,56 @@
+{
+  "manifestVersion": 1,
+  "id": "azure-devops-simpletasks",
+  "name": "Simple Tasks for Azure DevOps",
+  "version": "1.0.<BUILDNUMBER>",
+  "publisher": "cwlabsconsultingservices",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Often you need simple tasks for Azure DevOps but they are not there, better to have it easy usable by an Azure DevOps ready task instead of building it in Powershell",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "icons": {
+    "default": "images/AzureDevOpsSimpleTools.png"
+  },
+  "files": [
+    {
+      "path": "GetSingleValueFromArmOutputTask"
+    },
+    {
+      "path": "GetStorageAccountAccessKeyTask"
+    }
+  ],
+
+  "content": {
+    "details": {
+      "path": "overview.md"
+    }
+  },
+
+  "contributions": [
+    {
+      "id": "azure-devops-tools-getarmoutputvalue",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "GetSingleValueFromArmOutputTask"
+      }
+    },
+    {
+      "id": "azure-devops-tools-getstorageaccountaccesskey",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "GetStorageAccountAccessKeyTask"
+      }
+    }
+  ]
+}

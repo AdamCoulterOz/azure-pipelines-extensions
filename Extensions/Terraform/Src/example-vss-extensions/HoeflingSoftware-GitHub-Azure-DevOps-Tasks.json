@@ -1,0 +1,55 @@
+{
+	"manifestVersion": 1,
+	"id": "GitHubTasks",
+	"version": "1.0.4",
+	"name": "GitHub Azure DevOps Tasks",
+	"description": "A suite of Azure DevOps tasks for GitHub",
+	"publisher": "hoefling-software",
+	"public": true,
+	"targets": [
+		{
+			"id": "Microsoft.VisualStudio.Services"
+			}
+		],
+	"categories": [
+		"Azure Pipelines"
+	],
+	"icons": {
+		"default": "icon.png"
+	 },
+	"content":{
+		"details":{
+			"path": "overview.md"
+		}
+	},
+	"contributions": [
+		{
+			"id": "GitHubPublishReleaseArtifact",
+			"type": "ms.vss-distributed-task.task",
+			"targets": [
+				"ms.vss-distributed-task.tasks"
+			],
+			"properties": {
+				"name": "Artifacts"
+			}
+		},
+		{
+			"id": "GitHubTagging",
+			"type": "ms.vss-distributed-task.task",
+			"targets": [
+				"ms.vss-distributed-task.tasks"
+			],
+			"properties": {
+				"name": "Tagging"
+			}
+		}
+	],
+	"files":[
+		{
+			"path": "Artifacts"	
+		},
+		{
+			"path": "Tagging"
+		}
+	]
+}

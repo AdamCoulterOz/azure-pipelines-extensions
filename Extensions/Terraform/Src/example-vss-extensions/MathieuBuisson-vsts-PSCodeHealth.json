@@ -1,0 +1,62 @@
+{
+    "manifestVersion": 1,
+    "id": "MB-PSCodeHealth-task",
+    "name": "PSCodeHealth",
+    "version": "#{Major}#.#{Minor}#.#{Build.BuildId}#",
+    "publisher": "MathieuBuisson",
+    "targets": [
+        { "id": "Microsoft.VisualStudio.Services" }
+    ],
+    "description": "Gather PowerShell code quality metrics and enforce quality gates based on these metrics",
+    "categories": [
+        "Build and release"
+    ],
+    "tags": [
+        "Code Metrics",
+        "Quality",
+        "Quality Gates",
+        "PowerShell"
+      ],
+    "icons": {
+        "default": "images/extension-icon.png"
+    },
+    "branding": {
+        "color": "#FFFFFF",
+        "theme": "light"
+    },
+    "content": {
+        "details": { "path": "README.md" },
+        "license": { "path": "LICENSE.md" }
+    },
+    "links": {
+        "getstarted": {
+            "uri": "https://github.com/MathieuBuisson/vsts-PSCodeHealth/blob/master/README.md"
+        },
+        "support": {
+            "uri": "https://github.com/MathieuBuisson/vsts-PSCodeHealth/issues"
+        },
+        "learn": {
+            "uri": "https://github.com/MathieuBuisson/vsts-PSCodeHealth/blob/master/PSCodeHealth/README.md"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/MathieuBuisson/vsts-PSCodeHealth"
+    },
+    "files": [
+        { "path": "task" },
+        { "path": "images", "addressable": true }
+    ],
+    "contributions": [
+        {
+            "id": "PSCodeHealth-Task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "task"
+            }
+        }
+    ]
+}

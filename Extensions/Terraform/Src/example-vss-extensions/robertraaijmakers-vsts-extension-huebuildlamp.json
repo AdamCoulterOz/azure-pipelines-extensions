@@ -1,0 +1,88 @@
+{
+  "manifestVersion": 1,
+  "id": "HueBuildLamp",
+  "version": "0.9.49",
+  "name": "Hue Build Lamp",
+  "scopes": [ "vso.build" ],
+  "description": "Extension to control the color of your hue lights according to build status via IFTTT.",
+  "publisher": "RobertRaaijmakers",
+  "public": true,
+  "icons": {
+    "default": "content/images/logo.png"
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "categories": [
+    "Build and release"
+  ],
+  "tags": [
+    "Hue",
+    "Status",
+    "Light",
+    "Build Lamp",
+    "Build Automation"
+  ],
+  "screenshots": [
+    {
+      "path": "content/images/screenshots/vsts-extension-in-build.png"
+    },
+    {
+      "path": "content/images/screenshots/ifttt-recipe.png"
+    },
+    {
+      "path": "content/images/screenshots/vsts-hue-green.png"
+    },
+    {
+      "path": "content/images/screenshots/vsts-hue-red.png"
+    }
+  ],
+  "content": {
+        "details": {
+            "path": "content/overview.md"
+        }
+    },
+  "links": {
+    "home": {
+      "uri": "https://marketplace.visualstudio.com/items?itemName=robertraaijmakers.HueBuildLamp"
+    },
+    "getstarted": {
+      "uri": "https://github.com/robertraaijmakers/vsts-extension-huebuildlamp/wiki/Get-Started"
+    },
+    "learn": {
+      "uri": "https://github.com/robertraaijmakers/vsts-extension-huebuildlamp/wiki"
+    },
+    "support": {
+      "uri": "https://github.com/robertraaijmakers/vsts-extension-huebuildlamp"
+    },
+    "repository": {
+      "uri": "https://github.com/robertraaijmakers/vsts-extension-huebuildlamp"
+    },
+    "issues": {
+      "uri": "https://github.com/robertraaijmakers/vsts-extension-huebuildlamp/issues"
+    }
+  },
+  "branding": {
+    "color": "rgb(220, 235, 252)",
+    "theme": "light"
+  },
+  "files": [
+    {
+      "path": "PhilipsHueIfttt"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "PhilipsHueIFTTT",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "type": "ms.vss-distributed-task.task",
+      "properties": {
+        "name": "PhilipsHueIfttt"
+      }
+    }
+  ]
+}

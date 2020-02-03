@@ -1,0 +1,47 @@
+{
+  "manifestVersion": 1,
+  "id": "ConfigurationFileTransformer",
+  "version": "0.1.51",
+  "name": "Configuration Files Transformer",
+  "scopes": [],
+  "description": "Transforme XML Configurations and XML files",
+  "publisher": "DevMikaelKrief",
+  "public": false,
+  "icons": {
+    "default": "img/icon.png"
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "tags": [
+    "Build"
+  ],
+
+  "branding": {
+    "color": "rgb(220, 235, 252)",
+    "theme": "light"
+  },
+  "files": [
+    {
+      "path": "ExternalConfigurationFileTransformer"
+    }
+  ],
+  "categories": [
+    "Build and release"
+  ],
+  "contributions": [
+    {
+      "id": "ExternalConfigurationFileTransformer",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "type": "ms.vss-distributed-task.task",
+      "properties": {
+        "name": "ExternalConfigurationFileTransformer"
+      }
+    }
+    
+  ]
+}

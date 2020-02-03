@@ -1,0 +1,65 @@
+{
+    "manifestVersion": 1,
+    "id": "build-timeline",
+    "publisher": "Xyglo",
+    "version": "1.0.4",
+    "name": "Build Timeline",
+    "description": "Visualisation of the last build to see where it spent its time",
+    "public": false,
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "build-timeline",
+            "type": "ms.vss-dashboards-web.widget",
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog"
+            ],
+            "properties": {
+                "name": "Build Timeline",
+                "uri": "build-timeline.html",
+                "description": "Visualise the timeline of the latest build.",
+                "previewImageUrl": "static/img/TPH-Build-Overview.png",
+                "catalogIconUrl": "static/img/TPH-Build-Overview.png",
+                "supportedSizes": [
+                    {
+                        "rowSpan": 1,
+                        "columnSpan": 2
+                    },
+                    {
+                        "rowSpan": 1,
+                        "columnSpan": 3
+                    }
+                ],
+                "supportedScopes": ["project_team"]
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "build-timeline.html",
+            "addressable": true,
+            "contentType": "text/html"
+        },
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        },
+        {
+			"path": "static/css",
+			"addressable": true
+		},
+		{
+			"path": "static/img",
+			"addressable": true
+		},
+		{
+			"path": "static/screenshots",
+			"addressable": true
+		}
+    ]
+}

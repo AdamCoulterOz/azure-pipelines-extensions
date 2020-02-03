@@ -1,0 +1,40 @@
+{
+    "manifestVersion": 1,
+    "id": "xpathutility",
+    "name": "Build Management xml xpath utility tasks",
+    "version": "0.0.1",
+    "publisher": "Sunil Buddala",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Utility tasks for modifying xml files.",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "images/icon.png"        
+    },
+    "files": [
+        {
+            "path": "modifyxmlusingxpath"
+        },
+        {
+          "path": "images",
+          "addressable": true
+        }
+    ],
+    "contributions": [
+        {
+            "id": "task-modifyxmlusingxpath",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "modifyxmlusingxpath"
+            }
+        }
+    ]
+}

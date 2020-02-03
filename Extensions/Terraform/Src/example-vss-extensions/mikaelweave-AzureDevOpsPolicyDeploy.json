@@ -1,0 +1,36 @@
+{
+    "manifestVersion": 1,
+    "id": "build-release-task",
+    "name": "Azure Policy Deployment Tools",
+    "version": "0.0.1",
+    "publisher": "mikaelweave",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Tools for deploying Azure Policy Definitions, Azure Policy Sets, and Azure Policy Assignments..",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "resources/extension-icon.png"
+    },
+    "files": [
+        {
+            "path": "buildAndReleaseTask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildAndReleaseTask"
+            }
+        }
+    ]
+}

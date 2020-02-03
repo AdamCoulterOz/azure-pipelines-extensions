@@ -1,0 +1,66 @@
+{
+    "manifestVersion": 1,
+    "extensionId": "apachetomcat",
+    "name": "Apache Tomcat Deployment",
+    "version": "1.0.0",
+    "publisher": "ms-vscs-rm",
+    "description": "Deploy web applications to a Tomcat server",
+    "public": true,
+    "galleryFlags": [
+        "Preview"
+    ],
+    "icons": {
+        "default": "images/tomcat_logo.png",
+        "large": "images/tomcat_logo_large.png"
+    },
+    "categories": [
+        "Build and release"
+    ],
+    "tags": [
+        "Tomcat",
+        "Java"
+    ],
+    "links": {
+        "home": {
+            "uri": "http://aka.ms/vststomcat"
+        },
+        "support": {
+            "uri": "https://github.com/Microsoft/vsts-tomcat/issues"
+        }
+    },
+    "branding": {
+        "color": "#f6f7fb",
+        "theme": "light"
+    },
+    "content": {
+        "details": {
+            "path": "tomcat.md"
+        }
+    },
+    "files": [
+        {
+            "path": "tasks/tomcatDeployment"
+        },
+        {
+            "path": "images",
+            "addressable": true
+        }
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "tomcatdeployment-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "tasks/tomcatDeployment"
+            }
+        }
+    ]
+}

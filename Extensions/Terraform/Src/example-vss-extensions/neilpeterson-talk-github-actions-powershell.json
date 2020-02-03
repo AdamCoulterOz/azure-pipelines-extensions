@@ -1,0 +1,42 @@
+{
+	"manifestVersion": 1,
+	"id": "pipeline-utilities-private",
+	"version": "1.0.0",
+	"name": "Pipeline Utilities Private",
+	"description": "A PowerShell demo Azure Pipeline extension.",
+	"publisher": "nepeters",
+	"categories": [
+		"Azure Pipelines"
+	],
+    "content": {
+        "details": {
+            "path": "docs/overview.md"
+        }
+    },
+	"public": false,
+	"galleryFlags": [
+        "Preview"
+    ],
+	"targets": [{
+		"id": "Microsoft.VisualStudio.Services"
+	}],
+	"icons": {
+		"default": "icon.png"
+	},
+	"contributions": [{
+			"id": "count",
+			"type": "ms.vss-distributed-task.task",
+			"targets": [
+				"ms.vss-distributed-task.tasks"
+			],
+			"properties": {
+				"name": "count"
+			}
+		}
+	],
+	"files": [{
+			"path": "count",
+			"addressable": true
+		}
+	]
+}
