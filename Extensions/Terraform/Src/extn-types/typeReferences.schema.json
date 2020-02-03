@@ -58,6 +58,7 @@
                                 "type": "string"
                             }
                         },
+                        //need to define how to accept custom contribution types here
                         "required": ["invalidContributionType"],
                         "additionalProperties": false
                     }
