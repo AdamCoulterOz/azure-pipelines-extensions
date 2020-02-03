@@ -1,4 +1,4 @@
-export { Provider as Base } from "./base"
-export { ProviderAWS as AWS } from "./aws"
-export { ProviderAzureRM as AzureRM } from "./azurerm"
-export { ProviderGoogle as Google } from "./google"
+export { Provider as Base_Provider } from "./base"
+export { ProviderAWS as AWS_Provider } from "./aws"
+export { ProviderAzureRM as AzureRM_Provider } from "./azurerm"
+export { ProviderGoogle as Google_Provider } from "./google"

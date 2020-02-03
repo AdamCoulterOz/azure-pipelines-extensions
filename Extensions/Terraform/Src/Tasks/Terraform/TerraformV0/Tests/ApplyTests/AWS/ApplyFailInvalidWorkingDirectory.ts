@@ -13,7 +13,7 @@ tr.setInput('commandOptions', '');
 
 
 
-let a: ma.TaskLibAnswers = <ma.TaskLibAnswers> {
+let a: ma.TaskLibAnswers = <ma.TaskLibAnswers>{
     "which": {
         "terraform": "terraform"
     },

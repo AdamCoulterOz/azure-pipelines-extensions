@@ -8,12 +8,13 @@ tr.setInput('provider', 'aws');
 tr.setInput('command', 'validate');
 tr.setInput('workingDirectory', 'DummyWorkingDirectory');
 tr.setInput('commandOptions', '');
-let a: ma.TaskLibAnswers = <ma.TaskLibAnswers> {
+let a: ma.TaskLibAnswers = <ma.TaskLibAnswers>{
     "which": {
         "terraform": "terraform"
     },
     "checkPath": {
         "terraform": true
+    },
     "exec": {
         "terraform validate": {
             "code": 1,
@@ -22,7 +23,7 @@ let a: ma.TaskLibAnswers = <ma.TaskLibAnswers> {
     }
 }
 tr.setAnswers(a);
-tr.run();import ma = require('azure-pipelines-task-lib/mock-answer');
+tr.run(); import ma = require('azure-pipelines-task-lib/mock-answer');
 let tp = path.join(__dirname, './AzureValidateFailInvalidWorkingDirectoryL0.js');
 tr.setInput('provider', 'azurerm');
 let tp = path.join(__dirname, './GCPValidateFailInvalidWorkingDirectoryL0.js');

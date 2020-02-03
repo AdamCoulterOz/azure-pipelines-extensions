@@ -7,12 +7,13 @@ let tr: tmrm.TaskMockRunner = new tmrm.TaskMockRunner(tp);
 tr.setInput('provider', 'aws');
 tr.setInput('command', 'validate');
 tr.setInput('commandOptions', '-no-color');
-let a: ma.TaskLibAnswers = <ma.TaskLibAnswers> {
+let a: ma.TaskLibAnswers = <ma.TaskLibAnswers>{
     "which": {
         "terraform": "terraform"
     },
     "checkPath": {
         "terraform": true
+    },
     "exec": {
         "terraform validate -no-color": {
             "code": 0,

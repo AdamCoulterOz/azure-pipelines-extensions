@@ -12,17 +12,18 @@ let a: ma.TaskLibAnswers = <ma.TaskLibAnswers>{
     },
     "checkPath": {
         "terraform": true
+    },
     "exec": {
-            "terraform validate": {
-                "code": 0,
-                "stdout": "Executed Successfully"
-            }
+        "terraform validate": {
+            "code": 0,
+            "stdout": "Executed Successfully"
         }
     }
+}
 tr.setAnswers(a);
-    tr.run(); import ma = require('azure-pipelines-task-lib/mock-answer');
-    let tp = path.join(__dirname, './AzureValidateSuccessNoAdditionalArgsL0.js');
-    tr.setInput('provider', 'azurerm');
-    let tp = path.join(__dirname, './GCPValidateSuccessNoAdditionalArgsL0.js');
-    tr.setInput('provider', 'gcp');
-    tr.run();
+tr.run(); import ma = require('azure-pipelines-task-lib/mock-answer');
+let tp = path.join(__dirname, './AzureValidateSuccessNoAdditionalArgsL0.js');
+tr.setInput('provider', 'azurerm');
+let tp = path.join(__dirname, './GCPValidateSuccessNoAdditionalArgsL0.js');
+tr.setInput('provider', 'gcp');
+tr.run();

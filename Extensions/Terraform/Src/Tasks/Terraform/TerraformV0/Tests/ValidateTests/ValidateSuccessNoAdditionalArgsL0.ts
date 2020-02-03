@@ -1,4 +1,4 @@
-import { Terraform as TerraformCommandHandlerAWS } from "../../../src/terraform";
+import { Terraform as TerraformCommandHandlerAWS } from "../../src/terraform";
 import tl = require("azure-pipelines-task-lib");
 
 let backend: any = "aws";
@@ -29,7 +29,7 @@ export async function run() {
   }
 }
 run();
-import { Terraform as terraformCommandHandlerAzureRM } from "../../../src/terraform";
+import { Terraform as terraformCommandHandlerAzureRM } from "../../src/terraform";
 let backend: any = "azurerm";
 let provider: any = "azurerm";
 let TerraformCommandHandlerAzureRM: terraformCommandHandlerAzureRM = new terraformCommandHandlerAzureRM(
@@ -50,7 +50,7 @@ tl.setResult(
   "AzureValidateSuccessNoAdditionalArgsL0 should have succeeded but failed."
 );
 run();
-import { Terraform as TerraformCommandHandlerGCP } from "../../../src/terraform";
+import { Terraform as TerraformCommandHandlerGCP } from "../../src/terraform";
 let backend: any = "gcp";
 let provider: any = "gcp";
 let terraformCommandHandlerGCP: TerraformCommandHandlerGCP = new TerraformCommandHandlerGCP(

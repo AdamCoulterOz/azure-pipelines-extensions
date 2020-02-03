@@ -13,12 +13,13 @@ process.env['ENDPOINT_AUTH_SCHEME_AWS'] = 'Basic';
 process.env['ENDPOINT_AUTH_PARAMETER_AWS_USERNAME'] = 'DummyUsername';
 process.env['ENDPOINT_AUTH_PARAMETER_AWS_PASSWORD'] = 'DummyPassword';
 process.env['ENDPOINT_AUTH_PARAMETER_AWS_REGION'] = 'DummyRegion';
-let a: ma.TaskLibAnswers = <ma.TaskLibAnswers> {
+let a: ma.TaskLibAnswers = <ma.TaskLibAnswers>{
     "which": {
         "terraform": "terraform"
     },
     "checkPath": {
         "terraform": true
+    },
     "exec": {
         "terraform providers": {
             "code": 0,
@@ -29,7 +30,7 @@ let a: ma.TaskLibAnswers = <ma.TaskLibAnswers> {
     }
 }
 tr.setAnswers(a);
-tr.run();import ma = require('azure-pipelines-task-lib/mock-answer');
+tr.run(); import ma = require('azure-pipelines-task-lib/mock-answer');
 let tp = path.join(__dirname, './AzureDestroySuccessNoAdditionalArgsL0.js');
 tr.setInput('provider', 'azurerm');
 tr.setInput('environmentServiceNameAzureRM', 'AzureRM');

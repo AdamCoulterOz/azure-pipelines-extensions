@@ -1,10 +1,10 @@
 {
   "name": "terraformtask",
   "version": "1.0.0",
-  "description": "terraform task installer test",
+  "description": "Terraform task test",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,9 @@
   "dependencies": {
     "nock": "9.0.11",
     "semver": "^7.0.0"
+  },
+  "devDependencies": {
+    "nyc": "^15.0.0",
+    "ts-node": "^8.6.2"
   }
 }

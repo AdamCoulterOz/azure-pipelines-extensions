@@ -2,6 +2,10 @@ import * as assert from 'assert';
 import * as ttm from 'azure-pipelines-task-lib/mock-test';
 import * as path from 'path';
 
+import { Base_Backend, AzureRM_Backend, GCS_Backend, S3_Backend, Remote_Backend, Local_Backend } from '../backend/backends';
+import { Base_Provider, AWS_Provider, AzureRM_Provider, Google_Provider } from '../provider/providers';
+
+
 describe('Terraform Test Suite', () => {
 
     before(() => { });

@@ -19,34 +19,35 @@ let a: ma.TaskLibAnswers = <ma.TaskLibAnswers>{
     },
     "checkPath": {
         "terraform": true
+    },
     "exec": {
-            "terraform providers": {
-                "code": 0,
-                "stdout": "provider aws"
-            },
-            "terraform validate": {
-                "stdout": "Executed successfully"
+        "terraform providers": {
+            "code": 0,
+            "stdout": "provider aws"
+        },
+        "terraform validate": {
+            "stdout": "Executed successfully"
         "terraform apply -auto-approve -no-color": {
-                }
             }
         }
+    }
 tr.setAnswers(a);
-        tr.run(); import ma = require('azure-pipelines-task-lib/mock-answer');
-        let tp = path.join(__dirname, './AzureApplySuccessAdditionalArgsWithAutoApproveL0.js');
-        tr.setInput('provider', 'azurerm');
-        tr.setInput('environmentServiceNameAzureRM', 'AzureRM');
-        process.env['ENDPOINT_AUTH_SCHEME_AzureRM'] = 'ServicePrincipal';
-        process.env['ENDPOINT_DATA_AzureRM_SUBSCRIPTIONID'] = 'DummmySubscriptionId';
-        process.env['ENDPOINT_AUTH_PARAMETER_AzureRM_SERVICEPRINCIPALID'] = 'DummyServicePrincipalId';
-        process.env['ENDPOINT_AUTH_PARAMETER_AzureRM_SERVICEPRINCIPALKEY'] = 'DummyServicePrincipalKey';
-        process.env['ENDPOINT_AUTH_PARAMETER_AzureRM_TENANTID'] = 'DummyTenantId';
-        let tp = path.join(__dirname, './GCPApplySuccessAdditionalArgsWithAutoApproveL0.js');
-        tr.setInput('provider', 'gcp');
-        tr.setInput('environmentServiceNameGCP', 'GCP');
-        process.env['ENDPOINT_AUTH_SCHEME_GCP'] = 'Jwt';
-        process.env['ENDPOINT_DATA_GCP_PROJECT'] = 'DummyProject';
-        process.env['ENDPOINT_AUTH_PARAMETER_GCP_ISSUER'] = 'Dummyissuer';
-        process.env['ENDPOINT_AUTH_PARAMETER_GCP_AUDIENCE'] = 'DummyAudience';
-        process.env['ENDPOINT_AUTH_PARAMETER_GCP_PRIVATEKEY'] = 'DummyPrivateKey';
-        process.env['ENDPOINT_AUTH_PARAMETER_GCP_SCOPE'] = 'DummyScope';
-        tr.run();
+    tr.run(); import ma = require('azure-pipelines-task-lib/mock-answer');
+    let tp = path.join(__dirname, './AzureApplySuccessAdditionalArgsWithAutoApproveL0.js');
+    tr.setInput('provider', 'azurerm');
+    tr.setInput('environmentServiceNameAzureRM', 'AzureRM');
+    process.env['ENDPOINT_AUTH_SCHEME_AzureRM'] = 'ServicePrincipal';
+    process.env['ENDPOINT_DATA_AzureRM_SUBSCRIPTIONID'] = 'DummmySubscriptionId';
+    process.env['ENDPOINT_AUTH_PARAMETER_AzureRM_SERVICEPRINCIPALID'] = 'DummyServicePrincipalId';
+    process.env['ENDPOINT_AUTH_PARAMETER_AzureRM_SERVICEPRINCIPALKEY'] = 'DummyServicePrincipalKey';
+    process.env['ENDPOINT_AUTH_PARAMETER_AzureRM_TENANTID'] = 'DummyTenantId';
+    let tp = path.join(__dirname, './GCPApplySuccessAdditionalArgsWithAutoApproveL0.js');
+    tr.setInput('provider', 'gcp');
+    tr.setInput('environmentServiceNameGCP', 'GCP');
+    process.env['ENDPOINT_AUTH_SCHEME_GCP'] = 'Jwt';
+    process.env['ENDPOINT_DATA_GCP_PROJECT'] = 'DummyProject';
+    process.env['ENDPOINT_AUTH_PARAMETER_GCP_ISSUER'] = 'Dummyissuer';
+    process.env['ENDPOINT_AUTH_PARAMETER_GCP_AUDIENCE'] = 'DummyAudience';
+    process.env['ENDPOINT_AUTH_PARAMETER_GCP_PRIVATEKEY'] = 'DummyPrivateKey';
+    process.env['ENDPOINT_AUTH_PARAMETER_GCP_SCOPE'] = 'DummyScope';
+    tr.run();

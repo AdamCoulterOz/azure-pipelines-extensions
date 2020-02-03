@@ -13,6 +13,7 @@ let a: ma.TaskLibAnswers = <ma.TaskLibAnswers> {
     },
     "checkPath": {
         "terraform": true
+    },
     "exec": {
         "terraform validate": {
             "code": 0,
