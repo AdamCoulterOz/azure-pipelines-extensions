@@ -1,6 +1,0 @@
-export { Backend as Base_Backend } from "./base"
-export { BackendAzureRM as AzureRM_Backend } from "./azurerm"
-export { BackendGCS as GCS_Backend } from "./gcs"
-export { BackendS3 as S3_Backend } from "./s3"
-export { BackendRemote as Remote_Backend } from "./remote"
-export { BackendLocal as Local_Backend } from "./local"

@@ -1,6 +1,6 @@
 import tasks = require('azure-pipelines-task-lib/task');
 import { Backend } from './base';
-import { GoogleHelpers } from "../Helpers"
+import { GoogleHelpers } from '../Helpers'
 
 export class BackendGCS extends Backend {
     constructor() { super(); }

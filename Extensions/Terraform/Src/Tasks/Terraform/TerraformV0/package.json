@@ -1,23 +1,60 @@
 {
   "name": "terraform",
   "version": "1.0.0",
-  "description": "",
+  "description": "Terraform Extension for Azure DevOps",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "build": "tsc",
+    "test": "tsc && nyc mocha -r ts-node/register ./Tests/*test.ts",
+    "coverage": "node_modules/.bin/nyc npm run test"
+  },
+  "nyc": {
+    "extends": "@istanbuljs/nyc-config-typescript",
+    "all": true,
+    "check-coverage": true,
+    "exclude": [
+      "Tests/**/*.*",
+      "coverage/**/*.*"
+    ]
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^6.14.9",
+    "@types/node": "^13.7.0",
     "@types/q": "1.0.7",
     "azure-pipelines-task-lib": "^2.9.3",
-    "node": "^13.3.0",
-    "q": "^1.5.1"
+    "generate-mocha": "^1.0.0",
+    "minimatch": "^3.0.4",
+    "node": "^13.7.0",
+    "q": "^1.5.1",
+    "sinon": "^8.1.1",
+    "yargs": "^15.1.0"
   },
   "devDependencies": {
-    "@types/mocha": "^2.2.48",
-    "mocha": "^6.2.2",
-    "sync-request": "^6.1.0"
-  }
+    "@istanbuljs/nyc-config-typescript": "^1.0.1",
+    "@types/chai": "^4.2.8",
+    "@types/mocha": "^7.0.1",
+    "bdd-stdin": "^0.2.0",
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.9",
+    "cross-env": "^7.0.0",
+    "delete": "^1.1.0",
+    "generate": "^0.14.0",
+    "mocha": "^7.0.1",
+    "npm-install-global": "^1.0.0",
+    "nyc": "^15.0.0",
+    "rewiremock": "^3.13.9",
+    "source-map-support": "^0.5.16",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
+  },
+  "directories": {
+    "test": "Tests"
+  },
+  "keywords": [
+    "Terraform",
+    "Azure",
+    "DevOps"
+  ],
+  "homepage": "https://github.com/microsoft/azure-pipelines-extensions#readme"
 }

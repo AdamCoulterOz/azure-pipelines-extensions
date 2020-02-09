@@ -24,7 +24,7 @@ export class Terraform {
         this.args = tl.getInput("commandOptions");
     }
 
-    private getToolRunner(): trl.ToolRunner {
+    public getToolRunner(): trl.ToolRunner {
         let terraformPath: string;
         try { terraformPath = tl.which("terraform", true); }
         catch (err) { throw new Error(tl.loc("TerraformToolNotFound")); }
@@ -147,3 +147,5 @@ export class Terraform {
     //     }
     // }
 }
+
+export default Terraform;

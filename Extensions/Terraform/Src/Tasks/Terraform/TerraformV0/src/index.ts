@@ -4,7 +4,7 @@ import * as Backend from "./backend/backends"
 import * as Provider from "./provider/providers"
 import { Terraform } from "./terraform";
 
-async function run() {
+export async function run() {
     tl.setResourcePath(path.join(__dirname, '..', 'task.json'));
 
     // TODO: does this validation need to be added back?
@@ -13,15 +13,15 @@ async function run() {
 
     let provider: Provider.Base;
     let backend: Backend.Base;
-    
-    switch(tl.getInput("provider", true)) {
+
+    switch (tl.getInput("provider", true)) {
         case "azurerm": provider = new Provider.AzureRM(); break;
         case "aws": provider = new Provider.AWS(); break;
         case "google": provider = new Provider.Google(); break;
         default: throw new Error("Invalid provider specified. Please select AzureRM, AWS or Google.")
     }
 
-    switch(tl.getInput("backend", true)) {
+    switch (tl.getInput("backend", true)) {
         case "local": backend = new Backend.Local(); break;
         case "remote": backend = new Backend.Remote(); break;
         case "azurerm": backend = new Backend.AzureRM(); break;

@@ -90,3 +90,6 @@ packages/
 StyleCop.Cache
 Extensions/**/*.js
 TaskModules/powershell/Tests/TaskModuleIISManageUtility/L0.js
+Extensions/Terraform/Src/Tasks/Terraform/TerraformV0/Tests.zip
+Extensions/Terraform/Src/Tasks/Terraform/TerraformV0/backend.zip
+Extensions/Terraform/Src/Tasks/Terraform/TerraformV0/provider.zip

@@ -1,9 +1,9 @@
-import {ToolRunner} from 'azure-pipelines-task-lib/toolrunner';
+import { ToolRunner } from 'azure-pipelines-task-lib/toolrunner';
 import tasks = require('azure-pipelines-task-lib/task');
 
 export abstract class Backend {
     protected backendConfig: Map<string, string>;
-    backendServiceName: string;
+    public backendServiceName: string;
 
     protected abstract setupBackend(backendServiceName: string);
     constructor() {
@@ -18,3 +18,4 @@ export abstract class Backend {
         }
     }
 }
+export default Backend;
