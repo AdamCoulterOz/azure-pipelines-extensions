@@ -23,8 +23,7 @@
             "target": "index.js"
         }
     },
-    "groups": [
-        {
+    "groups": [{
             "name": "backendAzureRM",
             "displayName": "Backend",
             "isExpanded": true,
@@ -45,12 +44,11 @@
         {
             "name": "backendRemote",
             "displayName": "Backend",
-            "isExpanded":true,
+            "isExpanded": true,
             "visibleRule": "backend = remote && command = init"
         }
     ],
-    "inputs": [
-        {
+    "inputs": [{
             "name": "backend",
             "type": "pickList",
             "label": "Backend",
@@ -245,8 +243,7 @@
             "groupName": "backendGCS"
         }
     ],
-    "dataSourceBindings": [
-        {
+    "dataSourceBindings": [{
             "target": "backendAzureRMResourceGroupName",
             "endpointId": "$(backendServiceAzureRM)",
             "endpointUrl": "{{{endpoint.url}}}subscriptions/{{{endpoint.subscriptionId}}}/resourcegroups?api-version=2019-05-01",
@@ -275,8 +272,7 @@
             "dataSourceName": "GCP"
         }
     ],
-    "OutputVariables": [
-        {
+    "OutputVariables": [{
             "name": "jsonPlanFilePath",
             "description": "The location of the terraform plan file in JSON format that was created. This file can be used by tasks which are written for tools such as [Open Policy Agent](https://www.openpolicyagent.org/docs/latest/terraform/)<br><br>Note: This variable will only be set if 'command' input is set to 'plan'."
         },
