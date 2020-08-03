@@ -1,0 +1,88 @@
+{
+  "manifestVersion": 1,
+  "extensionId": "devenv-build",
+  "name": "Build with devenv (Visual Studio)",
+  "version": "2.0.3",
+  "publisher": "mmajcica",
+  "description": "Build a project using devenv.com",
+  "public": false,
+  "galleryFlags": [
+    "Public"
+  ],
+  "icons": {
+    "default": "images/logo.png",
+    "large": "images/logo-large.png"
+  },
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "tags": [
+    "build",
+    "visualstudio",
+    "devenv",
+    "devenv.com",
+    "ispac",
+    "ssis"
+  ],
+  "links": {
+    "home": {
+      "uri": "http://blog.majcica.com/"
+    },
+    "support": {
+      "uri": "http://blog.majcica.com/2018/04/25/deploy-ssis-packages-from-tfs-vsts-build-release/"
+    },
+    "repository": {
+        "uri": "https://github.com/mmajcica/DevEnvBuild"
+    },
+    "issues": {
+        "uri": "https://github.com/mmajcica/DevEnvBuild/issues"
+    }
+  },
+  "repository": {
+      "type": "git",
+      "uri": "https://github.com/mmajcica/DevEnvBuild"
+  },
+  "branding": {
+    "color": "#e9ebed",
+    "theme": "light"
+  },
+  "screenshots": [
+    {
+        "path": "images/task-screenshot.png"
+    }
+  ],
+  "content": {
+    "details": {
+        "path": "README.md"
+    },
+    "license": {
+        "path": "LICENSE.txt"
+    }
+  },
+  "files": [
+    {
+      "path": "images",
+      "addressable": true
+    },
+    {
+      "path": "task"
+    }
+  ],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "DevEnvBuild",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "task"
+      }
+    }
+  ]
+}

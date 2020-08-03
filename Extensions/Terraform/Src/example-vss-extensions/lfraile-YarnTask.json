@@ -1,0 +1,36 @@
+{
+    "manifestVersion": 1,
+    "id": "yarn-simple-demo",
+    "name": "Yarn task demo",
+    "version": "0.1.1",
+    "publisher": "luisfraile",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Tasks for executing Yarn commands in builds",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "yarn-logo-big.png"        
+    },
+    "files": [
+        {
+            "path": "yarnbuildtask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "YarnDemoTask",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "yarnbuildtask"
+            }
+        }
+    ]
+}

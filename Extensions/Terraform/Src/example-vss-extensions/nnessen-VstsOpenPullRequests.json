@@ -1,0 +1,60 @@
+{
+    "manifestVersion": 1,
+    "id": "open-pull-requests",
+    "version": "0.0.152",
+    "name": "Open Pull Requests",
+    "description": "An Azure DevOps extension which displays all open pull requests across all repositories.",
+    "publisher": "nnessen",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "images/icon.png"
+    },
+    "contributions": [
+        {
+            "id": "list",
+            "type": "ms.vss-web.hub",
+            "description": "Adds an 'Open Pull Requests' hub to the Code hub group.",
+            "targets": [
+                "ms.vss-code-web.code-hub-group"
+            ],
+            "properties": {
+                "name": "Open Pull Requests",
+                "order": 99,
+                "uri": "index.html"
+            }
+        }
+    ],
+    "scopes": [
+        "vso.code_write"
+    ],
+    "files": [
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        },
+        {
+            "path": "index.html",
+            "addressable": true
+        },
+        {
+            "path": "images/icon.png",
+            "addressable": true
+        },
+        {
+            "path": "src/app.css",
+            "addressable": true,
+            "packagePath": "app.css"
+        },
+        {
+            "path": "dist/bundle.js",
+            "addressable": true,
+            "packagePath": "main.js"
+        }
+    ],
+    "categories": [ "Repos" ]
+}

@@ -1,0 +1,63 @@
+{
+  "manifestVersion": 1,
+  "id": "azure-devops-throttle-builds",
+  "name": "Throttle Builds",
+  "version": "0.0.2",
+  "publisher": "mgsd",
+  "public": false,
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Build and Release Task for allowing only a specific number of builds with the same build definition to run at a time",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "tags": [
+    "Release",
+    "Build",
+    "Throttle",
+    "Parallel",
+    "Sequential"
+  ],
+  "content": {
+    "license": {
+      "path": "license.md"
+    },
+    "details": {
+      "path": "overview.md"
+    }
+  },
+  "icons": {
+    "default": "extension-icon.png"
+  },
+  "files": [
+    {
+      "path": "tasks/throttleBuilds"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "743395A2-726C-4948-913E-7F3EC5AE9769",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/throttleBuilds"
+      }
+    }
+  ],
+  "links": {
+    "home": {
+      "uri": "https://github.com/mglochsen/azure-devops-throttle-builds#readme"
+    },
+    "repository": {
+      "uri": "https://github.com/mglochsen/azure-devops-throttle-builds"
+    },
+    "issues": {
+      "uri": "https://github.com/mglochsen/azure-devops-throttle-builds/issues"
+    }
+  }
+}

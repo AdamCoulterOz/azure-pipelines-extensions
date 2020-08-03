@@ -1,0 +1,44 @@
+{
+	"manifestVersion": 1,
+	"id": "SmokeTesterTask",
+	"version": "1.0.14",
+	"name": "Smoke Tester",
+	"description": "Task that crawls website looking for HTTP errors",
+	"publisher": "forte-digital",
+	"categories": [
+		"Build and release"
+	],
+	"galleryFlags": [
+        "Public"
+    ],
+	"targets": [
+		{
+			"id": "Microsoft.VisualStudio.Services"
+			}
+		],
+	"icons": {
+		"default": "icon.png"
+	 },
+	"contributions": [
+		{
+			"id": "SmokeTesterTask",
+			"type": "ms.vss-distributed-task.task",
+			"targets": [
+				"ms.vss-distributed-task.tasks"
+			],
+			"properties": {
+				"name": "buildtask"
+			}
+		}
+	],
+	"content": {
+        "details": {
+            "path": "overview.md"
+        }
+	},        
+	"files":[
+		{
+			"path": "buildtask"			
+		}
+	]
+}

@@ -1,0 +1,47 @@
+{
+    "manifestVersion": 1,
+    "id": "autotagging-extension",
+    "publisher": "PeterRombouts",
+    "version": "1.0.41",
+    "name": "AutoTagging",
+    "description": "A Visual Studio Services extension for automatically tagging all resources within a resource group",
+    "public": true,
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"
+    },
+    "content": {
+        "details": {
+            "path": "overview.md"
+        }
+    },
+    "screenshots": [
+            {
+        "path": "screenshots/screenshots-vsts-auto-tagging-1.png"
+    }
+    ],
+    "files": [
+        {
+            "path": "autoTaggingReleaseTask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "autotagging-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "autoTaggingReleaseTask"
+            }
+        }
+    ]
+}

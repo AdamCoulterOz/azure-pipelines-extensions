@@ -1,0 +1,55 @@
+{
+  "manifestVersion": 1,
+  "id": "build-task",
+  "name": "Download Secure File",
+  "version": "0.0.7",
+  "publisher": "mattlabrum",
+  "public": true,
+  "targets": [
+	{
+	  "id": "Microsoft.VisualStudio.Services"
+	}
+  ],
+  "description": "Downloads a secure file",
+  "categories": [
+	"Build and release"
+  ],
+  "screenshots": [
+	{
+	  "path": "screenshots/options.png"
+	}
+  ],
+  "scopes": [
+	"vso.build",
+	"vso.release"
+  ],
+  "icons": {
+	"default": "images/extension-icon.png"
+  },
+  "content": {
+	"details": {
+	  "path": "readme.md"
+	}
+  },
+  "repository": {
+	"type": "git",
+	"uri": "https://github.com/mlabrum/vsts-download-secure-file"
+  },
+  "files": [
+	{
+	  "path": "buildtask"
+	}
+  ],
+  "contributions": [
+	{
+	  "id": "custom-build-task",
+	  "type": "ms.vss-distributed-task.task",
+	  "targets": [
+		"ms.vss-distributed-task.tasks"
+	  ],
+	  "properties": {
+		"name": "buildtask"
+	  }
+	}
+  ]
+}

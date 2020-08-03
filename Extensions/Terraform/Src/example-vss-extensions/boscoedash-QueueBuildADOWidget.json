@@ -1,0 +1,51 @@
+{
+    "manifestVersion": 1,
+    "id": "BuildClassroom",
+    "version": "1.0.0",
+    "name": "Classroom Builder",
+    "description": "Samples containing different widgets extending dashboards",
+    "publisher": "Contoso",
+    "categories": ["Azure Boards"],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "img/logo.png"
+    },
+    "contributions": [
+        {
+            "id": "ClassroomBuilderWidget",
+            "type": "ms.vss-dashboards-web.widget",
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog"
+            ],
+            "properties": {
+                "name": "Classroom Builder",
+                "description": "Virtual Classroom Builder Extension",
+                "catalogIconUrl": "img/CatalogIcon.png",
+                "previewImageUrl": "img/preview.png",                            
+                "uri": "classroom-builder.html",
+                "supportedSizes": [
+                     {
+                            "rowSpan": 1,
+                            "columnSpan": 2
+                        }
+                    ],
+                "supportedScopes": ["project_team"]
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "classroom-builder.html", "addressable": true
+        },
+        {
+            "path": "sdk/scripts", "addressable": true
+        },
+        {
+            "path": "img", "addressable": true
+        }
+    ]
+}

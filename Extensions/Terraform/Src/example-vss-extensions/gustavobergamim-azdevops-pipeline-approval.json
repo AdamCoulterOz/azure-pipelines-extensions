@@ -1,0 +1,76 @@
+{
+  "manifestVersion": 1,
+  "version": "0.0.1",
+  "name": "Azure Pipelines Approval",
+  "description": "A simple way for view and approve releases",
+  "publisher": "gustavobergamim",
+  "demands": [
+    "api-version/5.1"
+  ],
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "scopes": [
+    "vso.agentpools",
+    "vso.build",
+    "vso.release_manage"
+  ],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "MarketPlace.md"
+    },
+    "license": {
+      "path": "license.txt"
+    }
+  },
+  "icons": {
+    "default": "img/server_accept_black.png"
+  },
+  "links": {
+    "repository": {
+      "uri": "https://github.com/gustavobergamim/azdevops-pipeline-approval"
+    },
+    "issues": {
+      "uri": "https://github.com/gustavobergamim/azdevops-pipeline-approval/issues"
+    },
+    "support": {
+      "uri": "https://github.com/gustavobergamim/azdevops-pipeline-approval"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/gustavobergamim/azdevops-pipeline-approval"
+  },
+  "files": [
+    {
+      "path": "dist",
+      "addressable": true
+    },
+    {
+      "path": "img",
+      "addressable": true
+    }
+  ],
+  "contributions": [
+    {
+        "id": "pipeline-approval-hub",
+        "type": "ms.vss-web.hub",
+        "targets": [
+            "ms.vss-build-web.build-release-hub-group"
+        ],
+        "properties": {
+          "name": "Approve Releases",
+          "icon": {
+            "dark": "img/server_accept_white.png",
+            "light": "img/server_accept_black.png"
+          },
+          "uri": "dist/hub/hub.html"
+        }
+    }
+]
+}

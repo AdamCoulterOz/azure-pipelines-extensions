@@ -1,0 +1,57 @@
+{
+    "manifestVersion": 1,
+    "id": "gl-vsts-tasks-handlebars",
+    "name": "Handlebars Build and Release Tasks",
+    "version": "0.0.18",
+    "publisher": "geeklearningio",    
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Build and Release Management extensions which brings the power of handlebars to your build.",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "extension-icon.png"        
+    },
+    "tags": [
+        "templating",
+        "template",
+        "hbs",
+        "handlebars"
+    ],
+    "content": {
+        "details": {
+            "path": "overview.md"
+        },
+        "license": {
+            "path": "LICENSE.txt"
+        }
+    },
+    "links": {
+        "getstarted": {
+            "uri": "https://github.com/geeklearningio/gl-vsts-tasks-handlebars/wiki"
+        },
+        "support": {
+            "uri": "https://github.com/geeklearningio/gl-vsts-tasks-handlebars/issues"
+        },
+        "repository": {
+            "uri": "https://github.com/geeklearningio/gl-vsts-tasks-handlebars"
+        },
+        "issues": {
+            "uri": "https://github.com/geeklearningio/gl-vsts-tasks-handlebars/issues"
+        }
+    },
+    "branding": {
+        "color": "#008B8B",
+        "theme": "dark"
+    },  
+    "files": [
+        {
+            "path": "Tasks"
+        }
+    ],
+    "contributions": []
+}

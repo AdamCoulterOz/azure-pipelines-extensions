@@ -1,0 +1,43 @@
+{
+    "manifestVersion": 1,
+    "id": "pr-stats-extension",
+    "publisher": "dot-net-insight",
+    "version": "1.0.42",
+    "name": "PR Stats Extension",
+    "description": "Track PR stats",
+    "public": false,
+    "categories": ["Azure Repos"],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "pr-stats-extension",
+            "type": "ms.vss-web.hub",
+            "targets": [
+                "ms.vss-code-web.code-hub-group"
+            ],
+            "properties": {
+                "name": "PR Stats",
+                "uri": "pr-stats.html"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "dist",
+            "addressable": true,
+            "packagePath": "/"
+        },
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        }
+    ],
+    "scopes": [
+        "vso.code"
+    ]
+}

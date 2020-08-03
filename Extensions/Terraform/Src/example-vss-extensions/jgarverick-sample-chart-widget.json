@@ -1,0 +1,67 @@
+{
+  "manifestVersion": 1,
+  "id": "sample-chart-widget",
+  "version": "1.0.0",
+  "name": "Sample Chart Widget",
+  "description": "This is the extension file from the contributions guide example on GitHub.  Feel free to add or remove sections as you see fit.",
+  "publisher": "<<pub>>",
+  "public": false,
+  "icons": {
+    "default": "img/logo.png"
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "tags": [
+    "Sample"
+  ],
+  "branding": {
+    "color": "rgb(220, 235, 252)",
+    "theme": "light"
+  },
+  "files": [
+    {
+      "path": "css",
+      "addressable": true
+    },
+    {
+      "path": "img",
+      "addressable": true
+    },
+    {
+      "path": "scripts",
+      "addressable": true
+    },
+    {
+      "path": "SampleChartWidget",
+      "addressable": true
+    }
+  ],
+  "categories": [
+    "Integrate"
+  ],
+  "contributions": [
+    {
+      "id": "SampleChartWidget",
+      "type": "ms.vss-dashboards-web.widget",
+      "targets": [
+        "ms.vss-dashboards-web.widget-catalog"
+      ],
+      "properties": {
+        "name": "Sample Chart Widget",
+        "description": "My first widget",
+        "previewImageUrl": "img/preview.png",
+        "uri": "SampleChartWidget/index.html",
+        "supportedSizes": [
+          {
+            "rowSpan": 3,
+            "columnSpan": 4
+          }
+        ],
+        "supportedScopes": [ "project_team" ]
+      }
+    }
+  ]
+}

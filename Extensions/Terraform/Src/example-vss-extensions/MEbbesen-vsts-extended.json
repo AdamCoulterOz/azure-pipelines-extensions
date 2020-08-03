@@ -1,0 +1,65 @@
+{
+    "manifestVersion":  1,
+    "id":  "vsts-extended-hub",
+    "version":  "0.1.0",
+    "name":  "Extending TFS/VSTS functionalities",
+    "description":  "An extension for extending the functionalities in TFS/VSTS for better administration.",
+    "publisher":  "Philosophers-DevOPS",
+    "categories": [
+        "Build and release"
+    ],
+    "tags": [
+        "admin",
+        "tasks",
+        "buildsteps",
+        "usage",
+        "statistics"
+    ],
+    "repository": {
+        "type":"git",
+        "uri":"https://github.com/MEbbesen/vsts-extended"
+    },
+    "targets":  [
+                    {
+                        "id":  "Microsoft.VisualStudio.Services"
+                    }
+                ],
+    "icons":  {
+                  "default":  "images/icon.png"
+              },
+    "contributions":  [
+                          {
+                              "id":  "Extended.AdminHub",
+                              "type":  "ms.vss-web.hub",
+                              "description":  "Adds an Extended hub to the Collection hub group.",
+                              "targets":  "ms.vss-web.collection-admin-hub-group",
+                              "properties":  {
+                                  "name":"Extended Admin",
+                                  "order":99,
+                                  "uri":"main.html"
+                                }
+                          }
+                      ],
+    "scopes":  [
+                   "vso.build",
+                   "vso.identity"
+               ],
+    "files":  [
+                  {
+                      "path":  "main.html",
+                      "addressable":  true
+                  },
+                  {
+                      "path":  "scripts",
+                      "addressable":  true
+                  },
+                  {
+                      "path":  "sdk/scripts",
+                      "addressable":  true
+                  },
+                  {
+                      "path":  "images/icon.png",
+                      "addressable":  true
+                  }
+              ]
+}

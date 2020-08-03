@@ -1,0 +1,355 @@
+{
+    "inputDescriptors": [],
+    "authenticationSchemes": [
+        {
+            "inputDescriptors": [
+                {
+                    "id": "username",
+                    "name": "Username",
+                    "description": "Username",
+                    "type": null,
+                    "properties": null,
+                    "inputMode": "textBox",
+                    "isConfidential": true,
+                    "useInDefaultDescription": false,
+                    "groupName": "AuthenticationParameter",
+                    "valueHint": null,
+                    "validation": {
+                        "dataType": "string"
+                    }
+                },
+                {
+                    "id": "password",
+                    "name": "Password",
+                    "description": "Password",
+                    "type": null,
+                    "properties": null,
+                    "inputMode": "passwordBox",
+                    "isConfidential": true,
+                    "useInDefaultDescription": false,
+                    "groupName": "AuthenticationParameter",
+                    "valueHint": null,
+                    "validation": {
+                        "dataType": "string"
+                    }
+                }
+            ],
+            "scheme": "UsernamePassword",
+            "displayName": "Basic Authentication",
+            "requiresOAuth2Configuration": true,
+            "dataSourceBindings": [],
+            "authorizationHeaders": [
+                {
+                    "name": "Authorization",
+                    "value": "Basic {{ #base64 endpoint.username \":\" endpoint.password }}"
+                }
+            ],
+            "clientCertificates": [],
+            "properties": {}
+        },
+        {
+            "inputDescriptors": [
+                {
+                    "id": "ConfigurationId",
+                    "name": "OAuth Configuration",
+                    "description": "Configuration for connecting to the endpoint",
+                    "type": null,
+                    "properties": null,
+                    "inputMode": "combo",
+                    "isConfidential": false,
+                    "useInDefaultDescription": false,
+                    "groupName": "AuthenticationParameter",
+                    "valueHint": null,
+                    "validation": {
+                        "dataType": "guid",
+                        "isRequired": true
+                    },
+                    "hasDynamicValueInformation": true
+                }
+            ],
+            "scheme": "OAuth2",
+            "displayName": "OAuth2",
+            "authorizationUrl": "{{{configuration.Url}}}/oauth_auth.do?client_id={{{configuration.ClientId}}}&response_type=code&redirect_uri={{{RedirectUrl}}}",
+            "requiresOAuth2Configuration": true,
+            "dataSourceBindings": [
+                {
+                    "dataSourceName": "AccessToken",
+                    "parameters": {},
+                    "target": "AccessToken",
+                    "resultTemplate": "{\"AccessToken\" : \"{{{access_token}}}\", \"RefreshToken\" : \"{{{refresh_token}}}\", \"ExpiresIn\" : \"{{{expires_in}}}\", \"TokenType\" : \"{{{token_type}}}\", \"Scope\" : \"{{{scope}}}\", \"Error\" : \"{{{error}}}\", \"ErrorDescription\" : \"{{{error_description}}}\"}",
+                    "requestVerb": "GET"
+                },
+                {
+                    "dataSourceName": "RefreshToken",
+                    "parameters": {},
+                    "target": "RefreshToken",
+                    "resultTemplate": "{\"AccessToken\" : \"{{{access_token}}}\", \"RefreshToken\" : \"{{{refresh_token}}}\", \"ExpiresIn\" : \"{{{expires_in}}}\", \"TokenType\" : \"{{{token_type}}}\", \"Scope\" : \"{{{scope}}}\", \"Error\" : \"{{{error}}}\", \"ErrorDescription\" : \"{{{error_description}}}\"}",
+                    "requestVerb": "GET"
+                }
+            ],
+            "authorizationHeaders": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer {{{endpoint.AccessToken}}}"
+                }
+            ],
+            "clientCertificates": [],
+            "properties": {}
+        }
+    ],
+    "dataSources": [
+        {
+            "name": "TestConnection",
+            "endpointUrl": "{{endpoint.url}}/api/x_mioms_azpipeline/app_version?app_major_version=4",
+            "requestVerb": null,
+            "requestContent": null,
+            "resourceUrl": "",
+            "resultSelector": "jsonpath:$.result",
+            "callbackContextTemplate": null,
+            "callbackRequiredTemplate": null,
+            "initialContextTemplate": null,
+            "headers": [],
+            "authenticationScheme": null
+        },
+        {
+            "name": "StandardChangeTemplate",
+            "endpointUrl": "{{endpoint.url}}/api/now/table/sys_template?sysparm_query=table=change_request^active=true&sysparm_fields=sys_id,sys_name",
+            "requestVerb": null,
+            "requestContent": null,
+            "resourceUrl": "",
+            "resultSelector": "jsonpath:$.result[*]",
+            "callbackContextTemplate": null,
+            "callbackRequiredTemplate": null,
+            "initialContextTemplate": null,
+            "headers": [],
+            "authenticationScheme": null
+        },
+        {
+            "name": "Priority",
+            "endpointUrl": "{{endpoint.url}}/api/now/table/sys_choice?sysparm_query=element=priority^name={{table}}^language=en&sysparm_fields=label,value",
+            "requestVerb": null,
+            "requestContent": null,
+            "resourceUrl": "",
+            "resultSelector": "jsonpath:$.result[*]",
+            "callbackContextTemplate": "{\"table\": \"task\"}",
+            "callbackRequiredTemplate": "{{#equals table \"change_request\"}}{{isEqualNumber result.count 0}}{{else}}false{{/equals}}",
+            "initialContextTemplate": "{\"table\": \"change_request\"}",
+            "headers": [],
+            "authenticationScheme": null
+        },
+        {
+            "name": "State",
+            "endpointUrl": "{{endpoint.url}}/api/now/table/sys_choice?sysparm_query=element=state^name={{table}}^language=en&sysparm_fields=label,value",
+            "requestVerb": null,
+            "requestContent": null,
+            "resourceUrl": "",
+            "resultSelector": "jsonpath:$.result[*]",
+            "callbackContextTemplate": "{\"table\": \"task\"}",
+            "callbackRequiredTemplate": "{{#equals table \"change_request\"}}{{isEqualNumber result.count 0}}{{else}}false{{/equals}}",
+            "initialContextTemplate": "{\"table\": \"change_request\"}",
+            "headers": [],
+            "authenticationScheme": null
+        },
+        {
+            "name": "Risk",
+            "endpointUrl": "{{endpoint.url}}/api/now/table/sys_choice?sysparm_query=element=Risk^name=change_request^language=en^ORDERBYDESCvalue&sysparm_fields=label,value",
+            "requestVerb": null,
+            "requestContent": null,
+            "resourceUrl": "",
+            "resultSelector": "jsonpath:$.result[*]",
+            "callbackContextTemplate": null,
+            "callbackRequiredTemplate": null,
+            "initialContextTemplate": null,
+            "headers": [],
+            "authenticationScheme": null
+        },
+        {
+            "name": "Impact",
+            "endpointUrl": "{{endpoint.url}}/api/now/table/sys_choice?sysparm_query=element=Impact^name={{table}}^language=en^ORDERBYDESCvalue&sysparm_fields=label,value",
+            "requestVerb": null,
+            "requestContent": null,
+            "resourceUrl": "",
+            "resultSelector": "jsonpath:$.result[*]",
+            "callbackContextTemplate": "{\"table\": \"task\"}",
+            "callbackRequiredTemplate": "{{#equals table \"change_request\"}}{{isEqualNumber result.count 0}}{{else}}false{{/equals}}",
+            "initialContextTemplate": "{\"table\": \"change_request\"}",
+            "headers": [],
+            "authenticationScheme": null
+        },
+        {
+            "name": "Category",
+            "endpointUrl": "{{endpoint.url}}/api/now/table/sys_choice?sysparm_query=name=change_request^element=category^inactive!=true^language=en&sysparm_fields=label,value",
+            "requestVerb": null,
+            "requestContent": null,
+            "resourceUrl": "",
+            "resultSelector": "jsonpath:$.result[*]",
+            "callbackContextTemplate": null,
+            "callbackRequiredTemplate": null,
+            "initialContextTemplate": null,
+            "headers": [],
+            "authenticationScheme": null
+        },
+        {
+            "name": "Close code",
+            "endpointUrl": "{{endpoint.url}}/api/now/table/sys_choice?sysparm_query=name=change_request^element=Close_Code^language=en^ORDERBYDESCvalue&sysparm_fields=label,value",
+            "requestVerb": null,
+            "requestContent": null,
+            "resourceUrl": "",
+            "resultSelector": "jsonpath:$.result[*]",
+            "callbackContextTemplate": null,
+            "callbackRequiredTemplate": null,
+            "initialContextTemplate": null,
+            "headers": [],
+            "authenticationScheme": null
+        },
+        {
+            "name": "PriorityLabel",
+            "endpointUrl": "{{endpoint.url}}/api/now/table/sys_choice?sysparm_query=element=priority^name={{table}}&sysparm_fields=label",
+            "requestVerb": null,
+            "requestContent": null,
+            "resourceUrl": "",
+            "resultSelector": "jsonpath:$.result[*].label",
+            "callbackContextTemplate": "{\"table\": \"task\"}",
+            "callbackRequiredTemplate": "{{#equals table \"change_request\"}}{{isEqualNumber result.count 0}}{{else}}false{{/equals}}",
+            "initialContextTemplate": "{\"table\": \"change_request\"}",
+            "headers": [],
+            "authenticationScheme": null
+        },
+        {
+            "name": "StateLabel",
+            "endpointUrl": "{{endpoint.url}}/api/now/table/sys_choice?sysparm_query=element=state^name={{table}}&sysparm_fields=label",
+            "requestVerb": null,
+            "requestContent": null,
+            "resourceUrl": "",
+            "resultSelector": "jsonpath:$.result[*].label",
+            "callbackContextTemplate": "{\"table\": \"task\"}",
+            "callbackRequiredTemplate": "{{#equals table \"change_request\"}}{{isEqualNumber result.count 0}}{{else}}false{{/equals}}",
+            "initialContextTemplate": "{\"table\": \"change_request\"}",
+            "headers": [],
+            "authenticationScheme": null
+        },
+        {
+            "name": "RiskLabel",
+            "endpointUrl": "{{endpoint.url}}/api/now/table/sys_choice?sysparm_query=element=Risk^name=change_request^ORDERBYDESCvalue&sysparm_fields=label",
+            "requestVerb": null,
+            "requestContent": null,
+            "resourceUrl": "",
+            "resultSelector": "jsonpath:$.result[*].label",
+            "callbackContextTemplate": null,
+            "callbackRequiredTemplate": null,
+            "initialContextTemplate": null,
+            "headers": [],
+            "authenticationScheme": null
+        },
+        {
+            "name": "ImpactLabel",
+            "endpointUrl": "{{endpoint.url}}/api/now/table/sys_choice?sysparm_query=element=Impact^name={{table}}^ORDERBYDESCvalue&sysparm_fields=label",
+            "requestVerb": null,
+            "requestContent": null,
+            "resourceUrl": "",
+            "resultSelector": "jsonpath:$.result[*].label",
+            "callbackContextTemplate": "{\"table\": \"task\"}",
+            "callbackRequiredTemplate": "{{#equals table \"change_request\"}}{{isEqualNumber result.count 0}}{{else}}false{{/equals}}",
+            "initialContextTemplate": "{\"table\": \"change_request\"}",
+            "headers": [],
+            "authenticationScheme": null
+        },
+        {
+            "name": "CategoryLabel",
+            "endpointUrl": "{{endpoint.url}}/api/now/table/sys_choice?sysparm_query=name=change_request^element=category^inactive!=true&sysparm_fields=label",
+            "requestVerb": null,
+            "requestContent": null,
+            "resourceUrl": "",
+            "resultSelector": "jsonpath:$.result[*].label",
+            "callbackContextTemplate": null,
+            "callbackRequiredTemplate": null,
+            "initialContextTemplate": null,
+            "headers": [],
+            "authenticationScheme": null
+        },
+        {
+            "name": "CloseCodeLabel",
+            "endpointUrl": "{{endpoint.url}}/api/now/table/sys_choice?sysparm_query=name=change_request^element=Close_Code^ORDERBYDESCvalue&sysparm_fields=label",
+            "requestVerb": null,
+            "requestContent": null,
+            "resourceUrl": "",
+            "resultSelector": "jsonpath:$.result[*].label",
+            "callbackContextTemplate": null,
+            "callbackRequiredTemplate": null,
+            "initialContextTemplate": null,
+            "headers": [],
+            "authenticationScheme": null
+        },
+        {
+            "name": "Configuration Item",
+            "endpointUrl": "{{endpoint.url}}/api/now/table/cmdb_ci?sysparm_fields=name&sysparm_limit=5000&sysparm_offset={{skip}}",
+            "requestVerb": null,
+            "requestContent": null,
+            "resourceUrl": "",
+            "resultSelector": "jsonpath:$.result[*].name",
+            "callbackContextTemplate": "{\"skip\": \"{{add skip 5000}}\"}",
+            "callbackRequiredTemplate": "{{isEqualNumber result.count 5000}}",
+            "initialContextTemplate": "{\"skip\": \"0\"}",
+            "headers": [],
+            "authenticationScheme": null
+        },
+        {
+            "name": "Assignment Group",
+            "endpointUrl": "{{endpoint.url}}/api/now/table/sys_user_group?sysparm_element=assignment_group&sysparm_fields=name&sysparm_limit=1000&sysparm_offset={{skip}}",
+            "requestVerb": null,
+            "requestContent": null,
+            "resourceUrl": "",
+            "resultSelector": "jsonpath:$.result[*].name",
+            "callbackContextTemplate": "{\"skip\": \"{{add skip 1000}}\"}",
+            "callbackRequiredTemplate": "{{isEqualNumber result.count 1000}}",
+            "initialContextTemplate": "{\"skip\": \"0\"}",
+            "headers": [],
+            "authenticationScheme": null
+        },
+        {
+            "name": "AccessToken",
+            "endpointUrl": "{{{configuration.Url}}}/oauth_token.do",
+            "requestVerb": "Post",
+            "requestContent": "grant_type=authorization_code&code={{{#uriDataEncode 1 AuthorizationCode}}}{{{/uridataencode}}}&client_id={{{#uriDataEncode 1 configuration.ClientId}}}{{{/uridataencode}}}&client_secret={{{#uriDataEncode 1 configuration.ClientSecret}}}{{{/uridataencode}}}&redirect_uri={{{#uriDataEncode 1 RedirectUrl}}}{{{/uridataencode}}}",
+            "resourceUrl": "",
+            "resultSelector": "jsonpath:$",
+            "callbackContextTemplate": null,
+            "callbackRequiredTemplate": null,
+            "initialContextTemplate": null,
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                }
+            ],
+            "authenticationScheme": null
+        },
+        {
+            "name": "RefreshToken",
+            "endpointUrl": "{{{configuration.Url}}}/oauth_token.do",
+            "requestVerb": "Post",
+            "requestContent": "grant_type=refresh_token&refresh_token={{{#uriDataEncode 1 RefreshToken}}}{{{/uridataencode}}}&client_id={{{#uriDataEncode 1 configuration.ClientId}}}{{{/uridataencode}}}&client_secret={{{#uriDataEncode 1 configuration.ClientSecret}}}{{{/uridataencode}}}",
+            "resourceUrl": "",
+            "resultSelector": "jsonpath:$",
+            "callbackContextTemplate": null,
+            "callbackRequiredTemplate": null,
+            "initialContextTemplate": null,
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                }
+            ],
+            "authenticationScheme": null
+        }
+    ],
+    "name": "ServiceNow",
+    "displayName": "ServiceNow",
+    "description": "ServiceNow",
+    "endpointUrl": {
+        "displayName": "ServiceNow Url",
+        "helpText": "Url of the ServiceNow instance to connect to."
+    },
+    "helpMarkDown": "<a href=\"https://docs.microsoft.com/en-us/azure/devops/pipelines/release/approvals/servicenow?view=azure-devops\" target=_blank><b>Learn More about ServiceNow integration</b></a>",
+    "iconUrl": "https://ms-vscs-rm.gallery.vsassets.io/_apis/public/gallery/publisher/ms-vscs-rm/extension/vss-services-servicenowchangerequestmanagement/4.162.1/assetbyname/Microsoft.VisualStudio.Services.Icons.Default"
+}

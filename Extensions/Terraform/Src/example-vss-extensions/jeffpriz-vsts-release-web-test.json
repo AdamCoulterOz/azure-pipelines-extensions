@@ -1,0 +1,70 @@
+{
+    "manifestVersion": 1,
+    "id": "release-web-smoke-test-task",
+    "name": "Release Web Smoke Test",
+    "version": "1.0.16",
+    "publisher": "OneLuckiDev",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "images/icon-small.png"
+    },
+    "description": "Task for performing a smoke test on a released web application to validate that it is available at the end of a release.  This task will accept multiple web URLs, and a retry count.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "files": [
+        {
+            "path": "ReleaseWebTest"
+        },
+        {
+            "path": "images/icon-small.png",
+            "addressable": true
+        },
+        {
+            "path": "images/input.PNG",
+            "addressable": true
+        },
+        {
+            "path": "images/task.png",
+            "addressable": true
+        }
+    ],
+    "badges": [
+        {
+            
+            "href": "https://oneluckidev.visualstudio.com/OneLuckiDev/_apis/build/status/vsts-release-web-test",
+            "uri": "https://oneluckidev.visualstudio.com/OneLuckiDev/_apis/build/status/vsts-release-web-test",
+            "description": "Build for this Task run in Azure DevOps"
+        }
+    ],
+    "branding": {
+        "color": "rgb(27,160,225)",
+        "theme": "dark"
+    },
+    "contributions": [
+        {
+            "id": "vsts-release-web-test",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "ReleaseWebTest"
+            }
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "README.md"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/jeffpriz/vsts-release-web-test"
+    },
+    "public": true
+}

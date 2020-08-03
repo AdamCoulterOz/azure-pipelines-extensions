@@ -1,0 +1,41 @@
+{
+    "manifestVersion": 1,
+    "id": "NotFriday",
+    "name": "Not Friday",
+    "version": "0.0.1",
+    "description": "No release today, it's friday.",
+    "publisher": "glacasa",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+            }
+        ],
+    "categories": [
+            "Build and release"
+        ],
+    "icons": {
+        "default": "images/no-icon.png"
+     },
+    "files": [
+        {
+            "path": "NotFriday"
+        },
+        {
+            "path": "images/no-icon.png", 
+            "addressable": true
+        }
+    ],
+    "contributions": [
+        {
+            "id": "notfriday-build-task",           
+            "type": "ms.vss-distributed-task.task",
+            "description": "Empêche une build ou un déploiement de se lancer un vendredi.",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "NotFriday"
+            }
+        }
+    ]
+}

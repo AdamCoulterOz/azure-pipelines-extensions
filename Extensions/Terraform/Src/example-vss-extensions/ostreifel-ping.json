@@ -1,0 +1,83 @@
+{
+    "manifestVersion": 1,
+    "id": "ping",
+    "version": "1.1.36",
+    "name": "Ping!",
+    "scopes": [ "vso.work", "vso.work_write" ],
+    "description": "Bulk mention from backlogs and queries.",
+    "publisher": "ottostreifel",
+    "icons": {
+        "default": "img/logo.png"
+    },
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "tags": [
+        "Notification",
+        "Work Item",
+        "Mention",
+        "Notification",
+        "Query Results",
+        "Backlog"
+    ],
+    "content": {
+        "details": {
+            "path": "details.md"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/ostreifel/ping"
+    },
+    "branding": {
+        "color": "rgb(220, 235, 252)",
+        "theme": "light"
+    },
+    "files": [
+        {
+            "path": "img",
+            "addressable": true
+        },
+        {
+            "path": "build",
+            "addressable": true
+        },
+        {
+            "path": "pingContext.html",
+            "addressable": true
+        },
+        {
+            "path": "choosePingIdentity.html",
+            "addressable": true
+        }
+    ],
+    "categories": [
+        "Collaborate"
+    ],
+    "contributions": [
+        {
+            "id": "context-menu",
+            "type": "ms.vss-web.action-provider",
+            "description": "",
+            "targets": [
+                "ms.vss-work-web.query-result-work-item-menu",
+                "ms.vss-work-web.backlog-item-menu"
+            ],
+            "properties": {
+                "group": "contributed",
+                "uri": "pingContext.html"
+            }
+        },
+        {
+            "id": "choose-identity",
+            "type": "ms.vss-web.control",
+            "description": "Editor for the form",
+            "targets": [ ],
+            "properties": {
+                "uri": "choosePingIdentity.html"
+            }
+        }
+    ]
+}

@@ -1,0 +1,134 @@
+{
+    "manifestVersion": 1,
+    "id": "build-analysis-dashboard-widgets",
+    "version": "1.53",
+    "name": "Build analysis Widgets",
+    "description": "A dashboard widget for displaying  builds analysis in Visual Studio Team Services (VSTS) and Team Foundation Server (TFS).",
+    "publisher": "Maryamextension",
+     "public": true,
+"icons": {
+        "default": "picture.jpg"
+    },
+
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "screenshots": [
+        {
+            "path": "buildanalysis.png"
+        },
+        {
+            "path": "config.png"
+        }
+    ],
+
+    
+       "categories": [
+        "Test"
+    ],
+"content": {
+        "details": {
+            "path": "overview.md"
+        }
+    },
+    "links": {
+        "getstarted": {
+            "uri": "https://github.com/Maryam0187/vstsExtension"
+        },
+        "learn": {
+            "uri": "https://github.com/Maryam0187/vstsExtension"
+        },
+        "license": {
+            "uri": "https://github.com/Maryam0187/vstsExtension"
+        },
+        "support": {
+            "uri": "https://github.com/Maryam0187/vstsExtension"
+        }
+    },
+    "repository": {
+            "type": "git",
+            "uri": "https://github.com/Maryam0187/vstsExtension"
+    },
+    "branding": {
+        "color": "87C2E1",
+        "theme": "light"
+    },
+
+    "contributions": [
+        {
+             "id": "BuildAnalysisWidget",
+             "type": "ms.vss-dashboards-web.widget",
+             "targets": [
+                 "ms.vss-dashboards-web.widget-catalog",
+                 "Maryamextension.build-analysis-dashboard-widgets.buildAnalysisWidget.Configuration"
+             ],
+             "properties": {
+                 "name": "Build Analysis",
+                 "description": "Displays the builds analysis of  a build definition.", 
+                 "catalogIconUrl": "picture.jpg",
+                 "previewImageUrl": "picture.jpg",                     
+                 "uri": "my-hub.html",
+                 "isNameConfigurable": true,
+                 "supportedSizes": [
+                    {
+                        "rowSpan": 4,
+                        "columnSpan": 4
+                    },
+                    {
+                        "rowSpan": 3,
+                        "columnSpan": 4
+                    },
+                   {
+				        "rowSpan": 3,
+				        "columnSpan": 3
+
+                    },
+                    {
+				        "rowSpan": 4,
+				        "columnSpan": 5
+
+                    }
+                 ],
+                 "supportedScopes": ["project_team"]
+             }
+         },
+         {
+             "id": "buildAnalysisWidget.Configuration",
+             "type": "ms.vss-dashboards-web.widget-configuration",
+             "targets": [ "ms.vss-dashboards-web.widget-configuration" ],
+             "properties": {
+                 "name": "builds analysis Configuration",
+                 "description": "Configures build analysis",
+                 "uri": "configuration.html"
+             }
+         }
+    ],
+    "files": [
+        {
+            "path": "my-hub.html", "addressable": true
+        },
+        {
+            "path": "configuration.html", "addressable": true
+        },
+                  {
+            "path": "picture.jpg","addressable": true
+           },
+
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        }
+    ],
+    "galleryFlags": [
+        "Public"
+    ],
+
+        "scopes": [
+        "vso.build"
+        ,
+        "vso.test"
+    ]
+}

@@ -1,0 +1,63 @@
+{
+    "manifestVersion": 1,
+    "id": "sitecore-package-decorator",
+    "name": "Decorator task to inspect generated Sitecore packages",
+    "version": "0.0.20",
+    "publisher": "BasLijten",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Tool for inspecting generated Sitecore package. Separately maintained from opensource generator.",
+    "categories": [
+        "Azure Pipelines"
+    ],   
+    "files": [
+        {
+            "path": "my-decorator-pre.yml",
+            "addressable": true,
+            "contentType": "text/plain"
+        },
+        {
+            "path": "my-decorator-post.yml",
+            "addressable": true,
+            "contentType": "text/plain"
+        },
+        {
+            "path": "DecoratorTask"            
+        }
+    ],
+    "contributions": [
+        {
+            "id": "sitecore-package-decorator-pre",
+            "type": "ms.azure-pipelines.pipeline-decorator",
+            "targets": [
+                "ms.azure-pipelines-agent-job.pre-job-tasks"
+            ],
+            "properties": {
+                "template": "my-decorator-pre.yml"
+            }
+        },
+        {
+            "id": "sitecore-package-decorator-post",
+            "type": "ms.azure-pipelines.pipeline-decorator",
+            "targets": [
+                "ms.azure-pipelines-agent-job.post-job-tasks"
+            ],
+            "properties": {
+                "template": "my-decorator-post.yml"
+            }
+        },
+        {
+            "id": "qa-sitecore-wdp",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "DecoratorTask"
+            }
+        }
+    ]
+}

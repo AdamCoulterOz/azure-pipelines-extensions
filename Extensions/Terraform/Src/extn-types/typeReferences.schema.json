@@ -1,0 +1,69 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "allOf": [
+        {
+            "if": { "properties": { "type": { "const": "ms.vss-endpoint.service-endpoint-type" } } },
+            "then": { "properties": { "properties": { "$ref": "ms.vss-endpoint.service-endpoint-type.schema.json" } } }
+        },
+        {
+            "if": { "properties": { "type": { "const": "ms.vss-build-web.build-results-tab" } } },
+            "then": { "properties": { "properties": { "$ref": "ms.vss-build-web.build-results-tab.schema.json" } } }
+        },
+        {
+            "if": {
+                "not": {
+                    "properties": {
+                        "type": {
+                            "oneOf": [
+                                { "const": "ms.vss-endpoint.service-endpoint-type" },
+                                { "const": "ms.vss-build-web.build-results-tab"},
+                                { "const": "ms.vss-code-web.editor-items"},
+                                { "const": "ms.vss-continuous-delivery-gallery.devops-dashboard-azure-resource-section-type"},
+                                { "const": "ms.vss-dashboards-web.widget"},
+                                { "const": "ms.vss-dashboards-web.widget-configuration"},
+                                { "const": "ms.vss-distributed-task"},
+                                { "const": "ms.vss-distributed-task.task"},
+                                { "const": "ms.vss-distributed-task.task-input-editor"},
+                                { "const": "ms.vss-releaseManagement-web.release-summary-section"},
+                                { "const": "ms.vss-releaseManagement-web.release-summary-tab"},
+                                { "const": "ms.vss-servicehooks.consumer"},
+                                { "const": "ms.vss-tfs-web.hub-actions-menu"},
+                                { "const": "ms.vss-web.action"},
+                                { "const": "ms.vss-web.action-provider"},
+                                { "const": "ms.vss-web.control"},
+                                { "const": "ms.vss-web.external-content"},
+                                { "const": "ms.vss-web.global-message-banner"},
+                                { "const": "ms.vss-web.hub"},
+                                { "const": "ms.vss-web.hub-group"},
+                                { "const": "ms.vss-web.menu"},
+                                { "const": "ms.vss-web.tab"},
+                                { "const": "ms.vss-work-web.backlog-panel"},
+                                { "const": "ms.vss-work-web.query-column"},
+                                { "const": "ms.vss-work-web.work-item-form-control"},
+                                { "const": "ms.vss-work-web.work-item-form-group"},
+                                { "const": "ms.vss-work-web.work-item-form-page"},
+                                { "const": "ms.vss-work-web.work-item-notifications"}
+                            ]
+                            
+                        }
+                    }
+                }
+            },
+            "then": {
+                "properties": {
+                    "properties": {
+                        "type": "object",
+                        "properties": {
+                            "invalidContributionType": {
+                                "type": "string"
+                            }
+                        },
+                        //need to define how to accept custom contribution types here
+                        "required": ["invalidContributionType"],
+                        "additionalProperties": false
+                    }
+                }
+            }
+        }
+    ]
+}

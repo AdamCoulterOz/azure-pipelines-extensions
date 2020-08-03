@@ -1,0 +1,36 @@
+{
+  "name": "GraphQL Schema Comperator",
+  "description": "Tools for building/releasing with Fabrikam. Includes one build/release task.",
+  "version": "1.2.12",
+  "files": [
+    {
+      "path": "GraphqlSchemaComperator"
+    }
+  ],
+  "categories": [
+    "Build and release"
+  ],
+  "contributions": [
+    {
+      "id": "custom-build-release-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "GraphqlSchemaComperator"
+      }
+    }
+  ],
+  "icons": {
+    "default": "images/extension-icon.png"
+  },
+  "id": "graphql-schema-comperator",
+  "manifestVersion": 1,
+  "publisher": "AtleEsperum",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ]
+}

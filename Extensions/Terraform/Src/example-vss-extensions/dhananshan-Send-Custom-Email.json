@@ -1,0 +1,75 @@
+ {
+        "manifestVersion": 1,
+        "id": "send-custom-email",
+        "version": "2.0.3",
+        "name": "Send Custom Email",
+        "description": "Send your own custom release email",
+        "publisher": "NavinDhananshan",
+        "targets": [
+            {
+                "id": "Microsoft.VisualStudio.Services"
+                }
+            ],
+        "icons": {
+            "default": "images/icon.png"
+         },
+        "contributions": [
+            {
+                "id": "navin.sendcustomemail",
+                "type": "ms.vss-web.hub",
+                "description": "Adds an 'Email' hub to the build/ release hub group.",
+                "targets": [
+                    "ms.vss-build-web.build-release-hub-group"
+                    ],
+                "properties": {
+                    "name": "Email",
+                    "order": 99,
+                    "uri": "send-email.html"
+                }
+            }
+        ],
+        "scopes": [
+            "vso.work"
+        ],
+        "categories": [
+            "Build and release"
+        ],
+        "branding": {
+            "color": "rgb(53, 152, 217)",
+            "theme": "light"
+        },
+        "content": {
+            "details": {
+                "path": "README.md"
+            }
+        },
+        "links": {
+            "getstarted": {
+                "uri": "https://github.com/dhananshan/Send-Custom-Email"
+            },
+            "support": {
+                "uri": "https://github.com/dhananshan/Send-Custom-Email/issues"
+            }
+        },
+        "repository": {
+            "type": "git",
+            "uri": "https://github.com/dhananshan/Send-Custom-Email"
+        },
+        "galleryFlags": [
+            "Public"
+        ],
+        "files": [
+            {
+                "path": "send-email.html", "addressable": true
+            },
+            {
+                "path": "content", "addressable": true
+            },
+            {
+                "path": "node_modules", "addressable": true
+            },
+            {
+                "path": "images/icon.png", "addressable": true
+            }
+        ]
+    }

@@ -1,0 +1,50 @@
+    {
+        "id": "endpoint-auth-scheme-service-principal",
+        "description": "Service Principal based endpoint authentication scheme",
+        "type": "ms.vss-endpoint.service-endpoint-auth-scheme",
+        "targets": [
+            "ms.vss-endpoint.endpoint-auth-schemes"
+        ],
+        "properties": {
+            "name": "ServicePrincipal",
+            "displayName": "Service Principal Authentication",
+            "inputDescriptors": [
+                {
+                    "id": "tenantId",
+                    "name": "Azure tenant ID",
+                    "description": "ID of the Azure tenant",
+                    "inputMode": "textbox",
+                    "isConfidential": false,
+                    "validation": {
+                        "isRequired": true,
+                        "dataType": "string",
+                        "maxLength": 32
+                    }
+                },
+                {
+                    "id": "servicePrincipalId",
+                    "name": "Client ID",
+                    "description": "ID of the client",
+                    "inputMode": "textbox",
+                    "isConfidential": false,
+                    "validation": {
+                        "isRequired": true,
+                        "dataType": "string",
+                        "maxLength": 32
+                    }
+                },
+                {
+                    "id": "servicePrincipalKey",
+                    "name": "Client secret",
+                    "description": "Secret of the client",
+                    "inputMode": "passwordbox",
+                    "isConfidential": true,
+                    "validation": {
+                        "isRequired": true,
+                        "dataType": "string",
+                        "maxLength": 300
+                    }
+                }
+            ]
+        }
+    }

@@ -1,0 +1,89 @@
+{
+    "manifestVersion": 1,
+    "description": "An Azure DevOps extension with Azure Pipelines tasks to manage Azure AD Applications keys by rotating them.",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "images/AdApplication-128.png",
+        "large": "images/AdApplication-512.png"
+    },
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "tags": [
+        "Azure",
+        "Cloud",
+        "Active Directory",
+        "App Registration",
+        "Application",
+        "Key Vault"
+    ],
+    "contributions": [
+        {
+            "id": "Set-Azure-AD-Application-KeyRotator",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "Set-AzureAdApplicationKeyRotator"
+            }
+        },
+        {
+            "id": "Remove-Azure-AD-Application-KeyRotator",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "Remove-AzureAdApplicationKeyRotator"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        },
+        {
+            "path": "Set-AzureAdApplicationKeyRotator"
+        },
+        {
+            "path": "Remove-AzureAdApplicationKeyRotator"
+        }
+    ],
+    "content": {
+        "details": {
+          "path": "Readme.md"
+        }
+    },
+    "links": {
+        "home": {
+          "uri": "https://www.locktar.nl"
+        },
+        "getstarted": {
+          "uri": "https://github.com/LockTar/AzureAdApplicationRotator#get-started"
+        },
+        "support": {
+          "uri": "https://github.com/LockTar/AzureAdApplicationRotator/issues"
+        },
+        "issues": {
+          "uri": "https://github.com/LockTar/AzureAdApplicationRotator/issues"
+        }
+      },
+      "repository": {
+        "type": "git",
+        "uri": "https://github.com/LockTar/AzureAdApplicationRotator"
+      },
+      "badges": [
+        {
+          "href": "https://ralphjansen.visualstudio.com/AzureAdApplicationRotator/_build/definition?definitionId=14",
+          "uri": "https://ralphjansen.visualstudio.com/AzureAdApplicationRotator/_apis/build/status/Vsts-Extension?branchName=master",
+          "description": "Build"
+        }
+    ]    
+}

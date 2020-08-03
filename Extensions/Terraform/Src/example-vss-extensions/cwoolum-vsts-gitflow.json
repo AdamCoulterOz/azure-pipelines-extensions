@@ -1,0 +1,44 @@
+    {
+        "manifestVersion": 1,
+        "id": "vsts-gitflow",
+        "version": "0.1.142",
+        "name": "VSTS GitFlow",
+        "description": "",
+        "publisher": "ChrisWoolum",
+        "targets": [{
+            "id": "Microsoft.VisualStudio.Services"
+        }],
+        
+        "contributions": [{
+            "id": "VstsGitFlow.Hub",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a 'GitFlow' hub to the Work hub group.",
+            "targets": [
+                "ms.vss-work-web.work-hub-group"
+            ],
+            "properties": {
+                "name": "GitFlow",
+                "order": 99,
+                "uri": "static/gitflow-config.html"
+            }
+        }],
+        "scopes": [
+            "vso.build",
+            "vso.build_execute",
+            "vso.code_manage"
+        ],
+        "files": [{
+                "path": "dist",
+                "addressable": true
+            },
+            {
+                "path": "static",
+                "addressable": true
+            },
+            {
+                "path": "node_modules/vss-web-extension-sdk/lib",
+                "addressable": true,
+                "packagePath": "lib"
+            }
+        ]
+    }

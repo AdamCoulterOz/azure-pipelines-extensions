@@ -1,0 +1,84 @@
+{
+    "manifestVersion": 1,
+    "id": "vsts-sample-editor-items",
+    "version": "1.0.0",
+    "name": "vsts-sample-editor-items",
+    "scopes": [ "vso.code" ],
+    "description": "Describe your extension.",
+    "publisher": "ottostreifel",
+    "icons": {
+        "default": "img/logo.png"
+    },
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "tags": [
+        "Sample", "Pull Request", "Git"
+    ],
+    "content": {
+        "details": {
+            "path": "details.md"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/ostreifel/VSTS-Sample-Pull-Request-Hover"
+    },
+    "links": {
+        "home": {
+            "uri": "https://bit.ly"
+        },
+        "getstarted": {
+            "uri": "https://bit.ly"
+        },
+        "learn": {
+            "uri": "https://bit.ly"
+        },
+        "support": {
+            "uri": "https://bit.ly"
+        },
+        "repository": {
+            "uri": "https://bit.ly"
+        },
+        "issues": {
+            "uri": "https://bit.ly"
+        }
+    },
+    "branding": {
+        "color": "rgb(220, 235, 252)",
+        "theme": "light"
+    },
+    "files": [
+        {
+            "path": "img",
+            "addressable": true
+        },
+        {
+            "path": "build",
+            "addressable": true
+        },
+        {
+            "path": "index.html",
+            "addressable": true
+        }
+    ],
+    "categories": [
+        "Code"
+    ],
+    "contributions": [
+        {
+            "id": "editor",
+            "type": "ms.vss-code-web.editor-items",
+            "description": "",
+            "targets": [
+                "ms.vss-code-web.editor"
+            ],
+            "properties": {
+                "languageId": "markdown",
+                "uri": "index.html"
+            }
+        }
+    ]
+}

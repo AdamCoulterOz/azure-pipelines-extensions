@@ -1,0 +1,70 @@
+{
+    "manifestVersion": 1,
+    "author": "Sergei Sergeev",
+    "id": "pnp-powershell",
+    "version": "0.0.75",
+    "name": "PnP-PowerShell",
+    "publisher": "s-kainet",
+    "public": true,
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "description": "Run a PnP-PowerShell script against SharePoint site",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "icon.png"
+    },
+    "content": {
+        "details": {
+            "path": "Readme.md"
+        }
+    },
+    "tags": [
+        "PnP",
+        "PowerShell",
+        "OfficeDev",
+        "PnP-PowerShell"
+    ],
+    "links": {
+        "license": {
+            "uri": "https://github.com/s-KaiNet/vsts-pnp-powershell/blob/master/LICENSE.MIT"
+        },
+        "support": {
+            "uri": "https://github.com/s-KaiNet/vsts-pnp-powershell/issues"
+        },
+        "repository": {
+            "uri": "https://github.com/s-KaiNet/vsts-pnp-powershell"
+        },
+        "issues": {
+            "uri": "https://github.com/s-KaiNet/vsts-pnp-powershell/issues"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/s-KaiNet/vsts-pnp-powershell"
+    },
+    "files": [
+        {
+            "path": "PnPPowerShell"
+        }
+    ],
+    "scopes": [
+        "vso.build"
+    ],
+    "contributions": [
+        {
+            "id": "pnp-powershell",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "PnPPowerShell"
+            }
+        }
+    ]
+}

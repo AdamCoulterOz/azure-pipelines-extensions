@@ -1,0 +1,74 @@
+{
+  "manifestVersion": 1,
+  "id": "SecureFiles",
+  "version": "0.1.9",
+  "name": "Secure Files",
+  "scopes": [],
+  "description": "Allows you to download the secure files stored in the library",
+  "publisher": "carlowahlstedt",
+  "galleryFlags": [
+    "Public"
+  ],
+  "icons": {
+    "default": "static/images/logo.png"
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "demands": [
+    "api-version/3.0"
+  ],
+  "tags": [
+    "Secure",
+    "Files",
+    "Copy"
+  ],
+  "categories": [
+    "Build and release"
+  ],
+  "content": {
+    "license": {
+      "path": "license.md"
+    },
+    "details": {
+      "path": "readme.md"
+    }
+  },
+  "links": {
+    "getstarted": {
+      "uri": "https://github.com/carlowahlstedt/SecureFiles_VSTS_Task/"
+    },
+    "support": {
+      "uri": "https://github.com/carlowahlstedt/SecureFiles_VSTS_Task/issues"
+    },
+    "issues": {
+      "uri": "https://github.com/carlowahlstedt/SecureFiles_VSTS_Task/issues"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/carlowahlstedt/SecureFiles_VSTS_Task/"
+  },
+  "branding": {
+    "color": "rgb(241, 92, 34)"
+  },
+  "files": [
+    {
+      "path": "SecureFiles"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "SecureFiles",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "type": "ms.vss-distributed-task.task",
+      "properties": {
+        "name": "SecureFiles"
+      }
+    }
+  ]
+}

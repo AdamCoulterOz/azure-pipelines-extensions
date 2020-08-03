@@ -1,0 +1,42 @@
+{
+    "manifestVersion": 1,
+    "id": "PowershellTask",
+    "version": "1.0.5",
+    "name": "Powershell Task",
+    "description": "A Build Task to run a powershell script with inputs.",
+    "publisher": "wany",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "images/logo.png"
+    },
+	"categories": [
+        "Azure Pipelines"
+    ],
+    "contributions": [
+        {
+            "id": "PowershellTask",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildtask"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "buildtask",
+            "addressable": true
+        },
+        {
+            "path": "images",
+            "addressable": true
+        }
+    ],
+	"public": false
+}

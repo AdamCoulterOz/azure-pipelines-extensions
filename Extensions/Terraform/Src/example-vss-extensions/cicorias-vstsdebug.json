@@ -1,0 +1,71 @@
+{
+  "manifestVersion": 1,
+  "id": "vsts-debug",
+  "name": "vsts-helper-tools",
+  "version": "0.0.11",
+  "publisher": "cicorias",
+  "public" : true,
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "scopes": [
+    "vso.build",
+    "vso.build_execute",
+    "vso.test",
+    "vso.test_write"
+  ],
+  "description": "Utilities to help build VSTS extensions.",
+  "categories": [
+    "Build and release"
+  ],
+  "tags": [
+    "vsts",
+    "tool",
+    "debug",
+    "utility"
+  ],
+  "content": {
+    "details": {
+      "path": "README.md"
+    },
+    "license": {
+      "path": "LICENSE"
+    }
+  },
+  "screenshots": [
+    {
+      "path" : "images/screen1.png"
+    }
+  ],
+  "links":{
+    "getstarted":{
+      "uri" : "https://github.com/cicorias/vsts-debug/README.md" 
+    }
+  },
+  "icons": {
+    "default": "images/icon.png"
+  },
+  "files": [
+    {
+      "path": "listenv"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "vsts-debug-listenv",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "listenv"
+      }
+    }
+  ],
+  "branding": {
+     "color": "rgb(34, 34, 34)",
+     "theme": "dark"
+ }
+}

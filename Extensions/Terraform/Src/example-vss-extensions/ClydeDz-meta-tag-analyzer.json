@@ -1,0 +1,85 @@
+{
+    "manifestVersion": 1,
+    "id": "meta-tag-analyzer",
+    "name": "Meta Tag Analyzer",
+    "version": "1.0.0",
+    "publisher": "clydedsouza",
+    "public": true,
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Generates a report after analysing the meta tags of each page on your website.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "tags": [
+        "seo",
+        "metatags",
+        "meta tag analyzer",
+        "reports",
+        "excel",
+        "office",
+        "reporting",
+        "post build",
+        "post release",
+        "automate",
+        "open graph",
+        "Azure DevOps",
+        "Azure DevOps extension",
+        "task",
+        "build",
+        "release",
+        "pipeline"
+    ],
+    "content": {
+        "details": {
+            "path": "Overview.md"
+        },
+        "license": {
+            "path": "LICENSE.md"
+        }
+    },
+    "icons": {
+        "default": "images/icon-dark.png"        
+    },
+    "files": [
+        {
+            "path": "buildAndReleaseTask"
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/ClydeDz/meta-tag-analyzer"
+    },
+    "links": {
+        "home": {
+            "uri": "https://github.com/ClydeDz/meta-tag-analyzer/"
+        },
+        "learn": {
+            "uri": "https://github.com/ClydeDz/meta-tag-analyzer/wiki"
+        },
+        "support": {
+            "uri": "https://github.com/ClydeDz/meta-tag-analyzer/wiki#support"
+        },
+        "repository": {
+            "uri": "https://github.com/ClydeDz/meta-tag-analyzer"
+        },
+        "issues": {
+            "uri": "https://github.com/ClydeDz/meta-tag-analyzer/issues"
+        }
+    },
+    "contributions": [
+        {
+            "id": "clydedsouza.meta-tag-analyzer.custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildAndReleaseTask"
+            }
+        }
+    ]
+}

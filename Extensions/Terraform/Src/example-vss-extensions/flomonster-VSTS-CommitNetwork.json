@@ -1,0 +1,96 @@
+{
+  "scopes": [
+    "vso.work",
+    "vso.code"
+  ],
+  "screenshots": [
+        {
+            "path": "screenshots/screen1.png"
+        },
+        {
+            "path": "screenshots/screen2.png"
+        }
+    ],
+  "content": {
+    "details": {
+      "path": "overview.md"
+    }
+  },
+  "files": [
+    {
+      "addressable": true,
+      "path": "network.html"
+    },
+    {
+      "addressable": true,
+      "path": "theme.css"
+    },
+    {
+      "addressable": true,
+      "path": "statistics.html"
+    },
+    {
+      "addressable": true,
+      "path": "overview.md"
+    },
+    {
+      "addressable": true,
+      "path": "scripts"
+    },
+    {
+      "addressable": true,
+      "path": "gitgraph"
+    },
+    {
+      "addressable": true,
+      "path": "sdk/scripts"
+    },
+    {
+      "addressable": true,
+      "path": "images/logo.png"
+    }
+  ],
+  "version": "0.3.327",
+  "id": "commitnetwork",
+  "manifestVersion": 1,
+  "publisher": "swapme3",
+  "description": "Graphical view of git commit network and git statistics.",
+  "name": "Commit Network",
+  "contributions": [
+    {
+      "properties": {
+        "uri": "network.html",
+        "order": 30,
+        "name": "Network"
+      },
+      "targets": [
+        "ms.vss-code-web.code-hub-group"
+      ],
+      "description": "Adds a commit graph hub to the Code hub group.",
+      "type": "ms.vss-web.hub",
+      "id": "swapme3.commitnetwork.network"
+    },
+    {
+      "properties": {
+        "uri": "statistics.html",
+        "order": 31,
+        "name": "Statistics"
+      },
+      "targets": [
+        "ms.vss-code-web.code-hub-group"
+      ],
+      "description": "Adds statistics charts.",
+      "type": "ms.vss-web.hub",
+      "id": "swapme3.commitnetwork.statistics"
+    }
+  ],
+  "icons": {
+    "default": "images/logo.png"
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "public": true
+}

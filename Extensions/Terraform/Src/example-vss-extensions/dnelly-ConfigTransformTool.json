@@ -1,0 +1,38 @@
+{
+  "manifestVersion": 1,
+  "id": "sd-transformer",
+  "version": "0.1.14",
+  "name": "Config Transformation Tool (AKA Transformer)",
+  "description": "Config Transformation Tool",
+  "publisher": "darnellmcmurrian",
+  "public": false,
+  "links": {
+    "learn": {
+      "uri": "https://darnellshiftsandbox.visualstudio.com/darnellsandbox/_git/ConfigTransformTool"
+    }
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "contributions": [
+        {
+            "id": "sd-transformer",
+            "type": "ms.vss-distributed-task.task",
+            "description": "Config transform with CTT.exe",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ]
+        }      
+  ],
+  "screenshots": [
+
+  ],
+  "files": [
+    {
+      "path": "ConfigTransformTool",
+      "addressable": true
+    }
+  ]
+}

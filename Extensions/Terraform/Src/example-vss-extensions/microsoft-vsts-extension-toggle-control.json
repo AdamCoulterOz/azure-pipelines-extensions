@@ -1,0 +1,117 @@
+{
+    "manifestVersion": 1,
+    "id": "toggle-control",
+    "version": "1.0.5",
+    "name": "Toggle control",
+    "scopes": [
+        "vso.work",
+        "vso.work_write"
+    ],
+    "description": "Interact with your boolean fields with a toggle control.",
+    "publisher": "ms-devlabs",
+    "icons": {
+        "default": "img/logo.png"
+    },
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "tags": [
+        "Work items",
+        "Work item control"
+    ],
+    "content": {
+        "details": {
+            "path": "details.md"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/Microsoft/vsts-extension-toggle-control"
+    },
+    "links": {
+        "learn": {
+            "uri": "https://github.com/Microsoft/vsts-extension-toggle-control/blob/master/README.md"
+        },
+        "support": {
+            "uri": "https://github.com/Microsoft/vsts-extension-toggle-control"
+        },
+        "repository": {
+            "uri": "https://github.com/Microsoft/vsts-extension-toggle-control"
+        },
+        "issues": {
+            "uri": "https://github.com/Microsoft/vsts-extension-toggle-control/issues"
+        }
+    },
+    "files": [
+        {
+            "path": "img",
+            "addressable": true
+        },
+        {
+            "path": "dist",
+            "addressable": true
+        },
+        {
+            "path": "scripts",
+            "addressable": true
+        },
+        {
+            "path": "styles",
+            "addressable": true
+        },
+        {
+            "path": "index.html",
+            "addressable": true
+        }
+    ],
+    "categories": [
+        "Plan and track"
+    ],
+    "contributions": [
+        {
+            "id": "toggle-control-contribution",
+            "type": "ms.vss-work-web.work-item-form-control",
+            "description": "Interact with your boolean fields with a toggle control.",
+            "targets": [
+                "ms.vss-work-web.work-item-form"
+            ],
+            "properties": {
+                "name": "Toggle control",
+                "uri": "index.html",
+                "height": 28,
+                "inputs": [
+                    {
+                        "id": "FieldName",
+                        "name": "Select the field for this control (requires a boolean field).",
+                        "type": "WorkItemField",
+                        "properties": {
+                            "workItemFieldTypes": ["Boolean"]
+                        },
+                        "validation": {
+                            "dataType": "String",
+                            "isRequired": true
+                        }
+                    },
+                    {
+                        "id": "TrueLabel",
+                        "name": "Choose the label for the true value. Example: Accepted",
+                        "validation": {
+                            "dataType": "String",
+                            "isRequired": false
+                        }
+                    },
+                    {
+                        "id": "FalseLabel",
+                        "name": "Choose the label for the false value. Example: Declined",
+                        "validation": {
+                            "dataType": "String",
+                            "isRequired": false
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,59 @@
+{
+  "manifestVersion": 1,
+  "id": "rm-environment-tab",
+  "version": "0.1.27",
+  "name": "RM environment tab",
+  "description": "RM summary section extension sample",
+  "publisher": "ankhokha",
+  "public":  true,
+  "links": {
+    "learn": {
+      "uri": "https://github.com/Microsoft/vso-extension-samples"
+    }
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "rm-environments-tab",
+      "type": "ms.vss-web.tab",
+      "description": "Adds a 'Hello World' tab to the release environment.",
+      "targets": [
+          "ms.vss-releaseManagement-web.release-environment-editor-tab"
+          ],
+      "properties": {
+          "name": "ReleaseEnvironment",
+          "order": "99",
+          "uri": "index.html",
+          "registeredObjectId": "registeredEnvironmentObject",
+          "dynamic": true
+      }
+  }
+  ],
+  "screenshots": [
+    {
+      "path": "images/screenshot.png"
+    }
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "addressable": true
+    },
+    {
+      "path": "scripts",
+      "addressable": true
+    },
+    {
+      "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.min.js",
+      "addressable": true
+    },
+    {
+      "path": "bower_components/vss-web-extension-sdk/lib/VSS.SDK.js",
+      "addressable": true
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "manifestVersion": 1,
+  "id": "MetadataVersion",
+  "name": "MetadataVersion Reader",
+  "version": "1.0.1",
+  "publisher": "RaghuReddy45",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "A task that reads the version from the metadata.rb file and makes it available as build variables.",
+  "categories": [
+    "Build and release"
+  ],
+  "tags": [
+    "Chef",
+    "Version",
+    "Build Variables"
+  ],
+  "icons": {
+    "default": "images/cookbook.jpg"
+  },
+  "files": [
+    {
+      "path": "metadataversionread"
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "readme.md"
+    },
+    "license": {
+      "path": "LICENSE"
+    }
+  },
+  "links": {
+    "getstarted": {
+      "uri": "https://github.com/wamoore/CookbookVersionReaderTask"
+    },
+    "support": {
+      "uri": "https://github.com/wamoore/CookbookVersionReaderTask/Issues"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/wamoore/CookbookVersionReaderTask"
+  },
+  "galleryFlags": [
+    "Public"
+  ],
+  "contributions": [
+    {
+      "id": "cookbook-version-reader-build-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "metadataversionread"
+      }
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "manifestVersion": 1,
+  "id": "sycade-vsts-exts",
+  "name": "Sycade VSTS Extensions",
+  "version": "0.0.7",
+  "publisher": "sycade",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Sycade VSTS Extensions.",
+  "categories": [
+    "Build and release"
+  ],
+  "icons": {
+    "default": "extension-icon.png"
+  },
+  "files": [
+    {
+      "path": "PatchAssemblyInfo"
+    }
+  ],
+  "scopes": [
+    "vso.code_write",
+    "vso.build_execute"
+  ],
+  "contributions": [
+    {
+      "id": "patch-asm-info",
+      "type": "ms.vss-distributed-task.task",
+	  "description": "Patches AssemblyInfo files with provided version numbers.",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "PatchAssemblyInfo"
+      }
+    }
+  ]
+}

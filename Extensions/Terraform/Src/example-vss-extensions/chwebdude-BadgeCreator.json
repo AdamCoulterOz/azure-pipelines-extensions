@@ -1,0 +1,85 @@
+{
+    "manifestVersion": 1,
+    "id": "badge-creator",
+    "name": "Badge Creator",
+    "version": "1.0.0",
+    "publisher": "chwebdude",
+    "public": true,
+    "tags": [
+        "Badge",
+        "Extension",
+        "Marketplace",
+        "Package",
+        "Install",
+        "Continuous Integration",
+        "Continuous Delivery",
+        "Build",
+        "Release"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Tool for creating version badge using shields.io.",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
+    "files": [
+        {
+            "path": "buildtask/dist/index.js"
+        },{
+            "path": "buildtask/node_modules"
+        },{
+            "path": "buildtask/task.json"
+        },{
+            "path": "buildtask/icon.png"
+        },{
+            "path": "buildtask/dist/badgeCreator.js"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildtask"
+            }
+        }
+    ],
+    "content":{
+        "details":{
+            "path": "Readme.md"
+        }
+    },
+    "screenshots":[
+        {
+            "path": "images/overview.jpg"
+        },
+        {
+            "path": "images/extension-icon.png"
+        }
+    ],
+
+    "links": {
+        "repository": {
+        "uri": "https://github.com/chwebdude/BadgeCreator"
+        },
+        "issues": {
+        "uri": "https://github.com/chwebdude/BadgeCreator/issues"
+        },
+        "support": {
+        "uri": "https://github.com/chwebdude/BadgeCreator"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/chwebdude/BadgeCreator"
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "id": "endpoint-auth-scheme-cert",
+    "description": "i18n:Creates a certificate-based endpoint authentication scheme",
+    "type": "ms.vss-endpoint.service-endpoint-auth-scheme",
+    "targets": [
+        "ms.vss-endpoint.endpoint-auth-schemes"
+    ],
+    "properties": {
+        "name": "Certificate",
+        "displayName": "i18n:Certificate Based",
+        "inputDescriptors": [
+            {
+                "id": "certificate",
+                "name": "i18n:Certificate",
+                "description": "Content of the certificate",
+                "inputMode": "TextArea",
+                "isConfidential": true,
+                "validation": {
+                    "isRequired": true,
+                    "dataType": "string"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,68 @@
+{
+    "manifestVersion": 1,
+    "id": "JasperGilhuis-Xpirit-Vsts-Validation-Hub",
+    "version": "0.1.6",
+    "name": "VSTS Validation Hub",
+    "publisher": "jaspergilhuis",
+    "public": false,
+    "description": "Validate your release",
+     "scopes": [
+        "vso.work"
+        ],
+    "icons": {
+     "default": "Xpirit-Vsts-Validation-Hub.Extension/images/icon128.png"
+    },
+     "branding": {
+        "color": "rgb(36, 43, 50)",
+        "theme": "dark"
+    },
+    "targets": [
+        {
+        "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+     "links": {
+        "getstarted": {
+        "uri": "https://github.com/XpiritBV/Xpirit-Vsts-Validation-Hub/wiki"
+        },
+        "support": {
+        "uri": "https://github.com/XpiritBV/Xpirit-Vsts-Validation-Hub/wiki"
+        }
+    },
+     "categories": [
+     "Build and release"
+    ],
+    "tags": [
+        "release",
+        "validation",
+        "tokens"
+    ],
+    "content": {
+        "details": {
+            "path": "README.md"
+        },
+        "license": {
+            "path": "Xpirit-Vsts-Validation-Hub.Extension/license.txt"
+        }
+    },
+     "files": [
+        {
+            "path": "Xpirit-Vsts-Validation-Hub.Extension/pages/", "addressable": true
+        }
+    ],
+    "contributions": [
+        {
+            "id": "Validation.Hub",
+            "type": "ms.vss-web.hub",
+            "description": "adds Validation to the release Hub",
+            "targets": [
+                "ms.vss-releaseManagement-web.hub-group-rm"
+            ],
+            "properties": {
+                "name": "Validation",
+                "order": 99,
+                "uri": "Xpirit-Vsts-Validation-Hub.Extension/pages/index.html"
+            }
+        }
+    ]
+}

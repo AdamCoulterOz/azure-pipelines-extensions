@@ -1,0 +1,59 @@
+{
+    "manifestVersion": 1,
+    "id": "WebTestToolkit",
+    "version": "0.2.5",
+    "name": "Web App test toolkit",
+    "publisher": "frederickries",
+    "description": "Few features to test web applications.",
+	"galleryFlags": [
+		"Preview",
+		"Public"
+    ],
+	"tags": [
+		"Automation",
+		"Deploy task",
+		"Web",
+		"Test"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "ToolkitIcon.png"
+    },
+	"categories": [
+        "Build and release"
+    ],
+    "scopes": [
+		"vso.build_execute",
+		"vso.release_execute"
+	],
+	"content": {
+		"details": {
+			"path": "README.md"
+		},
+		"license": {
+			"path": "LICENSE"
+		}
+	},
+	"files": [
+        {
+            "path": "Tasks"
+        }
+    ],
+    "contributions": [
+		{
+			"id": "webtesttoolkit-smoketest-command",
+			"description": "Test the response of a public web application.",
+			"type": "ms.vss-distributed-task.task",
+			"targets": [
+				"ms.vss-distributed-task.tasks"
+			],
+			"properties": {
+				"name": "Tasks/SmokeTest"
+			}
+		}
+    ]
+}

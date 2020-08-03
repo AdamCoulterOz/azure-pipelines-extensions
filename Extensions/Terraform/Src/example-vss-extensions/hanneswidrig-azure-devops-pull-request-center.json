@@ -1,0 +1,64 @@
+{
+  "manifestVersion": 1,
+  "id": "pull-request-center",
+  "publisher": "hannes-widrig",
+  "version": "1.1.5",
+  "name": "Pull Requests Center",
+  "description": "Manage your team's pull requests across all repositories.",
+  "public": true,
+  "categories": ["Azure Repos"],
+  "demands": ["api-version/3.0"],
+  "scopes": ["vso.code", "vso.work", "vso.identity"],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services.Cloud"
+    }
+  ],
+  "icons": {
+    "default": "marketplace/logo.png",
+    "branding": "marketplace/logo.png"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hanneswidrig/azure-devops-pull-request-center"
+  },
+  "content": {
+    "details": {
+      "path": "README.md"
+    },
+    "license": {
+      "path": "LICENSE"
+    }
+  },
+  "screenshots": [
+    { "path": "marketplace/screenshot-1.png" },
+    { "path": "marketplace/screenshot-2.png" },
+    { "path": "marketplace/screenshot-3.png" }
+  ],
+  "tags": [],
+  "contributions": [
+    {
+      "id": "pull-request-center",
+      "type": "ms.vss-web.hub",
+      "targets": ["ms.vss-code-web.code-hub-group"],
+      "properties": {
+        "name": "Pull Requests Center",
+        "uri": "build/index.html",
+        "icon": {
+          "light": "marketplace/icon-light.png",
+          "dark": "marketplace/icon-dark.png"
+        }
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "build",
+      "addressable": true
+    },
+    {
+      "path": "marketplace",
+      "addressable": true
+    }
+  ]
+}

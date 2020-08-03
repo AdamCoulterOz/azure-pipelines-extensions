@@ -1,0 +1,60 @@
+{
+    "manifestVersion": 1,
+    "id": "test-ci-recent-builds",
+    "version": "1.0.13",
+    "name": "Test CI Recent Builds",
+    "description": "A VSTS Build extension for test that displays recent CI build jobs triggered by webhooks",
+    "publisher": "zhiliangxu",
+    "public": false,
+    "icons": {
+        "default": "images/apex-logo.png"
+    },
+    "scopes": ["vso.build"],
+    "tags": [
+        "Test",
+        "CI"
+    ],
+    "categories": [
+        "Build and release"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "files": [
+        {
+            "path": "main.html",
+            "addressable": true
+        },
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib/VSS.SDK.min.js",
+            "addressable": true,
+            "packagePath": "scripts/VSS.SDK.min.js"
+        },
+        {
+            "path": "scripts",
+            "addressable": true
+        },
+        {
+            "path": "images/apex-logo.png",
+            "addressable": true
+        }
+    ],
+    "contributions": [
+        {
+            "id": "build.items",
+            "type": "ms.vss-web.hub",
+            "description": "Displays recent CI build jobs triggered by webhooks",
+            "targets": [
+                "ms.vss-build-web.build-release-hub-group",
+                "ms.vss-build-web.build-hub-group"
+            ],
+            "properties": {
+                "name": "CI Jobs Triggered by Webhooks",
+                "order": 9999,
+                "uri": "main.html"
+            }
+        }
+    ]
+}

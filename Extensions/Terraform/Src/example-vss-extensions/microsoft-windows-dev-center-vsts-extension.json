@@ -1,0 +1,160 @@
+﻿{
+    "manifestVersion": 1,
+    "id": "windows-store-publish",
+    "version": "0.9.27",
+    "name": "Windows Store",
+    "publisher": "ms-rdx-mro",
+    "description": "Publish your applications on the Windows Store.",
+    "categories": [
+        "Build and release"
+    ],
+    "galleryFlags": [],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "scopes": [
+        "vso.build_execute"
+    ],
+    "icons": {
+        "default": "images/logo.png"
+    },
+    "content": {
+        "details": {
+            "path": "README.md"
+        },
+        "thirdpartynotice": {
+            "path": "ThirdPartyNotices.txt"
+        }
+    },
+    "files": [
+        {
+            "path": "store-publish"
+        },
+        {
+            "path": "store-flight"
+        },
+        {
+            "path": "docs",
+            "addressable": true
+        },
+        {
+            "path": "images/logo.png",
+            "addressable": true
+        }
+    ],
+    "tags": [
+        "Windows Store",
+        "Windows Dev Center",
+        "Publish",
+        "Deploy"
+    ],
+    "links": {
+        "learn": {
+            "uri": "https://github.com/Microsoft/windows-dev-center-vsts-extension"
+        },
+        "license": {
+            "uri": "https://github.com/Microsoft/windows-dev-center-vsts-extension/blob/master/LICENSE"
+        },
+        "support": {
+            "uri": "https://github.com/Microsoft/windows-dev-center-vsts-extension/issues"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/Microsoft/windows-dev-center-vsts-extension"
+    },
+    "contributions": [
+        {
+            "id": "devCenterApiEndpoint",
+            "description": "DevCenterEndpoint",
+            "type": "ms.vss-endpoint.service-endpoint-type",
+            "targets": [
+                "ms.vss-endpoint.endpoint-types"
+            ],
+            "properties": {
+                "name": "devCenter",
+                "displayName": "Windows Dev Center",
+                "url": "https://manage.devcenter.microsoft.com",
+                "inputDescriptors": [],
+                "authenticationSchemes": [
+                    {
+                        "type": "ms.vss-endpoint.endpoint-auth-scheme-service-principal",
+                        "inputDescriptors": [
+                            {
+                                "id": "url",
+                                "name": "Windows Store API URL",
+                                "description": "Server URL",
+                                "inputMode": "textbox",
+                                "isConfidential": false,
+                                "validation": {
+                                    "isRequired": true,
+                                    "dataType": "string"
+                                },
+                                "values": {
+                                    "inputId": "url",
+                                    "isDisabled": false,
+                                    "defaultValue": "https://manage.devcenter.microsoft.com"
+                                }
+                            },
+                            {
+                                "id": "tenantId",
+                                "name": "Azure tenant ID",
+                                "description": "ID of the Azure tenant",
+                                "inputMode": "textbox",
+                                "isConfidential": false,
+                                "validation": {
+                                    "isRequired": true,
+                                    "dataType": "string"
+                                }
+                            },
+                            {
+                                "id": "servicePrincipalId",
+                                "name": "Client ID",
+                                "description": "ID of the client",
+                                "inputMode": "textbox",
+                                "isConfidential": false,
+                                "validation": {
+                                    "isRequired": true,
+                                    "dataType": "string"
+                                }
+                            },
+                            {
+                                "id": "servicePrincipalKey",
+                                "name": "Client secret",
+                                "description": "Secret of the client",
+                                "inputMode": "passwordbox",
+                                "isConfidential": true,
+                                "validation": {
+                                    "isRequired": true,
+                                    "dataType": "string"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "publish-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "store-publish"
+            }
+        },
+        {
+            "id": "flight-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "store-flight"
+            }
+        }
+    ]
+}

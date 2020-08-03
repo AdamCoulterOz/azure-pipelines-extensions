@@ -1,0 +1,60 @@
+{
+    "manifestVersion": 1,
+    "id": "MSDeployAllTheThings",
+    "name": "MSDeployAllTheThings",
+    "version": "0.0.9",
+    "publisher": "rschiefer",
+    "public": true,
+    "targets": [
+        {         
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Build/deployment tasks for MSDeploy.",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "images/MSDeployAllTheThingsIcon_128.png"        
+    },
+    "files": [
+        {
+            "path": "MSDeployPackageSync"
+        }
+    ],
+    "screenshots": [
+        {
+            "path": "images/screenshot1.png"
+        }
+    ],
+    "tags": [
+        "msdeploy",
+        "webdeploy"
+    ],
+    "content": {
+        "details": {
+            "path": "readme.md"
+        }
+    },
+    "links": {
+        "learn": {
+            "uri": "https://github.com/rschiefer/MSDeployAllTheThings/tree/master/Tasks/MSDeployPackageSync"
+        }
+    },
+    "branding": {
+        "theme": "light"
+    },
+    "contributions": [
+        {
+            "id": "msdeploy-package-sync",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "MSDeployPackageSync"
+            }
+        }
+    ]
+
+}

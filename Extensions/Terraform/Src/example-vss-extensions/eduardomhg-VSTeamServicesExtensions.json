@@ -1,0 +1,61 @@
+﻿{
+    "manifestVersion": 1,
+    "id": "custom-build-tasks",
+    "name": "Custom Build and Release Tasks",
+    "version": "0.0.1",
+    "publisher": "eduardomhg",
+    "description": "Custom Build and Release Tasks",
+    "public": true,
+    "icons": {
+        "default": "CheckCodeCoverage/extension-icon.png"
+    },
+    "categories": [
+        "Build and release"
+    ],
+    "tags": [
+        "utility",
+        "tasks"
+    ],
+    "links": {
+        "repository": {
+            "uri": "https://github.com/eduardomhg/VSTeamServicesExtensions"
+        }
+	  },
+    "files": [
+      {
+        "path": "CheckCodeCoverage"
+      }
+    ],
+    "scopes": [
+        "vso.build_execute",
+        "vso.serviceendpoint_manage"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+      {
+        "id": "task-CheckCodeCoverage",
+        "type": "ms.vss-distributed-task.task",
+        "targets": [
+          "ms.vss-distributed-task.tasks"
+        ],
+        "properties": {
+          "name": "CheckCodeCoverage"
+        }
+      },
+
+        {
+            "id": "task-PackageVssExtension",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "PackageVssExtension"
+            }
+        }
+    ]
+}

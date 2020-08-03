@@ -1,0 +1,38 @@
+{
+  "manifestVersion": 1,
+  "id": "azurermdeployment-extension",
+  "publisher": "HansvanVeen",
+  "version": "1.2.2",
+  "name": "AzureRmDeployment",
+  "description": "An Azure DevOps extension for deploying (almost) every type of ARM template",
+  "public": false,
+  "categories": ["Pipelines"],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "icons": {
+    "default": "images/extension-icon.png"
+  },
+  "content": {
+    "details": {
+      "path": "README.md"
+    }
+  },
+  "files": [
+    {
+      "path": "azurermdeploymentReleaseTask"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "azurermdeployment-release-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": ["ms.vss-distributed-task.tasks"],
+      "properties": {
+        "name": "azurermdeploymentReleaseTask"
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+    "manifestVersion": 1,
+    "id": "terraform-tasks",
+    "name": "Terraform Tasks",
+    "version": "0.0.1",
+    "publisher": "jacob-cleaveland",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "VSTS Tool Installer and Runner tasks for Hashicorp's Infrastructure-as-Code tool: Terraform",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
+    "files": [
+        {
+            "path": "_build/TerraformToolInstaller"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "terraform-tool-installer-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "terraform-tool-installer-task"
+            }
+        }
+    ]
+}

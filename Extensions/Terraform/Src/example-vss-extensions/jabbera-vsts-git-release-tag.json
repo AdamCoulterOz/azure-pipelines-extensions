@@ -1,0 +1,74 @@
+{
+    "manifestVersion": 1,
+    "id": "git-tag-on-release-task",
+    "name": "Tag\\Branch Git on Release",
+    "version": "0.0.16",
+    "publisher": "jabbera",
+	"public": "true",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Task for tagging or branching tfs git artifacts during a release with the release name.",
+    "categories": [
+        "Build and release"
+    ],
+    "tags": [ "release", "tag", "git", "artifacts", "code", "git tag", "branch", "git branch" ],
+	 "content": {
+        "license": {
+            "path": "license"
+        },
+		"details": {
+			"path": "overview.md"
+		}
+    },
+	"screenshots": [
+	    {
+			"path": "screenshots/screenshot1.png"
+		},
+        {
+			"path": "screenshots/screenshot2.png"
+		}
+	],
+	"repository": {
+        "type":"git",
+        "uri": "https://github.com/jabbera/vsts-git-release-tag"
+    },
+    "icons": {
+        "default": "extension-icon.png"        
+    },
+    "files": [
+        {
+            "path": "Tasks/git-tag-on-release-task"
+        },
+        {
+            "path": "Tasks/git-branch-on-release-task"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "git-tag-on-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "Tasks/git-tag-on-release-task"
+            }
+        },
+        {
+            "id": "git-branch-on-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "Tasks/git-branch-on-release-task"
+            }
+        }
+    ],
+	"galleryFlags": [
+		"Public"
+	]
+}

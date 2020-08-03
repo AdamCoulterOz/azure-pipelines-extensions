@@ -1,0 +1,54 @@
+{
+        "manifestVersion": 1,
+        "id": "PagerDuty-extension",
+        "version": "0.1.5",
+        "name": "PagerDuty Extension - raise an alert in PagerDuty from VSTS",
+        "description": "Raise an alert in PagerDuty from VSTS",
+        "publisher": "pdt-tchinchen",
+        "public": "true",
+        "targets": [
+            {
+                "id": "Microsoft.VisualStudio.Services"
+                }
+            ],
+        "icons": {
+            "default": "images/logo.png"
+         },
+        "content": {
+            "details" : {
+                "path":"overview.md"
+            }
+        },
+        "contributions": [
+            {
+                "id": "pdt-tchinchen.HelloAlert",
+                "type": "ms.vss-web.hub",
+                "description": "Raise an alert in PagerDuty from VSTS's Work hub group.",
+                "targets": [
+                    "ms.vss-work-web.work-hub-group"
+                    ],
+                "properties": {
+                    "name": "PagerDuty",
+                    "order": 99,
+                    "uri": "default.html"
+                }
+            }
+        ],
+        "scopes": [
+            "vso.work"
+        ],
+        "files": [
+            {
+                "path": "default.html", "addressable": true
+            },
+            {
+                "path": "overview.md", "addressable": true
+            },
+            {
+                "path": "sdk/scripts", "addressable": true
+            },
+            {
+                "path": "images/logo.png", "addressable": true
+            }
+        ]
+    }

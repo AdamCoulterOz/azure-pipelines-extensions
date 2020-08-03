@@ -1,0 +1,36 @@
+{
+    "manifestVersion": 1,
+    "id": "vsts-shrewsoft-vpn-connect",
+    "name": "Shrewsoft VPN connect",
+    "version": "0.0.1",
+    "publisher": "mgrundner",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "A VSTS/TFS/Azure DevOps pipeline/build task to connect to a remote network with the Shrewsoft VPN client.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
+    "files": [
+        {
+            "path": "vsts-shrewsoft-vpn-connect"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildAndReleaseTask"
+            }
+        }
+    ]
+}

@@ -1,0 +1,33 @@
+{
+    "manifestVersion": 1,
+    "id": "DownloadFilesFromBlobStorage",
+    "version": "1.0.0",
+    "name": "Azure Blob - Download Artifacts",
+    "description": "Download the specific version of build aftifac for deployment",
+    "publisher": "Abhishek Anvekar",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "Images/icon.png"
+    },
+    "contributions": [
+        {
+            "id": "buildAndReleaseTask",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildAndReleaseTask"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "buildAndReleaseTask"
+        }
+    ]
+}

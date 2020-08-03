@@ -1,0 +1,143 @@
+{
+  "manifestVersion": 1,
+  "id": "alm-octane-integration",
+  "version": "0.1.4",
+  "name": "ALM Octane Integration Extension",
+  "description": "An Azure DevOps extension that supplies the required entities for establishing an integration with ALM Octane.",
+  "publisher": "ALMOctane",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "service-endpoint",
+      "description": "Service endpoint type for ALM Octane connections",
+      "type": "ms.vss-endpoint.service-endpoint-type",
+      "targets": [
+        "ms.vss-endpoint.endpoint-types"
+      ],
+      "properties": {
+        "name": "OctaneServiceConnection",
+        "displayName": "ALM Octane",
+        "url": {
+          "displayName": "Server Url",
+          "helpText": "ALM Octane Workspace Url"
+        },
+        "authenticationSchemes": [
+          {
+            "type": "ms.vss-endpoint.endpoint-auth-scheme-basic",
+            "inputDescriptors": [
+              {
+                "id": "username",
+                "name": "Client ID",
+                "description": "ALM Octane API client ID",
+                "inputMode": "textbox",
+                "isConfidential": false,
+                "validation": {
+                  "isRequired": true,
+                  "dataType": "string"
+                }
+              },
+              {
+                "id": "password",
+                "name": "Client Secret",
+                "description": "ALM Octane API client secret",
+                "inputMode": "passwordbox",
+                "isConfidential": true,
+                "validation": {
+                  "isRequired": true,
+                  "dataType": "string"
+                }
+              }
+            ]
+          }
+        ],
+        "inputDescriptors": [
+          {
+            "id": "instance_id",
+            "name": "Instance ID",
+            "description": "Unique ID representing current Azure DevOps project in ALM Octane",
+            "inputMode": "textbox",
+            "validation": {
+              "isRequired": true,
+              "dataType": "string"
+            }
+          }],
+        "helpMarkDown": "<a href=\"https://github.com/MicroFocus/octane-azure-devops-extension/blob/master/readme.pdf\" target=\"_blank\"><b>Learn More</b></a>"
+      }
+    },
+    {
+      "id": "octane-start-task",
+      "description": "ALM Octane Start Task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/StartTask"
+      }
+    },
+    {
+      "id": "octane-end-task",
+      "description": "ALM Octane End Task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/EndTask"
+      }
+    },
+    {
+      "id": "octane-connection-verifier",
+      "description": "ALM Octane Connection Verifier",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/ConnectionVerifier"
+      }
+    },
+    {
+      "id": "octane-pipeline-start-decorator",
+      "type": "ms.azure-pipelines.pipeline-decorator",
+      "targets": [
+        "ms.azure-pipelines-agent-job.pre-job-tasks"
+      ],
+      "properties": {
+        "template": "Decorators/octane-pipeline-start-decorator.yml"
+      }
+    },
+    {
+      "id": "octane-pipeline-end-decorator",
+      "type": "ms.azure-pipelines.pipeline-decorator",
+      "targets": [
+        "ms.azure-pipelines-agent-job.post-job-tasks"
+      ],
+      "properties": {
+        "template": "Decorators/octane-pipeline-end-decorator.yml"
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "Tasks"
+    },
+    {
+      "path": "Decorators/octane-pipeline-start-decorator.yml",
+      "addressable": true,
+      "contentType": "text/plain"
+    },
+    {
+      "path": "Decorators/octane-pipeline-end-decorator.yml",
+      "addressable": true,
+      "contentType": "text/plain"
+    }
+  ]
+}

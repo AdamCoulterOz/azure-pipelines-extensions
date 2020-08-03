@@ -1,0 +1,32 @@
+{
+      "id": "endpoint-auth-scheme-oauth2",
+      "description": "OAuth2 endpoint authentication scheme using OAuth Configuration.",
+      "type": "ms.vss-endpoint.service-endpoint-auth-scheme",
+      "targets": [ "ms.vss-endpoint.endpoint-auth-schemes" ],
+      "properties": {
+        "name": "OAuth2",
+        "displayName": "i18n:OAuth2",
+        "authorizationUrl": "",
+        "dataSourceBindings": [
+          {
+            "target": "AccessToken",
+            "endpointUrl" :  "", 
+            "requestVerb": "",
+            "requestContent": "",
+            "resultSelector": "",
+            "resultTemplate": ""
+          }
+        ],
+        "inputDescriptors": [
+          {
+            "id": "ConfigurationId",
+            "name": "Configuration Id",
+            "description": "Configuration Id for connecting to the endpoint",
+            "inputMode": "combo",
+            "isConfidential": false,
+            "validation": { "dataType": "guid" },
+            "hasDynamicValueInformation": true
+          }
+        ]
+      }
+    }

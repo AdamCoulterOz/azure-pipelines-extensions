@@ -1,0 +1,150 @@
+{
+    "manifestVersion": 1,
+    "id": "apim-deploy",
+    "version": "0.1.18",
+    "name": "API Management Deployment",
+    "description": "Deployment tools for Azure API Management.",
+    "publisher": "plukasiak",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "icon.png"
+    },
+    "scopes": [
+        "vso.build_execute"
+    ],
+    "categories": [
+        "Build and release"
+    ],
+    "tags": [
+        "Utility",
+        "Deploy API",
+        "API Management",
+        "Deploy Task"
+    ],
+    "content": {
+        "details": {
+            "path": "README.md"
+        },
+        "license": {
+            "path": "license.txt"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/p-lukasiak/vsts-apim.git"
+    },
+    "branding": {
+        "color": "#0088DC",
+        "theme": "light"
+    },
+    "files": [
+        {
+            "path": "BuildTasks"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "task-APIdelete",
+            "type": "ms.vss-distributed-task.task",
+            "description": "Delete API",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "BuildTasks/APIDelete"
+            }
+        },
+        {
+            "id": "apim-endpoint-type",
+            "type": "ms.vss-endpoint.service-endpoint-type",
+            "targets": [
+                "ms.vss-endpoint.endpoint-types"
+            ],
+            "properties": {
+                "name": "APIMManagementService",
+                "displayName": "Azure APIM Management",
+                "url": {
+                    "displayName": "Management API URL",
+                    "value": ""
+                },
+                "helpMarkDown": "Connection endpoint to APIM Management REST API. The identifer and keys can be retrived from Security->API page in the Publisher portal of your APIM.",
+                "authenticationSchemes": [
+                    {
+                        "type": "ms.vss-endpoint.endpoint-auth-scheme-none",
+                        "inputDescriptors": [
+                            {
+                                "id": "service",
+                                "name": "API Management Service Name",
+                                "description": "Name of Azure API Management Service.",
+                                "inputMode": "textbox",
+                                "isConfidential": false,
+                                "validation": {
+                                    "isRequired": true,
+                                    "dataType": "string",
+                                    "maxLength": 300
+                                }
+                            },
+                            {
+                                "id": "subscriptionId",
+                                "name": "Azure Subcription Id",
+                                "description": "Identifier of Azure subscription where API Management Service is deployed.",
+                                "inputMode": "textbox",
+                                "isConfidential": false,
+                                "validation": {
+                                    "isRequired": true,
+                                    "dataType": "string",
+                                    "maxLength": 300
+                                }
+                            },
+                            {
+                                "id": "resourceGroup",
+                                "name": "Azure Resource Group Name",
+                                "description": "Name of Azure Resource Group where API Management Service is deployed.",
+                                "inputMode": "textbox",
+                                "isConfidential": false,
+                                "validation": {
+                                    "isRequired": true,
+                                    "dataType": "string",
+                                    "maxLength": 300
+                                }
+                            },
+                            {
+                                "id": "identifier",
+                                "name": "Identifier",
+                                "description": "Identifier for API Management REST API.",
+                                "inputMode": "textbox",
+                                "isConfidential": false,
+                                "validation": {
+                                    "isRequired": true,
+                                    "dataType": "string",
+                                    "maxLength": 300
+                                },
+                                "values": {
+                                    "inputId": "identifier",
+                                    "isDisabled": false,
+                                    "defaultValue": "identifier"
+                                }
+                            },
+                            {
+                                "id": "key",
+                                "name": "Primary or Secondary key",
+                                "description": "Primary or Secondary key for APIM Management REST API.",
+                                "inputMode": "passwordbox",
+                                "isConfidential": true,
+                                "validation": {
+                                    "isRequired": true,
+                                    "dataType": "string",
+                                    "maxLength": 300
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

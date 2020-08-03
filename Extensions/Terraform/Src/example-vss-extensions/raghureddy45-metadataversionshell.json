@@ -1,0 +1,56 @@
+{
+  "manifestVersion": 1,
+  "id": "metadataversionshell",
+  "name": "MetadataVersion Reader",
+  "version": "1.0.0",
+  "publisher": "RaghuReddy45",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "A task that reads the version from the metadata.rb file and makes it available as build variables.",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "icons": {
+    "default": "images/cookbook.png"
+  },
+  "files": [
+    {
+      "path": "metadataversionshell"
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "readme.md"
+    },
+    "license": {
+      "path": "LICENSE"
+    }
+  },
+  "links": {
+    "getstarted": {
+      "uri": "https://github.com/raghureddy45/metadataversionshell"
+    },
+    "support": {
+      "uri": "https://github.com/raghureddy45/metadataversionshell/Issues"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/raghureddy45/metadataversionshell"
+  },
+  "contributions": [
+      {
+      "id": "metadata-version-reader-build-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "metadataversionshell"
+      }
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "manifestVersion": 1,
+  "id": "transform-xml",
+  "version": "1.0.0",
+  "name": "Transform XML",
+  "scopes": [ "vso.work", "vso.work_write" ],
+  "description": "Task to transform XML, like web.confg files, using Microsoft's XDT.",
+  "publisher": "donirwin",
+  "public": false,
+  "icons": {
+    "default": "img/logo.png"
+  },
+  "screenshots": [
+    {
+      "path": "img/screenshot.png"
+    }
+  ],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "tags": [
+    "XDT",
+    "configuration",
+    "transform",
+    "config",
+    "XML"
+  ],
+  "content": {
+    "details": {
+      "path": "overview.md"
+    },
+    "license": {
+      "path": "license.md"
+    }
+  },
+  "links": {
+    "home": {
+      "uri": "https://github.com/viperguynaz/TransformXmlTask"
+    },
+    "getstarted": {
+      "uri": "https://github.com/viperguynaz/TransformXmlTask"
+    },
+    "learn": {
+      "uri": "https://msdn.microsoft.com/en-us/library/dd465326.aspx"
+    },
+    "support": {
+      "uri": "https://github.com/viperguynaz/TransformXmlTask/issues"
+    },
+    "repository": {
+      "uri": "https://github.com/viperguynaz/TransformXmlTask"
+    },
+    "issues": {
+      "uri": "https://github.com/viperguynaz/TransformXmlTask/issues"
+    }
+  },
+  "branding": {
+    "color": "rgb(220, 235, 252)",
+    "theme": "light"
+  },
+  "files": [
+    {
+      "path": "TransformXmlTask"
+    },
+    {
+      "path": "license.md",
+      "addressable": true
+    },
+    {
+      "path": "overview.md",
+      "addressable": true
+    }
+  ],
+  "categories": [
+    "Build and release"
+  ],
+  "contributions": [
+    {
+      "id": "transform-xml",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "type": "ms.vss-distributed-task.task",
+      "properties": {
+        "name": "TransformXmlTask"
+      }
+    }
+  ]
+}

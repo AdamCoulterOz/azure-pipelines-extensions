@@ -1,0 +1,70 @@
+{
+  "manifestVersion": 1,
+  "id": "ap-sign-client",
+  "publisher": "Dan-Siegel",
+  "version": "0.1.114",
+  "name": "NuGet Sign Client",
+  "description": "Adds task to run the Sign Client and sign NuGet artifacts",
+  "public": true,
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/dansiegel/SignClient-Extension"
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "categories": [
+    "Build and release"
+  ],
+  "content": {
+    "details": {
+      "path": "ReadMe.md"
+    },
+    "license": {
+      "path": "LICENSE"
+    }
+  },
+  "tags": [
+    "SignClient", 
+    "SignServer",
+    "SignService",
+    "NuGet"
+  ],
+  "links": {
+    "home": {
+      "uri": "https://dansiegel.net"
+    },
+    "repository": {
+      "uri": "https://github.com/dansiegel/SignClient-Extension"
+    },
+    "issues": {
+      "uri": "https://github.com/dansiegel/SignClient-Extension/issues"
+    }
+  },
+  "branding": {
+    "color": "rgb(0,0,0)",
+    "theme": "dark"
+  },
+  "icons": {
+    "default": "images/extension-icon.png"
+  },
+  "files": [
+    {
+      "path": "tasks/SignClient"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "package-sign-client",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/SignClient"
+      }
+    }
+  ]
+}

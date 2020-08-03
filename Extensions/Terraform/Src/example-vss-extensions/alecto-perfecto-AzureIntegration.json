@@ -1,0 +1,36 @@
+{
+    "manifestVersion": 1,
+    "id": "CBT-Automated-Test-Task",
+    "name": "CBT Automated Test Task",
+    "version": "0.0.1",
+    "publisher": "NathanielStokes3",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Task to start an Automated Test Task with CBT",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/CBTIcon.png"        
+    },
+    "files": [
+        {
+            "path": "CBTAutomatedTask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "CBTAutomatedTask"
+            }
+        }
+    ]
+}

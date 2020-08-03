@@ -1,0 +1,71 @@
+    {
+        "manifestVersion": 1,
+        "id": "alk-exstensions",
+        "version": "0.2.22",
+        "name": "Simple VSTS Extension tasks",
+        "description": "Series of simple utilites task for VSTS",
+        "categories": [
+            "Build and release"
+        ],
+        "publisher": "Alkampfer",
+        "public": false,
+        "tags" : "build, release, utilities",
+        "targets": [
+            {
+                "id": "Microsoft.VisualStudio.Services"
+            }
+        ],
+        "repository": {
+            "type": "git",
+            "uri": "https://github.com/alkampfergit/vsts-build-tasks"
+        },
+        "content" : {
+            "details": {
+                "path": "readme.md"
+            }
+        },
+        "icons": {
+            "default": "images/logo.png"
+        },
+        "scopes": [
+            "vso.work"
+        ],
+        "files": [
+            {
+                "path": "tasks/7zip",
+                "addressable": true
+            },
+            {
+                "path": "tasks/dumpenv",
+                "addressable": true
+            },
+            {
+                "path": "images/logo.png"
+            },
+            {
+                "path": "alkampfer.html"
+            }
+        ],
+        "contributions": [
+        {
+            "id": "7zip-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "tasks/7zip"
+            }
+        },
+         {
+            "id": "dumpenv-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "tasks/dumpenv"
+            }
+        }
+    ]
+    }

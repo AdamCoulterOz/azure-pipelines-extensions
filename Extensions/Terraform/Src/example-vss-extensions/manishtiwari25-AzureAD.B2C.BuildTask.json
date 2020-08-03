@@ -1,0 +1,53 @@
+{
+  "manifestVersion": 1,
+  "id": "AzureADB2CBuildTask",
+  "version": "1.0.10",
+  "name": "Azure Active Directory B2C Task",
+  "description": "Automate azure B2C custom policy deployment",
+  "publisher": "ManishTiwari-Azureb2c",
+  "public": true,
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "tags": [
+    "Azure",
+    "Azure-b2c",
+    "Azure-b2c-policies",
+    "trustFrameworkPolicy"
+  ],
+  "icons": {
+    "default": "images/icon.png"
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/manishtiwari25/AzureAD.B2C.BuildTask"
+  },
+  "content": {
+    "details": {
+      "path": "overview.md"
+    }
+  },
+  "contributions": [
+    {
+      "id": "AzureADB2CBuildTask",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "AzureADB2CBuildTask"
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "AzureADB2CBuildTask"
+    }
+
+  ]
+}

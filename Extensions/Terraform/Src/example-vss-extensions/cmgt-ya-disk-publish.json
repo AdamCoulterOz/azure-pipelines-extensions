@@ -1,0 +1,58 @@
+{
+    "manifestVersion": 1,
+    "id": "yandex-disk-publish-build-release-task",
+    "name": "Yandex.Disk Publish Task",
+    "version": "0.5.10",
+	"public": true,
+    "publisher": "DenisPorotikov",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Publish build artifact to Yandex.Disk",
+    "categories": [
+        "Build and release"
+    ],
+	"tags": [
+        "yandex",
+        "yandex.disk",
+        "build",
+		"publish",
+		"deploy"
+    ],
+	"content": {
+        "details": {
+            "path": "README.md"
+        }
+	},
+	"links": {
+        "home": {
+            "uri": "https://github.com/cmgt/ya-disk-publish"
+        }
+	},
+	"repository": {
+        "type": "git",
+        "uri": "https://github.com/cmgt/ya-disk-publish"
+    },
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
+    "files": [
+        {
+            "path": "buildAndReleaseTask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "yandex-disk-publish-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildAndReleaseTask"
+            }
+        }
+    ]
+}

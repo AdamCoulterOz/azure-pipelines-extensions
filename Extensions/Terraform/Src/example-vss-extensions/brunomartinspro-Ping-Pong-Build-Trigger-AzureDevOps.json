@@ -1,0 +1,59 @@
+{
+    "manifestVersion": 1,
+    "id": "ping-pong-build-trigger-task",
+    "name": "Ping Pong Build Trigger",
+    "version": "1.0.6",
+    "publisher": "BrunoMartinsPro",
+    "targets": [{
+        "id": "Microsoft.VisualStudio.Services"
+    }],
+    "description": "Randomly trigger builds to find a sequenced build order",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "extensionIcon.png"
+    },
+    "content": {
+        "details": {
+            "path": "README.md"
+        },
+        "license": {
+            "path": "LICENSE.md"
+        }
+    },
+    "files": [{
+        "path": "task"
+    }],
+    "galleryFlags": [
+        "Public"
+    ],
+    "links": {
+        "getstarted": {
+            "uri": "https://github.com/brunomartinspro/Ping-Pong-Build-Trigger-AzureDevOps/blob/master/README.md"
+        },
+        "learn": {
+            "uri": "https://github.com/brunomartinspro/Ping-Pong-Build-Trigger/blob/master/README.md"
+        },
+        "support": {
+            "uri": "https://github.com/brunomartinspro/Ping-Pong-Build-Trigger-AzureDevOps/issues"
+        },
+        "privacypolicy": {
+            "uri": "https://github.com/brunomartinspro/Ping-Pong-Build-Trigger-AzureDevOps/blob/master/privacy-policy.md"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/brunomartinspro/Ping-Pong-Build-Trigger-AzureDevOps"
+    },
+    "contributions": [{
+        "id": "ping-pong-build-trigger",
+        "type": "ms.vss-distributed-task.task",
+        "targets": [
+            "ms.vss-distributed-task.tasks"
+        ],
+        "properties": {
+            "name": "task"
+        }
+    }]
+}

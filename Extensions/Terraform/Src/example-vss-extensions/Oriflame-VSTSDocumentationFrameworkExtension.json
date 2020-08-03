@@ -1,0 +1,69 @@
+{
+    "manifestVersion": 1,
+    "id": "documentation-framework",
+    "version": "0.9.1",
+    "name": "Documentation Framework",
+    "description": "Documentation Framework: Feature as Business Requirement Document.",
+    "publisher": "oriflame",
+    "public": true,
+    "categories": [
+        "Plan and track"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "README.md"
+        },
+        "license": {
+            "path": "LICENSE"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/Oriflame/VSTSDocumentationFrameworkExtension"
+    },
+    "icons": {
+        "default": "images/icon.png"
+    },
+    "galleryFlags": [
+        "Preview"
+    ],
+    "contributions": [
+        {
+            "id": "sample-work-item-menu",
+            "type": "ms.vss-web.action",
+            "description": "Documentation Framework: Add template",
+            "targets": [
+                "ms.vss-work-web.work-item-context-menu"
+            ],
+            "properties": {
+                "text": "Add template",
+                "title": "Add template",
+                "toolbarText": "Add template",
+                "icon": "images/icon-small.png",
+                "uri": "index.html"
+            }
+        }
+    ],
+    "scopes": [
+        "vso.work"
+    ],
+    "files": [
+        {
+            "path": "index.html",
+            "addressable": true
+        },
+        {
+            "path": "images",
+            "addressable": true
+        },
+        {
+            "path": "sdk/node_modules/vss-web-extension-sdk/lib/VSS.SDK.min.js",
+            "addressable": true
+        }
+    ]
+}

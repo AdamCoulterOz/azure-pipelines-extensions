@@ -1,0 +1,38 @@
+{
+    "manifestVersion": 1,
+    "author": "Sergei Sergeev",
+    "id": "simple-task-extension",
+    "version": "0.0.9",
+    "name": "Simple task packaged with extension",
+    "publisher": "s-kainet",
+    "public": false,
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "description": "Adds a simple custom pipeline build task",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "icon.png"
+    },
+    "files": [
+        {
+            "path": "SimpleTask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "simple-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "SimpleTask"
+            }
+        }
+    ]
+}

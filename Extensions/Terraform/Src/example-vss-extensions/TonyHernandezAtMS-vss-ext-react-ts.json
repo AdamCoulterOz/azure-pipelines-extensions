@@ -1,0 +1,48 @@
+{
+    "manifestVersion": 1,
+    "id": "testexplr",
+    "version": "0.0.1",
+    "name": "Test Plan Explorer",
+    "description": "A sample Visual Studio Services extension that adds a Test Plan explorer.",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+            }
+        ],
+    "icons": {
+        "default": "../images/logo.png"
+     },
+    "contributions": [
+        {
+            "id": "testplan-explorer",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a 'Test Plans' hub to the Work hub group.",
+            "targets": [
+                "ms.vss-work-web.work-hub-group"
+                ],
+            "properties": {
+                "name": "Test Plans",
+                "order": 99,
+                "uri": "index.html"
+            }
+        }
+    ],
+    "scopes": [
+        "vso.work",
+        "vso.test"
+    ],
+    "files": [
+        {
+            "path": "../index.html", "addressable": true
+        },
+        {
+            "path": "../lib", "addressable": true
+        },
+        {
+            "path": "../css", "addressable": true
+        },
+        {
+            "path": "../images", "addressable": true
+        }
+    ]
+}

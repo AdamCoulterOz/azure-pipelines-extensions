@@ -1,0 +1,64 @@
+{
+    "manifestVersion": "1",
+    "id": "chef",
+    "name": "Chef",
+    "version": "2.0.15",
+    "publisher": "chef-software",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "description": "Tasks for performing common Chef operations against the Chef Automate platform.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "galleryFlags": [
+    ],
+    "icons": {
+        "default": "assets/images/cheflogo.png"
+    },
+    "content": {
+        "details": {
+            "path": "assets/overview.md"
+        },
+        "license": {
+            "path": "assets/license.txt"
+        }
+    },
+    "screenshots": [
+        {
+            "path": "assets/images/screenshot_env_task.png"
+        },
+        {
+            "path": "assets/images/screenshot_env_parameters.png"
+        },
+        {
+            "path": "assets/images/screenshot_chef_server_endpoint.png"
+        }
+    ],
+
+    "links": {
+        "home": {
+            "uri": "https://chef-partners.github.io/azuredevops-chef"
+        },
+        "getstarted": {
+            "uri": "https://chef-partners.github.io/azuredevops-chef/Getting-Started"
+        },
+        "issues": {
+            "uri": "https://github.com/chef-partners/azuredevops-chef/issues"
+        }
+    },
+    "contributions": [
+        {
+            "id": "install",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "tasks/install"
+            }
+        }
+    ]
+}

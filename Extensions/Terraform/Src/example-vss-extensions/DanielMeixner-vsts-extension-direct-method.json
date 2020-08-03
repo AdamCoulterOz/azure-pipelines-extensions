@@ -1,0 +1,37 @@
+{
+    "manifestVersion": 1,
+    "id": "IotHub-DirectMethod",
+    "name": "IoT Hub Direct Method",
+    "version": "G_VERSION",
+    "publisher": "DanielMeixner",
+    "public":true,
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Daniel Meixner's build and release tools.",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "/images/icon.png"        
+    },
+    "files": [
+        {
+            "path": "buildtask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildtask"
+            }
+        }
+    ]
+}

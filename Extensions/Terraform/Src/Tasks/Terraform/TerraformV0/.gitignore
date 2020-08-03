@@ -1,2 +1,3 @@
 *.js
 .taskkey
+node_modules

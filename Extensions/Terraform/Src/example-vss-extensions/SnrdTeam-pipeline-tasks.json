@@ -1,0 +1,49 @@
+{
+    "manifestVersion": 1,
+    "id": "adeptik-pipline-tasks",
+    "name": "Adeptik pipelines",
+    "version": "0.2.18",
+    "publisher": "Adeptik",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Collection of custom Adeptik TFS (Azure pipeline) tasks.",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "extension-icon.png"        
+    },
+    "files": [
+        {
+            "path": "DownloadSecureFileLegacyV0"
+        },
+        {
+            "path": "ValidateTestResults"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "download-secure-file-legacy-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "DownloadSecureFileLegacyV0"
+            }
+        },
+        {
+            "id": "validate-test-results-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "ValidateTestResults"
+            }
+        }
+    ]
+}

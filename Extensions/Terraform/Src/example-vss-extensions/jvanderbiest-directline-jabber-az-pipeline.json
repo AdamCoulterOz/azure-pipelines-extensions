@@ -1,0 +1,47 @@
+{
+    "manifestVersion": 1,
+    "public": true,
+    "id": "directline-jabber-task",
+    "name": "Directline Jabber",
+    "version": "2.0.3",
+    "publisher": "jvanderbiest",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Uses the Directline Jabber testing tool in your Azure DevOps pipelines.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
+    "files": [
+        {
+            "path": "directline-jabber-task"
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "overview.md"
+        }
+    },
+    "screenshots": [
+        {
+            "path": "screenshots/screen1.jpg"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "directline-jabber-task"
+            }
+        }
+    ]
+}

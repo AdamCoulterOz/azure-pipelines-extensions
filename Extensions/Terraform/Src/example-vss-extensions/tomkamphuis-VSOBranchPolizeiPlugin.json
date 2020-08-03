@@ -1,0 +1,74 @@
+{
+	"manifestVersion": 1,
+	"id": "vsts-extensions-branchpolizei",
+	"version": "0.0.22",
+	"name": "Branch polizei",
+	"description": "Keep a watch on those who leave branches lying around",
+	"publisher": "tomkamphuis",
+	"public": false,
+	"targets": [
+		{
+			"id": "Microsoft.VisualStudio.Services"
+		}
+	],
+	"icons": {
+		"default": "img/logo.png"
+	},
+	"content": {
+        "details": {
+            "path": "overview.md"
+        }
+	},
+	"contributions": [
+		{
+			"id": "BranchPolizei",
+			"type": "ms.vss-dashboards-web.widget",
+			"targets": [
+				"ms.vss-dashboards-web.widget-catalog",
+                 "tomkamphuis.vsts-extensions-branchpolizei.BranchPolizei.Configuration"
+			],
+			"properties": {
+				"name": "Branch polizei",
+				"description": "Keep a watch on those who leave branches lying around",
+				"catalogIconUrl:": "img/logo.png",
+				"previewImageUrl": "img/preview.png",                            
+				"uri": "branchpolizei.html",
+				"supportedSizes": [
+					 {
+						"rowSpan": 2,
+						"columnSpan": 3
+					}
+				],
+				"supportedScopes": ["project_team"]
+			}
+		},
+		{
+			"id": "BranchPolizei.Configuration",
+			"type": "ms.vss-dashboards-web.widget-configuration",
+			"targets": [ "ms.vss-dashboards-web.widget-configuration" ],
+			"properties": {
+				"name": "BranchPolizei Configuration",
+				"description": "Configures BranchPolizei",
+				"uri": "configuration.html"
+			}
+		}
+	],
+	"files": [
+		{
+			"path": "branchpolizei.html", "addressable": true
+		},
+		{
+			"path": "configuration.html", "addressable": true
+		},
+		{
+			"path": "sdk/scripts", "addressable": true
+		},
+		{
+			"path": "img", "addressable": true
+		}
+	],
+	"scopes":[
+        "vso.code",
+		"vso.project"
+    ]
+}

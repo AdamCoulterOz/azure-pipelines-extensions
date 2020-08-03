@@ -1,0 +1,46 @@
+{
+    "manifestVersion": 1,
+    "id": "nomad-tasks",
+    "name": "Nomad Tasks",
+    "version": "0.0.1",
+    "publisher": "jin-aft",
+    "public": false,
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/jinhong-/vsts-nomad-tasks"
+    },
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "readme.md"
+        }
+    },
+    "description": "Tools for building with Fabrikam. Includes one build task.",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"
+    },
+    "files": [
+        {
+            "path": "tasks/register-new-job"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "register-new-job",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "tasks/register-new-job"
+            }
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+{
+    "manifestVersion": 1,
+    "id": "branch-policy-center",
+    "publisher": "tony-lunt",
+    "version": "0.0.15",
+    "baseUri": "https://localhost:3000",
+    "name": "Repo Policy Helper",
+    "description": "Azure DevOps extension to assist with bulk repo policy management",
+    "public": false,
+    "categories": ["Azure Repos"],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "policy-helper",
+            "type": "ms.vss-web.hub",
+            "targets": [
+                "ms.vss-code-web.code-hub-group"
+            ],
+            "properties": {
+                "name": "Policy Helper",
+                "uri": "dist/landing/landing.html"
+            }
+        }
+    ],
+    "files": [
+        {
+          "path": "dist",
+          "addressable": true
+        },
+        {
+          "path": "node_modules/vss-web-extension-sdk/lib",
+          "addressable": true,
+          "packagePath": "lib"
+        }
+    ]
+}

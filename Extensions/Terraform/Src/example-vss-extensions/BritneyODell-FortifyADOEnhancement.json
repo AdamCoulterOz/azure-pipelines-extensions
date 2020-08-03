@@ -1,0 +1,39 @@
+{
+    "manifestVersion": 1,
+    "id": "build-release-task",
+    "name": "Fortify Automation Suite",
+    "version": "1.0.10",
+    "publisher": "FortifyAutomation",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "scopes": [
+        "vso.work_write"
+    ],
+    "description": "Tools for integrating Fortify Security static code analysis with Azure DevOps pipelines.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "icon.png"        
+    },
+    "files": [
+        {
+            "path": "buildAndReleaseTask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildAndReleaseTask"
+            }
+        }
+    ]
+}

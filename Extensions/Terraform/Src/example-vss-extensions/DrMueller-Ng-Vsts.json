@@ -1,0 +1,49 @@
+{
+  "manifestVersion": 1,
+  "id": "Ng-Vsts-extension",
+  "version": "0.1.99",
+  "name": "Ng-Vsts",
+  "description": "Test for Angular with VSTS.",
+  "publisher": "DrMueller",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "icons": {
+    "default": "assets/b.png"
+  },
+  "contributions": [
+    {
+      "id": "MMU.Ng-Vsts",
+      "type": "ms.vss-web.hub",
+      "description": "Adds the entry-point to the work-tab.",
+      "targets": [
+        "ms.vss-work-web.work-hub-group"
+      ],
+      "properties": {
+        "name": "Ng-Vsts",
+        "order": 99,
+        "uri": "dist/index.html"
+      }
+    }
+  ],
+  "scopes": [
+    "vso.work"
+  ],
+  "files": [
+    {
+      "path": "dist",
+      "addressable": true,
+      "packagePath": "dist"
+    },
+    {
+      "path": "sdk/VSS.SDK.js",
+      "addressable": true
+    },
+    {
+      "path": "assets/b.png",
+      "addressable": true
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+    "id": "endpoint-auth-scheme-JWT",
+    "description": "i18n:Endpoint authentication scheme to support OAUTH using JSON Web token",
+    "type": "ms.vss-endpoint.service-endpoint-auth-scheme",
+    "targets": [
+        "ms.vss-endpoint.endpoint-auth-schemes"
+    ],
+    "properties": {
+        "name": "JWT",
+        "displayName": "i18n:JSON Web Token based authentication",
+        "inputDescriptors": [
+            {
+                "id": "Issuer",
+                "name": "i18n:Issuer",
+                "description": "i18n:Issuer for creating JWT",
+                "inputMode": "textbox",
+                "isConfidential": false,
+                "validation": {
+                    "isRequired": false,
+                    "dataType": "string",
+                    "maxLength": 300
+                }
+            },
+            {
+                "id": "Audience",
+                "name": "i18n:Audience",
+                "description": "i18n:Audience for creating JWT",
+                "inputMode": "textbox",
+                "isConfidential": false,
+                "validation": {
+                    "isRequired": true,
+                    "dataType": "string",
+                    "maxLength": 300
+                }
+            },
+            {
+                "id": "Scope",
+                "name": "i18n:Scope",
+                "description": "i18n:Scope to be provided",
+                "inputMode": "textbox",
+                "isConfidential": false,
+                "validation": {
+                    "isRequired": false,
+                    "dataType": "string",
+                    "maxLength": 300
+                }
+            },
+            {
+                "id": "PrivateKey",
+                "name": "i18n:Private Key",
+                "description": "i18n:Private Key for connecting to the endpoint",
+                "inputMode": "textbox",
+                "isConfidential": true,
+                "validation": {
+                    "isRequired": true,
+                    "dataType": "string",
+                    "maxLength": 2000
+                }
+            }
+        ]
+    }
+}

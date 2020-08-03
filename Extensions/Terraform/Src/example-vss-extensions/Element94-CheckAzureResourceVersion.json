@@ -1,0 +1,36 @@
+{
+    "manifestVersion": 1,
+    "id": "CheckAzureResourceVersion",
+    "version": "0.0.1",
+    "name": "Check Azure Resource Version",
+    "description": "A build and release task to check for the version tag on an Azure resource",
+    "categories": [
+        "Build and release"
+    ],
+    "publisher": "Element94",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "icon.png"
+    },
+    "contributions": [
+        {
+            "id": "CheckAzureResourceVersion",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "CheckAzureResourceVersion"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "CheckAzureResourceVersion"
+        }
+    ]
+}

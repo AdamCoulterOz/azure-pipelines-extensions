@@ -1,0 +1,36 @@
+{
+    "manifestVersion": 1,
+    "id": "4d037fc6-ee48-4a6d-9631-899a372cc244",
+    "name": "Database deployment script ",
+    "version": "0.0.3",
+    "publisher": "MSal",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "To generate DB script for deployment ",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
+    "files": [
+        {
+            "path": "buildAndReleaseTask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildAndReleaseTask"
+            }
+        }
+    ]
+}

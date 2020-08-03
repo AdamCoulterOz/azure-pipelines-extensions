@@ -1,0 +1,77 @@
+{
+    "manifestVersion": 1,
+    "id": "AzureVirtualMachineManagerTask",
+    "name": "Azure Virtual Machine Manager Task",
+    "version": "1.0.2",
+    "publisher": "vfabing",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "description": "Tools for managing Azure Virtual Machine",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/128px-Computer.svg.png"
+    },
+    "tags": [
+        "Azure",
+        "Resource Manager",
+        "Virtual Machine",
+        "Start"
+    ],
+    "screenshots": [
+        {
+            "path": "images/Configure-Azure-VM-Start.png"
+        },
+        {
+            "path": "images/Add-Azure-VM-Start-Task.png"
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "overview.md"
+        },
+        "license": {
+            "path": "LICENSE.txt"
+        }
+    },
+    "links": {
+        "getstarted": {
+            "uri": "https://github.com/vfabing/AzureVm/blob/master/src/overview.md"
+        },
+        "support": {
+            "uri": "https://github.com/vfabing/AzureVm/issues"
+        },
+        "repository": {
+            "uri": "https://github.com/vfabing/AzureVm"
+        },
+        "issues": {
+            "uri": "https://github.com/vfabing/AzureVm/issues"
+        }
+    },
+    "files": [
+        {
+            "path": "azVmManagerTask"
+        },
+        {
+            "path": "images",
+            "addressable": true
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "azVmManagerTask"
+            }
+        }
+    ],
+    "public": true
+}

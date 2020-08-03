@@ -1,0 +1,85 @@
+{
+  "manifestVersion": 1,
+  "id": "CiscoSpark",
+  "name": "Cisco Webex Teams",
+  "version": "0.2.12",
+  "publisher": "carlowahlstedt",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Posts a message to a Cisco Webex Teams space.",
+  "categories": [
+    "Collaborate"
+  ],
+  "tags": [
+    "cisco spark",
+    "cisco webex",
+    "webex teams",
+    "message"
+  ],
+  "screenshots": [
+    {
+      "path": "images/screenshot.png"
+    }
+  ],
+  "icons": {
+    "default": "images/icon.png"
+  },
+  "files": [
+    {
+      "path": "buildtask"
+    }
+  ],
+  "galleryFlags": [
+    "Public"
+  ],
+  "content": {
+    "details": {
+      "path": "README.md"
+    },
+    "license": {
+      "path": "LICENSE"
+    }
+  },
+  "branding": {
+    "color": "rgb(241, 92, 34)"
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/carlowahlstedt/Spark_VSTS_Task"
+  },
+  "links": {
+    "home": {
+      "uri": "https://github.com/carlowahlstedt/Spark_VSTS_Task"
+    },
+    "repository": {
+      "uri": "https://github.com/carlowahlstedt/Spark_VSTS_Task"
+    },
+    "issues": {
+      "uri": "https://github.com/carlowahlstedt/Spark_VSTS_Task/issues"
+    },
+    "getstarted": {
+      "uri": "https://github.com/carlowahlstedt/Spark_VSTS_Task/blob/master/README.md"
+    },
+    "learn": {
+      "uri": "https://github.com/carlowahlstedt/Spark_VSTS_Task/blob/master/README.md"
+    },
+    "support": {
+      "uri": "https://github.com/carlowahlstedt/Spark_VSTS_Task/issues"
+    }
+  },
+  "contributions": [
+    {
+      "id": "CiscoSpark",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "buildtask"
+      }
+    }
+  ]
+}

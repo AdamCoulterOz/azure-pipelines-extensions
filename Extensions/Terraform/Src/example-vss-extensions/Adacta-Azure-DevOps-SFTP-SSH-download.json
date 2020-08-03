@@ -1,0 +1,83 @@
+{
+    "manifestVersion": 1,
+    "id": "azdevopsSFTP",
+    "publisher": "adacta",
+    "version": "1.2.20",
+    "name": "SFTP / SSH download",
+    "description": "SFTP / SSH file Download task for Azure DevOps build and release pipeline.",
+    "public": true,
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "tags": [
+        "SFTP",
+        "SSH",
+        "deploy"
+    ],
+    "screenshots": [
+        {
+            "path": "screenshots/SFTP-Download-hostname.png"
+        },
+        {
+            "path": "screenshots/SFTP-Download-task.png"
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "readme.md"
+        },
+        "license": {
+            "path": "LICENSE.md"
+        }
+    },
+    "icons": {
+        "default": "images/sftp-icon.png"
+    },
+    "links": {
+        "home": {
+            "uri": "https://github.com/Adacta/Azure-DevOps-SFTP-SSH-download/"
+        },
+        "support": {
+            "uri": "https://github.com/Adacta/Azure-DevOps-SFTP-SSH-download/issues"
+        },
+        "getstarted": {
+            "uri": "https://github.com/Adacta/Azure-DevOps-SFTP-SSH-download/blob/master/README.md"
+        },
+        "repository": {
+            "uri": "https://github.com/Adacta/Azure-DevOps-SFTP-SSH-download/"
+        }
+    },
+    "contributions": [
+        {
+            "id": "task-sftp-download",
+            "type": "ms.vss-distributed-task.task",
+            "description": "SFTP / SSH Download",
+            "targets": [
+                "ms.vss-distributed-task.task"
+            ],
+            "properties": {
+                "name": "sftpDownload",
+                "title": "SFTP / SSH Download"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "sftpDownload"
+        },
+        {
+            "path": "screenshots",
+            "addressable": true
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/Adacta/Azure-DevOps-SFTP-SSH-download.git",
+        "azDevOps": "https://adaxtools.visualstudio.com/_git/Azure%20DevOps%20-%20SFTP"
+    }
+}

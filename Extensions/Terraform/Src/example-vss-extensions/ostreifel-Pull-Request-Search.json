@@ -1,0 +1,71 @@
+{
+    "manifestVersion": 1,
+    "id": "pull-request-search",
+    "version": "1.13.104",
+    "name": "Pull Request Search",
+    "scopes": [ 
+        "vso.code",
+        "vso.identitypicker"
+    ],
+    "description": "Rich pull request search experience.",
+    "publisher": "ottostreifel",
+    "icons": {
+        "default": "img/storeLogo.png"
+    },
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services.Cloud"
+        }
+    ],
+    "tags": [
+        "Pull Request",
+        "Search",
+        "Git",
+        "Code",
+        "code review"
+    ],
+    "content": {
+        "details": {
+            "path": "details.md"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/ostreifel/Pull-Request-Search"
+    },
+    "branding": {
+        "color": "rgb(220, 235, 252)",
+        "theme": "light"
+    },
+    "files": [
+        {
+            "path": "img",
+            "addressable": true
+        },
+        {
+            "path": "build",
+            "addressable": true
+        },
+        {
+            "path": "index.html",
+            "addressable": true
+        }
+    ],
+    "categories": [
+        "Code"
+    ],
+    "contributions": [
+        {
+            "id": "pr-search-hub",
+            "type": "ms.vss-web.hub",
+            "targets": [
+                "ms.vss-code-web.code-hub-group"
+            ],
+            "properties": {
+                "name": "Pull Request Search",
+                "order": 30,
+                "uri": "index.html"
+            }
+        }
+    ]
+}

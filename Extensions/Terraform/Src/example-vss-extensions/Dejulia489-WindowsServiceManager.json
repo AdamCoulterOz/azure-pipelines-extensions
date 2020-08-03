@@ -1,0 +1,74 @@
+{
+    "manifestVersion": 1,
+    "id": "WindowsServiceManager",
+    "version": "1.0.0",
+    "name": "Windows Service Manager",
+    "description": "Installs and deploys a windows service or TopShelf service on a target machine or a deployment group target.",
+    "publisher": "MDSolutions",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Dejulia489/WindowsServiceManager"
+    },
+    "links": {
+        "support": "https://github.com/Dejulia489/WindowsServiceManager"
+    },
+    "screenshots": [
+        {
+            "path": "Images\\TaskOptionsDeploymentGroup.png"
+        },
+        {
+            "path": "Images\\TaskOptionsAgent.png"
+        },
+        {
+            "path": "Images\\TaskOptionsAdvanced.png"
+        },
+        {
+            "path": "Images\\TaskOptionsInstallation.png"
+        },
+        {
+            "path": "Images\\Task.png"
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "README.md"
+        }
+    },
+    "tags": [
+        "Release Management",
+        "Azure DevOps Pipelines",
+        "Windows Service",
+        "VSTS",
+        "TopShelf",
+        "Visual Studio Team Services"
+    ],
+    "license": "MIT",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "Images\\icon.png"
+    },
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "contributions": [
+        {
+            "id": "WindowsServiceManager",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "WindowsServiceManager"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "WindowsServiceManager"
+        }
+    ]
+}

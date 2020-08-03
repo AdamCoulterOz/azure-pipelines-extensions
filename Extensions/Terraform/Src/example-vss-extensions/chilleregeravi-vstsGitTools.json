@@ -1,0 +1,36 @@
+{
+    "manifestVersion": 1,
+    "id": "9a8cf31d-c3e9-4060-baa3-ca319d72c502",
+    "name": "Branch Merge Task",
+    "version": "0.0.1",
+    "publisher": "ChilleregeRavi",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "This task helps in merging branches on GITHub.",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
+    "files": [
+        {
+            "path": "branchMergeTask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "branchMergeTask"
+            }
+        }
+    ]
+}

@@ -1,0 +1,46 @@
+{
+    "manifestVersion": 1,
+    "id": "demo-build-task",
+    "name": "Demo Tasks for Clevermed",
+    "version": "0.0.1",
+    "publisher": "b8b1cdbd-5ce1-4198-b4f5-0e380cf8aa1f",
+    "public" : true,
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Tasks for demonstration of VSTS custom Tasks.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "branding": {
+        "color": "rgb(248,153,56)",
+        "theme": "light"
+    },
+    "icons": {
+        "default": "images/Logo.png"        
+    },
+    "files": [
+        {
+            "path": "tasks/HelloWorldDemo"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "demo-task-hello-world",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "tasks/HelloWorldDemo"
+            }
+        }
+    ],
+    "content" : {
+        "details": {
+            "path": "overview.md"
+        }
+    }
+}

@@ -1,0 +1,55 @@
+{
+    "manifestVersion": 1,
+    "version": "0.5.0",
+    "id": "BatonPass",
+    "name": "BatonPass",
+    "description": "Pause a build/release whilst another build/release is running.",
+    "categories": [
+        "Build and release"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "publisher": "richiebzzzt",
+        "icons": {
+            "default": "images/packageDefaultIcon.png"
+         },
+    "content": {
+        "details": {
+            "path": "overview.md"
+        }
+    },
+    "contributions": [
+        {
+            "id": "batonpass-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "BatonPass"
+            }
+        }
+    ],
+    "scopes": [],
+    "contributionTypes": [],
+     "files": [
+            {
+                "path": "BatonPass/icon.png", "addressable": true
+            },
+            {
+                "path": "BatonPass/BatonPass.ps1", "addressable": true
+            },
+            {
+                "path": "BatonPass/task.json", "addressable": true
+            },
+            {
+                "path": "images/packageDefaultIcon.png", "addressable": true
+            },
+            {
+                "path": "vss-extension.json", "addressable": true
+            }
+        ]
+}

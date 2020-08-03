@@ -1,7 +1,7 @@
 {
-    "$schema": "https://raw.githubusercontent.com/AdamCoulterOz/azure-pipelines-task-lib/master/tasks.schema.json",
+    "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
     "id": "FE504ACC-6115-40CB-89FF-191386B5E7BF",
-    "name": "Terraform",
+    "name": "terraform",
     "friendlyName": "Terraform",
     "description": "Execute terraform commands to manage resources on AzureRM, Amazon Web Services(AWS) and Google Cloud Platform(GCP)",
     "author": "Microsoft Corporation",
@@ -13,14 +13,14 @@
     ],
     "demands": [],
     "version": {
-        "Major": "0",
-        "Minor": "0",
-        "Patch": "140"
+        "Major": 0,
+        "Minor": 1,
+        "Patch": 0
     },
     "instanceNameFormat": "Terraform: $(provider)",
     "execution": {
         "Node": {
-            "target": "src/index.js"
+            "target": "index.js"
         }
     },
     "groups": [{
